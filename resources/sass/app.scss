@@ -1,9 +1,16 @@
-// Primary Colors
+/* Primary Colors */
+
 $darkBlue  : #13293D;
 $blue      : #006494;
 $turquoise : #247BA0;
 $lightBlue : #1B98E0;
 $blueWhite     : #E8F1F2;
+
+/* Fonts */
+
+@import url('https://fonts.googleapis.com/css?family=Nunito+Sans|Raleway&display=swap');
+
+/* AUTH SECTION */
 
 .login-cont {
   padding: 50px 15px 0px 15px;
@@ -58,3 +65,73 @@ $blueWhite     : #E8F1F2;
     }
   }
 }
+
+/* END SECTION */
+
+/* ARTICLES SECTION */
+
+.article {
+  max-width: 900px;
+  padding: 25px;
+
+  /* ARTICLES HEADER SECTION */
+
+  .article-header {
+    .article-title {
+      h1 {
+        font-size: 40px;
+        font-family: 'Raleway', sans-serif;
+      }
+    }
+
+    .article-header-details {
+      padding-top: 10px;
+
+      .author-image {
+        img {
+          width: 65px;
+          height: 65px;
+        }
+      }
+
+      .author-details {
+        font-size: 16px;
+        font-family: 'Nunito Sans', sans-serif;
+
+        a {
+          color: $lightBlue;
+        }
+      }
+
+      .article-social-share a{
+        color: inherit;
+      }
+
+      .category-link {
+        color: inherit;
+
+        a {
+          color: inherit;
+        }
+      }
+
+      .article-category {
+        font-family:'Nunito Sans', sans-serif;
+      }
+    }
+  }
+
+  /* END SECTION */
+
+  /* ARTICLE BODY SECTION */
+
+  .article-body {
+    .article-image {
+      padding: 25px 0px;
+    }
+  }
+
+  /* END SECTION */
+}
+
+/* END SECTION */

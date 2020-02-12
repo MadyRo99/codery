@@ -1,3 +1,9 @@
+@import url(https://fonts.googleapis.com/css?family=Nunito+Sans|Raleway&display=swap);/* Primary Colors */
+
+/* Fonts */
+
+/* AUTH SECTION */
+
 .login-cont {
   padding: 50px 15px 0px 15px;
 }
@@ -51,4 +57,62 @@
 .login-cont .login-links a {
   color: #006494;
 }
+
+/* END SECTION */
+
+/* ARTICLES SECTION */
+
+.article {
+  max-width: 900px;
+  padding: 25px;
+  /* ARTICLES HEADER SECTION */
+  /* END SECTION */
+  /* ARTICLE BODY SECTION */
+  /* END SECTION */
+}
+
+.article .article-header .article-title h1 {
+  font-size: 40px;
+  font-family: "Raleway", sans-serif;
+}
+
+.article .article-header .article-header-details {
+  padding-top: 10px;
+}
+
+.article .article-header .article-header-details .author-image img {
+  width: 65px;
+  height: 65px;
+}
+
+.article .article-header .article-header-details .author-details {
+  font-size: 16px;
+  font-family: "Nunito Sans", sans-serif;
+}
+
+.article .article-header .article-header-details .author-details a {
+  color: #1B98E0;
+}
+
+.article .article-header .article-header-details .article-social-share a {
+  color: inherit;
+}
+
+.article .article-header .article-header-details .category-link {
+  color: inherit;
+}
+
+.article .article-header .article-header-details .category-link a {
+  color: inherit;
+}
+
+.article .article-header .article-header-details .article-category {
+  font-family: "Nunito Sans", sans-serif;
+}
+
+.article .article-body .article-image {
+  padding: 25px 0px;
+}
+
+/* END SECTION */
 
