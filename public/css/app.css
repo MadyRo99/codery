@@ -1,0 +1,54 @@
+.login-cont {
+  padding: 50px 15px 0px 15px;
+}
+
+.login-cont h1 {
+  padding: 25px 0px;
+}
+
+.login-cont .login-form {
+  background-color: #FFF;
+  max-width: 850px;
+  padding: 30px 60px;
+  border-radius: 10px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
+  -webkit-box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
+}
+
+.login-cont .login-form .login-input {
+  border: 2px solid #1B98E0;
+  font-size: 16px !important;
+  height: 40px;
+}
+
+.login-cont .login-form input:last-Child {
+  font-size: 17px;
+}
+
+.login-cont .login-form p {
+  padding-top: 35px;
+  text-align: center;
+  color: #999;
+}
+
+.login-cont .login-form a {
+  color: #999 !important;
+  font-weight: 600;
+}
+
+.login-cont .login-form img {
+  width: 100px;
+}
+
+.login-cont .login-links {
+  padding-top: 25px;
+  width: 350px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.login-cont .login-links a {
+  color: #006494;
+}
+
