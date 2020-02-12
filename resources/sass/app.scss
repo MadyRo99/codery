@@ -1,0 +1,60 @@
+// Primary Colors
+$darkBlue  : #13293D;
+$blue      : #006494;
+$turquoise : #247BA0;
+$lightBlue : #1B98E0;
+$blueWhite     : #E8F1F2;
+
+.login-cont {
+  padding: 50px 15px 0px 15px;
+
+  h1 {
+    padding: 25px 0px;
+  }
+
+  .login-form {
+    background-color: #FFF;
+    max-width: 850px;
+    padding: 30px 60px;
+    border-radius: 10px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
+    -webkit-box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
+
+    .login-input {
+      border: 2px solid $lightBlue;
+      font-size: 16px !important;
+      height: 40px;
+    }
+
+    input:last-Child {
+      font-size: 17px;
+    }
+
+    p {
+      padding-top: 35px;
+      text-align: center;
+      color: #999;
+    }
+
+    a {
+      color: #999 !important;
+      font-weight: 600;
+    }
+
+    img {
+      width: 100px;
+    }
+  }
+
+  .login-links {
+    padding-top: 25px;
+    width: 350px;
+    font-size: 18px;
+    font-weight: 700;
+
+    a {
+      color: $blue;
+    }
+  }
+}
