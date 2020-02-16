@@ -129,9 +129,72 @@ $blueWhite     : #E8F1F2;
     .article-image {
       padding: 25px 0px;
     }
+
+    p {
+      padding: 5px 0px;
+      line-height: 30px;
+    }
+
+    h1 {
+      font-size: 24px;
+      padding-bottom: 10px;
+    }
   }
 
   /* END SECTION */
+
+  .article-newsletter {
+    height: 250px;
+    margin: 0px 15px;
+
+    .article-newsletter-left-side {
+      height: 250px;
+      color: #FFFFFF;
+      background-color: $lightBlue;
+
+      .newsletter-content {
+        padding: 0px 25px;
+
+        form {
+          padding: 0px 15px;
+
+          input {
+            height: 42px;
+          }
+          input[type="submit"] {
+            background-color: $blue;
+            border: 0px;
+            color: #FFFFFF;
+            font-weight: bold;
+            font-size: 16px;
+          }
+        }
+
+        h1 {
+          font-size: 24px;
+          font-weight: bold;
+        }
+
+        p {
+          font-size: 18px;
+        }
+
+        .info {
+          padding-top: 10px;
+          font-size: 14px;
+        }
+      }
+    }
+    .article-newsletter-right-side {
+      height: 250px;
+
+      img {
+        width: 100%;
+        height: 250px;
+        background-color: #13293D;
+      }
+    }
+  }
 }
 
 /* END SECTION */

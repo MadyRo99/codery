@@ -10,6 +10,8 @@
 
 @include('partials.scripts')
 
+@include('partials.footer')
+
 @yield('scripts')
 
 </body>
