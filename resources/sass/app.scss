@@ -1,1 +1,202 @@
-//
+/* Primary Colors */
+
+$darkBlue  : #13293D;
+$blue      : #006494;
+$turquoise : #247BA0;
+$lightBlue : #1B98E0;
+$blueWhite     : #E8F1F2;
+
+/* Fonts */
+
+@import url('https://fonts.googleapis.com/css?family=Nunito+Sans|Raleway&display=swap');
+
+/* AUTH SECTION */
+
+.login-cont {
+  padding: 50px 15px 0px 15px;
+
+  h1 {
+    padding: 25px 0px;
+  }
+
+  .login-form {
+    background-color: #FFF;
+    max-width: 850px;
+    padding: 30px 60px;
+    border-radius: 10px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
+    -webkit-box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
+
+    .login-input {
+      border: 2px solid $lightBlue;
+      font-size: 16px !important;
+      height: 40px;
+    }
+
+    input:last-Child {
+      font-size: 17px;
+    }
+
+    p {
+      padding-top: 35px;
+      text-align: center;
+      color: #999;
+    }
+
+    a {
+      color: #999 !important;
+      font-weight: 600;
+    }
+
+    img {
+      width: 100px;
+    }
+  }
+
+  .login-links {
+    padding-top: 25px;
+    width: 350px;
+    font-size: 18px;
+    font-weight: 700;
+
+    a {
+      color: $blue;
+    }
+  }
+}
+
+/* END SECTION */
+
+/* ARTICLES SECTION */
+
+.article-view {
+  max-width: 900px;
+  padding: 25px;
+
+  /* ARTICLES HEADER SECTION */
+
+  .article-header {
+    .article-title {
+      h1 {
+        font-size: 40px;
+        font-family: 'Raleway', sans-serif;
+      }
+    }
+
+    .article-header-details {
+      padding-top: 10px;
+
+      .author-image {
+        img {
+          width: 65px;
+          height: 65px;
+        }
+      }
+
+      .author-details {
+        font-size: 16px;
+        font-family: 'Nunito Sans', sans-serif;
+
+        a {
+          color: $lightBlue;
+        }
+      }
+
+      .article-social-share a{
+        color: inherit;
+      }
+
+      .category-link {
+        color: inherit;
+
+        a {
+          color: inherit;
+        }
+      }
+
+      .article-category {
+        font-family:'Nunito Sans', sans-serif;
+      }
+    }
+  }
+
+  /* END SECTION */
+
+  /* ARTICLE BODY SECTION */
+
+  .article-body {
+    margin-bottom: 25px;
+
+    .article-image {
+      padding: 25px 0px;
+    }
+
+    p {
+      padding: 5px 0px;
+      line-height: 30px;
+    }
+
+    h1 {
+      font-size: 24px;
+      padding-bottom: 10px;
+    }
+  }
+
+  /* END SECTION */
+
+  .article-newsletter {
+    height: 250px;
+    margin: 0px 15px;
+
+    .article-newsletter-left-side {
+      height: 250px;
+      color: #FFFFFF;
+      background-color: $lightBlue;
+
+      .newsletter-content {
+        padding: 0px 25px;
+
+        form {
+          padding: 0px 15px;
+
+          input {
+            height: 42px;
+          }
+          input[type="submit"] {
+            background-color: $blue;
+            border: 0px;
+            color: #FFFFFF;
+            font-weight: bold;
+            font-size: 16px;
+          }
+        }
+
+        h1 {
+          font-size: 24px;
+          font-weight: bold;
+        }
+
+        p {
+          font-size: 18px;
+        }
+
+        .info {
+          padding-top: 10px;
+          font-size: 14px;
+        }
+      }
+    }
+    .article-newsletter-right-side {
+      height: 250px;
+
+      img {
+        width: 100%;
+        height: 250px;
+        background-color: #13293D;
+      }
+    }
+  }
+}
+
+/* END SECTION */

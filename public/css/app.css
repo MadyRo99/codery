@@ -1,0 +1,187 @@
+@import url(https://fonts.googleapis.com/css?family=Nunito+Sans|Raleway&display=swap);/* Primary Colors */
+
+/* Fonts */
+
+/* AUTH SECTION */
+
+.login-cont {
+  padding: 50px 15px 0px 15px;
+}
+
+.login-cont h1 {
+  padding: 25px 0px;
+}
+
+.login-cont .login-form {
+  background-color: #FFF;
+  max-width: 850px;
+  padding: 30px 60px;
+  border-radius: 10px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
+  -webkit-box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
+}
+
+.login-cont .login-form .login-input {
+  border: 2px solid #1B98E0;
+  font-size: 16px !important;
+  height: 40px;
+}
+
+.login-cont .login-form input:last-Child {
+  font-size: 17px;
+}
+
+.login-cont .login-form p {
+  padding-top: 35px;
+  text-align: center;
+  color: #999;
+}
+
+.login-cont .login-form a {
+  color: #999 !important;
+  font-weight: 600;
+}
+
+.login-cont .login-form img {
+  width: 100px;
+}
+
+.login-cont .login-links {
+  padding-top: 25px;
+  width: 350px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.login-cont .login-links a {
+  color: #006494;
+}
+
+/* END SECTION */
+
+/* ARTICLES SECTION */
+
+.article-view {
+  max-width: 900px;
+  padding: 25px;
+  /* ARTICLES HEADER SECTION */
+  /* END SECTION */
+  /* ARTICLE BODY SECTION */
+  /* END SECTION */
+}
+
+.article-view .article-header .article-title h1 {
+  font-size: 40px;
+  font-family: "Raleway", sans-serif;
+}
+
+.article-view .article-header .article-header-details {
+  padding-top: 10px;
+}
+
+.article-view .article-header .article-header-details .author-image img {
+  width: 65px;
+  height: 65px;
+}
+
+.article-view .article-header .article-header-details .author-details {
+  font-size: 16px;
+  font-family: "Nunito Sans", sans-serif;
+}
+
+.article-view .article-header .article-header-details .author-details a {
+  color: #1B98E0;
+}
+
+.article-view .article-header .article-header-details .article-social-share a {
+  color: inherit;
+}
+
+.article-view .article-header .article-header-details .category-link {
+  color: inherit;
+}
+
+.article-view .article-header .article-header-details .category-link a {
+  color: inherit;
+}
+
+.article-view .article-header .article-header-details .article-category {
+  font-family: "Nunito Sans", sans-serif;
+}
+
+.article-view .article-body {
+  margin-bottom: 25px;
+}
+
+.article-view .article-body .article-image {
+  padding: 25px 0px;
+}
+
+.article-view .article-body p {
+  padding: 5px 0px;
+  line-height: 30px;
+}
+
+.article-view .article-body h1 {
+  font-size: 24px;
+  padding-bottom: 10px;
+}
+
+.article-view .article-newsletter {
+  height: 250px;
+  margin: 0px 15px;
+}
+
+.article-view .article-newsletter .article-newsletter-left-side {
+  height: 250px;
+  color: #FFFFFF;
+  background-color: #1B98E0;
+}
+
+.article-view .article-newsletter .article-newsletter-left-side .newsletter-content {
+  padding: 0px 25px;
+}
+
+.article-view .article-newsletter .article-newsletter-left-side .newsletter-content form {
+  padding: 0px 15px;
+}
+
+.article-view .article-newsletter .article-newsletter-left-side .newsletter-content form input {
+  height: 42px;
+}
+
+.article-view .article-newsletter .article-newsletter-left-side .newsletter-content form input[type=submit] {
+  background-color: #006494;
+  border: 0px;
+  color: #FFFFFF;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.article-view .article-newsletter .article-newsletter-left-side .newsletter-content h1 {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.article-view .article-newsletter .article-newsletter-left-side .newsletter-content p {
+  font-size: 18px;
+}
+
+.article-view .article-newsletter .article-newsletter-left-side .newsletter-content .info {
+  padding-top: 10px;
+  font-size: 14px;
+}
+
+.article-view .article-newsletter .article-newsletter-right-side {
+  height: 250px;
+}
+
+.article-view .article-newsletter .article-newsletter-right-side img {
+  width: 100%;
+  height: 250px;
+  background-color: #13293D;
+}
+
+/* END SECTION */
+
