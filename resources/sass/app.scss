@@ -70,7 +70,7 @@ $blueWhite     : #E8F1F2;
 
 /* ARTICLES SECTION */
 
-.article {
+.article-view {
   max-width: 900px;
   padding: 25px;
 
@@ -126,6 +126,8 @@ $blueWhite     : #E8F1F2;
   /* ARTICLE BODY SECTION */
 
   .article-body {
+    margin-bottom: 25px;
+
     .article-image {
       padding: 25px 0px;
     }

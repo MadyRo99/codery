@@ -6,11 +6,17 @@
 
 <body>
 
-@yield('content')
+<div id="app">
 
-@include('partials.scripts')
+    @yield('content')
 
-@include('partials.footer')
+    @include('partials.scripts')
+
+    @include('partials.footer')
+
+</div>
+
+<script src="{{ asset('/js/app.js') }}"></script>
 
 @yield('scripts')
 
