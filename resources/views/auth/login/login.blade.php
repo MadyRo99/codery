@@ -1,6 +1,6 @@
 @extends('main')
 
-@section('title', 'PoliHelp | Autentificare')
+@section('title', 'Codery | Autentificare')
 
 @section('content')
 
