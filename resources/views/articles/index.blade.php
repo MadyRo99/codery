@@ -1,6 +1,6 @@
 @extends('main')
 
-@section('title', 'Codery | Articol')
+@section('title', 'Codery | ' . $title)
 
 @section('content')
 

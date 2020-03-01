@@ -51,6 +51,12 @@ class ArticlesView
         $article->est_time = $request->input('est_time');
         $article->slug = Helpers\generateSlug($request->input('title'), 10);
 
+        $fileExtension = $request->file('main_image')->guessExtension();
+        $fileName = Helpers\generateRandomString(16) . '.' . $fileExtension;
+        $request->file('main_image')->storeAs('articles/' . $article->slug . '/', $fileName, 'public');
+
+        $article->main_image = $fileName;
+
         $article->save();
 
         return $article;

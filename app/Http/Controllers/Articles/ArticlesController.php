@@ -31,7 +31,7 @@ class ArticlesController extends Controller
         if ($article) {
             return view(
                 'articles.index'
-            )->withSlug($slug);
+            )->withSlug($slug)->withTitle($article->title);
         }
 
         abort(404);
@@ -48,7 +48,7 @@ class ArticlesController extends Controller
 
         $articleData = DB::table('articles')
             ->select([
-                'articles.title', 'articles.content', 'articles.est_time', 'articles.created_at',
+                'articles.title', 'articles.content', 'articles.est_time', 'articles.created_at', 'articles.main_image',
                 'article_categories.id AS category_id', 'article_categories.name AS category_name',
                 'users.id AS author_id', 'users.username AS author_username', 'users.avatar AS author_avatar',
             ])
@@ -112,6 +112,7 @@ class ArticlesController extends Controller
             'article_category'  => 'required|integer|exists:article_categories,id',
             'content'           => 'required|min:10',
             'est_time'          => 'required|integer',
+            'main_image'        => 'nullable|mimes:jpeg,png',
         ];
 
         $validator = Validator::make($request->all(), $rules);

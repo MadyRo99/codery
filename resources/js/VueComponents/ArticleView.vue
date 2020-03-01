@@ -33,7 +33,7 @@
         </header>
         <div class="article-body">
             <section>
-                <img src="../../../public/images/coding.jpg" alt="coding.jpg" class="article-image img-fluid mx-auto d-block">
+                <img v-if="article.main_image" :src="article.main_image" alt="main_image.jpg" class="article-image img-fluid mx-auto d-block">
                 <div v-html="article.content"></div>
             </section>
         </div>
@@ -55,9 +55,11 @@
                     slug: "",
                     content: "",
                     est_time: 1,
-                    image: '',
                     created_at: "",
-                    author: {},
+                    main_image: "",
+                    author: {
+                        avatar: "../storage/avatars/user.png"
+                    },
                     category: {},
                 },
             }
@@ -80,6 +82,7 @@
                             this.article.est_time = article.est_time;
                             this.article.created_at = article.created_at;
                             this.article.content = article.content;
+                            this.article.main_image = "../storage/articles/" + this.slug + "/" + article.main_image;
                             this.article.author = {
                                 href: "authors/" + article.author_id,
                                 name: article.author_username,

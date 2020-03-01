@@ -21,6 +21,7 @@ class CreateArticlesTable extends Migration
             $table->text('content');
             $table->integer('est_time');
             $table->string('slug');
+            $table->string('main_image')->nullable();
             $table->foreign('author_id')->references('id')->on('users');
             $table->foreign('article_category')->references('id')->on('article_categories');
             $table->timestamps();
