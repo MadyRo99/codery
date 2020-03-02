@@ -112,6 +112,7 @@ class ArticlesController extends Controller
             'article_category'  => 'required|integer|exists:article_categories,id',
             'content'           => 'required|min:10',
             'est_time'          => 'required|integer',
+            'slug'              => 'required',
             'main_image'        => 'nullable|mimes:jpeg,png',
         ];
 
@@ -131,5 +132,43 @@ class ArticlesController extends Controller
             'response' => $savedArticle,
             'success'  => true,
         ], 200);
+    }
+
+    /**
+     * Save the images used in the article after submission.
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function saveArticleImages(Request $request)
+    {
+        $rules = [
+            'slug'              => 'required|string|exists:articles,slug',
+            'items'             => 'required',
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'response' => $validator->getMessageBag()->toArray(),
+                'success'  => false,
+            ], 200);
+        }
+
+        $articleView = new ArticlesView();
+        $savedArticle = $articleView->saveArticleImages($request);
+
+        if ($savedArticle) {
+            return response()->json([
+                'response' => $savedArticle,
+                'success'  => true,
+            ], 200);
+        } else {
+            return response()->json([
+                'response' => $savedArticle,
+                'success'  => true,
+            ], 422);
+        }
     }
 }

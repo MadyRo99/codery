@@ -1,4 +1,6 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito+Sans|Raleway&display=swap);/* Primary Colors */
+@import url(https://fonts.googleapis.com/css?family=Nunito+Sans|Raleway&display=swap);@charset "UTF-8";
+
+/* Primary Colors */
 
 /* Fonts */
 
@@ -113,20 +115,74 @@
 .article-view .article-body {
   margin-top: 15px;
   margin-bottom: 25px;
-}
-
-.article-view .article-body .article-image {
-  padding: 25px 0px;
+  /* BLOCKQUOTE SECTION */
+  /* END SECTION */
 }
 
 .article-view .article-body p {
-  padding: 5px 0px;
+  padding: 10px 0px;
   line-height: 30px;
 }
 
 .article-view .article-body h1 {
   font-size: 24px;
   padding-bottom: 10px;
+}
+
+.article-view .article-body .article-image {
+  padding: 25px 0px;
+}
+
+.article-view .article-body .blockquote {
+  margin: 0 auto;
+  padding: 1em;
+  width: 90%;
+  border-left: 5px solid #999;
+}
+
+.article-view .article-body .blockquote p {
+  color: #555;
+  font-size: 12pt;
+  line-height: 1.4;
+}
+
+.article-view .article-body .blockquote footer {
+  margin-top: 0.5em;
+  padding: 0;
+  color: #777;
+  font-size: 12pt;
+  text-align: left;
+  font-style: italic;
+}
+
+.article-view .article-body .blockquote:before {
+  display: none;
+}
+
+.article-view .article-body .blockquote:not(:first-of-type) {
+  margin-top: 0.5em;
+}
+
+.article-view .article-body .blockquote footer:before {
+  content: "\2014   ";
+}
+
+.article-view .article-body .blockquote:nth-of-type(even) {
+  text-align: right;
+  border-left: none;
+  border-right: 5px solid #999;
+}
+
+.article-view .article-body .blockquote:nth-of-type(even) footer {
+  text-align: right;
+}
+
+.article-view .article-body .blockquote:nth-of-type(even) footer:before {
+  content: "";
+}
+
+.article-view .article-body .blockquote:nth-of-type(even) footer:after {
+  content: " \2014";
 }
 
 .article-view .article-newsletter {

@@ -86,6 +86,25 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./node_modules/@updivision/vue2-multi-uploader/dist/build.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/@updivision/vue2-multi-uploader/dist/build.js ***!
+  \********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+!function(e,t){if(true)module.exports=t();else { var n, r; }}(this,function(){return function(e){function t(n){if(r[n])return r[n].exports;var o=r[n]={i:n,l:!1,exports:{}};return e[n].call(o.exports,o,o.exports,t),o.l=!0,o.exports}var r={};return t.m=e,t.c=r,t.i=function(e){return e},t.d=function(e,r,n){t.o(e,r)||Object.defineProperty(e,r,{configurable:!1,enumerable:!0,get:n})},t.n=function(e){var r=e&&e.__esModule?function(){return e.default}:function(){return e};return t.d(r,"a",r),r},t.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},t.p="/dist/",t(t.s=28)}([function(e,t,r){"use strict";function n(e){return"[object Array]"===S.call(e)}function o(e){return"[object ArrayBuffer]"===S.call(e)}function s(e){return"undefined"!=typeof FormData&&e instanceof FormData}function i(e){return"undefined"!=typeof ArrayBuffer&&ArrayBuffer.isView?ArrayBuffer.isView(e):e&&e.buffer&&e.buffer instanceof ArrayBuffer}function a(e){return"string"==typeof e}function u(e){return"number"==typeof e}function c(e){return void 0===e}function f(e){return null!==e&&"object"==typeof e}function l(e){return"[object Date]"===S.call(e)}function p(e){return"[object File]"===S.call(e)}function d(e){return"[object Blob]"===S.call(e)}function h(e){return"[object Function]"===S.call(e)}function m(e){return f(e)&&h(e.pipe)}function v(e){return"undefined"!=typeof URLSearchParams&&e instanceof URLSearchParams}function g(e){return e.replace(/^\s*/,"").replace(/\s*$/,"")}function y(){return"undefined"!=typeof window&&"undefined"!=typeof document&&"function"==typeof document.createElement}function b(e,t){if(null!==e&&void 0!==e)if("object"==typeof e||n(e)||(e=[e]),n(e))for(var r=0,o=e.length;r<o;r++)t.call(null,e[r],r,e);else for(var s in e)Object.prototype.hasOwnProperty.call(e,s)&&t.call(null,e[s],s,e)}function _(){function e(e,r){"object"==typeof t[r]&&"object"==typeof e?t[r]=_(t[r],e):t[r]=e}for(var t={},r=0,n=arguments.length;r<n;r++)b(arguments[r],e);return t}function w(e,t,r){return b(t,function(t,n){e[n]=r&&"function"==typeof t?x(t,r):t}),e}var x=r(6),S=Object.prototype.toString;e.exports={isArray:n,isArrayBuffer:o,isFormData:s,isArrayBufferView:i,isString:a,isNumber:u,isObject:f,isUndefined:c,isDate:l,isFile:p,isBlob:d,isFunction:h,isStream:m,isURLSearchParams:v,isStandardBrowserEnv:y,forEach:b,merge:_,extend:w,trim:g}},function(e,t,r){"use strict";(function(t){function n(e,t){!o.isUndefined(e)&&o.isUndefined(e["Content-Type"])&&(e["Content-Type"]=t)}var o=r(0),s=r(24),i=/^\)\]\}',?\n/,a={"Content-Type":"application/x-www-form-urlencoded"},u={adapter:function(){var e;return"undefined"!=typeof XMLHttpRequest?e=r(2):void 0!==t&&(e=r(2)),e}(),transformRequest:[function(e,t){return s(t,"Content-Type"),o.isFormData(e)||o.isArrayBuffer(e)||o.isStream(e)||o.isFile(e)||o.isBlob(e)?e:o.isArrayBufferView(e)?e.buffer:o.isURLSearchParams(e)?(n(t,"application/x-www-form-urlencoded;charset=utf-8"),e.toString()):o.isObject(e)?(n(t,"application/json;charset=utf-8"),JSON.stringify(e)):e}],transformResponse:[function(e){if("string"==typeof e){e=e.replace(i,"");try{e=JSON.parse(e)}catch(e){}}return e}],timeout:0,xsrfCookieName:"XSRF-TOKEN",xsrfHeaderName:"X-XSRF-TOKEN",maxContentLength:-1,validateStatus:function(e){return e>=200&&e<300}};u.headers={common:{Accept:"application/json, text/plain, */*"}},o.forEach(["delete","get","head"],function(e){u.headers[e]={}}),o.forEach(["post","put","patch"],function(e){u.headers[e]=o.merge(a)}),e.exports=u}).call(t,r(7))},function(e,t,r){"use strict";var n=r(0),o=r(16),s=r(19),i=r(25),a=r(23),u=r(5),c="undefined"!=typeof window&&window.btoa&&window.btoa.bind(window)||r(18);e.exports=function(e){return new Promise(function(t,f){var l=e.data,p=e.headers;n.isFormData(l)&&delete p["Content-Type"];var d=new XMLHttpRequest,h="onreadystatechange",m=!1;if("undefined"==typeof window||!window.XDomainRequest||"withCredentials"in d||a(e.url)||(d=new window.XDomainRequest,h="onload",m=!0,d.onprogress=function(){},d.ontimeout=function(){}),e.auth){var v=e.auth.username||"",g=e.auth.password||"";p.Authorization="Basic "+c(v+":"+g)}if(d.open(e.method.toUpperCase(),s(e.url,e.params,e.paramsSerializer),!0),d.timeout=e.timeout,d[h]=function(){if(d&&(4===d.readyState||m)&&(0!==d.status||d.responseURL&&0===d.responseURL.indexOf("file:"))){var r="getAllResponseHeaders"in d?i(d.getAllResponseHeaders()):null,n=e.responseType&&"text"!==e.responseType?d.response:d.responseText,s={data:n,status:1223===d.status?204:d.status,statusText:1223===d.status?"No Content":d.statusText,headers:r,config:e,request:d};o(t,f,s),d=null}},d.onerror=function(){f(u("Network Error",e)),d=null},d.ontimeout=function(){f(u("timeout of "+e.timeout+"ms exceeded",e,"ECONNABORTED")),d=null},n.isStandardBrowserEnv()){var y=r(21),b=(e.withCredentials||a(e.url))&&e.xsrfCookieName?y.read(e.xsrfCookieName):void 0;b&&(p[e.xsrfHeaderName]=b)}if("setRequestHeader"in d&&n.forEach(p,function(e,t){void 0===l&&"content-type"===t.toLowerCase()?delete p[t]:d.setRequestHeader(t,e)}),e.withCredentials&&(d.withCredentials=!0),e.responseType)try{d.responseType=e.responseType}catch(e){if("json"!==d.responseType)throw e}"function"==typeof e.onDownloadProgress&&d.addEventListener("progress",e.onDownloadProgress),"function"==typeof e.onUploadProgress&&d.upload&&d.upload.addEventListener("progress",e.onUploadProgress),e.cancelToken&&e.cancelToken.promise.then(function(e){d&&(d.abort(),f(e),d=null)}),void 0===l&&(l=null),d.send(l)})}},function(e,t,r){"use strict";function n(e){this.message=e}n.prototype.toString=function(){return"Cancel"+(this.message?": "+this.message:"")},n.prototype.__CANCEL__=!0,e.exports=n},function(e,t,r){"use strict";e.exports=function(e){return!(!e||!e.__CANCEL__)}},function(e,t,r){"use strict";var n=r(15);e.exports=function(e,t,r,o){var s=new Error(e);return n(s,t,r,o)}},function(e,t,r){"use strict";e.exports=function(e,t){return function(){for(var r=new Array(arguments.length),n=0;n<r.length;n++)r[n]=arguments[n];return e.apply(t,r)}}},function(e,t){function r(){throw new Error("setTimeout has not been defined")}function n(){throw new Error("clearTimeout has not been defined")}function o(e){if(f===setTimeout)return setTimeout(e,0);if((f===r||!f)&&setTimeout)return f=setTimeout,setTimeout(e,0);try{return f(e,0)}catch(t){try{return f.call(null,e,0)}catch(t){return f.call(this,e,0)}}}function s(e){if(l===clearTimeout)return clearTimeout(e);if((l===n||!l)&&clearTimeout)return l=clearTimeout,clearTimeout(e);try{return l(e)}catch(t){try{return l.call(null,e)}catch(t){return l.call(this,e)}}}function i(){m&&d&&(m=!1,d.length?h=d.concat(h):v=-1,h.length&&a())}function a(){if(!m){var e=o(i);m=!0;for(var t=h.length;t;){for(d=h,h=[];++v<t;)d&&d[v].run();v=-1,t=h.length}d=null,m=!1,s(e)}}function u(e,t){this.fun=e,this.array=t}function c(){}var f,l,p=e.exports={};!function(){try{f="function"==typeof setTimeout?setTimeout:r}catch(e){f=r}try{l="function"==typeof clearTimeout?clearTimeout:n}catch(e){l=n}}();var d,h=[],m=!1,v=-1;p.nextTick=function(e){var t=new Array(arguments.length-1);if(arguments.length>1)for(var r=1;r<arguments.length;r++)t[r-1]=arguments[r];h.push(new u(e,t)),1!==h.length||m||o(a)},u.prototype.run=function(){this.fun.apply(null,this.array)},p.title="browser",p.browser=!0,p.env={},p.argv=[],p.version="",p.versions={},p.on=c,p.addListener=c,p.once=c,p.off=c,p.removeListener=c,p.removeAllListeners=c,p.emit=c,p.prependListener=c,p.prependOnceListener=c,p.listeners=function(e){return[]},p.binding=function(e){throw new Error("process.binding is not supported")},p.cwd=function(){return"/"},p.chdir=function(e){throw new Error("process.chdir is not supported")},p.umask=function(){return 0}},function(e,t,r){r(34);var n=r(32)(r(27),r(33),null,null);e.exports=n.exports},function(e,t,r){e.exports=r(10)},function(e,t,r){"use strict";function n(e){var t=new i(e),r=s(i.prototype.request,t);return o.extend(r,i.prototype,t),o.extend(r,t),r}var o=r(0),s=r(6),i=r(12),a=r(1),u=n(a);u.Axios=i,u.create=function(e){return n(o.merge(a,e))},u.Cancel=r(3),u.CancelToken=r(11),u.isCancel=r(4),u.all=function(e){return Promise.all(e)},u.spread=r(26),e.exports=u,e.exports.default=u},function(e,t,r){"use strict";function n(e){if("function"!=typeof e)throw new TypeError("executor must be a function.");var t;this.promise=new Promise(function(e){t=e});var r=this;e(function(e){r.reason||(r.reason=new o(e),t(r.reason))})}var o=r(3);n.prototype.throwIfRequested=function(){if(this.reason)throw this.reason},n.source=function(){var e;return{token:new n(function(t){e=t}),cancel:e}},e.exports=n},function(e,t,r){"use strict";function n(e){this.defaults=e,this.interceptors={request:new i,response:new i}}var o=r(1),s=r(0),i=r(13),a=r(14),u=r(22),c=r(20);n.prototype.request=function(e){"string"==typeof e&&(e=s.merge({url:arguments[0]},arguments[1])),e=s.merge(o,this.defaults,{method:"get"},e),e.baseURL&&!u(e.url)&&(e.url=c(e.baseURL,e.url));var t=[a,void 0],r=Promise.resolve(e);for(this.interceptors.request.forEach(function(e){t.unshift(e.fulfilled,e.rejected)}),this.interceptors.response.forEach(function(e){t.push(e.fulfilled,e.rejected)});t.length;)r=r.then(t.shift(),t.shift());return r},s.forEach(["delete","get","head"],function(e){n.prototype[e]=function(t,r){return this.request(s.merge(r||{},{method:e,url:t}))}}),s.forEach(["post","put","patch"],function(e){n.prototype[e]=function(t,r,n){return this.request(s.merge(n||{},{method:e,url:t,data:r}))}}),e.exports=n},function(e,t,r){"use strict";function n(){this.handlers=[]}var o=r(0);n.prototype.use=function(e,t){return this.handlers.push({fulfilled:e,rejected:t}),this.handlers.length-1},n.prototype.eject=function(e){this.handlers[e]&&(this.handlers[e]=null)},n.prototype.forEach=function(e){o.forEach(this.handlers,function(t){null!==t&&e(t)})},e.exports=n},function(e,t,r){"use strict";function n(e){e.cancelToken&&e.cancelToken.throwIfRequested()}var o=r(0),s=r(17),i=r(4),a=r(1);e.exports=function(e){return n(e),e.headers=e.headers||{},e.data=s(e.data,e.headers,e.transformRequest),e.headers=o.merge(e.headers.common||{},e.headers[e.method]||{},e.headers||{}),o.forEach(["delete","get","head","post","put","patch","common"],function(t){delete e.headers[t]}),(e.adapter||a.adapter)(e).then(function(t){return n(e),t.data=s(t.data,t.headers,e.transformResponse),t},function(t){return i(t)||(n(e),t&&t.response&&(t.response.data=s(t.response.data,t.response.headers,e.transformResponse))),Promise.reject(t)})}},function(e,t,r){"use strict";e.exports=function(e,t,r,n){return e.config=t,r&&(e.code=r),e.response=n,e}},function(e,t,r){"use strict";var n=r(5);e.exports=function(e,t,r){var o=r.config.validateStatus;r.status&&o&&!o(r.status)?t(n("Request failed with status code "+r.status,r.config,null,r)):e(r)}},function(e,t,r){"use strict";var n=r(0);e.exports=function(e,t,r){return n.forEach(r,function(r){e=r(e,t)}),e}},function(e,t,r){"use strict";function n(){this.message="String contains an invalid character"}function o(e){for(var t,r,o=String(e),i="",a=0,u=s;o.charAt(0|a)||(u="=",a%1);i+=u.charAt(63&t>>8-a%1*8)){if((r=o.charCodeAt(a+=.75))>255)throw new n;t=t<<8|r}return i}var s="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";n.prototype=new Error,n.prototype.code=5,n.prototype.name="InvalidCharacterError",e.exports=o},function(e,t,r){"use strict";function n(e){return encodeURIComponent(e).replace(/%40/gi,"@").replace(/%3A/gi,":").replace(/%24/g,"$").replace(/%2C/gi,",").replace(/%20/g,"+").replace(/%5B/gi,"[").replace(/%5D/gi,"]")}var o=r(0);e.exports=function(e,t,r){if(!t)return e;var s;if(r)s=r(t);else if(o.isURLSearchParams(t))s=t.toString();else{var i=[];o.forEach(t,function(e,t){null!==e&&void 0!==e&&(o.isArray(e)&&(t+="[]"),o.isArray(e)||(e=[e]),o.forEach(e,function(e){o.isDate(e)?e=e.toISOString():o.isObject(e)&&(e=JSON.stringify(e)),i.push(n(t)+"="+n(e))}))}),s=i.join("&")}return s&&(e+=(-1===e.indexOf("?")?"?":"&")+s),e}},function(e,t,r){"use strict";e.exports=function(e,t){return e.replace(/\/+$/,"")+"/"+t.replace(/^\/+/,"")}},function(e,t,r){"use strict";var n=r(0);e.exports=n.isStandardBrowserEnv()?function(){return{write:function(e,t,r,o,s,i){var a=[];a.push(e+"="+encodeURIComponent(t)),n.isNumber(r)&&a.push("expires="+new Date(r).toGMTString()),n.isString(o)&&a.push("path="+o),n.isString(s)&&a.push("domain="+s),!0===i&&a.push("secure"),document.cookie=a.join("; ")},read:function(e){var t=document.cookie.match(new RegExp("(^|;\\s*)("+e+")=([^;]*)"));return t?decodeURIComponent(t[3]):null},remove:function(e){this.write(e,"",Date.now()-864e5)}}}():function(){return{write:function(){},read:function(){return null},remove:function(){}}}()},function(e,t,r){"use strict";e.exports=function(e){return/^([a-z][a-z\d\+\-\.]*:)?\/\//i.test(e)}},function(e,t,r){"use strict";var n=r(0);e.exports=n.isStandardBrowserEnv()?function(){function e(e){var t=e;return r&&(o.setAttribute("href",t),t=o.href),o.setAttribute("href",t),{href:o.href,protocol:o.protocol?o.protocol.replace(/:$/,""):"",host:o.host,search:o.search?o.search.replace(/^\?/,""):"",hash:o.hash?o.hash.replace(/^#/,""):"",hostname:o.hostname,port:o.port,pathname:"/"===o.pathname.charAt(0)?o.pathname:"/"+o.pathname}}var t,r=/(msie|trident)/i.test(navigator.userAgent),o=document.createElement("a");return t=e(window.location.href),function(r){var o=n.isString(r)?e(r):r;return o.protocol===t.protocol&&o.host===t.host}}():function(){return function(){return!0}}()},function(e,t,r){"use strict";var n=r(0);e.exports=function(e,t){n.forEach(e,function(r,n){n!==t&&n.toUpperCase()===t.toUpperCase()&&(e[t]=r,delete e[n])})}},function(e,t,r){"use strict";var n=r(0);e.exports=function(e){var t,r,o,s={};return e?(n.forEach(e.split("\n"),function(e){o=e.indexOf(":"),t=n.trim(e.substr(0,o)).toLowerCase(),r=n.trim(e.substr(o+1)),t&&(s[t]=s[t]?s[t]+", "+r:r)}),s):s}},function(e,t,r){"use strict";e.exports=function(e){return function(t){return e.apply(null,t)}}},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var n=r(9),o=r.n(n),s="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};r(31).polyfill(),o.a,t.default={props:{postURL:{type:String,required:!0},minItems:{type:Number,default:1},maxItems:{type:Number,default:30},method:{type:String,default:"post"},postMeta:{type:[String,Array,Object],default:""},postData:{type:[Object],default:function(){}},postHeader:{type:[Object],default:function(){}},successMessagePath:{type:String,required:!0},errorMessagePath:{type:String,required:!0},headerMessage:{type:String,default:"Add files"},dropAreaPrimaryMessage:{type:String,default:"Drop multiple files here"},dropAreaSecondaryMessage:{type:String,default:"or click to upload"},fileNameMessage:{type:String,default:"Names"},fileSizeMessage:{type:String,default:"Sizes"},totalFileMessage:{type:String,default:"Total files:"},totalUploadSizeMessage:{type:String,default:"Total upload size:"},removeFileMessage:{type:String,default:"Remove files"},uploadButtonMessage:{type:String,default:"Upload"},cancelButtonMessage:{type:String,default:"Cancel"},fileUploadErrorMessage:{type:String,default:"An error has occurred"},minFilesErrorMessage:{type:String,default:"Minimum files that need to be added to uploader"},maxFilesErrorMessage:{type:String,default:"Maximum files that can be added to uploader"},retryErrorMessage:{type:String,default:"Please remove the files and try again."},httpMethodErrorMessage:{type:String,default:"This HTTP method is not allowed. Please use either 'put' or 'post' methods."},showHttpMessages:{type:Boolean,default:!0}},data:function(){return{dragging:!1,items:[],itemsAdded:"",itemsNames:[],itemsSizes:[],itemsTotalSize:"",formData:"",successMsg:"",errorMsg:"",isLoaderVisible:!1}},methods:{bytesToSize:function(e){var t=["Bytes","KB","MB","GB","TB"];if(0===e)return"n/a";var r=parseInt(Math.floor(Math.log(e)/Math.log(1024)));return 0===r?e+" "+t[r]:(e/Math.pow(1024,r)).toFixed(2)+" "+t[r]},onChange:function(e){this.successMsg="",this.errorMsg="",this.formData=new FormData;var t=e.target.files||e.dataTransfer.files;this.itemsAdded=t.length;var r=0;for(var n in t)isNaN(n)||(this.items=e.target.files[n]||e.dataTransfer.files[n],this.itemsNames[n]=t[n].name,this.itemsSizes[n]=this.bytesToSize(t[n].size),r+=t[n].size,this.formData.append("items[]",this.items));this.itemsTotalSize=this.bytesToSize(r)},removeItems:function(){this.items="",this.itemsAdded="",this.itemsNames=[],this.itemsSizes=[],this.itemsTotalSize="",this.dragging=!1},onSubmit:function(){var e=this;if(this.isLoaderVisible=!0,("string"==typeof this.postMeta&&""!==this.postMeta||"object"===s(this.postMeta)&&Object.keys(this.postMeta).length>0)&&this.formData.append("postMeta",this.postMeta),"object"===s(this.postData)&&null!==this.postData&&Object.keys(this.postData).length>0)for(var t in this.postData)this.formData.append(t,this.postData[t]);"put"===this.method||"post"===this.method?o()({method:this.method,url:this.postURL,data:this.formData,headers:this.postHeader}).then(function(t){e.isLoaderVisible=!1,e.showHttpMessages&&(e.successMsg=t+"."+e.successMessagePath),e.removeItems()}).catch(function(t){e.isLoaderVisible=!1,e.showHttpMessages&&(e.errorMsg=t+"."+e.errorMessagePath),e.removeItems()}):(this.showHttpMessages&&(this.errorMsg=this.httpMethodErrorMessage),this.removeItems())}}}},function(e,t,r){e.exports=r(8)},function(e,t,r){t=e.exports=r(30)(),t.push([e.i,".uploadBox{position:relative;padding:0 1em 1em;margin:1em}.uploadBox .uploadBoxMain{position:relative;margin-bottom:1em;margin-right:1em}.uploadBox .dropArea{position:relative;width:100%;height:300px;border:5px dashed #00adce;text-align:center;font-size:2em;padding-top:80px}.uploadBox .dropArea input{cursor:pointer;right:0;left:0;opacity:0}.uploadBox .dropArea input,.uploadBox .loader{position:absolute;top:0;bottom:0;width:100%;height:100%}.uploadBox .loader{display:flex;align-items:center;justify-content:center;background-color:#fff;opacity:.9}.uploadBox .loaderImg{border:9px solid #eee;border-top:9px solid #00adce;border-radius:50%;width:70px;height:70px;animation:spin 1s linear infinite}@keyframes spin{0%{transform:rotate(0deg)}to{transform:rotate(1turn)}}.uploadBox .errorMsg{font-size:2em;color:#a94442}.uploadBox .successMsg{font-size:2em;color:#3c763d}",""])},function(e,t){e.exports=function(){var e=[];return e.toString=function(){for(var e=[],t=0;t<this.length;t++){var r=this[t];r[2]?e.push("@media "+r[2]+"{"+r[1]+"}"):e.push(r[1])}return e.join("")},e.i=function(t,r){"string"==typeof t&&(t=[[null,t,""]]);for(var n={},o=0;o<this.length;o++){var s=this[o][0];"number"==typeof s&&(n[s]=!0)}for(o=0;o<t.length;o++){var i=t[o];"number"==typeof i[0]&&n[i[0]]||(r&&!i[2]?i[2]=r:r&&(i[2]="("+i[2]+") and ("+r+")"),e.push(i))}},e}},function(e,t,r){(function(t,n){/*!
+ * @overview es6-promise - a tiny implementation of Promises/A+.
+ * @copyright Copyright (c) 2014 Yehuda Katz, Tom Dale, Stefan Penner and contributors (Conversion to ES6 API by Jake Archibald)
+ * @license   Licensed under MIT license
+ *            See https://raw.githubusercontent.com/stefanpenner/es6-promise/master/LICENSE
+ * @version   4.1.1
+ */
+!function(t,r){e.exports=r()}(0,function(){"use strict";function e(e){var t=typeof e;return null!==e&&("object"===t||"function"===t)}function o(e){return"function"==typeof e}function s(e){X=e}function i(e){G=e}function a(){return void 0!==V?function(){V(c)}:u()}function u(){var e=setTimeout;return function(){return e(c,1)}}function c(){for(var e=0;e<H;e+=2){(0,Q[e])(Q[e+1]),Q[e]=void 0,Q[e+1]=void 0}H=0}function f(e,t){var r=arguments,n=this,o=new this.constructor(p);void 0===o[ee]&&R(o);var s=n._state;return s?function(){var e=r[s-1];G(function(){return E(s,o,e,n._result)})}():M(n,o,e,t),o}function l(e){var t=this;if(e&&"object"==typeof e&&e.constructor===t)return e;var r=new t(p);return _(r,e),r}function p(){}function d(){return new TypeError("You cannot resolve a promise with itself")}function h(){return new TypeError("A promises callback cannot return that same promise.")}function m(e){try{return e.then}catch(e){return oe.error=e,oe}}function v(e,t,r,n){try{e.call(t,r,n)}catch(e){return e}}function g(e,t,r){G(function(e){var n=!1,o=v(r,t,function(r){n||(n=!0,t!==r?_(e,r):x(e,r))},function(t){n||(n=!0,S(e,t))},"Settle: "+(e._label||" unknown promise"));!n&&o&&(n=!0,S(e,o))},e)}function y(e,t){t._state===re?x(e,t._result):t._state===ne?S(e,t._result):M(t,void 0,function(t){return _(e,t)},function(t){return S(e,t)})}function b(e,t,r){t.constructor===e.constructor&&r===f&&t.constructor.resolve===l?y(e,t):r===oe?(S(e,oe.error),oe.error=null):void 0===r?x(e,t):o(r)?g(e,t,r):x(e,t)}function _(t,r){t===r?S(t,d()):e(r)?b(t,r,m(r)):x(t,r)}function w(e){e._onerror&&e._onerror(e._result),A(e)}function x(e,t){e._state===te&&(e._result=t,e._state=re,0!==e._subscribers.length&&G(A,e))}function S(e,t){e._state===te&&(e._state=ne,e._result=t,G(w,e))}function M(e,t,r,n){var o=e._subscribers,s=o.length;e._onerror=null,o[s]=t,o[s+re]=r,o[s+ne]=n,0===s&&e._state&&G(A,e)}function A(e){var t=e._subscribers,r=e._state;if(0!==t.length){for(var n=void 0,o=void 0,s=e._result,i=0;i<t.length;i+=3)n=t[i],o=t[i+r],n?E(r,n,o,s):o(s);e._subscribers.length=0}}function C(){this.error=null}function T(e,t){try{return e(t)}catch(e){return se.error=e,se}}function E(e,t,r,n){var s=o(r),i=void 0,a=void 0,u=void 0,c=void 0;if(s){if(i=T(r,n),i===se?(c=!0,a=i.error,i.error=null):u=!0,t===i)return void S(t,h())}else i=n,u=!0;t._state!==te||(s&&u?_(t,i):c?S(t,a):e===re?x(t,i):e===ne&&S(t,i))}function j(e,t){try{t(function(t){_(e,t)},function(t){S(e,t)})}catch(t){S(e,t)}}function B(){return ie++}function R(e){e[ee]=ie++,e._state=void 0,e._result=void 0,e._subscribers=[]}function N(e,t){this._instanceConstructor=e,this.promise=new e(p),this.promise[ee]||R(this.promise),q(t)?(this.length=t.length,this._remaining=t.length,this._result=new Array(this.length),0===this.length?x(this.promise,this._result):(this.length=this.length||0,this._enumerate(t),0===this._remaining&&x(this.promise,this._result))):S(this.promise,O())}function O(){return new Error("Array Methods must be provided an Array")}function D(e){return new N(this,e).promise}function L(e){var t=this;return new t(q(e)?function(r,n){for(var o=e.length,s=0;s<o;s++)t.resolve(e[s]).then(r,n)}:function(e,t){return t(new TypeError("You must pass an array to race."))})}function U(e){var t=this,r=new t(p);return S(r,e),r}function P(){throw new TypeError("You must pass a resolver function as the first argument to the promise constructor")}function k(){throw new TypeError("Failed to construct 'Promise': Please use the 'new' operator, this object constructor cannot be called as a function.")}function F(e){this[ee]=B(),this._result=this._state=void 0,this._subscribers=[],p!==e&&("function"!=typeof e&&P(),this instanceof F?j(this,e):k())}function z(){var e=void 0;if(void 0!==n)e=n;else if("undefined"!=typeof self)e=self;else try{e=Function("return this")()}catch(e){throw new Error("polyfill failed because global object is unavailable in this environment")}var t=e.Promise;if(t){var r=null;try{r=Object.prototype.toString.call(t.resolve())}catch(e){}if("[object Promise]"===r&&!t.cast)return}e.Promise=F}var I=void 0;I=Array.isArray?Array.isArray:function(e){return"[object Array]"===Object.prototype.toString.call(e)};var q=I,H=0,V=void 0,X=void 0,G=function(e,t){Q[H]=e,Q[H+1]=t,2===(H+=2)&&(X?X(c):Z())},J="undefined"!=typeof window?window:void 0,K=J||{},$=K.MutationObserver||K.WebKitMutationObserver,Y="undefined"==typeof self&&void 0!==t&&"[object process]"==={}.toString.call(t),W="undefined"!=typeof Uint8ClampedArray&&"undefined"!=typeof importScripts&&"undefined"!=typeof MessageChannel,Q=new Array(1e3),Z=void 0;Z=Y?function(){return function(){return t.nextTick(c)}}():$?function(){var e=0,t=new $(c),r=document.createTextNode("");return t.observe(r,{characterData:!0}),function(){r.data=e=++e%2}}():W?function(){var e=new MessageChannel;return e.port1.onmessage=c,function(){return e.port2.postMessage(0)}}():void 0===J?function(){try{var e=r(38);return V=e.runOnLoop||e.runOnContext,a()}catch(e){return u()}}():u();var ee=Math.random().toString(36).substring(16),te=void 0,re=1,ne=2,oe=new C,se=new C,ie=0;return N.prototype._enumerate=function(e){for(var t=0;this._state===te&&t<e.length;t++)this._eachEntry(e[t],t)},N.prototype._eachEntry=function(e,t){var r=this._instanceConstructor,n=r.resolve;if(n===l){var o=m(e);if(o===f&&e._state!==te)this._settledAt(e._state,t,e._result);else if("function"!=typeof o)this._remaining--,this._result[t]=e;else if(r===F){var s=new r(p);b(s,e,o),this._willSettleAt(s,t)}else this._willSettleAt(new r(function(t){return t(e)}),t)}else this._willSettleAt(n(e),t)},N.prototype._settledAt=function(e,t,r){var n=this.promise;n._state===te&&(this._remaining--,e===ne?S(n,r):this._result[t]=r),0===this._remaining&&x(n,this._result)},N.prototype._willSettleAt=function(e,t){var r=this;M(e,void 0,function(e){return r._settledAt(re,t,e)},function(e){return r._settledAt(ne,t,e)})},F.all=D,F.race=L,F.resolve=l,F.reject=U,F._setScheduler=s,F._setAsap=i,F._asap=G,F.prototype={constructor:F,then:f,catch:function(e){return this.then(null,e)}},F.polyfill=z,F.Promise=F,F})}).call(t,r(7),r(37))},function(e,t){e.exports=function(e,t,r,n){var o,s=e=e||{},i=typeof e.default;"object"!==i&&"function"!==i||(o=e,s=e.default);var a="function"==typeof s?s.options:s;if(t&&(a.render=t.render,a.staticRenderFns=t.staticRenderFns),r&&(a._scopeId=r),n){var u=Object.create(a.computed||null);Object.keys(n).forEach(function(e){var t=n[e];u[e]=function(){return t}}),a.computed=u}return{esModule:o,exports:s,options:a}}},function(e,t){e.exports={render:function(){var e=this,t=e.$createElement,r=e._self._c||t;return r("div",{staticClass:"uploadBox"},[r("h3",[e._v(e._s(e.headerMessage))]),e._v(" "),r("form",{attrs:{role:"form",enctype:"multipart/form-data"},on:{submit:function(t){t.preventDefault(),e.onSubmit(t)}}},[e.itemsAdded?r("div",{staticClass:"uploadBoxMain"},[r("p",[r("strong",[e._v(e._s(e.fileNameMessage))])]),e._v(" "),r("ol",e._l(e.itemsNames,function(t){return r("li",[e._v(e._s(t))])})),e._v(" "),r("p",[r("strong",[e._v(e._s(e.fileSizeMessage))])]),e._v(" "),r("ol",e._l(e.itemsSizes,function(t){return r("li",[e._v(e._s(t))])})),e._v(" "),r("p",[r("strong",[e._v(e._s(e.totalFileMessage))]),e._v(" "+e._s(e.itemsAdded))]),e._v(" "),r("p",[r("strong",[e._v(e._s(e.totalUploadSizeMessage))]),e._v(" "+e._s(e.itemsTotalSize))]),e._v(" "),r("button",{on:{click:e.removeItems}},[e._v(e._s(e.removeFileMessage))]),e._v(" "),e.isLoaderVisible?r("div",{staticClass:"loader"},[r("div",{staticClass:"loaderImg"})]):e._e()]):r("div",{staticClass:"uploadBoxMain"},[r("div",{staticClass:"form-group"},[r("div",{staticClass:"dropArea",class:e.dragging?"dropAreaDragging":"",on:{ondragover:e.onChange,dragenter:function(t){e.dragging=!0},dragend:function(t){e.dragging=!1},dragleave:function(t){e.dragging=!1}}},[r("h3",[e._v(e._s(e.dropAreaPrimaryMessage))]),e._v(" "),r("input",{attrs:{type:"file",id:"items",name:"items[]",required:"",multiple:""},on:{change:e.onChange}}),e._v(" "),r("h3",{staticClass:"help-block"},[e._v(e._s(e.dropAreaSecondaryMessage))])])])]),e._v(" "),r("div",[r("button",{staticClass:"btn btn-primary btn-black btn-round",attrs:{type:"submit",disabled:e.itemsAdded<e.minItems||e.itemsAdded>e.maxItems}},[e._v("\n                "+e._s(e.uploadButtonMessage)+"\n            ")]),e._v(" "),r("button",{staticClass:"btn btn-default btn-round d-none",attrs:{type:"button"},on:{click:e.removeItems}},[e._v(e._s(e.cancelButtonMessage))])]),e._v(" "),r("br"),e._v(" "),""!==e.successMsg?r("div",{staticClass:"successMsg"},[e._v(e._s(e.successMsg))]):e._e(),e._v(" "),""!==e.errorMsg?r("div",{staticClass:"errorMsg"},[e._v(e._s(e.fileUploadErrorMessage)+":"),r("br"),e._v(e._s(e.errorMsg)+" "),r("br"),e._v(e._s(e.retryErrorMessage))]):e._e(),e._v(" "),e.itemsAdded&&e.itemsAdded<e.minItems?r("div",{staticClass:"errorMsg"},[e._v(e._s(e.minFilesErrorMessage)+": "+e._s(e.minItems)+".  "),r("br"),e._v(e._s(e.retryErrorMessage)+" ")]):e._e(),e._v(" "),e.itemsAdded&&e.itemsAdded>e.maxItems?r("div",{staticClass:"errorMsg"},[e._v(e._s(e.maxFilesErrorMessage)+": "+e._s(e.maxItems)+".  "),r("br"),e._v(e._s(e.retryErrorMessage))]):e._e()])])},staticRenderFns:[]}},function(e,t,r){var n=r(29);"string"==typeof n&&(n=[[e.i,n,""]]),n.locals&&(e.exports=n.locals);r(35)("229dd6c6",n,!0)},function(e,t,r){function n(e){for(var t=0;t<e.length;t++){var r=e[t],n=f[r.id];if(n){n.refs++;for(var o=0;o<n.parts.length;o++)n.parts[o](r.parts[o]);for(;o<r.parts.length;o++)n.parts.push(s(r.parts[o]));n.parts.length>r.parts.length&&(n.parts.length=r.parts.length)}else{for(var i=[],o=0;o<r.parts.length;o++)i.push(s(r.parts[o]));f[r.id]={id:r.id,refs:1,parts:i}}}}function o(){var e=document.createElement("style");return e.type="text/css",l.appendChild(e),e}function s(e){var t,r,n=document.querySelector('style[data-vue-ssr-id~="'+e.id+'"]');if(n){if(h)return m;n.parentNode.removeChild(n)}if(v){var s=d++;n=p||(p=o()),t=i.bind(null,n,s,!1),r=i.bind(null,n,s,!0)}else n=o(),t=a.bind(null,n),r=function(){n.parentNode.removeChild(n)};return t(e),function(n){if(n){if(n.css===e.css&&n.media===e.media&&n.sourceMap===e.sourceMap)return;t(e=n)}else r()}}function i(e,t,r,n){var o=r?"":n.css;if(e.styleSheet)e.styleSheet.cssText=g(t,o);else{var s=document.createTextNode(o),i=e.childNodes;i[t]&&e.removeChild(i[t]),i.length?e.insertBefore(s,i[t]):e.appendChild(s)}}function a(e,t){var r=t.css,n=t.media,o=t.sourceMap;if(n&&e.setAttribute("media",n),o&&(r+="\n/*# sourceURL="+o.sources[0]+" */",r+="\n/*# sourceMappingURL=data:application/json;base64,"+btoa(unescape(encodeURIComponent(JSON.stringify(o))))+" */"),e.styleSheet)e.styleSheet.cssText=r;else{for(;e.firstChild;)e.removeChild(e.firstChild);e.appendChild(document.createTextNode(r))}}var u="undefined"!=typeof document;if("undefined"!=typeof DEBUG&&DEBUG&&!u)throw new Error("vue-style-loader cannot be used in a non-browser environment. Use { target: 'node' } in your Webpack config to indicate a server-rendering environment.");var c=r(36),f={},l=u&&(document.head||document.getElementsByTagName("head")[0]),p=null,d=0,h=!1,m=function(){},v="undefined"!=typeof navigator&&/msie [6-9]\b/.test(navigator.userAgent.toLowerCase());e.exports=function(e,t,r){h=r;var o=c(e,t);return n(o),function(t){for(var r=[],s=0;s<o.length;s++){var i=o[s],a=f[i.id];a.refs--,r.push(a)}t?(o=c(e,t),n(o)):o=[];for(var s=0;s<r.length;s++){var a=r[s];if(0===a.refs){for(var u=0;u<a.parts.length;u++)a.parts[u]();delete f[a.id]}}}};var g=function(){var e=[];return function(t,r){return e[t]=r,e.filter(Boolean).join("\n")}}()},function(e,t){e.exports=function(e,t){for(var r=[],n={},o=0;o<t.length;o++){var s=t[o],i=s[0],a=s[1],u=s[2],c=s[3],f={id:e+":"+o,css:a,media:u,sourceMap:c};n[i]?n[i].parts.push(f):r.push(n[i]={id:i,parts:[f]})}return r}},function(e,t){var r;r=function(){return this}();try{r=r||Function("return this")()||(0,eval)("this")}catch(e){"object"==typeof window&&(r=window)}e.exports=r},function(e,t){}])});
+//# sourceMappingURL=build.js.map
+
+/***/ }),
+
 /***/ "./node_modules/axios/index.js":
 /*!*************************************!*\
   !*** ./node_modules/axios/index.js ***!
@@ -1908,7 +1927,9 @@ module.exports = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Newsletter__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Newsletter */ "./resources/js/VueComponents/Newsletter.vue");
+/* harmony import */ var postscribe__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! postscribe */ "./node_modules/postscribe/dist/postscribe.js");
+/* harmony import */ var postscribe__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(postscribe__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Newsletter__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Newsletter */ "./resources/js/VueComponents/Newsletter.vue");
 //
 //
 //
@@ -1953,10 +1974,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'article',
   components: {
-    Newsletter: _Newsletter__WEBPACK_IMPORTED_MODULE_0__["default"]
+    Newsletter: _Newsletter__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   props: ['slug'],
   data: function data() {
@@ -1978,6 +2000,17 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     this.fetchArticle();
   },
+  mounted: function mounted() {
+    window.addEventListener("load", function () {
+      var $gists = $("div[id^=gist]");
+
+      _.forEach($gists, function (gist) {
+        var id = $(gist).attr('id');
+        var src = $(gist).attr('data-src');
+        postscribe__WEBPACK_IMPORTED_MODULE_0___default()('#' + id, "<script src=\"" + src + "\"></script>");
+      });
+    });
+  },
   methods: {
     fetchArticle: function fetchArticle() {
       var _this = this;
@@ -1988,12 +2021,17 @@ __webpack_require__.r(__webpack_exports__);
       axios.post('/article/fetchArticleData', parameters).then(function (response) {
         if (response.data.success) {
           var article = response.data.response;
-          console.log(article);
           _this.article.title = article.title;
           _this.article.est_time = article.est_time;
           _this.article.created_at = article.created_at;
           _this.article.content = article.content;
-          _this.article.main_image = "../storage/articles/" + _this.slug + "/" + article.main_image;
+
+          if (article.main_image) {
+            _this.article.main_image = "../storage/articles/" + _this.slug + "/" + article.main_image;
+          } else {
+            _this.article.main_image = null;
+          }
+
           _this.article.author = {
             href: "authors/" + article.author_id,
             name: article.author_username,
@@ -2024,6 +2062,10 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _updivision_vue2_multi_uploader__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @updivision/vue2-multi-uploader */ "./node_modules/@updivision/vue2-multi-uploader/dist/build.js");
+/* harmony import */ var _updivision_vue2_multi_uploader__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_updivision_vue2_multi_uploader__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var slugify__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! slugify */ "./node_modules/slugify/slugify.js");
+/* harmony import */ var slugify__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(slugify__WEBPACK_IMPORTED_MODULE_1__);
 //
 //
 //
@@ -2085,22 +2127,87 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'create-article',
+  components: {
+    MultipleFileUploader: _updivision_vue2_multi_uploader__WEBPACK_IMPORTED_MODULE_0___default.a
+  },
   data: function data() {
     return {
       availableCategories: [],
       article: {
         title: "",
-        category: 1,
+        category: "1",
         est_time: 1,
         content: "",
-        main_image: ""
-      }
+        main_image: "",
+        slug: ""
+      },
+      errors: {
+        title: "",
+        category: "",
+        content: "",
+        est_time: ""
+      },
+      hideArticleForm: false,
+      hideImagesForm: true,
+      postSubmitData: {}
     };
   },
   created: function created() {
+    this.randomString = this.generateRandomString(12);
+    this.setShortcuts();
     this.getCategories();
+  },
+  computed: {
+    slug: function slug() {
+      return slugify__WEBPACK_IMPORTED_MODULE_1___default()(this.article.title) + "-" + this.randomString;
+    },
+    imageShortcut: function imageShortcut() {
+      return '\n<img src="../storage/articles/' + this.slug + '/{IMAGE_NAME}" alt="article_image" class="img-fluid mx-auto d-block">';
+    }
   },
   methods: {
     /**
@@ -2139,15 +2246,65 @@ __webpack_require__.r(__webpack_exports__);
       formData.append('content', this.article.content);
       formData.append('est_time', this.article.est_time);
       formData.append('main_image', this.article.main_image);
+      formData.append('slug', this.slug);
       axios.post('/article/create/saveArticle', formData, config).then(function (response) {
         if (response.data.success) {
-          alert("Ok!");
+          this.hideArticleForm = true;
+          this.hideImagesForm = false;
+          this.postSubmitData.slug = response.data.response.slug;
         } else {
           console.log(response.data.response);
         }
-      })["catch"](function (error) {
+      }.bind(this))["catch"](function (error) {
         console.log(error);
       });
+    },
+    successHandler: function successHandler(response) {// window.location = response.data.response.slug;
+    },
+    failureHandler: function failureHandler(error) {
+      console.log(error);
+    },
+
+    /**
+     * Add element shortcut.
+     */
+    addElement: function addElement(element) {
+      switch (element) {
+        case 'Title':
+          this.article.content += this.titleShortcut;
+          break;
+
+        case 'Paragraph':
+          this.article.content += this.paragraphShortcut;
+          break;
+
+        case 'Gist':
+          this.article.content += this.gistShortcut;
+          break;
+
+        case 'Image':
+          this.article.content += this.imageShortcut;
+          break;
+
+        case 'Quote':
+          this.article.content += this.quoteShortcut;
+          break;
+      }
+    },
+
+    /**
+     * Generate a random string.
+     */
+    generateRandomString: function generateRandomString(length) {
+      var result = '';
+      var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      var charactersLength = characters.length;
+
+      for (var i = 0; i < length; i++) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+      }
+
+      return result;
     },
 
     /**
@@ -2170,23 +2327,48 @@ __webpack_require__.r(__webpack_exports__);
     },
 
     /**
+     * Set the shortcuts for the elements of the article content.
+     */
+    setShortcuts: function setShortcuts() {
+      this.titleShortcut = '\n<h1></h1>';
+      this.paragraphShortcut = '\n<p></p>';
+      this.gistShortcut = '\n<div id="gist-" data-src="https://gist.github.com/CoderyRo/{GIST_ID}?file={GIST_FILE}"></div>';
+      this.quoteShortcut = '\n<div class="blockquote">\n<p><q>\n{QUOTE}\n</q></p>\n<footer>{AUTHOR}</footer>\n</div>';
+    },
+
+    /**
      * Validate the parameters before submiting the form.
      */
     validateParameters: function validateParameters(parameters) {
       parameters.est_time = parseInt(parameters.est_time);
 
       if (parameters.title.length < 5) {
+        this.errors.title = "Titlul trebuie sa contina cel putin 5 caractere.";
         return false;
       }
+
+      this.errors.title = "";
+
+      if (!parameters.category.length) {
+        this.errors.category = "Selecteaza o categorie din lista.";
+        return false;
+      }
+
+      this.errors.category = "";
 
       if (parameters.content.length <= 10) {
+        this.errors.content = "Continutul trebuie sa contina cel putin 10 caractere.";
         return false;
       }
+
+      this.errors.content = "";
 
       if (parameters.est_time <= 0 || typeof parameters.est_time !== 'number') {
+        this.errors.est_time = "Timpul estimativ este invalid.";
         return false;
       }
 
+      this.errors.est_time = "";
       return true;
     }
   }
@@ -2233,6 +2415,112 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'newsletter'
 });
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/VueComponents/CreateArticle.vue?vue&type=style&index=0&lang=css&":
+/*!**********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/VueComponents/CreateArticle.vue?vue&type=style&index=0&lang=css& ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.dropAreaDragging{\r\n    background-color:#ccc;\n}\n.errorMsg {\r\n    display: none;\n}\n.successMsg {\r\n    display: none;\n}\r\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/lib/css-base.js":
+/*!*************************************************!*\
+  !*** ./node_modules/css-loader/lib/css-base.js ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+/*
+	MIT License http://www.opensource.org/licenses/mit-license.php
+	Author Tobias Koppers @sokra
+*/
+// css base code, injected by the css-loader
+module.exports = function(useSourceMap) {
+	var list = [];
+
+	// return the list of modules as css string
+	list.toString = function toString() {
+		return this.map(function (item) {
+			var content = cssWithMappingToString(item, useSourceMap);
+			if(item[2]) {
+				return "@media " + item[2] + "{" + content + "}";
+			} else {
+				return content;
+			}
+		}).join("");
+	};
+
+	// import a list of modules into the list
+	list.i = function(modules, mediaQuery) {
+		if(typeof modules === "string")
+			modules = [[null, modules, ""]];
+		var alreadyImportedModules = {};
+		for(var i = 0; i < this.length; i++) {
+			var id = this[i][0];
+			if(typeof id === "number")
+				alreadyImportedModules[id] = true;
+		}
+		for(i = 0; i < modules.length; i++) {
+			var item = modules[i];
+			// skip already imported module
+			// this implementation is not 100% perfect for weird media query combinations
+			//  when a module is imported multiple times with different media queries.
+			//  I hope this will never occur (Hey this way we have smaller bundles)
+			if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+				if(mediaQuery && !item[2]) {
+					item[2] = mediaQuery;
+				} else if(mediaQuery) {
+					item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+				}
+				list.push(item);
+			}
+		}
+	};
+	return list;
+};
+
+function cssWithMappingToString(item, useSourceMap) {
+	var content = item[1] || '';
+	var cssMapping = item[3];
+	if (!cssMapping) {
+		return content;
+	}
+
+	if (useSourceMap && typeof btoa === 'function') {
+		var sourceMapping = toComment(cssMapping);
+		var sourceURLs = cssMapping.sources.map(function (source) {
+			return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */'
+		});
+
+		return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
+	}
+
+	return [content].join('\n');
+}
+
+// Adapted from convert-source-map (MIT)
+function toComment(sourceMap) {
+	// eslint-disable-next-line no-undef
+	var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
+	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
+
+	return '/*# ' + data + ' */';
+}
+
 
 /***/ }),
 
@@ -19352,6 +19640,2094 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/postscribe/dist/postscribe.js":
+/*!****************************************************!*\
+  !*** ./node_modules/postscribe/dist/postscribe.js ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/**
+ * @file postscribe
+ * @description Asynchronously write javascript, even with document.write.
+ * @version v2.0.8
+ * @see {@link https://krux.github.io/postscribe}
+ * @license MIT
+ * @author Derek Brans
+ * @copyright 2016 Krux Digital, Inc
+ */
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(true)
+		module.exports = factory();
+	else {}
+})(this, function() {
+return /******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId])
+/******/ 			return installedModules[moduleId].exports;
+/******/
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			exports: {},
+/******/ 			id: moduleId,
+/******/ 			loaded: false
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.loaded = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(0);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _postscribe = __webpack_require__(1);
+	
+	var _postscribe2 = _interopRequireDefault(_postscribe);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	module.exports = _postscribe2['default'];
+
+/***/ },
+/* 1 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	exports.__esModule = true;
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	exports['default'] = postscribe;
+	
+	var _writeStream = __webpack_require__(2);
+	
+	var _writeStream2 = _interopRequireDefault(_writeStream);
+	
+	var _utils = __webpack_require__(4);
+	
+	var utils = _interopRequireWildcard(_utils);
+	
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj['default'] = obj; return newObj; } }
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	/**
+	 * A function that intentionally does nothing.
+	 */
+	function doNothing() {}
+	
+	/**
+	 * Available options and defaults.
+	 *
+	 * @type {Object}
+	 */
+	var OPTIONS = {
+	  /**
+	   * Called when an async script has loaded.
+	   */
+	  afterAsync: doNothing,
+	
+	  /**
+	   * Called immediately before removing from the write queue.
+	   */
+	  afterDequeue: doNothing,
+	
+	  /**
+	   * Called sync after a stream's first thread release.
+	   */
+	  afterStreamStart: doNothing,
+	
+	  /**
+	   * Called after writing buffered document.write calls.
+	   */
+	  afterWrite: doNothing,
+	
+	  /**
+	   * Allows disabling the autoFix feature of prescribe
+	   */
+	  autoFix: true,
+	
+	  /**
+	   * Called immediately before adding to the write queue.
+	   */
+	  beforeEnqueue: doNothing,
+	
+	  /**
+	   * Called before writing a token.
+	   *
+	   * @param {Object} tok The token
+	   */
+	  beforeWriteToken: function beforeWriteToken(tok) {
+	    return tok;
+	  },
+	
+	  /**
+	   * Called before writing buffered document.write calls.
+	   *
+	   * @param {String} str The string
+	   */
+	  beforeWrite: function beforeWrite(str) {
+	    return str;
+	  },
+	
+	  /**
+	   * Called when evaluation is finished.
+	   */
+	  done: doNothing,
+	
+	  /**
+	   * Called when a write results in an error.
+	   *
+	   * @param {Error} e The error
+	   */
+	  error: function error(e) {
+	    throw new Error(e.msg);
+	  },
+	
+	
+	  /**
+	   * Whether to let scripts w/ async attribute set fall out of the queue.
+	   */
+	  releaseAsync: false
+	};
+	
+	var nextId = 0;
+	var queue = [];
+	var active = null;
+	
+	function nextStream() {
+	  var args = queue.shift();
+	  if (args) {
+	    var options = utils.last(args);
+	
+	    options.afterDequeue();
+	    args.stream = runStream.apply(undefined, args);
+	    options.afterStreamStart();
+	  }
+	}
+	
+	function runStream(el, html, options) {
+	  active = new _writeStream2['default'](el, options);
+	
+	  // Identify this stream.
+	  active.id = nextId++;
+	  active.name = options.name || active.id;
+	  postscribe.streams[active.name] = active;
+	
+	  // Override document.write.
+	  var doc = el.ownerDocument;
+	
+	  var stash = {
+	    close: doc.close,
+	    open: doc.open,
+	    write: doc.write,
+	    writeln: doc.writeln
+	  };
+	
+	  function _write(str) {
+	    str = options.beforeWrite(str);
+	    active.write(str);
+	    options.afterWrite(str);
+	  }
+	
+	  _extends(doc, {
+	    close: doNothing,
+	    open: doNothing,
+	    write: function write() {
+	      for (var _len = arguments.length, str = Array(_len), _key = 0; _key < _len; _key++) {
+	        str[_key] = arguments[_key];
+	      }
+	
+	      return _write(str.join(''));
+	    },
+	    writeln: function writeln() {
+	      for (var _len2 = arguments.length, str = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+	        str[_key2] = arguments[_key2];
+	      }
+	
+	      return _write(str.join('') + '\n');
+	    }
+	  });
+	
+	  // Override window.onerror
+	  var oldOnError = active.win.onerror || doNothing;
+	
+	  // This works together with the try/catch around WriteStream::insertScript
+	  // In modern browsers, exceptions in tag scripts go directly to top level
+	  active.win.onerror = function (msg, url, line) {
+	    options.error({ msg: msg + ' - ' + url + ': ' + line });
+	    oldOnError.apply(active.win, [msg, url, line]);
+	  };
+	
+	  // Write to the stream
+	  active.write(html, function () {
+	    // restore document.write
+	    _extends(doc, stash);
+	
+	    // restore window.onerror
+	    active.win.onerror = oldOnError;
+	
+	    options.done();
+	    active = null;
+	    nextStream();
+	  });
+	
+	  return active;
+	}
+	
+	function postscribe(el, html, options) {
+	  if (utils.isFunction(options)) {
+	    options = { done: options };
+	  } else if (options === 'clear') {
+	    queue = [];
+	    active = null;
+	    nextId = 0;
+	    return;
+	  }
+	
+	  options = utils.defaults(options, OPTIONS);
+	
+	  // id selector
+	  if (/^#/.test(el)) {
+	    el = window.document.getElementById(el.substr(1));
+	  } else {
+	    el = el.jquery ? el[0] : el;
+	  }
+	
+	  var args = [el, html, options];
+	
+	  el.postscribe = {
+	    cancel: function cancel() {
+	      if (args.stream) {
+	        args.stream.abort();
+	      } else {
+	        args[1] = doNothing;
+	      }
+	    }
+	  };
+	
+	  options.beforeEnqueue(args);
+	  queue.push(args);
+	
+	  if (!active) {
+	    nextStream();
+	  }
+	
+	  return el.postscribe;
+	}
+	
+	_extends(postscribe, {
+	  // Streams by name.
+	  streams: {},
+	  // Queue of streams.
+	  queue: queue,
+	  // Expose internal classes.
+	  WriteStream: _writeStream2['default']
+	});
+
+/***/ },
+/* 2 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	exports.__esModule = true;
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	var _prescribe = __webpack_require__(3);
+	
+	var _prescribe2 = _interopRequireDefault(_prescribe);
+	
+	var _utils = __webpack_require__(4);
+	
+	var utils = _interopRequireWildcard(_utils);
+	
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj['default'] = obj; return newObj; } }
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	/**
+	 * Turn on to debug how each chunk affected the DOM.
+	 * @type {boolean}
+	 */
+	var DEBUG_CHUNK = false;
+	
+	/**
+	 * Prefix for data attributes on DOM elements.
+	 * @type {string}
+	 */
+	var BASEATTR = 'data-ps-';
+	
+	/**
+	 * ID for the style proxy
+	 * @type {string}
+	 */
+	var PROXY_STYLE = 'ps-style';
+	
+	/**
+	 * ID for the script proxy
+	 * @type {string}
+	 */
+	var PROXY_SCRIPT = 'ps-script';
+	
+	/**
+	 * Get data attributes
+	 *
+	 * @param {Object} el The DOM element.
+	 * @param {String} name The attribute name.
+	 * @returns {String}
+	 */
+	function getData(el, name) {
+	  var attr = BASEATTR + name;
+	
+	  var val = el.getAttribute(attr);
+	
+	  // IE 8 returns a number if it's a number
+	  return !utils.existy(val) ? val : String(val);
+	}
+	
+	/**
+	 * Set data attributes
+	 *
+	 * @param {Object} el The DOM element.
+	 * @param {String} name The attribute name.
+	 * @param {null|*} value The attribute value.
+	 */
+	function setData(el, name) {
+	  var value = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+	
+	  var attr = BASEATTR + name;
+	
+	  if (utils.existy(value) && value !== '') {
+	    el.setAttribute(attr, value);
+	  } else {
+	    el.removeAttribute(attr);
+	  }
+	}
+	
+	/**
+	 * Stream static html to an element, where "static html" denotes "html
+	 * without scripts".
+	 *
+	 * This class maintains a *history of writes devoid of any attributes* or
+	 * "proxy history".
+	 *
+	 * Injecting the proxy history into a temporary div has no side-effects,
+	 * other than to create proxy elements for previously written elements.
+	 *
+	 * Given the `staticHtml` of a new write, a `tempDiv`'s innerHTML is set to
+	 * `proxy_history + staticHtml`.
+	 * The *structure* of `tempDiv`'s contents, (i.e., the placement of new nodes
+	 * beside or inside of proxy elements), reflects the DOM structure that would
+	 * have resulted if all writes had been squashed into a single write.
+	 *
+	 * For each descendent `node` of `tempDiv` whose parentNode is a *proxy*,
+	 * `node` is appended to the corresponding *real* element within the DOM.
+	 *
+	 * Proxy elements are mapped to *actual* elements in the DOM by injecting a
+	 * `data-id` attribute into each start tag in `staticHtml`.
+	 *
+	 */
+	
+	var WriteStream = function () {
+	  /**
+	   * Constructor.
+	   *
+	   * @param {Object} root The root element
+	   * @param {?Object} options The options
+	   */
+	  function WriteStream(root) {
+	    var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+	
+	    _classCallCheck(this, WriteStream);
+	
+	    this.root = root;
+	    this.options = options;
+	    this.doc = root.ownerDocument;
+	    this.win = this.doc.defaultView || this.doc.parentWindow;
+	    this.parser = new _prescribe2['default']('', { autoFix: options.autoFix });
+	
+	    // Actual elements by id.
+	    this.actuals = [root];
+	
+	    // Embodies the "structure" of what's been written so far,
+	    // devoid of attributes.
+	    this.proxyHistory = '';
+	
+	    // Create a proxy of the root element.
+	    this.proxyRoot = this.doc.createElement(root.nodeName);
+	
+	    this.scriptStack = [];
+	    this.writeQueue = [];
+	
+	    setData(this.proxyRoot, 'proxyof', 0);
+	  }
+	
+	  /**
+	   * Writes the given strings.
+	   *
+	   * @param {...String} str The strings to write
+	   */
+	
+	
+	  WriteStream.prototype.write = function write() {
+	    var _writeQueue;
+	
+	    (_writeQueue = this.writeQueue).push.apply(_writeQueue, arguments);
+	
+	    // Process writes
+	    // When new script gets pushed or pending this will stop
+	    // because new writeQueue gets pushed
+	    while (!this.deferredRemote && this.writeQueue.length) {
+	      var arg = this.writeQueue.shift();
+	
+	      if (utils.isFunction(arg)) {
+	        this._callFunction(arg);
+	      } else {
+	        this._writeImpl(arg);
+	      }
+	    }
+	  };
+	
+	  /**
+	   * Calls the given function.
+	   *
+	   * @param {Function} fn The function to call
+	   * @private
+	   */
+	
+	
+	  WriteStream.prototype._callFunction = function _callFunction(fn) {
+	    var tok = { type: 'function', value: fn.name || fn.toString() };
+	    this._onScriptStart(tok);
+	    fn.call(this.win, this.doc);
+	    this._onScriptDone(tok);
+	  };
+	
+	  /**
+	   * The write implementation
+	   *
+	   * @param {String} html The HTML to write.
+	   * @private
+	   */
+	
+	
+	  WriteStream.prototype._writeImpl = function _writeImpl(html) {
+	    this.parser.append(html);
+	
+	    var tok = void 0;
+	    var script = void 0;
+	    var style = void 0;
+	    var tokens = [];
+	
+	    // stop if we see a script token
+	    while ((tok = this.parser.readToken()) && !(script = utils.isScript(tok)) && !(style = utils.isStyle(tok))) {
+	      tok = this.options.beforeWriteToken(tok);
+	
+	      if (tok) {
+	        tokens.push(tok);
+	      }
+	    }
+	
+	    if (tokens.length > 0) {
+	      this._writeStaticTokens(tokens);
+	    }
+	
+	    if (script) {
+	      this._handleScriptToken(tok);
+	    }
+	
+	    if (style) {
+	      this._handleStyleToken(tok);
+	    }
+	  };
+	
+	  /**
+	   * Write contiguous non-script tokens (a chunk)
+	   *
+	   * @param {Array<Object>} tokens The tokens
+	   * @returns {{tokens, raw, actual, proxy}|null}
+	   * @private
+	   */
+	
+	
+	  WriteStream.prototype._writeStaticTokens = function _writeStaticTokens(tokens) {
+	    var chunk = this._buildChunk(tokens);
+	
+	    if (!chunk.actual) {
+	      // e.g., no tokens, or a noscript that got ignored
+	      return null;
+	    }
+	
+	    chunk.html = this.proxyHistory + chunk.actual;
+	    this.proxyHistory += chunk.proxy;
+	    this.proxyRoot.innerHTML = chunk.html;
+	
+	    if (DEBUG_CHUNK) {
+	      chunk.proxyInnerHTML = this.proxyRoot.innerHTML;
+	    }
+	
+	    this._walkChunk();
+	
+	    if (DEBUG_CHUNK) {
+	      chunk.actualInnerHTML = this.root.innerHTML;
+	    }
+	
+	    return chunk;
+	  };
+	
+	  /**
+	   * Build a chunk.
+	   *
+	   * @param {Array<Object>} tokens The tokens to use.
+	   * @returns {{tokens: *, raw: string, actual: string, proxy: string}}
+	   * @private
+	   */
+	
+	
+	  WriteStream.prototype._buildChunk = function _buildChunk(tokens) {
+	    var nextId = this.actuals.length;
+	
+	    // The raw html of this chunk.
+	    var raw = [];
+	
+	    // The html to create the nodes in the tokens (with id's injected).
+	    var actual = [];
+	
+	    // Html that can later be used to proxy the nodes in the tokens.
+	    var proxy = [];
+	
+	    var len = tokens.length;
+	    for (var i = 0; i < len; i++) {
+	      var tok = tokens[i];
+	      var tokenRaw = tok.toString();
+	
+	      raw.push(tokenRaw);
+	
+	      if (tok.attrs) {
+	        // tok.attrs <==> startTag or atomicTag or cursor
+	        // Ignore noscript tags. They are atomic, so we don't have to worry about children.
+	        if (!/^noscript$/i.test(tok.tagName)) {
+	          var id = nextId++;
+	
+	          // Actual: inject id attribute: replace '>' at end of start tag with id attribute + '>'
+	          actual.push(tokenRaw.replace(/(\/?>)/, ' ' + BASEATTR + 'id=' + id + ' $1'));
+	
+	          // Don't proxy scripts: they have no bearing on DOM structure.
+	          if (tok.attrs.id !== PROXY_SCRIPT && tok.attrs.id !== PROXY_STYLE) {
+	            // Proxy: strip all attributes and inject proxyof attribute
+	            proxy.push(
+	            // ignore atomic tags (e.g., style): they have no "structural" effect
+	            tok.type === 'atomicTag' ? '' : '<' + tok.tagName + ' ' + BASEATTR + 'proxyof=' + id + (tok.unary ? ' />' : '>'));
+	          }
+	        }
+	      } else {
+	        // Visit any other type of token
+	        // Actual: append.
+	        actual.push(tokenRaw);
+	
+	        // Proxy: append endTags. Ignore everything else.
+	        proxy.push(tok.type === 'endTag' ? tokenRaw : '');
+	      }
+	    }
+	
+	    return {
+	      tokens: tokens,
+	      raw: raw.join(''),
+	      actual: actual.join(''),
+	      proxy: proxy.join('')
+	    };
+	  };
+	
+	  /**
+	   * Walk the chunks.
+	   *
+	   * @private
+	   */
+	
+	
+	  WriteStream.prototype._walkChunk = function _walkChunk() {
+	    var node = void 0;
+	    var stack = [this.proxyRoot];
+	
+	    // use shift/unshift so that children are walked in document order
+	    while (utils.existy(node = stack.shift())) {
+	      var isElement = node.nodeType === 1;
+	      var isProxy = isElement && getData(node, 'proxyof');
+	
+	      // Ignore proxies
+	      if (!isProxy) {
+	        if (isElement) {
+	          // New actual element: register it and remove the the id attr.
+	          this.actuals[getData(node, 'id')] = node;
+	          setData(node, 'id');
+	        }
+	
+	        // Is node's parent a proxy?
+	        var parentIsProxyOf = node.parentNode && getData(node.parentNode, 'proxyof');
+	        if (parentIsProxyOf) {
+	          // Move node under actual parent.
+	          this.actuals[parentIsProxyOf].appendChild(node);
+	        }
+	      }
+	
+	      // prepend childNodes to stack
+	      stack.unshift.apply(stack, utils.toArray(node.childNodes));
+	    }
+	  };
+	
+	  /**
+	   * Handles Script tokens
+	   *
+	   * @param {Object} tok The token
+	   */
+	
+	
+	  WriteStream.prototype._handleScriptToken = function _handleScriptToken(tok) {
+	    var _this = this;
+	
+	    var remainder = this.parser.clear();
+	
+	    if (remainder) {
+	      // Write remainder immediately behind this script.
+	      this.writeQueue.unshift(remainder);
+	    }
+	
+	    tok.src = tok.attrs.src || tok.attrs.SRC;
+	
+	    tok = this.options.beforeWriteToken(tok);
+	    if (!tok) {
+	      // User has removed this token
+	      return;
+	    }
+	
+	    if (tok.src && this.scriptStack.length) {
+	      // Defer this script until scriptStack is empty.
+	      // Assumption 1: This script will not start executing until
+	      // scriptStack is empty.
+	      this.deferredRemote = tok;
+	    } else {
+	      this._onScriptStart(tok);
+	    }
+	
+	    // Put the script node in the DOM.
+	    this._writeScriptToken(tok, function () {
+	      _this._onScriptDone(tok);
+	    });
+	  };
+	
+	  /**
+	   * Handles style tokens
+	   *
+	   * @param {Object} tok The token
+	   */
+	
+	
+	  WriteStream.prototype._handleStyleToken = function _handleStyleToken(tok) {
+	    var remainder = this.parser.clear();
+	
+	    if (remainder) {
+	      // Write remainder immediately behind this style.
+	      this.writeQueue.unshift(remainder);
+	    }
+	
+	    tok.type = tok.attrs.type || tok.attrs.TYPE || 'text/css';
+	
+	    tok = this.options.beforeWriteToken(tok);
+	
+	    if (tok) {
+	      // Put the style node in the DOM.
+	      this._writeStyleToken(tok);
+	    }
+	
+	    if (remainder) {
+	      this.write();
+	    }
+	  };
+	
+	  /**
+	   * Build a style and insert it into the DOM.
+	   *
+	   * @param {Object} tok The token
+	   */
+	
+	
+	  WriteStream.prototype._writeStyleToken = function _writeStyleToken(tok) {
+	    var el = this._buildStyle(tok);
+	
+	    this._insertCursor(el, PROXY_STYLE);
+	
+	    // Set content
+	    if (tok.content) {
+	      if (el.styleSheet && !el.sheet) {
+	        el.styleSheet.cssText = tok.content;
+	      } else {
+	        el.appendChild(this.doc.createTextNode(tok.content));
+	      }
+	    }
+	  };
+	
+	  /**
+	   * Build a style element from an atomic style token.
+	   *
+	   * @param {Object} tok The token
+	   * @returns {Element}
+	   */
+	
+	
+	  WriteStream.prototype._buildStyle = function _buildStyle(tok) {
+	    var el = this.doc.createElement(tok.tagName);
+	
+	    el.setAttribute('type', tok.type);
+	
+	    // Set attributes
+	    utils.eachKey(tok.attrs, function (name, value) {
+	      el.setAttribute(name, value);
+	    });
+	
+	    return el;
+	  };
+	
+	  /**
+	   * Append a span to the stream. That span will act as a cursor
+	   * (i.e. insertion point) for the element.
+	   *
+	   * @param {Object} el The element
+	   * @param {string} which The type of proxy element
+	   */
+	
+	
+	  WriteStream.prototype._insertCursor = function _insertCursor(el, which) {
+	    this._writeImpl('<span id="' + which + '"/>');
+	
+	    var cursor = this.doc.getElementById(which);
+	
+	    if (cursor) {
+	      cursor.parentNode.replaceChild(el, cursor);
+	    }
+	  };
+	
+	  /**
+	   * Called when a script is started.
+	   *
+	   * @param {Object} tok The token
+	   * @private
+	   */
+	
+	
+	  WriteStream.prototype._onScriptStart = function _onScriptStart(tok) {
+	    tok.outerWrites = this.writeQueue;
+	    this.writeQueue = [];
+	    this.scriptStack.unshift(tok);
+	  };
+	
+	  /**
+	   * Called when a script is done.
+	   *
+	   * @param {Object} tok The token
+	   * @private
+	   */
+	
+	
+	  WriteStream.prototype._onScriptDone = function _onScriptDone(tok) {
+	    // Pop script and check nesting.
+	    if (tok !== this.scriptStack[0]) {
+	      this.options.error({ msg: 'Bad script nesting or script finished twice' });
+	      return;
+	    }
+	
+	    this.scriptStack.shift();
+	
+	    // Append outer writes to queue and process them.
+	    this.write.apply(this, tok.outerWrites);
+	
+	    // Check for pending remote
+	
+	    // Assumption 2: if remote_script1 writes remote_script2 then
+	    // the we notice remote_script1 finishes before remote_script2 starts.
+	    // I think this is equivalent to assumption 1
+	    if (!this.scriptStack.length && this.deferredRemote) {
+	      this._onScriptStart(this.deferredRemote);
+	      this.deferredRemote = null;
+	    }
+	  };
+	
+	  /**
+	   * Build a script and insert it into the DOM.
+	   * Done is called once script has executed.
+	   *
+	   * @param {Object} tok The token
+	   * @param {Function} done The callback when complete
+	   */
+	
+	
+	  WriteStream.prototype._writeScriptToken = function _writeScriptToken(tok, done) {
+	    var el = this._buildScript(tok);
+	    var asyncRelease = this._shouldRelease(el);
+	    var afterAsync = this.options.afterAsync;
+	
+	    if (tok.src) {
+	      // Fix for attribute "SRC" (capitalized). IE does not recognize it.
+	      el.src = tok.src;
+	      this._scriptLoadHandler(el, !asyncRelease ? function () {
+	        done();
+	        afterAsync();
+	      } : afterAsync);
+	    }
+	
+	    try {
+	      this._insertCursor(el, PROXY_SCRIPT);
+	      if (!el.src || asyncRelease) {
+	        done();
+	      }
+	    } catch (e) {
+	      this.options.error(e);
+	      done();
+	    }
+	  };
+	
+	  /**
+	   * Build a script element from an atomic script token.
+	   *
+	   * @param {Object} tok The token
+	   * @returns {Element}
+	   */
+	
+	
+	  WriteStream.prototype._buildScript = function _buildScript(tok) {
+	    var el = this.doc.createElement(tok.tagName);
+	
+	    // Set attributes
+	    utils.eachKey(tok.attrs, function (name, value) {
+	      el.setAttribute(name, value);
+	    });
+	
+	    // Set content
+	    if (tok.content) {
+	      el.text = tok.content;
+	    }
+	
+	    return el;
+	  };
+	
+	  /**
+	   * Setup the script load handler on an element.
+	   *
+	   * @param {Object} el The element
+	   * @param {Function} done The callback
+	   * @private
+	   */
+	
+	
+	  WriteStream.prototype._scriptLoadHandler = function _scriptLoadHandler(el, done) {
+	    function cleanup() {
+	      el = el.onload = el.onreadystatechange = el.onerror = null;
+	    }
+	
+	    var error = this.options.error;
+	
+	    function success() {
+	      cleanup();
+	      if (done != null) {
+	        done();
+	      }
+	      done = null;
+	    }
+	
+	    function failure(err) {
+	      cleanup();
+	      error(err);
+	      if (done != null) {
+	        done();
+	      }
+	      done = null;
+	    }
+	
+	    function reattachEventListener(el, evt) {
+	      var handler = el['on' + evt];
+	      if (handler != null) {
+	        el['_on' + evt] = handler;
+	      }
+	    }
+	
+	    reattachEventListener(el, 'load');
+	    reattachEventListener(el, 'error');
+	
+	    _extends(el, {
+	      onload: function onload() {
+	        if (el._onload) {
+	          try {
+	            el._onload.apply(this, Array.prototype.slice.call(arguments, 0));
+	          } catch (err) {
+	            failure({ msg: 'onload handler failed ' + err + ' @ ' + el.src });
+	          }
+	        }
+	        success();
+	      },
+	      onerror: function onerror() {
+	        if (el._onerror) {
+	          try {
+	            el._onerror.apply(this, Array.prototype.slice.call(arguments, 0));
+	          } catch (err) {
+	            failure({ msg: 'onerror handler failed ' + err + ' @ ' + el.src });
+	            return;
+	          }
+	        }
+	        failure({ msg: 'remote script failed ' + el.src });
+	      },
+	      onreadystatechange: function onreadystatechange() {
+	        if (/^(loaded|complete)$/.test(el.readyState)) {
+	          success();
+	        }
+	      }
+	    });
+	  };
+	
+	  /**
+	   * Determines whether to release.
+	   *
+	   * @param {Object} el The element
+	   * @returns {boolean}
+	   * @private
+	   */
+	
+	
+	  WriteStream.prototype._shouldRelease = function _shouldRelease(el) {
+	    var isScript = /^script$/i.test(el.nodeName);
+	    return !isScript || !!(this.options.releaseAsync && el.src && el.hasAttribute('async'));
+	  };
+	
+	  return WriteStream;
+	}();
+	
+	exports['default'] = WriteStream;
+
+/***/ },
+/* 3 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * @file prescribe
+	 * @description Tiny, forgiving HTML parser
+	 * @version vundefined
+	 * @see {@link https://github.com/krux/prescribe/}
+	 * @license MIT
+	 * @author Derek Brans
+	 * @copyright 2016 Krux Digital, Inc
+	 */
+	(function webpackUniversalModuleDefinition(root, factory) {
+		if(true)
+			module.exports = factory();
+		else {}
+	})(this, function() {
+	return /******/ (function(modules) { // webpackBootstrap
+	/******/ 	// The module cache
+	/******/ 	var installedModules = {};
+	
+	/******/ 	// The require function
+	/******/ 	function __webpack_require__(moduleId) {
+	
+	/******/ 		// Check if module is in cache
+	/******/ 		if(installedModules[moduleId])
+	/******/ 			return installedModules[moduleId].exports;
+	
+	/******/ 		// Create a new module (and put it into the cache)
+	/******/ 		var module = installedModules[moduleId] = {
+	/******/ 			exports: {},
+	/******/ 			id: moduleId,
+	/******/ 			loaded: false
+	/******/ 		};
+	
+	/******/ 		// Execute the module function
+	/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+	
+	/******/ 		// Flag the module as loaded
+	/******/ 		module.loaded = true;
+	
+	/******/ 		// Return the exports of the module
+	/******/ 		return module.exports;
+	/******/ 	}
+	
+	
+	/******/ 	// expose the modules object (__webpack_modules__)
+	/******/ 	__webpack_require__.m = modules;
+	
+	/******/ 	// expose the module cache
+	/******/ 	__webpack_require__.c = installedModules;
+	
+	/******/ 	// __webpack_public_path__
+	/******/ 	__webpack_require__.p = "";
+	
+	/******/ 	// Load entry module and return exports
+	/******/ 	return __webpack_require__(0);
+	/******/ })
+	/************************************************************************/
+	/******/ ([
+	/* 0 */
+	/***/ function(module, exports, __webpack_require__) {
+	
+		'use strict';
+	
+		var _HtmlParser = __webpack_require__(1);
+	
+		var _HtmlParser2 = _interopRequireDefault(_HtmlParser);
+	
+		function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+		module.exports = _HtmlParser2['default'];
+	
+	/***/ },
+	/* 1 */
+	/***/ function(module, exports, __webpack_require__) {
+	
+		'use strict';
+	
+		exports.__esModule = true;
+	
+		var _supports = __webpack_require__(2);
+	
+		var supports = _interopRequireWildcard(_supports);
+	
+		var _streamReaders = __webpack_require__(3);
+	
+		var streamReaders = _interopRequireWildcard(_streamReaders);
+	
+		var _fixedReadTokenFactory = __webpack_require__(6);
+	
+		var _fixedReadTokenFactory2 = _interopRequireDefault(_fixedReadTokenFactory);
+	
+		var _utils = __webpack_require__(5);
+	
+		function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+		function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj['default'] = obj; return newObj; } }
+	
+		function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+		/**
+		 * Detection regular expressions.
+		 *
+		 * Order of detection matters: detection of one can only
+		 * succeed if detection of previous didn't
+	
+		 * @type {Object}
+		 */
+		var detect = {
+		  comment: /^<!--/,
+		  endTag: /^<\//,
+		  atomicTag: /^<\s*(script|style|noscript|iframe|textarea)[\s\/>]/i,
+		  startTag: /^</,
+		  chars: /^[^<]/
+		};
+	
+		/**
+		 * HtmlParser provides the capability to parse HTML and return tokens
+		 * representing the tags and content.
+		 */
+	
+		var HtmlParser = function () {
+		  /**
+		   * Constructor.
+		   *
+		   * @param {string} stream The initial parse stream contents.
+		   * @param {Object} options The options
+		   * @param {boolean} options.autoFix Set to true to automatically fix errors
+		   */
+		  function HtmlParser() {
+		    var _this = this;
+	
+		    var stream = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+		    var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+	
+		    _classCallCheck(this, HtmlParser);
+	
+		    this.stream = stream;
+	
+		    var fix = false;
+		    var fixedTokenOptions = {};
+	
+		    for (var key in supports) {
+		      if (supports.hasOwnProperty(key)) {
+		        if (options.autoFix) {
+		          fixedTokenOptions[key + 'Fix'] = true; // !supports[key];
+		        }
+		        fix = fix || fixedTokenOptions[key + 'Fix'];
+		      }
+		    }
+	
+		    if (fix) {
+		      this._readToken = (0, _fixedReadTokenFactory2['default'])(this, fixedTokenOptions, function () {
+		        return _this._readTokenImpl();
+		      });
+		      this._peekToken = (0, _fixedReadTokenFactory2['default'])(this, fixedTokenOptions, function () {
+		        return _this._peekTokenImpl();
+		      });
+		    } else {
+		      this._readToken = this._readTokenImpl;
+		      this._peekToken = this._peekTokenImpl;
+		    }
+		  }
+	
+		  /**
+		   * Appends the given string to the parse stream.
+		   *
+		   * @param {string} str The string to append
+		   */
+	
+	
+		  HtmlParser.prototype.append = function append(str) {
+		    this.stream += str;
+		  };
+	
+		  /**
+		   * Prepends the given string to the parse stream.
+		   *
+		   * @param {string} str The string to prepend
+		   */
+	
+	
+		  HtmlParser.prototype.prepend = function prepend(str) {
+		    this.stream = str + this.stream;
+		  };
+	
+		  /**
+		   * The implementation of the token reading.
+		   *
+		   * @private
+		   * @returns {?Token}
+		   */
+	
+	
+		  HtmlParser.prototype._readTokenImpl = function _readTokenImpl() {
+		    var token = this._peekTokenImpl();
+		    if (token) {
+		      this.stream = this.stream.slice(token.length);
+		      return token;
+		    }
+		  };
+	
+		  /**
+		   * The implementation of token peeking.
+		   *
+		   * @returns {?Token}
+		   */
+	
+	
+		  HtmlParser.prototype._peekTokenImpl = function _peekTokenImpl() {
+		    for (var type in detect) {
+		      if (detect.hasOwnProperty(type)) {
+		        if (detect[type].test(this.stream)) {
+		          var token = streamReaders[type](this.stream);
+	
+		          if (token) {
+		            if (token.type === 'startTag' && /script|style/i.test(token.tagName)) {
+		              return null;
+		            } else {
+		              token.text = this.stream.substr(0, token.length);
+		              return token;
+		            }
+		          }
+		        }
+		      }
+		    }
+		  };
+	
+		  /**
+		   * The public token peeking interface.  Delegates to the basic token peeking
+		   * or a version that performs fixups depending on the `autoFix` setting in
+		   * options.
+		   *
+		   * @returns {object}
+		   */
+	
+	
+		  HtmlParser.prototype.peekToken = function peekToken() {
+		    return this._peekToken();
+		  };
+	
+		  /**
+		   * The public token reading interface.  Delegates to the basic token reading
+		   * or a version that performs fixups depending on the `autoFix` setting in
+		   * options.
+		   *
+		   * @returns {object}
+		   */
+	
+	
+		  HtmlParser.prototype.readToken = function readToken() {
+		    return this._readToken();
+		  };
+	
+		  /**
+		   * Read tokens and hand to the given handlers.
+		   *
+		   * @param {Object} handlers The handlers to use for the different tokens.
+		   */
+	
+	
+		  HtmlParser.prototype.readTokens = function readTokens(handlers) {
+		    var tok = void 0;
+		    while (tok = this.readToken()) {
+		      // continue until we get an explicit "false" return
+		      if (handlers[tok.type] && handlers[tok.type](tok) === false) {
+		        return;
+		      }
+		    }
+		  };
+	
+		  /**
+		   * Clears the parse stream.
+		   *
+		   * @returns {string} The contents of the parse stream before clearing.
+		   */
+	
+	
+		  HtmlParser.prototype.clear = function clear() {
+		    var rest = this.stream;
+		    this.stream = '';
+		    return rest;
+		  };
+	
+		  /**
+		   * Returns the rest of the parse stream.
+		   *
+		   * @returns {string} The contents of the parse stream.
+		   */
+	
+	
+		  HtmlParser.prototype.rest = function rest() {
+		    return this.stream;
+		  };
+	
+		  return HtmlParser;
+		}();
+	
+		exports['default'] = HtmlParser;
+	
+	
+		HtmlParser.tokenToString = function (tok) {
+		  return tok.toString();
+		};
+	
+		HtmlParser.escapeAttributes = function (attrs) {
+		  var escapedAttrs = {};
+	
+		  for (var name in attrs) {
+		    if (attrs.hasOwnProperty(name)) {
+		      escapedAttrs[name] = (0, _utils.escapeQuotes)(attrs[name], null);
+		    }
+		  }
+	
+		  return escapedAttrs;
+		};
+	
+		HtmlParser.supports = supports;
+	
+		for (var key in supports) {
+		  if (supports.hasOwnProperty(key)) {
+		    HtmlParser.browserHasFlaw = HtmlParser.browserHasFlaw || !supports[key] && key;
+		  }
+		}
+	
+	/***/ },
+	/* 2 */
+	/***/ function(module, exports) {
+	
+		'use strict';
+	
+		exports.__esModule = true;
+		var tagSoup = false;
+		var selfClose = false;
+	
+		var work = window.document.createElement('div');
+	
+		try {
+		  var html = '<P><I></P></I>';
+		  work.innerHTML = html;
+		  exports.tagSoup = tagSoup = work.innerHTML !== html;
+		} catch (e) {
+		  exports.tagSoup = tagSoup = false;
+		}
+	
+		try {
+		  work.innerHTML = '<P><i><P></P></i></P>';
+		  exports.selfClose = selfClose = work.childNodes.length === 2;
+		} catch (e) {
+		  exports.selfClose = selfClose = false;
+		}
+	
+		work = null;
+	
+		exports.tagSoup = tagSoup;
+		exports.selfClose = selfClose;
+	
+	/***/ },
+	/* 3 */
+	/***/ function(module, exports, __webpack_require__) {
+	
+		'use strict';
+	
+		exports.__esModule = true;
+	
+		var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+	
+		exports.comment = comment;
+		exports.chars = chars;
+		exports.startTag = startTag;
+		exports.atomicTag = atomicTag;
+		exports.endTag = endTag;
+	
+		var _tokens = __webpack_require__(4);
+	
+		/**
+		 * Regular Expressions for parsing tags and attributes
+		 *
+		 * @type {Object}
+		 */
+		var REGEXES = {
+		  startTag: /^<([\-A-Za-z0-9_]+)((?:\s+[\w\-]+(?:\s*=?\s*(?:(?:"[^"]*")|(?:'[^']*')|[^>\s]+))?)*)\s*(\/?)>/,
+		  endTag: /^<\/([\-A-Za-z0-9_]+)[^>]*>/,
+		  attr: /(?:([\-A-Za-z0-9_]+)\s*=\s*(?:(?:"((?:\\.|[^"])*)")|(?:'((?:\\.|[^'])*)')|([^>\s]+)))|(?:([\-A-Za-z0-9_]+)(\s|$)+)/g,
+		  fillAttr: /^(checked|compact|declare|defer|disabled|ismap|multiple|nohref|noresize|noshade|nowrap|readonly|selected)$/i
+		};
+	
+		/**
+		 * Reads a comment token
+		 *
+		 * @param {string} stream The input stream
+		 * @returns {CommentToken}
+		 */
+		function comment(stream) {
+		  var index = stream.indexOf('-->');
+		  if (index >= 0) {
+		    return new _tokens.CommentToken(stream.substr(4, index - 1), index + 3);
+		  }
+		}
+	
+		/**
+		 * Reads non-tag characters.
+		 *
+		 * @param {string} stream The input stream
+		 * @returns {CharsToken}
+		 */
+		function chars(stream) {
+		  var index = stream.indexOf('<');
+		  return new _tokens.CharsToken(index >= 0 ? index : stream.length);
+		}
+	
+		/**
+		 * Reads start tag token.
+		 *
+		 * @param {string} stream The input stream
+		 * @returns {StartTagToken}
+		 */
+		function startTag(stream) {
+		  var endTagIndex = stream.indexOf('>');
+		  if (endTagIndex !== -1) {
+		    var match = stream.match(REGEXES.startTag);
+		    if (match) {
+		      var _ret = function () {
+		        var attrs = {};
+		        var booleanAttrs = {};
+		        var rest = match[2];
+	
+		        match[2].replace(REGEXES.attr, function (match, name) {
+		          if (!(arguments[2] || arguments[3] || arguments[4] || arguments[5])) {
+		            attrs[name] = '';
+		          } else if (arguments[5]) {
+		            attrs[arguments[5]] = '';
+		            booleanAttrs[arguments[5]] = true;
+		          } else {
+		            attrs[name] = arguments[2] || arguments[3] || arguments[4] || REGEXES.fillAttr.test(name) && name || '';
+		          }
+	
+		          rest = rest.replace(match, '');
+		        });
+	
+		        return {
+		          v: new _tokens.StartTagToken(match[1], match[0].length, attrs, booleanAttrs, !!match[3], rest.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, ''))
+		        };
+		      }();
+	
+		      if ((typeof _ret === 'undefined' ? 'undefined' : _typeof(_ret)) === "object") return _ret.v;
+		    }
+		  }
+		}
+	
+		/**
+		 * Reads atomic tag token.
+		 *
+		 * @param {string} stream The input stream
+		 * @returns {AtomicTagToken}
+		 */
+		function atomicTag(stream) {
+		  var start = startTag(stream);
+		  if (start) {
+		    var rest = stream.slice(start.length);
+		    // for optimization, we check first just for the end tag
+		    if (rest.match(new RegExp('<\/\\s*' + start.tagName + '\\s*>', 'i'))) {
+		      // capturing the content is inefficient, so we do it inside the if
+		      var match = rest.match(new RegExp('([\\s\\S]*?)<\/\\s*' + start.tagName + '\\s*>', 'i'));
+		      if (match) {
+		        return new _tokens.AtomicTagToken(start.tagName, match[0].length + start.length, start.attrs, start.booleanAttrs, match[1]);
+		      }
+		    }
+		  }
+		}
+	
+		/**
+		 * Reads an end tag token.
+		 *
+		 * @param {string} stream The input stream
+		 * @returns {EndTagToken}
+		 */
+		function endTag(stream) {
+		  var match = stream.match(REGEXES.endTag);
+		  if (match) {
+		    return new _tokens.EndTagToken(match[1], match[0].length);
+		  }
+		}
+	
+	/***/ },
+	/* 4 */
+	/***/ function(module, exports, __webpack_require__) {
+	
+		'use strict';
+	
+		exports.__esModule = true;
+		exports.EndTagToken = exports.AtomicTagToken = exports.StartTagToken = exports.TagToken = exports.CharsToken = exports.CommentToken = exports.Token = undefined;
+	
+		var _utils = __webpack_require__(5);
+	
+		function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+		/**
+		 * Token is a base class for all token types parsed.  Note we don't actually
+		 * use intheritance due to IE8's non-existent ES5 support.
+		 */
+		var Token =
+		/**
+		 * Constructor.
+		 *
+		 * @param {string} type The type of the Token.
+		 * @param {Number} length The length of the Token text.
+		 */
+		exports.Token = function Token(type, length) {
+		  _classCallCheck(this, Token);
+	
+		  this.type = type;
+		  this.length = length;
+		  this.text = '';
+		};
+	
+		/**
+		 * CommentToken represents comment tags.
+		 */
+	
+	
+		var CommentToken = exports.CommentToken = function () {
+		  /**
+		   * Constructor.
+		   *
+		   * @param {string} content The content of the comment
+		   * @param {Number} length The length of the Token text.
+		   */
+		  function CommentToken(content, length) {
+		    _classCallCheck(this, CommentToken);
+	
+		    this.type = 'comment';
+		    this.length = length || (content ? content.length : 0);
+		    this.text = '';
+		    this.content = content;
+		  }
+	
+		  CommentToken.prototype.toString = function toString() {
+		    return '<!--' + this.content;
+		  };
+	
+		  return CommentToken;
+		}();
+	
+		/**
+		 * CharsToken represents non-tag characters.
+		 */
+	
+	
+		var CharsToken = exports.CharsToken = function () {
+		  /**
+		   * Constructor.
+		   *
+		   * @param {Number} length The length of the Token text.
+		   */
+		  function CharsToken(length) {
+		    _classCallCheck(this, CharsToken);
+	
+		    this.type = 'chars';
+		    this.length = length;
+		    this.text = '';
+		  }
+	
+		  CharsToken.prototype.toString = function toString() {
+		    return this.text;
+		  };
+	
+		  return CharsToken;
+		}();
+	
+		/**
+		 * TagToken is a base class for all tag-based Tokens.
+		 */
+	
+	
+		var TagToken = exports.TagToken = function () {
+		  /**
+		   * Constructor.
+		   *
+		   * @param {string} type The type of the token.
+		   * @param {string} tagName The tag name.
+		   * @param {Number} length The length of the Token text.
+		   * @param {Object} attrs The dictionary of attributes and values
+		   * @param {Object} booleanAttrs If an entry has 'true' then the attribute
+		   *                              is a boolean attribute
+		   */
+		  function TagToken(type, tagName, length, attrs, booleanAttrs) {
+		    _classCallCheck(this, TagToken);
+	
+		    this.type = type;
+		    this.length = length;
+		    this.text = '';
+		    this.tagName = tagName;
+		    this.attrs = attrs;
+		    this.booleanAttrs = booleanAttrs;
+		    this.unary = false;
+		    this.html5Unary = false;
+		  }
+	
+		  /**
+		   * Formats the given token tag.
+		   *
+		   * @param {TagToken} tok The TagToken to format.
+		   * @param {?string} [content=null] The content of the token.
+		   * @returns {string} The formatted tag.
+		   */
+	
+	
+		  TagToken.formatTag = function formatTag(tok) {
+		    var content = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+	
+		    var str = '<' + tok.tagName;
+		    for (var key in tok.attrs) {
+		      if (tok.attrs.hasOwnProperty(key)) {
+		        str += ' ' + key;
+	
+		        var val = tok.attrs[key];
+		        if (typeof tok.booleanAttrs === 'undefined' || typeof tok.booleanAttrs[key] === 'undefined') {
+		          str += '="' + (0, _utils.escapeQuotes)(val) + '"';
+		        }
+		      }
+		    }
+	
+		    if (tok.rest) {
+		      str += ' ' + tok.rest;
+		    }
+	
+		    if (tok.unary && !tok.html5Unary) {
+		      str += '/>';
+		    } else {
+		      str += '>';
+		    }
+	
+		    if (content !== undefined && content !== null) {
+		      str += content + '</' + tok.tagName + '>';
+		    }
+	
+		    return str;
+		  };
+	
+		  return TagToken;
+		}();
+	
+		/**
+		 * StartTagToken represents a start token.
+		 */
+	
+	
+		var StartTagToken = exports.StartTagToken = function () {
+		  /**
+		   * Constructor.
+		   *
+		   * @param {string} tagName The tag name.
+		   * @param {Number} length The length of the Token text
+		   * @param {Object} attrs The dictionary of attributes and values
+		   * @param {Object} booleanAttrs If an entry has 'true' then the attribute
+		   *                              is a boolean attribute
+		   * @param {boolean} unary True if the tag is a unary tag
+		   * @param {string} rest The rest of the content.
+		   */
+		  function StartTagToken(tagName, length, attrs, booleanAttrs, unary, rest) {
+		    _classCallCheck(this, StartTagToken);
+	
+		    this.type = 'startTag';
+		    this.length = length;
+		    this.text = '';
+		    this.tagName = tagName;
+		    this.attrs = attrs;
+		    this.booleanAttrs = booleanAttrs;
+		    this.html5Unary = false;
+		    this.unary = unary;
+		    this.rest = rest;
+		  }
+	
+		  StartTagToken.prototype.toString = function toString() {
+		    return TagToken.formatTag(this);
+		  };
+	
+		  return StartTagToken;
+		}();
+	
+		/**
+		 * AtomicTagToken represents an atomic tag.
+		 */
+	
+	
+		var AtomicTagToken = exports.AtomicTagToken = function () {
+		  /**
+		   * Constructor.
+		   *
+		   * @param {string} tagName The name of the tag.
+		   * @param {Number} length The length of the tag text.
+		   * @param {Object} attrs The attributes.
+		   * @param {Object} booleanAttrs If an entry has 'true' then the attribute
+		   *                              is a boolean attribute
+		   * @param {string} content The content of the tag.
+		   */
+		  function AtomicTagToken(tagName, length, attrs, booleanAttrs, content) {
+		    _classCallCheck(this, AtomicTagToken);
+	
+		    this.type = 'atomicTag';
+		    this.length = length;
+		    this.text = '';
+		    this.tagName = tagName;
+		    this.attrs = attrs;
+		    this.booleanAttrs = booleanAttrs;
+		    this.unary = false;
+		    this.html5Unary = false;
+		    this.content = content;
+		  }
+	
+		  AtomicTagToken.prototype.toString = function toString() {
+		    return TagToken.formatTag(this, this.content);
+		  };
+	
+		  return AtomicTagToken;
+		}();
+	
+		/**
+		 * EndTagToken represents an end tag.
+		 */
+	
+	
+		var EndTagToken = exports.EndTagToken = function () {
+		  /**
+		   * Constructor.
+		   *
+		   * @param {string} tagName The name of the tag.
+		   * @param {Number} length The length of the tag text.
+		   */
+		  function EndTagToken(tagName, length) {
+		    _classCallCheck(this, EndTagToken);
+	
+		    this.type = 'endTag';
+		    this.length = length;
+		    this.text = '';
+		    this.tagName = tagName;
+		  }
+	
+		  EndTagToken.prototype.toString = function toString() {
+		    return '</' + this.tagName + '>';
+		  };
+	
+		  return EndTagToken;
+		}();
+	
+	/***/ },
+	/* 5 */
+	/***/ function(module, exports) {
+	
+		'use strict';
+	
+		exports.__esModule = true;
+		exports.escapeQuotes = escapeQuotes;
+	
+		/**
+		 * Escape quotes in the given value.
+		 *
+		 * @param {string} value The value to escape.
+		 * @param {string} [defaultValue=''] The default value to return if value is falsy.
+		 * @returns {string}
+		 */
+		function escapeQuotes(value) {
+		  var defaultValue = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+	
+		  // There's no lookback in JS, so /(^|[^\\])"/ only matches the first of two `"`s.
+		  // Instead, just match anything before a double-quote and escape if it's not already escaped.
+		  return !value ? defaultValue : value.replace(/([^"]*)"/g, function (_, prefix) {
+		    return (/\\/.test(prefix) ? prefix + '"' : prefix + '\\"'
+		    );
+		  });
+		}
+	
+	/***/ },
+	/* 6 */
+	/***/ function(module, exports) {
+	
+		'use strict';
+	
+		exports.__esModule = true;
+		exports['default'] = fixedReadTokenFactory;
+		/**
+		 * Empty Elements - HTML 4.01
+		 *
+		 * @type {RegExp}
+		 */
+		var EMPTY = /^(AREA|BASE|BASEFONT|BR|COL|FRAME|HR|IMG|INPUT|ISINDEX|LINK|META|PARAM|EMBED)$/i;
+	
+		/**
+		 * Elements that you can intentionally leave open (and which close themselves)
+		 *
+		 * @type {RegExp}
+		 */
+		var CLOSESELF = /^(COLGROUP|DD|DT|LI|OPTIONS|P|TD|TFOOT|TH|THEAD|TR)$/i;
+	
+		/**
+		 * Corrects a token.
+		 *
+		 * @param {Token} tok The token to correct
+		 * @returns {Token} The corrected token
+		 */
+		function correct(tok) {
+		  if (tok && tok.type === 'startTag') {
+		    tok.unary = EMPTY.test(tok.tagName) || tok.unary;
+		    tok.html5Unary = !/\/>$/.test(tok.text);
+		  }
+		  return tok;
+		}
+	
+		/**
+		 * Peeks at the next token in the parser.
+		 *
+		 * @param {HtmlParser} parser The parser
+		 * @param {Function} readTokenImpl The underlying readToken implementation
+		 * @returns {Token} The next token
+		 */
+		function peekToken(parser, readTokenImpl) {
+		  var tmp = parser.stream;
+		  var tok = correct(readTokenImpl());
+		  parser.stream = tmp;
+		  return tok;
+		}
+	
+		/**
+		 * Closes the last token.
+		 *
+		 * @param {HtmlParser} parser The parser
+		 * @param {Array<Token>} stack The stack
+		 */
+		function closeLast(parser, stack) {
+		  var tok = stack.pop();
+	
+		  // prepend close tag to stream.
+		  parser.prepend('</' + tok.tagName + '>');
+		}
+	
+		/**
+		 * Create a new token stack.
+		 *
+		 * @returns {Array<Token>}
+		 */
+		function newStack() {
+		  var stack = [];
+	
+		  stack.last = function () {
+		    return this[this.length - 1];
+		  };
+	
+		  stack.lastTagNameEq = function (tagName) {
+		    var last = this.last();
+		    return last && last.tagName && last.tagName.toUpperCase() === tagName.toUpperCase();
+		  };
+	
+		  stack.containsTagName = function (tagName) {
+		    for (var i = 0, tok; tok = this[i]; i++) {
+		      if (tok.tagName === tagName) {
+		        return true;
+		      }
+		    }
+		    return false;
+		  };
+	
+		  return stack;
+		}
+	
+		/**
+		 * Return a readToken implementation that fixes input.
+		 *
+		 * @param {HtmlParser} parser The parser
+		 * @param {Object} options Options for fixing
+		 * @param {boolean} options.tagSoupFix True to fix tag soup scenarios
+		 * @param {boolean} options.selfCloseFix True to fix self-closing tags
+		 * @param {Function} readTokenImpl The underlying readToken implementation
+		 * @returns {Function}
+		 */
+		function fixedReadTokenFactory(parser, options, readTokenImpl) {
+		  var stack = newStack();
+	
+		  var handlers = {
+		    startTag: function startTag(tok) {
+		      var tagName = tok.tagName;
+	
+		      if (tagName.toUpperCase() === 'TR' && stack.lastTagNameEq('TABLE')) {
+		        parser.prepend('<TBODY>');
+		        prepareNextToken();
+		      } else if (options.selfCloseFix && CLOSESELF.test(tagName) && stack.containsTagName(tagName)) {
+		        if (stack.lastTagNameEq(tagName)) {
+		          closeLast(parser, stack);
+		        } else {
+		          parser.prepend('</' + tok.tagName + '>');
+		          prepareNextToken();
+		        }
+		      } else if (!tok.unary) {
+		        stack.push(tok);
+		      }
+		    },
+		    endTag: function endTag(tok) {
+		      var last = stack.last();
+		      if (last) {
+		        if (options.tagSoupFix && !stack.lastTagNameEq(tok.tagName)) {
+		          // cleanup tag soup
+		          closeLast(parser, stack);
+		        } else {
+		          stack.pop();
+		        }
+		      } else if (options.tagSoupFix) {
+		        // cleanup tag soup part 2: skip this token
+		        readTokenImpl();
+		        prepareNextToken();
+		      }
+		    }
+		  };
+	
+		  function prepareNextToken() {
+		    var tok = peekToken(parser, readTokenImpl);
+		    if (tok && handlers[tok.type]) {
+		      handlers[tok.type](tok);
+		    }
+		  }
+	
+		  return function fixedReadToken() {
+		    prepareNextToken();
+		    return correct(readTokenImpl());
+		  };
+		}
+	
+	/***/ }
+	/******/ ])
+	});
+	;
+
+/***/ },
+/* 4 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	exports.__esModule = true;
+	
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+	
+	exports.existy = existy;
+	exports.isFunction = isFunction;
+	exports.each = each;
+	exports.eachKey = eachKey;
+	exports.defaults = defaults;
+	exports.toArray = toArray;
+	exports.last = last;
+	exports.isTag = isTag;
+	exports.isScript = isScript;
+	exports.isStyle = isStyle;
+	/**
+	 * Determine if the thing is not undefined and not null.
+	 *
+	 * @param {*} thing The thing to test
+	 * @returns {boolean} True if the thing is not undefined and not null.
+	 */
+	function existy(thing) {
+	  return thing !== void 0 && thing !== null;
+	}
+	
+	/**
+	 * Is this a function?
+	 *
+	 * @param {*} x The variable to test
+	 * @returns {boolean} True if the variable is a function
+	 */
+	function isFunction(x) {
+	  return 'function' === typeof x;
+	}
+	
+	/**
+	 * Loop over each item in an array-like value.
+	 *
+	 * @param {Array<*>} arr The array to loop over
+	 * @param {Function} fn The function to call
+	 * @param {?Object} target The object to bind to the function
+	 */
+	function each(arr, fn, target) {
+	  var i = void 0;
+	  var len = arr && arr.length || 0;
+	  for (i = 0; i < len; i++) {
+	    fn.call(target, arr[i], i);
+	  }
+	}
+	
+	/**
+	 * Loop over each key/value pair in a hash.
+	 *
+	 * @param {Object} obj The object
+	 * @param {Function} fn The function to call
+	 * @param {?Object} target The object to bind to the function
+	 */
+	function eachKey(obj, fn, target) {
+	  for (var key in obj) {
+	    if (obj.hasOwnProperty(key)) {
+	      fn.call(target, key, obj[key]);
+	    }
+	  }
+	}
+	
+	/**
+	 * Set default options where some option was not specified.
+	 *
+	 * @param {Object} options The destination
+	 * @param {Object} _defaults The defaults
+	 * @returns {Object}
+	 */
+	function defaults(options, _defaults) {
+	  options = options || {};
+	  eachKey(_defaults, function (key, val) {
+	    if (!existy(options[key])) {
+	      options[key] = val;
+	    }
+	  });
+	  return options;
+	}
+	
+	/**
+	 * Convert value (e.g., a NodeList) to an array.
+	 *
+	 * @param {*} obj The object
+	 * @returns {Array<*>}
+	 */
+	function toArray(obj) {
+	  try {
+	    return Array.prototype.slice.call(obj);
+	  } catch (e) {
+	    var _ret = function () {
+	      var ret = [];
+	      each(obj, function (val) {
+	        ret.push(val);
+	      });
+	      return {
+	        v: ret
+	      };
+	    }();
+	
+	    if ((typeof _ret === 'undefined' ? 'undefined' : _typeof(_ret)) === "object") return _ret.v;
+	  }
+	}
+	
+	/**
+	 * Get the last item in an array
+	 *
+	 * @param {Array<*>} array The array
+	 * @returns {*} The last item in the array
+	 */
+	function last(array) {
+	  return array[array.length - 1];
+	}
+	
+	/**
+	 * Test if token is a script tag.
+	 *
+	 * @param {Object} tok The token
+	 * @param {String} tag The tag name
+	 * @returns {boolean} True if the token is a script tag
+	 */
+	function isTag(tok, tag) {
+	  return !tok || !(tok.type === 'startTag' || tok.type === 'atomicTag') || !('tagName' in tok) ? !1 : !!~tok.tagName.toLowerCase().indexOf(tag);
+	}
+	
+	/**
+	 * Test if token is a script tag.
+	 *
+	 * @param {Object} tok The token
+	 * @returns {boolean} True if the token is a script tag
+	 */
+	function isScript(tok) {
+	  return isTag(tok, 'script');
+	}
+	
+	/**
+	 * Test if token is a style tag.
+	 *
+	 * @param {Object} tok The token
+	 * @returns {boolean} True if the token is a style tag
+	 */
+	function isStyle(tok) {
+	  return isTag(tok, 'style');
+	}
+
+/***/ }
+/******/ ])
+});
+;
+//# sourceMappingURL=postscribe.js.map
+
+/***/ }),
+
 /***/ "./node_modules/process/browser.js":
 /*!*****************************************!*\
   !*** ./node_modules/process/browser.js ***!
@@ -19745,6 +22121,615 @@ process.umask = function() { return 0; };
 
 /***/ }),
 
+/***/ "./node_modules/slugify/slugify.js":
+/*!*****************************************!*\
+  !*** ./node_modules/slugify/slugify.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+;(function (name, root, factory) {
+  if (true) {
+    module.exports = factory()
+    module.exports['default'] = factory()
+  }
+  /* istanbul ignore next */
+  else {}
+}('slugify', this, function () {
+  var charMap = JSON.parse('{"$":"dollar","%":"percent","&":"and","<":"less",">":"greater","|":"or","¢":"cent","£":"pound","¤":"currency","¥":"yen","©":"(c)","ª":"a","®":"(r)","º":"o","À":"A","Á":"A","Â":"A","Ã":"A","Ä":"A","Å":"A","Æ":"AE","Ç":"C","È":"E","É":"E","Ê":"E","Ë":"E","Ì":"I","Í":"I","Î":"I","Ï":"I","Ð":"D","Ñ":"N","Ò":"O","Ó":"O","Ô":"O","Õ":"O","Ö":"O","Ø":"O","Ù":"U","Ú":"U","Û":"U","Ü":"U","Ý":"Y","Þ":"TH","ß":"ss","à":"a","á":"a","â":"a","ã":"a","ä":"a","å":"a","æ":"ae","ç":"c","è":"e","é":"e","ê":"e","ë":"e","ì":"i","í":"i","î":"i","ï":"i","ð":"d","ñ":"n","ò":"o","ó":"o","ô":"o","õ":"o","ö":"o","ø":"o","ù":"u","ú":"u","û":"u","ü":"u","ý":"y","þ":"th","ÿ":"y","Ā":"A","ā":"a","Ă":"A","ă":"a","Ą":"A","ą":"a","Ć":"C","ć":"c","Č":"C","č":"c","Ď":"D","ď":"d","Đ":"DJ","đ":"dj","Ē":"E","ē":"e","Ė":"E","ė":"e","Ę":"e","ę":"e","Ě":"E","ě":"e","Ğ":"G","ğ":"g","Ģ":"G","ģ":"g","Ĩ":"I","ĩ":"i","Ī":"i","ī":"i","Į":"I","į":"i","İ":"I","ı":"i","Ķ":"k","ķ":"k","Ļ":"L","ļ":"l","Ľ":"L","ľ":"l","Ł":"L","ł":"l","Ń":"N","ń":"n","Ņ":"N","ņ":"n","Ň":"N","ň":"n","Ő":"O","ő":"o","Œ":"OE","œ":"oe","Ŕ":"R","ŕ":"r","Ř":"R","ř":"r","Ś":"S","ś":"s","Ş":"S","ş":"s","Š":"S","š":"s","Ţ":"T","ţ":"t","Ť":"T","ť":"t","Ũ":"U","ũ":"u","Ū":"u","ū":"u","Ů":"U","ů":"u","Ű":"U","ű":"u","Ų":"U","ų":"u","Ŵ":"W","ŵ":"w","Ŷ":"Y","ŷ":"y","Ÿ":"Y","Ź":"Z","ź":"z","Ż":"Z","ż":"z","Ž":"Z","ž":"z","ƒ":"f","Ơ":"O","ơ":"o","Ư":"U","ư":"u","ǈ":"LJ","ǉ":"lj","ǋ":"NJ","ǌ":"nj","Ș":"S","ș":"s","Ț":"T","ț":"t","˚":"o","Ά":"A","Έ":"E","Ή":"H","Ί":"I","Ό":"O","Ύ":"Y","Ώ":"W","ΐ":"i","Α":"A","Β":"B","Γ":"G","Δ":"D","Ε":"E","Ζ":"Z","Η":"H","Θ":"8","Ι":"I","Κ":"K","Λ":"L","Μ":"M","Ν":"N","Ξ":"3","Ο":"O","Π":"P","Ρ":"R","Σ":"S","Τ":"T","Υ":"Y","Φ":"F","Χ":"X","Ψ":"PS","Ω":"W","Ϊ":"I","Ϋ":"Y","ά":"a","έ":"e","ή":"h","ί":"i","ΰ":"y","α":"a","β":"b","γ":"g","δ":"d","ε":"e","ζ":"z","η":"h","θ":"8","ι":"i","κ":"k","λ":"l","μ":"m","ν":"n","ξ":"3","ο":"o","π":"p","ρ":"r","ς":"s","σ":"s","τ":"t","υ":"y","φ":"f","χ":"x","ψ":"ps","ω":"w","ϊ":"i","ϋ":"y","ό":"o","ύ":"y","ώ":"w","Ё":"Yo","Ђ":"DJ","Є":"Ye","І":"I","Ї":"Yi","Ј":"J","Љ":"LJ","Њ":"NJ","Ћ":"C","Џ":"DZ","А":"A","Б":"B","В":"V","Г":"G","Д":"D","Е":"E","Ж":"Zh","З":"Z","И":"I","Й":"J","К":"K","Л":"L","М":"M","Н":"N","О":"O","П":"P","Р":"R","С":"S","Т":"T","У":"U","Ф":"F","Х":"H","Ц":"C","Ч":"Ch","Ш":"Sh","Щ":"Sh","Ъ":"U","Ы":"Y","Ь":"","Э":"E","Ю":"Yu","Я":"Ya","а":"a","б":"b","в":"v","г":"g","д":"d","е":"e","ж":"zh","з":"z","и":"i","й":"j","к":"k","л":"l","м":"m","н":"n","о":"o","п":"p","р":"r","с":"s","т":"t","у":"u","ф":"f","х":"h","ц":"c","ч":"ch","ш":"sh","щ":"sh","ъ":"u","ы":"y","ь":"","э":"e","ю":"yu","я":"ya","ё":"yo","ђ":"dj","є":"ye","і":"i","ї":"yi","ј":"j","љ":"lj","њ":"nj","ћ":"c","ѝ":"u","џ":"dz","Ґ":"G","ґ":"g","Ғ":"GH","ғ":"gh","Қ":"KH","қ":"kh","Ң":"NG","ң":"ng","Ү":"UE","ү":"ue","Ұ":"U","ұ":"u","Һ":"H","һ":"h","Ә":"AE","ә":"ae","Ө":"OE","ө":"oe","฿":"baht","ა":"a","ბ":"b","გ":"g","დ":"d","ე":"e","ვ":"v","ზ":"z","თ":"t","ი":"i","კ":"k","ლ":"l","მ":"m","ნ":"n","ო":"o","პ":"p","ჟ":"zh","რ":"r","ს":"s","ტ":"t","უ":"u","ფ":"f","ქ":"k","ღ":"gh","ყ":"q","შ":"sh","ჩ":"ch","ც":"ts","ძ":"dz","წ":"ts","ჭ":"ch","ხ":"kh","ჯ":"j","ჰ":"h","Ẁ":"W","ẁ":"w","Ẃ":"W","ẃ":"w","Ẅ":"W","ẅ":"w","ẞ":"SS","Ạ":"A","ạ":"a","Ả":"A","ả":"a","Ấ":"A","ấ":"a","Ầ":"A","ầ":"a","Ẩ":"A","ẩ":"a","Ẫ":"A","ẫ":"a","Ậ":"A","ậ":"a","Ắ":"A","ắ":"a","Ằ":"A","ằ":"a","Ẳ":"A","ẳ":"a","Ẵ":"A","ẵ":"a","Ặ":"A","ặ":"a","Ẹ":"E","ẹ":"e","Ẻ":"E","ẻ":"e","Ẽ":"E","ẽ":"e","Ế":"E","ế":"e","Ề":"E","ề":"e","Ể":"E","ể":"e","Ễ":"E","ễ":"e","Ệ":"E","ệ":"e","Ỉ":"I","ỉ":"i","Ị":"I","ị":"i","Ọ":"O","ọ":"o","Ỏ":"O","ỏ":"o","Ố":"O","ố":"o","Ồ":"O","ồ":"o","Ổ":"O","ổ":"o","Ỗ":"O","ỗ":"o","Ộ":"O","ộ":"o","Ớ":"O","ớ":"o","Ờ":"O","ờ":"o","Ở":"O","ở":"o","Ỡ":"O","ỡ":"o","Ợ":"O","ợ":"o","Ụ":"U","ụ":"u","Ủ":"U","ủ":"u","Ứ":"U","ứ":"u","Ừ":"U","ừ":"u","Ử":"U","ử":"u","Ữ":"U","ữ":"u","Ự":"U","ự":"u","Ỳ":"Y","ỳ":"y","Ỵ":"Y","ỵ":"y","Ỷ":"Y","ỷ":"y","Ỹ":"Y","ỹ":"y","‘":"\'","’":"\'","“":"\\\"","”":"\\\"","†":"+","•":"*","…":"...","₠":"ecu","₢":"cruzeiro","₣":"french franc","₤":"lira","₥":"mill","₦":"naira","₧":"peseta","₨":"rupee","₩":"won","₪":"new shequel","₫":"dong","€":"euro","₭":"kip","₮":"tugrik","₯":"drachma","₰":"penny","₱":"peso","₲":"guarani","₳":"austral","₴":"hryvnia","₵":"cedi","₸":"kazakhstani tenge","₹":"indian rupee","₽":"russian ruble","₿":"bitcoin","℠":"sm","™":"tm","∂":"d","∆":"delta","∑":"sum","∞":"infinity","♥":"love","元":"yuan","円":"yen","﷼":"rial"}')
+  var locales = JSON.parse('{"vi":{"Đ":"D","đ":"d"}}')
+
+  function replace (string, options) {
+    if (typeof string !== 'string') {
+      throw new Error('slugify: string argument expected')
+    }
+
+    options = (typeof options === 'string')
+      ? {replacement: options}
+      : options || {}
+
+    var locale = locales[options.locale] || {}
+
+    var replacement = options.replacement || '-'
+
+    var slug = string.split('')
+      // replace characters based on charMap
+      .reduce(function (result, ch) {
+        return result + (locale[ch] || charMap[ch] || ch)
+      }, '')
+      // remove not allowed characters
+      .replace(options.remove || /[^\w\s$*_+~.()'"!\-:@]+/g, '')
+      // trim leading/trailing spaces
+      .trim()
+      // convert spaces to replacement character
+      // also remove duplicates of the replacement character
+      .replace(new RegExp('[\\s' + replacement + ']+', 'g'), replacement)
+
+    if (options.lower) {
+      slug = slug.toLowerCase()
+    }
+
+    if (options.strict) {
+      // remove anything besides letters, numbers, and the replacement char
+      slug = slug
+        .replace(new RegExp('[^a-zA-Z0-9' + replacement + ']', 'g'), '')
+    }
+
+    return slug
+  }
+
+  replace.extend = function (customMap) {
+    for (var key in customMap) {
+      charMap[key] = customMap[key]
+    }
+  }
+
+  return replace
+}))
+
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/VueComponents/CreateArticle.vue?vue&type=style&index=0&lang=css&":
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/VueComponents/CreateArticle.vue?vue&type=style&index=0&lang=css& ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./CreateArticle.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/VueComponents/CreateArticle.vue?vue&type=style&index=0&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/lib/addStyles.js":
+/*!****************************************************!*\
+  !*** ./node_modules/style-loader/lib/addStyles.js ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/*
+	MIT License http://www.opensource.org/licenses/mit-license.php
+	Author Tobias Koppers @sokra
+*/
+
+var stylesInDom = {};
+
+var	memoize = function (fn) {
+	var memo;
+
+	return function () {
+		if (typeof memo === "undefined") memo = fn.apply(this, arguments);
+		return memo;
+	};
+};
+
+var isOldIE = memoize(function () {
+	// Test for IE <= 9 as proposed by Browserhacks
+	// @see http://browserhacks.com/#hack-e71d8692f65334173fee715c222cb805
+	// Tests for existence of standard globals is to allow style-loader
+	// to operate correctly into non-standard environments
+	// @see https://github.com/webpack-contrib/style-loader/issues/177
+	return window && document && document.all && !window.atob;
+});
+
+var getTarget = function (target, parent) {
+  if (parent){
+    return parent.querySelector(target);
+  }
+  return document.querySelector(target);
+};
+
+var getElement = (function (fn) {
+	var memo = {};
+
+	return function(target, parent) {
+                // If passing function in options, then use it for resolve "head" element.
+                // Useful for Shadow Root style i.e
+                // {
+                //   insertInto: function () { return document.querySelector("#foo").shadowRoot }
+                // }
+                if (typeof target === 'function') {
+                        return target();
+                }
+                if (typeof memo[target] === "undefined") {
+			var styleTarget = getTarget.call(this, target, parent);
+			// Special case to return head of iframe instead of iframe itself
+			if (window.HTMLIFrameElement && styleTarget instanceof window.HTMLIFrameElement) {
+				try {
+					// This will throw an exception if access to iframe is blocked
+					// due to cross-origin restrictions
+					styleTarget = styleTarget.contentDocument.head;
+				} catch(e) {
+					styleTarget = null;
+				}
+			}
+			memo[target] = styleTarget;
+		}
+		return memo[target]
+	};
+})();
+
+var singleton = null;
+var	singletonCounter = 0;
+var	stylesInsertedAtTop = [];
+
+var	fixUrls = __webpack_require__(/*! ./urls */ "./node_modules/style-loader/lib/urls.js");
+
+module.exports = function(list, options) {
+	if (typeof DEBUG !== "undefined" && DEBUG) {
+		if (typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
+	}
+
+	options = options || {};
+
+	options.attrs = typeof options.attrs === "object" ? options.attrs : {};
+
+	// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
+	// tags it will allow on a page
+	if (!options.singleton && typeof options.singleton !== "boolean") options.singleton = isOldIE();
+
+	// By default, add <style> tags to the <head> element
+        if (!options.insertInto) options.insertInto = "head";
+
+	// By default, add <style> tags to the bottom of the target
+	if (!options.insertAt) options.insertAt = "bottom";
+
+	var styles = listToStyles(list, options);
+
+	addStylesToDom(styles, options);
+
+	return function update (newList) {
+		var mayRemove = [];
+
+		for (var i = 0; i < styles.length; i++) {
+			var item = styles[i];
+			var domStyle = stylesInDom[item.id];
+
+			domStyle.refs--;
+			mayRemove.push(domStyle);
+		}
+
+		if(newList) {
+			var newStyles = listToStyles(newList, options);
+			addStylesToDom(newStyles, options);
+		}
+
+		for (var i = 0; i < mayRemove.length; i++) {
+			var domStyle = mayRemove[i];
+
+			if(domStyle.refs === 0) {
+				for (var j = 0; j < domStyle.parts.length; j++) domStyle.parts[j]();
+
+				delete stylesInDom[domStyle.id];
+			}
+		}
+	};
+};
+
+function addStylesToDom (styles, options) {
+	for (var i = 0; i < styles.length; i++) {
+		var item = styles[i];
+		var domStyle = stylesInDom[item.id];
+
+		if(domStyle) {
+			domStyle.refs++;
+
+			for(var j = 0; j < domStyle.parts.length; j++) {
+				domStyle.parts[j](item.parts[j]);
+			}
+
+			for(; j < item.parts.length; j++) {
+				domStyle.parts.push(addStyle(item.parts[j], options));
+			}
+		} else {
+			var parts = [];
+
+			for(var j = 0; j < item.parts.length; j++) {
+				parts.push(addStyle(item.parts[j], options));
+			}
+
+			stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
+		}
+	}
+}
+
+function listToStyles (list, options) {
+	var styles = [];
+	var newStyles = {};
+
+	for (var i = 0; i < list.length; i++) {
+		var item = list[i];
+		var id = options.base ? item[0] + options.base : item[0];
+		var css = item[1];
+		var media = item[2];
+		var sourceMap = item[3];
+		var part = {css: css, media: media, sourceMap: sourceMap};
+
+		if(!newStyles[id]) styles.push(newStyles[id] = {id: id, parts: [part]});
+		else newStyles[id].parts.push(part);
+	}
+
+	return styles;
+}
+
+function insertStyleElement (options, style) {
+	var target = getElement(options.insertInto)
+
+	if (!target) {
+		throw new Error("Couldn't find a style target. This probably means that the value for the 'insertInto' parameter is invalid.");
+	}
+
+	var lastStyleElementInsertedAtTop = stylesInsertedAtTop[stylesInsertedAtTop.length - 1];
+
+	if (options.insertAt === "top") {
+		if (!lastStyleElementInsertedAtTop) {
+			target.insertBefore(style, target.firstChild);
+		} else if (lastStyleElementInsertedAtTop.nextSibling) {
+			target.insertBefore(style, lastStyleElementInsertedAtTop.nextSibling);
+		} else {
+			target.appendChild(style);
+		}
+		stylesInsertedAtTop.push(style);
+	} else if (options.insertAt === "bottom") {
+		target.appendChild(style);
+	} else if (typeof options.insertAt === "object" && options.insertAt.before) {
+		var nextSibling = getElement(options.insertAt.before, target);
+		target.insertBefore(style, nextSibling);
+	} else {
+		throw new Error("[Style Loader]\n\n Invalid value for parameter 'insertAt' ('options.insertAt') found.\n Must be 'top', 'bottom', or Object.\n (https://github.com/webpack-contrib/style-loader#insertat)\n");
+	}
+}
+
+function removeStyleElement (style) {
+	if (style.parentNode === null) return false;
+	style.parentNode.removeChild(style);
+
+	var idx = stylesInsertedAtTop.indexOf(style);
+	if(idx >= 0) {
+		stylesInsertedAtTop.splice(idx, 1);
+	}
+}
+
+function createStyleElement (options) {
+	var style = document.createElement("style");
+
+	if(options.attrs.type === undefined) {
+		options.attrs.type = "text/css";
+	}
+
+	if(options.attrs.nonce === undefined) {
+		var nonce = getNonce();
+		if (nonce) {
+			options.attrs.nonce = nonce;
+		}
+	}
+
+	addAttrs(style, options.attrs);
+	insertStyleElement(options, style);
+
+	return style;
+}
+
+function createLinkElement (options) {
+	var link = document.createElement("link");
+
+	if(options.attrs.type === undefined) {
+		options.attrs.type = "text/css";
+	}
+	options.attrs.rel = "stylesheet";
+
+	addAttrs(link, options.attrs);
+	insertStyleElement(options, link);
+
+	return link;
+}
+
+function addAttrs (el, attrs) {
+	Object.keys(attrs).forEach(function (key) {
+		el.setAttribute(key, attrs[key]);
+	});
+}
+
+function getNonce() {
+	if (false) {}
+
+	return __webpack_require__.nc;
+}
+
+function addStyle (obj, options) {
+	var style, update, remove, result;
+
+	// If a transform function was defined, run it on the css
+	if (options.transform && obj.css) {
+	    result = typeof options.transform === 'function'
+		 ? options.transform(obj.css) 
+		 : options.transform.default(obj.css);
+
+	    if (result) {
+	    	// If transform returns a value, use that instead of the original css.
+	    	// This allows running runtime transformations on the css.
+	    	obj.css = result;
+	    } else {
+	    	// If the transform function returns a falsy value, don't add this css.
+	    	// This allows conditional loading of css
+	    	return function() {
+	    		// noop
+	    	};
+	    }
+	}
+
+	if (options.singleton) {
+		var styleIndex = singletonCounter++;
+
+		style = singleton || (singleton = createStyleElement(options));
+
+		update = applyToSingletonTag.bind(null, style, styleIndex, false);
+		remove = applyToSingletonTag.bind(null, style, styleIndex, true);
+
+	} else if (
+		obj.sourceMap &&
+		typeof URL === "function" &&
+		typeof URL.createObjectURL === "function" &&
+		typeof URL.revokeObjectURL === "function" &&
+		typeof Blob === "function" &&
+		typeof btoa === "function"
+	) {
+		style = createLinkElement(options);
+		update = updateLink.bind(null, style, options);
+		remove = function () {
+			removeStyleElement(style);
+
+			if(style.href) URL.revokeObjectURL(style.href);
+		};
+	} else {
+		style = createStyleElement(options);
+		update = applyToTag.bind(null, style);
+		remove = function () {
+			removeStyleElement(style);
+		};
+	}
+
+	update(obj);
+
+	return function updateStyle (newObj) {
+		if (newObj) {
+			if (
+				newObj.css === obj.css &&
+				newObj.media === obj.media &&
+				newObj.sourceMap === obj.sourceMap
+			) {
+				return;
+			}
+
+			update(obj = newObj);
+		} else {
+			remove();
+		}
+	};
+}
+
+var replaceText = (function () {
+	var textStore = [];
+
+	return function (index, replacement) {
+		textStore[index] = replacement;
+
+		return textStore.filter(Boolean).join('\n');
+	};
+})();
+
+function applyToSingletonTag (style, index, remove, obj) {
+	var css = remove ? "" : obj.css;
+
+	if (style.styleSheet) {
+		style.styleSheet.cssText = replaceText(index, css);
+	} else {
+		var cssNode = document.createTextNode(css);
+		var childNodes = style.childNodes;
+
+		if (childNodes[index]) style.removeChild(childNodes[index]);
+
+		if (childNodes.length) {
+			style.insertBefore(cssNode, childNodes[index]);
+		} else {
+			style.appendChild(cssNode);
+		}
+	}
+}
+
+function applyToTag (style, obj) {
+	var css = obj.css;
+	var media = obj.media;
+
+	if(media) {
+		style.setAttribute("media", media)
+	}
+
+	if(style.styleSheet) {
+		style.styleSheet.cssText = css;
+	} else {
+		while(style.firstChild) {
+			style.removeChild(style.firstChild);
+		}
+
+		style.appendChild(document.createTextNode(css));
+	}
+}
+
+function updateLink (link, options, obj) {
+	var css = obj.css;
+	var sourceMap = obj.sourceMap;
+
+	/*
+		If convertToAbsoluteUrls isn't defined, but sourcemaps are enabled
+		and there is no publicPath defined then lets turn convertToAbsoluteUrls
+		on by default.  Otherwise default to the convertToAbsoluteUrls option
+		directly
+	*/
+	var autoFixUrls = options.convertToAbsoluteUrls === undefined && sourceMap;
+
+	if (options.convertToAbsoluteUrls || autoFixUrls) {
+		css = fixUrls(css);
+	}
+
+	if (sourceMap) {
+		// http://stackoverflow.com/a/26603875
+		css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
+	}
+
+	var blob = new Blob([css], { type: "text/css" });
+
+	var oldSrc = link.href;
+
+	link.href = URL.createObjectURL(blob);
+
+	if(oldSrc) URL.revokeObjectURL(oldSrc);
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/lib/urls.js":
+/*!***********************************************!*\
+  !*** ./node_modules/style-loader/lib/urls.js ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+/**
+ * When source maps are enabled, `style-loader` uses a link element with a data-uri to
+ * embed the css on the page. This breaks all relative urls because now they are relative to a
+ * bundle instead of the current page.
+ *
+ * One solution is to only use full urls, but that may be impossible.
+ *
+ * Instead, this function "fixes" the relative urls to be absolute according to the current page location.
+ *
+ * A rudimentary test suite is located at `test/fixUrls.js` and can be run via the `npm test` command.
+ *
+ */
+
+module.exports = function (css) {
+  // get current location
+  var location = typeof window !== "undefined" && window.location;
+
+  if (!location) {
+    throw new Error("fixUrls requires window.location");
+  }
+
+	// blank or null?
+	if (!css || typeof css !== "string") {
+	  return css;
+  }
+
+  var baseUrl = location.protocol + "//" + location.host;
+  var currentDir = baseUrl + location.pathname.replace(/\/[^\/]*$/, "/");
+
+	// convert each url(...)
+	/*
+	This regular expression is just a way to recursively match brackets within
+	a string.
+
+	 /url\s*\(  = Match on the word "url" with any whitespace after it and then a parens
+	   (  = Start a capturing group
+	     (?:  = Start a non-capturing group
+	         [^)(]  = Match anything that isn't a parentheses
+	         |  = OR
+	         \(  = Match a start parentheses
+	             (?:  = Start another non-capturing groups
+	                 [^)(]+  = Match anything that isn't a parentheses
+	                 |  = OR
+	                 \(  = Match a start parentheses
+	                     [^)(]*  = Match anything that isn't a parentheses
+	                 \)  = Match a end parentheses
+	             )  = End Group
+              *\) = Match anything and then a close parens
+          )  = Close non-capturing group
+          *  = Match anything
+       )  = Close capturing group
+	 \)  = Match a close parens
+
+	 /gi  = Get all matches, not the first.  Be case insensitive.
+	 */
+	var fixedCss = css.replace(/url\s*\(((?:[^)(]|\((?:[^)(]+|\([^)(]*\))*\))*)\)/gi, function(fullMatch, origUrl) {
+		// strip quotes (if they exist)
+		var unquotedOrigUrl = origUrl
+			.trim()
+			.replace(/^"(.*)"$/, function(o, $1){ return $1; })
+			.replace(/^'(.*)'$/, function(o, $1){ return $1; });
+
+		// already a full url? no change
+		if (/^(#|data:|http:\/\/|https:\/\/|file:\/\/\/|\s*$)/i.test(unquotedOrigUrl)) {
+		  return fullMatch;
+		}
+
+		// convert the url to a full url
+		var newUrl;
+
+		if (unquotedOrigUrl.indexOf("//") === 0) {
+		  	//TODO: should we add protocol?
+			newUrl = unquotedOrigUrl;
+		} else if (unquotedOrigUrl.indexOf("/") === 0) {
+			// path should be relative to the base url
+			newUrl = baseUrl + unquotedOrigUrl; // already starts with '/'
+		} else {
+			// path should be relative to current directory
+			newUrl = currentDir + unquotedOrigUrl.replace(/^\.\//, ""); // Strip leading './'
+		}
+
+		// send back the fixed url(...)
+		return "url(" + JSON.stringify(newUrl) + ")";
+	});
+
+	// send back the fixed css
+	return fixedCss;
+};
+
+
+/***/ }),
+
 /***/ "./node_modules/timers-browserify/main.js":
 /*!************************************************!*\
   !*** ./node_modules/timers-browserify/main.js ***!
@@ -19965,6 +22950,14 @@ var render = function() {
     _c(
       "form",
       {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: !_vm.hideArticleForm,
+            expression: "!hideArticleForm"
+          }
+        ],
         attrs: { method: "POST", enctype: "multipart/form-data" },
         on: {
           submit: function($event) {
@@ -19988,6 +22981,7 @@ var render = function() {
                 }
               ],
               staticClass: "form-control",
+              class: { "is-invalid": _vm.errors.title },
               attrs: {
                 type: "text",
                 id: "title",
@@ -20006,8 +23000,8 @@ var render = function() {
               }
             }),
             _vm._v(" "),
-            _c("div", { staticClass: "valid-feedback" }, [
-              _vm._v("\n                    Looks good!\n                ")
+            _c("div", { staticClass: "invalid-feedback" }, [
+              _c("p", [_vm._v(_vm._s(_vm.errors.title))])
             ])
           ]),
           _vm._v(" "),
@@ -20026,6 +23020,7 @@ var render = function() {
                   }
                 ],
                 staticClass: "form-control",
+                class: { "is-invalid": _vm.errors.category },
                 attrs: { name: "category", id: "category" },
                 on: {
                   change: function($event) {
@@ -20055,15 +23050,124 @@ var render = function() {
               0
             ),
             _vm._v(" "),
-            _c("div", { staticClass: "valid-feedback" }, [
-              _vm._v("\n                    Looks good!\n                ")
+            _c("div", { staticClass: "invalid-feedback" }, [
+              _c("p", [_vm._v(_vm._s(_vm.errors.category))])
             ])
           ])
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "form-row" }, [
           _c("div", { staticClass: "form-group col-12" }, [
+            _c("label", { attrs: { for: "slug" } }, [_vm._v("Slug")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: this.slug,
+                  expression: "this.slug"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: {
+                type: "text",
+                id: "slug",
+                name: "slug",
+                placeholder: "Slug",
+                disabled: "disabled",
+                required: "required"
+              },
+              domProps: { value: this.slug },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(this, "slug", $event.target.value)
+                }
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-row" }, [
+          _c("div", { staticClass: "form-group col-12" }, [
             _c("label", { attrs: { for: "content" } }, [_vm._v("Continut")]),
+            _vm._v(" "),
+            _c("br"),
+            _vm._v(" "),
+            _c("div", [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-info",
+                  attrs: { type: "button" },
+                  on: {
+                    click: function($event) {
+                      return _vm.addElement("Title")
+                    }
+                  }
+                },
+                [_vm._v("Titlu")]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-info",
+                  attrs: { type: "button" },
+                  on: {
+                    click: function($event) {
+                      return _vm.addElement("Paragraph")
+                    }
+                  }
+                },
+                [_vm._v("Paragraf")]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-info",
+                  attrs: { type: "button" },
+                  on: {
+                    click: function($event) {
+                      return _vm.addElement("Gist")
+                    }
+                  }
+                },
+                [_vm._v("Gist")]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-info",
+                  attrs: { type: "button" },
+                  on: {
+                    click: function($event) {
+                      return _vm.addElement("Image")
+                    }
+                  }
+                },
+                [_vm._v("Imagine")]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-info",
+                  attrs: { type: "button" },
+                  on: {
+                    click: function($event) {
+                      return _vm.addElement("Quote")
+                    }
+                  }
+                },
+                [_vm._v("Citat")]
+              )
+            ]),
             _vm._v(" "),
             _c("textarea", {
               directives: [
@@ -20074,7 +23178,8 @@ var render = function() {
                   expression: "article.content"
                 }
               ],
-              staticClass: "form-control",
+              staticClass: "form-control mt-3",
+              class: { "is-invalid": _vm.errors.content },
               attrs: {
                 name: "content",
                 id: "content",
@@ -20092,8 +23197,8 @@ var render = function() {
               }
             }),
             _vm._v(" "),
-            _c("div", { staticClass: "valid-feedback" }, [
-              _vm._v("\n                    Looks good!\n                ")
+            _c("div", { staticClass: "invalid-feedback" }, [
+              _c("p", [_vm._v(_vm._s(_vm.errors.content))])
             ])
           ])
         ]),
@@ -20114,6 +23219,7 @@ var render = function() {
                 }
               ],
               staticClass: "form-control",
+              class: { "is-invalid": _vm.errors.est_time },
               attrs: {
                 type: "number",
                 id: "est_time",
@@ -20132,8 +23238,8 @@ var render = function() {
               }
             }),
             _vm._v(" "),
-            _c("div", { staticClass: "valid-feedback" }, [
-              _vm._v("\n                    Looks good!\n                ")
+            _c("div", { staticClass: "invalid-feedback" }, [
+              _c("p", [_vm._v(_vm._s(_vm.errors.est_time))])
             ])
           ]),
           _vm._v(" "),
@@ -20174,6 +23280,60 @@ var render = function() {
         ]),
         _vm._v(" "),
         _vm._m(1)
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: !_vm.hideImagesForm,
+            expression: "!hideImagesForm"
+          }
+        ],
+        staticClass: "form-row"
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "form-group col-12" },
+          [
+            _c("multiple-file-uploader", {
+              attrs: {
+                headerMessage: "",
+                dropAreaPrimaryMessage: "Trage mai multe poze aici",
+                dropAreaSecondaryMessage: "sau apasa click pentru a incarca.",
+                postURL:
+                  "http://localhost:8000/article/create/saveArticleImages",
+                successMessagePath: "Imaginile au fost incarcate!",
+                errorMessagePath: "Imaginilie nu au putut if incarcate!",
+                fileUploadErrorMessage: "",
+                uploadButtonMessage: "Incarca",
+                cancelButtonMessage: "Anuleaza",
+                fileNameMessage: "Nume fisiere",
+                fileSizeMessage: "Marimi fisiere",
+                minFilesErrorMessage:
+                  "Minimul de imagini necesare pentru incarcare",
+                maxFilesErrorMessage:
+                  "Maximul de imagini necesare pentru incarcare",
+                retryErrorMessage:
+                  "Verifica tipul fisierelor si incearca din nou",
+                removeFileMessage: "Sterge fisierele",
+                totalFileMessage: "Numar total de fisiere:",
+                totalUploadSizeMessage: "Marime totala upload fisiere:",
+                postData: this.postSubmitData
+              },
+              on: {
+                "upload-success": _vm.successHandler,
+                "upload-error": _vm.failureHandler
+              }
+            })
+          ],
+          1
+        )
       ]
     )
   ])
@@ -32556,7 +35716,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _CreateArticle_vue_vue_type_template_id_27fc140e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CreateArticle.vue?vue&type=template&id=27fc140e& */ "./resources/js/VueComponents/CreateArticle.vue?vue&type=template&id=27fc140e&");
 /* harmony import */ var _CreateArticle_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CreateArticle.vue?vue&type=script&lang=js& */ "./resources/js/VueComponents/CreateArticle.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _CreateArticle_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./CreateArticle.vue?vue&type=style&index=0&lang=css& */ "./resources/js/VueComponents/CreateArticle.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
 
 
 
@@ -32564,7 +35726,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
   _CreateArticle_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _CreateArticle_vue_vue_type_template_id_27fc140e___WEBPACK_IMPORTED_MODULE_0__["render"],
   _CreateArticle_vue_vue_type_template_id_27fc140e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
@@ -32593,6 +35755,22 @@ component.options.__file = "resources/js/VueComponents/CreateArticle.vue"
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateArticle_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./CreateArticle.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/VueComponents/CreateArticle.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateArticle_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/VueComponents/CreateArticle.vue?vue&type=style&index=0&lang=css&":
+/*!***************************************************************************************!*\
+  !*** ./resources/js/VueComponents/CreateArticle.vue?vue&type=style&index=0&lang=css& ***!
+  \***************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateArticle_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./CreateArticle.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/VueComponents/CreateArticle.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateArticle_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateArticle_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateArticle_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateArticle_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateArticle_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 

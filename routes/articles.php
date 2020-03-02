@@ -11,6 +11,11 @@ Route::namespace('Articles')->group(function () {
         'uses'          =>  'ArticlesController@saveArticle',
         'middleware'    =>  'auth',
     ]);
+    Route::post('/article/create/saveArticleImages', [
+        'as'            =>  'articles.saveArticleImages',
+        'uses'          =>  'ArticlesController@saveArticleImages',
+        'middleware'    =>  'auth',
+    ]);
     Route::post('/article/fetchArticleData', [
         'as'    =>  'articles.fetchArticleData',
         'uses'  =>  'ArticlesController@fetchArticleData',

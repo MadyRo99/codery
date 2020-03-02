@@ -42,6 +42,7 @@
 </template>
 
 <script>
+    import postscribe from 'postscribe';
     import Newsletter from './Newsletter';
 
     export default {
@@ -67,6 +68,18 @@
         created: function () {
             this.fetchArticle();
         },
+        mounted: function () {
+            window.addEventListener("load", () => {
+                let $gists = $("div[id^=gist]");
+
+                _.forEach($gists, function(gist) {
+                    let id = $(gist).attr('id');
+                    let src = $(gist).attr('data-src');
+
+                    postscribe('#' + id, `<script src="` + src + `"><\/script>`);
+                });
+            });
+        },
         methods: {
             fetchArticle: function () {
                 let parameters = {
@@ -77,12 +90,16 @@
                     .then((response) => {
                         if (response.data.success) {
                             let article = response.data.response;
-                            console.log(article);
+
                             this.article.title = article.title;
                             this.article.est_time = article.est_time;
                             this.article.created_at = article.created_at;
                             this.article.content = article.content;
-                            this.article.main_image = "../storage/articles/" + this.slug + "/" + article.main_image;
+                            if (article.main_image) {
+                                this.article.main_image = "../storage/articles/" + this.slug + "/" + article.main_image;
+                            } else {
+                                this.article.main_image = null;
+                            }
                             this.article.author = {
                                 href: "authors/" + article.author_id,
                                 name: article.author_username,
