@@ -8,6 +8,7 @@
         <div class="login-cont">
             <div class="row">
                 <div class="mx-auto">
+                    <a href="{{ route('home') }}"><img style="width: 225px;" src="images/logo.png" class="img-fluid mx-auto d-block" alt="logo_sp.png"></a>
                     <h1 class="text-center">Bine ai revenit!</h1>
                 </div>
             </div>
