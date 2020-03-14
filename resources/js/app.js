@@ -1,15 +1,22 @@
 require('./bootstrap');
 
 import Vue from 'vue';
+import { BootstrapVue } from 'bootstrap-vue';
+import 'bootstrap-vue/dist/bootstrap-vue.css';
+Vue.use(BootstrapVue);
+
 import ArticleView from './VueComponents/ArticleView';
-import Newsletter from './VueComponents/Newsletter';
 import CreateArticle from './VueComponents/CreateArticle';
+
+import MultipleFileUploader from './VueComponents/MultipleFileUploader';
+import Newsletter from './VueComponents/Newsletter';
 
 const vue = new Vue({
     el: '#app',
     components: {
-        'article-view'  : ArticleView,
-        'newsletter'    : Newsletter,
-        'create-article': CreateArticle,
+        'article-view'           : ArticleView,
+        'create-article'         : CreateArticle,
+        'multiple-file-uploader' : MultipleFileUploader,
+        'newsletter'             : Newsletter,
     }
 });

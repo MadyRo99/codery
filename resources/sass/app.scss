@@ -112,6 +112,10 @@ $blueWhite     : #E8F1F2;
 
         a {
           color: inherit;
+
+          &:hover {
+            color: $lightBlue;
+          }
         }
       }
 
@@ -126,14 +130,11 @@ $blueWhite     : #E8F1F2;
   /* ARTICLE BODY SECTION */
 
   .article-body {
+    margin-top: 15px;
     margin-bottom: 25px;
 
-    .article-image {
-      padding: 25px 0px;
-    }
-
     p {
-      padding: 5px 0px;
+      padding: 10px 0px;
       line-height: 30px;
     }
 
@@ -141,6 +142,71 @@ $blueWhite     : #E8F1F2;
       font-size: 24px;
       padding-bottom: 10px;
     }
+
+    .article-main-image {
+      padding-top: 10px;
+      padding-bottom: 30px;
+    }
+
+    .article-image {
+      padding: 20px 0px;
+    }
+
+    /* BLOCKQUOTE SECTION */
+
+    .blockquote {
+      margin: 0 auto;
+      padding: 1em;
+      width: 90%;
+      border-left: 5px solid #999;
+
+      p {
+        color: #555;
+        font-size: 12pt;
+        line-height: 1.4;
+      }
+
+      footer {
+        margin-top: .5em;
+        padding: 0;
+        color: #777;
+        font-size: 12pt;
+        text-align: left;
+        font-style: italic;
+      }
+    }
+
+    .blockquote:before {
+      display: none;
+    }
+
+    .blockquote:not(:first-of-type) {
+      margin-top: .5em;
+    }
+
+    .blockquote footer:before {
+      content: '— ';
+    }
+
+    .blockquote:nth-of-type(odd) {
+      text-align: right;
+      border-left: none;
+      border-right: 5px solid #999;
+    }
+
+    .blockquote:nth-of-type(odd) footer {
+      text-align: right;
+    }
+
+    .blockquote:nth-of-type(odd) footer:before {
+      content: '';
+    }
+
+    .blockquote:nth-of-type(odd) footer:after {
+      content: ' —';
+    }
+
+    /* END SECTION */
   }
 
   /* END SECTION */

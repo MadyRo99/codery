@@ -8,6 +8,8 @@
 
 <div id="app">
 
+    @yield('partials.navbar')
+
     @yield('content')
 
     @include('partials.scripts')

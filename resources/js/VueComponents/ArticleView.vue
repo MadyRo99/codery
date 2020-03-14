@@ -33,7 +33,7 @@
         </header>
         <div class="article-body">
             <section>
-                <img src="../../../public/images/coding.jpg" alt="coding.jpg" class="article-image img-fluid mx-auto d-block">
+                <img v-if="article.main_image" :src="article.main_image" alt="main_image.jpg" class="article-main-image img-fluid mx-auto d-block">
                 <div v-html="article.content"></div>
             </section>
         </div>
@@ -42,10 +42,11 @@
 </template>
 
 <script>
+    import postscribe from 'postscribe';
     import Newsletter from './Newsletter';
 
     export default {
-        name: 'article',
+        name: 'article-view',
         components: { Newsletter },
         props: ['slug'],
         data() {
@@ -55,17 +56,37 @@
                     slug: "",
                     content: "",
                     est_time: 1,
-                    image: '',
                     created_at: "",
-                    author: {},
+                    main_image: "",
+                    author: {
+                        avatar: "../storage/avatars/user.png"
+                    },
                     category: {},
                 },
             }
         },
-        created: function () {
+        mounted: function () {
             this.fetchArticle();
         },
         methods: {
+            /**
+             * Insert the Gists after the Article Data is fetched.
+             */
+            insertGists: function () {
+                window.addEventListener("load", () => {
+                    let $gists = $("div[id^=gist]");
+
+                    _.forEach($gists, function(gist) {
+                        let id = $(gist).attr('id');
+                        let src = $(gist).attr('data-src');
+
+                        postscribe('#' + id, `<script src="` + src + `"><\/script>`);
+                    });
+                });
+            },
+            /**
+             * Fetch the Article Data.
+             */
             fetchArticle: function () {
                 let parameters = {
                     slug: this.slug
@@ -75,11 +96,18 @@
                     .then((response) => {
                         if (response.data.success) {
                             let article = response.data.response;
-                            console.log(article);
+
                             this.article.title = article.title;
                             this.article.est_time = article.est_time;
                             this.article.created_at = article.created_at;
                             this.article.content = article.content;
+
+                            if (article.main_image) {
+                                this.article.main_image = "../storage/articles/" + this.slug + "/" + article.main_image;
+                            } else {
+                                this.article.main_image = null;
+                            }
+
                             this.article.author = {
                                 href: "authors/" + article.author_id,
                                 name: article.author_username,
@@ -89,6 +117,8 @@
                                 href: "categories/" + article.category_id,
                                 name: article.category_name,
                             };
+
+                            this.insertGists();
                         } else {
                             console.log(response.data.response);
                         }

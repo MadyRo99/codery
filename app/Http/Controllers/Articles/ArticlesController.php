@@ -31,7 +31,7 @@ class ArticlesController extends Controller
         if ($article) {
             return view(
                 'articles.index'
-            )->withSlug($slug);
+            )->withSlug($slug)->withTitle($article->title);
         }
 
         abort(404);
@@ -48,7 +48,7 @@ class ArticlesController extends Controller
 
         $articleData = DB::table('articles')
             ->select([
-                'articles.title', 'articles.content', 'articles.est_time', 'articles.created_at',
+                'articles.title', 'articles.content', 'articles.est_time', 'articles.created_at', 'articles.main_image',
                 'article_categories.id AS category_id', 'article_categories.name AS category_name',
                 'users.id AS author_id', 'users.username AS author_username', 'users.avatar AS author_avatar',
             ])
@@ -112,6 +112,8 @@ class ArticlesController extends Controller
             'article_category'  => 'required|integer|exists:article_categories,id',
             'content'           => 'required|min:10',
             'est_time'          => 'required|integer',
+            'slug'              => 'required|string|min:18',
+            'main_image'        => 'nullable|mimes:jpeg,png',
         ];
 
         $validator = Validator::make($request->all(), $rules);
@@ -130,5 +132,44 @@ class ArticlesController extends Controller
             'response' => $savedArticle,
             'success'  => true,
         ], 200);
+    }
+
+    /**
+     * Save the images used in the article after submission.
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function saveArticleImages(Request $request)
+    {
+        $rules = [
+            'slug'              => 'required|string|exists:articles,slug',
+            'items'             => 'required',
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'info' => $validator->getMessageBag()->toArray(),
+                'success'  => false,
+            ], 200);
+        }
+
+        $articleView = new ArticlesView();
+        $savedArticle = $articleView->saveArticleImages($request);
+
+        if ($savedArticle) {
+            return response()->json([
+                'response' => $savedArticle,
+                'info'     => "Imaginile articolului au fost incarcate cu succes.",
+                'success'  => true,
+            ], 200);
+        } else {
+            return response()->json([
+                'info'     => "Se pare ca a aparut o problema la incarcarea imaginilor. Verifica ca toate imaginile sa aiba una dintre extensiile: 'png', 'jpg', 'jpeg'.",
+                'success'  => false,
+            ], 200);
+        }
     }
 }
