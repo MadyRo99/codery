@@ -112,7 +112,7 @@ class ArticlesController extends Controller
             'article_category'  => 'required|integer|exists:article_categories,id',
             'content'           => 'required|min:10',
             'est_time'          => 'required|integer',
-            'slug'              => 'required',
+            'slug'              => 'required|string|min:18',
             'main_image'        => 'nullable|mimes:jpeg,png',
         ];
 
@@ -151,7 +151,7 @@ class ArticlesController extends Controller
 
         if ($validator->fails()) {
             return response()->json([
-                'response' => $validator->getMessageBag()->toArray(),
+                'info' => $validator->getMessageBag()->toArray(),
                 'success'  => false,
             ], 200);
         }
@@ -162,13 +162,14 @@ class ArticlesController extends Controller
         if ($savedArticle) {
             return response()->json([
                 'response' => $savedArticle,
+                'info'     => "Imaginile articolului au fost incarcate cu succes.",
                 'success'  => true,
             ], 200);
         } else {
             return response()->json([
-                'response' => $savedArticle,
-                'success'  => true,
-            ], 422);
+                'info'     => "Se pare ca a aparut o problema la incarcarea imaginilor. Verifica ca toate imaginile sa aiba una dintre extensiile: 'png', 'jpg', 'jpeg'.",
+                'success'  => false,
+            ], 200);
         }
     }
 }

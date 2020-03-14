@@ -86,8 +86,8 @@ class ArticlesView
             }
 
             $image->storeAs('articles/' . $slug . '/', $imageName, 'public');
-
-            return true;
         }
+
+        return true;
     }
 }
