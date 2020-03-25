@@ -1,5 +1,5 @@
 <template>
-    <div class="container create-article">
+    <div class="container edit-article">
         <br>
         <form @submit.prevent="saveArticle" method="POST" enctype="multipart/form-data">
             <div class="loader">
@@ -8,7 +8,7 @@
             <div class="form-row">
                 <div class="form-group col-6">
                     <label for="title">Titlu</label>
-                    <input class="form-control" v-bind:class="{ 'is-invalid': errors.title }" :disabled="disableForm === true" type="text" minlength="5" maxlength="75" id="title" name="title" placeholder="Titlu" v-model="article.title" required="required">
+                    <input class="form-control" v-bind:class="{ 'is-invalid': errors.title }" :disabled="disableForm === true" type="text" id="title" name="title" placeholder="Titlu" v-model="article.title" required="required">
                     <div class="invalid-feedback">
                         <p>{{ errors.title }}</p>
                     </div>
@@ -24,26 +24,44 @@
                 </div>
             </div>
             <div class="form-row">
-                <div class="form-group col-12">
+                <div class="form-group col-6">
                     <label for="slug">Slug</label>
-                    <input class="form-control" v-bind:class="{ 'is-invalid': errors.slug }" v-model="this.slug" type="text" id="slug" name="slug" placeholder="Slug" disabled="disabled" required="required">
+                    <input class="form-control" v-bind:class="{ 'is-invalid': errors.slug }" :disabled="disableForm === true" v-model="this.slug" type="text" id="slug" name="slug" placeholder="Slug" disabled="disabled" required="required">
                     <div class="invalid-feedback">
                         <p>{{ errors.slug }}</p>
                     </div>
+                </div>
+                <div class="form-group col-3">
+                    <label for="status">Status</label>
+                    <select class="form-control" v-bind:class="{ 'is-invalid': errors.status }" :disabled="disableForm === true" v-model="article.status" name="status" id="status">
+                        <option value="0">Inactiv</option>
+                        <option value="1">Activ</option>
+                    </select>
+                    <div class="invalid-feedback">
+                        <p>{{ errors.status }}</p>
+                    </div>
+                </div>
+                <div class="form-group col-3">
+                    <b-button
+                            class="btn btn-danger"
+                            style="position: relative; top: 32px; width: 100%;"
+                            @click="disableForm = true"
+                            v-b-modal.deleteModal
+                    >Stergere</b-button>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-12">
                     <label for="content">Continut</label>
                     <br>
-                    <div v-show="disableForm !== true">
+                    <div>
                         <button type="button" class="btn btn-info" @click="addElement('Title')">Titlu</button>
                         <button type="button" class="btn btn-info" @click="addElement('Paragraph')">Paragraf</button>
                         <button type="button" class="btn btn-info" @click="addElement('Gist')">Gist</button>
                         <button type="button" class="btn btn-info" @click="addElement('Image')">Imagine</button>
                         <button type="button" class="btn btn-info" @click="addElement('Quote')">Citat</button>
                     </div>
-                    <textarea class="form-control mt-3" :disabled="disableForm === true" v-bind:class="{ 'is-invalid': errors.content }" minlength="10" name="content" id="content" rows="15" v-model="article.content" placeholder="Continutul articolului..."></textarea>
+                    <textarea class="form-control mt-3" v-bind:class="{ 'is-invalid': errors.content }" :disabled="disableForm === true" minlength="10" name="content" id="content" rows="15" v-model="article.content" placeholder="Continutul articolului..."></textarea>
                     <div class="invalid-feedback">
                         <p>{{ errors.content }}</p>
                     </div>
@@ -65,20 +83,20 @@
                         </div>
                         <div class="custom-file">
                             <input type="file" name="main_image" :disabled="disableForm === true" class="custom-file-input" id="main_image" @change="processFile($event)">
-                            <label class="custom-file-label" for="main_image">{{ this.article.main_image || "Alege imagine"}}</label>
+                            <label class="custom-file-label" for="main_image">{{ this.article.displayMainImage }}</label>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-12">
-                    <button class="btn btn-primary" type="submit" v-show="disableForm !== true">Adauga Articol</button>
-                    <b-button class="btn btn-dark" v-show="disableForm === true" v-b-modal.leaveModal>Vizualizeaza Articol</b-button>
+                    <button class="btn btn-primary" type="submit">Salveaza Articol</button>
+                    <b-button class="btn btn-dark" v-b-modal.leaveModal>Vizualizeaza Articol</b-button>
                 </div>
             </div>
         </form>
-        <div class="form-row" v-show="!hideImagesForm">
-            <div class="form-group col-12">
+        <div class="form-row">
+            <div class="form-group col-12" style="margin-bottom: 0;">
                 <multiple-file-uploader
                         headerMessage=""
                         dropAreaPrimaryMessage="Trage imaginile articolului aici"
@@ -102,6 +120,35 @@
                 ></multiple-file-uploader>
             </div>
         </div>
+        <h3 v-if="article.images.length">Imaginile atribuite articolului:</h3>
+        <h3 v-else>Nu exista imagini atribuite articolului.</h3>
+        <br>
+        <div class="row">
+            <div class="col-md-3" v-for="image in article.images">
+                <b-card :title=image
+                        :img-src='"../../storage/articles/" + slug + "/" + image'
+                        img-alt="article_image"
+                        img-top
+                        tag="article"
+                        class="mb-3">
+                    <b-button href="#" variant="danger" @click="deleteImage(image)">Sterge</b-button>
+                </b-card>
+            </div>
+        </div>
+        <div>
+            <b-modal
+                     id="deleteModal"
+                     title="Stergere Articolul"
+                     ok-title="Stergere"
+                     ok-variant="danger"
+                     cancel-title="Anuleaza"
+                     @hide="disableForm = false"
+                     @cancel="disableForm = false"
+                     @ok="deleteArticle">
+                <p class="my-4">Esti sigur ca vrei sa stergi acest articol?</p>
+                <p class="my-4">Odata sters, acesta nu va mai putea fi recuperat.</p>
+            </b-modal>
+        </div>
         <div>
             <b-modal
                     id="leaveModal"
@@ -111,20 +158,25 @@
                     cancel-title="Anuleaza"
                     @ok="leaveArticle">
                 <p class="my-4">Esti sigur ca vrei sa parasesti pagina?</p>
-                <p class="my-4">Nu uita sa incarci imaginile folosite in continutul articolului.</p>
+                <p class="my-4">Toate modificare nesalvate nu vor fi pastrate.</p>
             </b-modal>
         </div>
     </div>
 </template>
 
 <script>
-    import slugify from 'slugify';
     import { BounceLoader } from '@saeris/vue-spinners';
     import MultipleFileUploader from './MultipleFileUploader';
 
     export default {
-        name: 'create-article',
+        name: 'edit-article',
         components: { BounceLoader, MultipleFileUploader },
+        props: {
+            slug: {
+                type: String,
+                required: true,
+            },
+        },
         data() {
             return {
                 availableCategories: [],
@@ -134,7 +186,10 @@
                     est_time: 1,
                     content: "",
                     main_image: "",
-                    slug: "",
+                    images: [],
+                    status: "0",
+                    savedMainImage: null,
+                    displayMainImage: "Alege imagine",
                 },
                 errors: {
                     title: "",
@@ -142,6 +197,7 @@
                     est_time: "",
                     content: "",
                     slug: "",
+                    status: "",
                 },
                 loading: false,
                 loader: {
@@ -150,21 +206,13 @@
                     margin: 0,
                 },
                 disableForm: true,
-                hideImagesForm: true,
             }
         },
         created: function () {
-            this.randomString = this.generateRandomString(12);
+            this.fetchArticle();
             this.setShortcuts();
-            this.getCategories();
         },
         computed: {
-            /**
-             * Compute the slug input.
-             */
-            slug: function () {
-                return (slugify(this.article.title) + "-" + this.randomString).toLowerCase().trim();
-            },
             /**
              * Set the Image Button insert content.
              */
@@ -174,21 +222,41 @@
         },
         methods: {
             /**
-             * Get the available categories for the new article.
+             * Fetch the Article Data as well as the available categories.
              */
-            getCategories: function () {
+            fetchArticle: function () {
                 this.loading = true;
-                axios.get('/article/create/getCategories')
-                    .then(function (response) {
+                let parameters = {
+                    slug: this.slug
+                };
+
+                axios.post('/article/fetchUpdateArticleData', parameters)
+                    .then((response) => {
                         if (response.data.success) {
-                            this.availableCategories = response.data.response;
-                            this.disableForm = false;
-                            this.loading = false;
+                            let article = response.data.response.article;
+
+                            this.article.title = article.title;
+                            this.article.category = article.article_category;
+                            this.article.est_time = article.est_time;
+                            this.article.content = article.content;
+                            this.article.main_image = article.main_image;
+                            this.article.savedMainImage = article.main_image || null;
+                            this.article.displayMainImage = article.main_image || "Alege imagine";
+                            this.article.images = article.images;
+                            this.article.status = article.status;
+
+                            if (response.data.response.categories) {
+                                this.disableForm = false;
+                                this.loading = false;
+                                this.availableCategories = response.data.response.categories;
+                            } else {
+                                this.toast('b-toaster-bottom-right', "danger", "Oops!", "Se pare ca a aparut o problema la incarcarea paginii. Te rog incearca din nou mai tarziu.");
+                            }
                         } else {
                             this.toast('b-toaster-bottom-right', "danger", "Oops!", "Se pare ca a aparut o problema la incarcarea paginii. Te rog incearca din nou mai tarziu.");
                         }
-                    }.bind(this))
-                    .catch(function (error) {
+                    })
+                    .catch(function () {
                         this.toast('b-toaster-bottom-right', "danger", "Oops!", "Se pare ca a aparut o problema la incarcarea paginii. Te rog incearca din nou mai tarziu.");
                     }.bind(this));
             },
@@ -201,7 +269,6 @@
                 }
 
                 this.loading = true;
-                this.disableForm = true;
                 let formData = new FormData();
 
                 const config = {
@@ -209,44 +276,101 @@
                 };
 
                 formData.append('title', this.article.title.trim());
-                formData.append('article_category', this.article.category.trim());
+                formData.append('article_category', this.article.category);
                 formData.append('content', this.article.content.trim());
                 formData.append('est_time', this.article.est_time);
                 formData.append('main_image', this.article.main_image);
                 formData.append('slug', this.slug);
+                formData.append('status', this.article.status);
 
-                axios.post('/article/create/saveArticle', formData, config)
+                axios.post('/article/edit/' + this.slug + '/updateArticle', formData, config)
                     .then(function (response) {
                         if (response.data.success) {
-                            this.toast('b-toaster-bottom-right', "success", "Succes!", "Articolul a fost salvat cu succes.");
-
-                            if (this.article.content.indexOf("<img") !== -1) {
-                                this.hideImagesForm = false;
-                                this.loading = false;
-
-                                $("html, body").animate({
-                                    scrollTop: $(document).height()
-                                }, 1000);
-                            } else {
-                                window.setTimeout(() => {
-                                    window.location = this.slug
-                                }, 4500);
-                                this.toast('b-toaster-bottom-right', "success", "Succes!", "Vei fi redirectionat catre articol in cateva secunde.");
+                            let updatedMainImage = response.data.response.main_image;
+                            if (updatedMainImage != this.article.savedMainImage) {
+                                this.article.main_image = null;
+                                this.article.savedMainImage = updatedMainImage;
+                                this.article.images.push(updatedMainImage);
                             }
+                            this.toast('b-toaster-bottom-right', "success", "Succes!", "Articolul a fost salvat cu succes.");
                         } else {
                             _.forEach(response.data.response, function(error) {
                                 this.toast('b-toaster-bottom-right', "danger", "Oops!", error);
                             }.bind(this));
-
-                            this.disableForm = false;
-                            this.loading = false;
                         }
                     }.bind(this)).catch(function (error) {
-                        this.toast('b-toaster-bottom-right', "danger", "Oops!", "Se pare ca a aparut o problema la salvarea articolului. Te rog incearca din nou mai tarziu.");
-
-                        this.disableForm = false;
+                        this.toast('b-toaster-bottom-right', "danger", error);
+                    }.bind(this)).finally(function () {
                         this.loading = false;
                     }.bind(this));
+            },
+            /**
+             * Delete an image from the article.
+             */
+            deleteImage: function (imageName) {
+                this.loading = true;
+                let parameters = {
+                    slug     : this.slug,
+                    imageName: imageName,
+                };
+
+                let url = '/article/edit/' + this.slug + '/deleteImage';
+                axios.post(url, parameters)
+                    .then(function (response) {
+                        if (response.data.success) {
+                            _.filter(this.article.images, function(value, index) {
+                                if (value == imageName) {
+                                    this.article.images.splice(index, 1);
+                                }
+                            }.bind(this));
+
+                            if (response.data.mainImage) {
+                                this.article.savedMainImage = null;
+                                this.article.displayMainImage = "Alege imagine";
+                                this.article.main_image = "";
+                            }
+
+                            this.toast('b-toaster-bottom-right', "success", "Succes!", "Imaginea articolului a fost stearsa cu succes.");
+                        } else if (response.data.success === false) {
+                            this.toast('b-toaster-bottom-right', "danger", "Oops!", "A aparut o eroare la stergerea imaginii. Te rog incearca din nou mai tarziu.");
+                        } else {
+                            this.toast('b-toaster-bottom-right', "danger", "Oops!", "Imaginea nu exista. Te rog verifica inca o data acest lucru.");
+                        }
+                    }.bind(this)).catch(function (error) {
+                        this.toast('b-toaster-bottom-right', "danger", "Oops!", "A aparut o eroare la stergerea imaginii. Te rog incearca din nou mai tarziu.");
+                    }.bind(this)).finally(function () {
+                        this.loading = false;
+                    }.bind(this));
+            },
+            /**
+             * Delete the article.
+             */
+            deleteArticle: function () {
+                this.loading = true;
+                let parameters = {
+                    slug     : this.slug,
+                };
+
+                let url = '/article/delete/' + this.slug;
+                axios.post(url, parameters)
+                    .then(function (response) {
+                        if (response.data.success) {
+                            window.location = "../../../";
+                            this.toast('b-toaster-bottom-right', "success", "Succes!", "Articolul a fost sters cu succes. Vei fi redirectionat in cateva secunde.");
+                        } else {
+                            this.toast('b-toaster-bottom-right', "danger", "Oops!", "A aparut o eroare la stergerea articolului. Te rog incearca din nou mai tarziu.");
+                        }
+                    }.bind(this)).catch(function (error) {
+                        this.toast('b-toaster-bottom-right', "danger", "Oops!", "A aparut o eroare la stergerea articolului. Te rog incearca din nou mai tarziu.");
+                    }.bind(this)).finally(function () {
+                        this.loading = false;
+                    }.bind(this));
+            },
+            /**
+             * Redirect to the article page.
+             */
+            leaveArticle: function () {
+                window.location = "../" + this.slug;
             },
             /**
              * Create display message using "toast" bootstrap-vue component.
@@ -264,14 +388,10 @@
              * Display info message after the images are uploaded.
              */
             successHandler: function (response) {
-                this.hideImagesForm = true;
-
+                _.forEach(response.response, function(image) {
+                    this.article.images.push(image);
+                }.bind(this));
                 this.toast('b-toaster-bottom-right', "success", "Succes!", response.info);
-                this.toast('b-toaster-bottom-right', "success", "Succes!", "Vei fi redirectionat catre articol in cateva secunde.");
-
-                window.setTimeout(() => {
-                    window.location = this.slug;
-                }, 4500);
             },
             /**
              * Display error message in case the multi-upload fails.
@@ -304,26 +424,6 @@
                 }
             },
             /**
-             * Redirect to the article page.
-             */
-            leaveArticle: function () {
-                window.location = this.slug;
-            },
-            /**
-             * Generate a random string
-             */
-            generateRandomString: function (length) {
-                let result           = '';
-                let characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-                let charactersLength = characters.length;
-
-                for (let i = 0; i < length; i++) {
-                    result += characters.charAt(Math.floor(Math.random() * charactersLength));
-                }
-
-                return result;
-            },
-            /**
              * Process the uploaded file.
              */
             processFile: function (event) {
@@ -331,15 +431,16 @@
 
                 if (this.isFileImage(file)) {
                     this.article.main_image = file;
+                    this.article.displayMainImage = file.name;
                 } else {
-                    this.toast('b-toaster-bottom-right', "danger", "Oops!", "Imaginea principala trebuia sa aiba una dintre extensiile: 'png', 'jpg', 'jpeg', 'svg'.");
+                    this.toast('b-toaster-bottom-right', "danger", "Oops!", "Imaginea principala trebuia sa aiba una dintre extensiile: 'png', 'jpg', 'jpeg', 'svg.");
                 }
             },
             /**
              * Check if the uploaded file is an image.
              */
             isFileImage: function (file) {
-                const acceptedImageTypes = ['image/jpeg', 'image/png'];
+                const acceptedImageTypes = ['image/jpeg', 'image/png', 'image/svg+xml'];
 
                 return file && acceptedImageTypes.includes(file['type']);
             },
@@ -365,7 +466,20 @@
                 }
                 this.errors.title = "";
 
-                if (!parameters.category.trim().length) {
+                if (this.slug.trim().length < 18 || this.slug.trim().length > 88 || this.slug.trim() === "") {
+                    this.errors.slug = "Slug-ul este gol. Alege un titlu pentru articol.";
+                    return false;
+                }
+                this.errors.slug = "";
+
+                if (parameters.status == "0" || parameters.status == "1") {
+                    this.errors.status = "";
+                } else {
+                    this.errors.status = "Selecteaza statusul articolului.";
+                    return false;
+                }
+
+                if (!parameters.category || parameters.category <= 0) {
                     this.errors.category = "Selecteaza o categorie din lista.";
                     return false;
                 }
@@ -395,16 +509,29 @@
                 }
                 this.errors.est_time = "";
 
-                if (this.slug.trim().length < 18 || this.slug.trim().length > 88 || this.slug.trim() === "") {
-                    this.errors.slug = "Slug-ul este gol. Alege un titlu pentru articol.";
-                    return false;
-                }
-                this.errors.slug = "";
-
                 return true;
             }
         }
     }
 </script>
 
-<style></style>
+<style>
+
+.card {
+    height: 25rem;
+}
+
+.card-title {
+    font-size: 18px;
+}
+
+.card-body a {
+    position: absolute;
+    bottom: 1rem;
+}
+
+.card-img-top {
+    max-height: 17rem;
+}
+
+</style>
