@@ -1,14 +1,12 @@
 /* Primary Colors */
 
-$darkBlue  : #13293D;
-$blue      : #006494;
-$turquoise : #247BA0;
-$lightBlue : #1B98E0;
-$blueWhite     : #E8F1F2;
+$purple : #993FFF;
+$blue   : #44ADDC;
+$green  : #16E8CA;
 
 /* Fonts */
 
-@import url('https://fonts.googleapis.com/css?family=Nunito+Sans|Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Lato|Nunito+Sans|Raleway&display=swap');
 
 /* AUTH SECTION */
 
@@ -29,7 +27,7 @@ $blueWhite     : #E8F1F2;
     -moz-box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
 
     .login-input {
-      border: 2px solid $lightBlue;
+      border: 2px solid $purple;
       font-size: 16px !important;
       height: 40px;
     }
@@ -61,7 +59,72 @@ $blueWhite     : #E8F1F2;
     font-weight: 700;
 
     a {
-      color: $blue;
+      color: $purple;
+    }
+  }
+}
+
+.navbar {
+  .img-container {
+    width: 160px;
+    height: 40px;
+    position: relative;
+
+    img {
+      position: absolute;
+      width: 160px;
+      height: 40px;
+    }
+  }
+
+  .nav-item {
+    margin: 0 15px;
+  }
+
+  .nav-link {
+    color: $purple;
+    font-size: 17px;
+    font-weight: bold;
+    font-family: 'Lato', sans-serif;
+    position: relative;
+
+    &:after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 3px;
+      display: block;
+      margin-top: 8px;
+      right: 0;
+      background: $green;
+      transition: width .2s ease;
+      -webkit-transition: width .2s ease;
+    }
+
+    &:hover:after {
+      width: 100%;
+      left: 0;
+      background: $green;
+    }
+  }
+
+  .active {
+    border-bottom: 1.5px solid $green;
+  }
+
+  #searchPlaceholder {
+    &:focus {
+      border: 1px solid $purple;
+    }
+  }
+
+  #searchButton {
+    border: 1px solid $purple;
+    color: $purple;
+
+    &:hover {
+      background-color: $purple;
+      color: #FFFFFF;
     }
   }
 }
@@ -79,7 +142,9 @@ $blueWhite     : #E8F1F2;
   .article-header {
     .article-title {
       h1 {
+        padding: 10px 0px;
         font-size: 40px;
+        font-weight: bold;
         font-family: 'Raleway', sans-serif;
       }
     }
@@ -95,11 +160,11 @@ $blueWhite     : #E8F1F2;
       }
 
       .author-details {
-        font-size: 16px;
+        font-size: 15px;
         font-family: 'Nunito Sans', sans-serif;
 
         a {
-          color: $lightBlue;
+          color: $purple;
         }
       }
 
@@ -114,7 +179,7 @@ $blueWhite     : #E8F1F2;
           color: inherit;
 
           &:hover {
-            color: $lightBlue;
+            color: $purple;
           }
         }
       }
@@ -134,22 +199,35 @@ $blueWhite     : #E8F1F2;
     margin-bottom: 25px;
 
     p {
-      padding: 10px 0px;
+      padding: 5px 0px;
       line-height: 30px;
+      font-size: 1.05rem;
+
+      @media (max-width: 991px) {
+        font-size: 0.85rem;
+      }
     }
 
     h1 {
       font-size: 24px;
       padding-bottom: 10px;
+
+      @media (max-width: 991px) {
+        font-size: 22px;
+      }
     }
 
     .article-main-image {
-      padding-top: 10px;
-      padding-bottom: 30px;
+      padding-top: 20px;
+      padding-bottom: 40px;
     }
 
     .article-image {
       padding: 20px 0px;
+    }
+
+    .alert {
+      padding: 5px 15px;
     }
 
     /* BLOCKQUOTE SECTION */
@@ -218,7 +296,7 @@ $blueWhite     : #E8F1F2;
     .article-newsletter-left-side {
       height: 250px;
       color: #FFFFFF;
-      background-color: $lightBlue;
+      background-color: #9248fc;
 
       .newsletter-content {
         padding: 0px 25px;
@@ -266,3 +344,18 @@ $blueWhite     : #E8F1F2;
 }
 
 /* END SECTION */
+
+.loader {
+  position:absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  width: 200px;
+  height: 200px;
+}
+
+.highIndex {
+  z-index: 10;
+}

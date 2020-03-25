@@ -8,7 +8,7 @@
 
 <div id="app">
 
-    @yield('partials.navbar')
+    @include('partials.navbar')
 
     @yield('content')
 

@@ -18,6 +18,7 @@ class UsersTableSeeder extends Seeder
             'username' => 'MadyRo',
             'password' => Hash::make('password'),
             'avatar'   => "madalin.png",
+            'role'     => 2,
         ]);
     }
 }

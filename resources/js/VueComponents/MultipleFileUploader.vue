@@ -34,7 +34,6 @@
                     </button>
                 </div>
             </div>
-            <br>
             <div class="successMsg" v-if="successMsg !== ''">{{successMsg}}</div>
             <div class="errorMsg" v-if="errorMsg !== ''">{{fileUploadErrorMessage}}:<br>{{errorMsg}} <br>{{retryErrorMessage}}</div>
             <div class="errorMsg" v-if="itemsAdded && itemsAdded < minItems">{{minFilesErrorMessage}}: {{minItems}}.  <br>{{retryErrorMessage}} </div>
@@ -144,10 +143,6 @@ export default {
           default: true
         }
     },
-
-    /*
-     * The component's data.
-     */
     data() {
         return {
             dragging: false,
@@ -162,9 +157,7 @@ export default {
             isLoaderVisible: false,
         }
     },
-
     methods: {
-        // http://scratch99.com/web-development/javascript/convert-bytes-to-mb-kb/
         bytesToSize(bytes) {
             const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
             if (bytes === 0) return 'n/a';
@@ -172,7 +165,6 @@ export default {
             if (i === 0) return bytes + ' ' + sizes[i];
             return (bytes / Math.pow(1024, i)).toFixed(2) + ' ' + sizes[i];
         },
-
         onChange(e) {
             this.successMsg = '';
             this.errorMsg = '';
@@ -191,7 +183,6 @@ export default {
             }
             this.itemsTotalSize = this.bytesToSize(fileSizes);
         },
-
         removeItems() {
             this.items = '';
             this.itemsAdded = '';
@@ -200,7 +191,6 @@ export default {
             this.itemsTotalSize = '';
             this.dragging = false;
         },
-
         onSubmit() {
             this.isLoaderVisible = true;
 
