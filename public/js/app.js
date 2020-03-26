@@ -46960,7 +46960,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.card {\n    height: 25rem;\n}\n.card-title {\n    font-size: 18px;\n}\n.card-body a {\n    position: absolute;\n    bottom: 1rem;\n}\n.card-img-top {\n    max-height: 17rem;\n}\n\n", ""]);
+exports.push([module.i, "\n.card {\r\n    height: 25rem;\n}\n.card-title {\r\n    font-size: 18px;\n}\n.card-body a {\r\n    position: absolute;\r\n    bottom: 1rem;\n}\n.card-img-top {\r\n    max-height: 17rem;\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -46979,7 +46979,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.uploadBox {\n    position: relative;\n    margin-top: 20px;\n    background: #FFFFFF;\n}\n.uploadBox .uploadBoxMain {\n    position: relative;\n    margin-bottom: 1em;\n}\n\n/* Drag and drop */\n.uploadBox .dropArea {\n    position: relative;\n    width: 100%;\n    height: 300px;\n    border: 5px dashed #00ADCE;\n    text-align: center;\n    font-size: 1.5em;\n    padding-top: 110px;\n}\n.uploadBox .dropArea input {\n    position: absolute;\n    cursor: pointer;\n    top: 0;\n    right: 0;\n    bottom: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    opacity: 0;\n}\n/* End drag and drop */\n\n/* Loader */\n.uploadBox .loader {\n    position: absolute;\n    top: 0;\n    bottom: 0;\n    width: 100%;\n    height: 100%;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    background-color: #fff;\n    opacity: 0.9;\n}\n.uploadBox .loaderImg {\n    border: 9px solid #eee;\n    border-top: 9px solid #00ADCE;\n    border-radius: 50%;\n    width: 70px;\n    height: 70px;\n    -webkit-animation: spin 1s linear infinite;\n            animation: spin 1s linear infinite;\n}\n@-webkit-keyframes spin {\n0% {\n        transform: rotate(0deg);\n}\n100% {\n        transform: rotate(360deg);\n}\n}\n@keyframes spin {\n0% {\n        transform: rotate(0deg);\n}\n100% {\n        transform: rotate(360deg);\n}\n}\n/* End Loader */\n.uploadBox .errorMsg {\n    font-size: 2em;\n    color: #a94442;\n    display: none;\n}\n.uploadBox .successMsg {\n    font-size: 2em;\n    color: #3c763d;\n    display: none;\n}\n", ""]);
+exports.push([module.i, "\n.uploadBox {\r\n    position: relative;\r\n    margin-top: 20px;\r\n    background: #FFFFFF;\n}\n.uploadBox .uploadBoxMain {\r\n    position: relative;\r\n    margin-bottom: 1em;\n}\r\n\r\n/* Drag and drop */\n.uploadBox .dropArea {\r\n    position: relative;\r\n    width: 100%;\r\n    height: 300px;\r\n    border: 5px dashed #00ADCE;\r\n    text-align: center;\r\n    font-size: 1.5em;\r\n    padding-top: 110px;\n}\n.uploadBox .dropArea input {\r\n    position: absolute;\r\n    cursor: pointer;\r\n    top: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    width: 100%;\r\n    height: 100%;\r\n    opacity: 0;\n}\r\n/* End drag and drop */\r\n\r\n/* Loader */\n.uploadBox .loader {\r\n    position: absolute;\r\n    top: 0;\r\n    bottom: 0;\r\n    width: 100%;\r\n    height: 100%;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    background-color: #fff;\r\n    opacity: 0.9;\n}\n.uploadBox .loaderImg {\r\n    border: 9px solid #eee;\r\n    border-top: 9px solid #00ADCE;\r\n    border-radius: 50%;\r\n    width: 70px;\r\n    height: 70px;\r\n    -webkit-animation: spin 1s linear infinite;\r\n            animation: spin 1s linear infinite;\n}\n@-webkit-keyframes spin {\n0% {\r\n        transform: rotate(0deg);\n}\n100% {\r\n        transform: rotate(360deg);\n}\n}\n@keyframes spin {\n0% {\r\n        transform: rotate(0deg);\n}\n100% {\r\n        transform: rotate(360deg);\n}\n}\r\n/* End Loader */\n.uploadBox .errorMsg {\r\n    font-size: 2em;\r\n    color: #a94442;\r\n    display: none;\n}\n.uploadBox .successMsg {\r\n    font-size: 2em;\r\n    color: #3c763d;\r\n    display: none;\n}\r\n", ""]);
 
 // exports
 
@@ -72249,7 +72249,7 @@ var staticRenderFns = [
               _vm._v(" "),
               _c("p", [
                 _vm._v(
-                  "\n                    Primește o dată pe saptămână cele mai bun articole și stai la curent cu lumea tehnologiei.\n                "
+                  "\n                    Primește o dată pe saptămână cele mai bune articole și stai la curent cu lumea tehnologiei.\n                "
                 )
               ]),
               _vm._v(" "),

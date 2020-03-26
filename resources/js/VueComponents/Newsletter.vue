@@ -7,7 +7,7 @@
                         Fii la curent cu lumea IT!
                     </h1>
                     <p>
-                        Primește o dată pe saptămână cele mai bun articole și stai la curent cu lumea tehnologiei.
+                        Primește o dată pe saptămână cele mai bune articole și stai la curent cu lumea tehnologiei.
                     </p>
                     <form>
                         <div class="row">
