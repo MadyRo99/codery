@@ -14,7 +14,7 @@
                         </div>
                         <div class="author-details pl-2 mb-4 align-self-center">
                             <a :href="article.author.href"><p class="author-name mb-1">@{{ article.author.name }}</p></a>
-                            <p class="article-info text-secondary" style="position: absolute;">{{ article.created_at }} | {{ article.est_time }} min</p>
+                            <p class="article-info text-secondary" style="position: absolute;">&#9672; {{ article.created_at }} | {{ article.est_time }} min</p>
                         </div>
                     </div>
                 </div>
