@@ -311,7 +311,14 @@
 }
 
 .article-view .article-newsletter .article-newsletter-left-side .newsletter-content p {
-  font-size: 18px;
+  line-height: 30px;
+  font-size: 1.05rem;
+}
+
+@media (max-width: 991px) {
+  .article-view .article-newsletter .article-newsletter-left-side .newsletter-content p {
+    font-size: 0.9rem;
+  }
 }
 
 .article-view .article-newsletter .article-newsletter-left-side .newsletter-content .info {
@@ -395,10 +402,4 @@
 .article-footer .legal-info a {
   color: #FFFFFF;
 }
-
-/**
-CATEGORIES
-
-LEGAL = TERMS-CONDS/PRIVACY/COPYRIGHT
- */
 

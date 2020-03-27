@@ -321,7 +321,12 @@ $greyFooter : #333333;
         }
 
         p {
-          font-size: 18px;
+          line-height: 30px;
+          font-size: 1.05rem;
+
+          @media (max-width: 991px) {
+            font-size: 0.9rem;
+          }
         }
 
         .info {
@@ -408,9 +413,3 @@ $greyFooter : #333333;
     }
   }
 }
-
-/**
-CATEGORIES
-
-LEGAL = TERMS-CONDS/PRIVACY/COPYRIGHT
- */

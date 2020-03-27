@@ -11,11 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/', [
+    'as'            =>  'acasa',
+    'uses'          =>  'PagesController@getHomePage',
+]);
 
 // Authentication Routes
 require ('auth.php');

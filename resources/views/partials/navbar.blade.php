@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg shadow sticky-top pt-3 pb-3" style="background-color: #FFFFFF;">
     <div class="container">
         <div class="navbar-brand img-container mb-2">
-            <a href="#"><img src="{{asset('images/logo.png')}}" alt="logo.png"></a>
+            <a href="#"><img src="{{asset('images/logo.svg')}}" alt="logo.png"></a>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
