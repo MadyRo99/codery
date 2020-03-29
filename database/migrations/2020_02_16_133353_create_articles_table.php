@@ -19,6 +19,7 @@ class CreateArticlesTable extends Migration
             $table->bigInteger('author_id')->unsigned();
             $table->bigInteger('article_category')->unsigned();
             $table->text('content');
+            $table->text('description');
             $table->integer('est_time');
             $table->string('slug');
             $table->string('main_image')->nullable();

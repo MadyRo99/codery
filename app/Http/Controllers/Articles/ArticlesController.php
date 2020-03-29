@@ -155,6 +155,7 @@ class ArticlesController extends Controller
      */
     public function updateArticle(Request $request)
     {
+        //TODO: description max length 550 CHARACTERS
         $rules = [
             'title'             => 'required|string|max:75|min:5',
             'article_category'  => 'required|integer|exists:article_categories,id',

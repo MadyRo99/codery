@@ -11,6 +11,7 @@ import CreateArticle from './VueComponents/CreateArticle';
 import EditArticle from './VueComponents/EditArticle';
 
 import { BounceLoader } from '@saeris/vue-spinners';
+import Pagination from './VueComponents/Pagination';
 import MultipleFileUploader from './VueComponents/MultipleFileUploader';
 import Newsletter from './VueComponents/Newsletter';
 
@@ -22,7 +23,8 @@ const vue = new Vue({
         'create-article'         : CreateArticle,
         'edit-article'           : EditArticle,
         'bounce-loader'          : BounceLoader,
+        'pagination'             : Pagination,
         'multiple-file-uploader' : MultipleFileUploader,
         'newsletter'             : Newsletter,
-    }
+    },
 });

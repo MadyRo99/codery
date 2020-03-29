@@ -18,6 +18,11 @@ Route::get('/', [
     'uses'          =>  'PagesController@getHomePage',
 ]);
 
+Route::get('/getArticles', [
+    'as'            =>  'getArticles',
+    'uses'          =>  'PagesController@getArticles',
+]);
+
 // Authentication Routes
 require ('auth.php');
 
