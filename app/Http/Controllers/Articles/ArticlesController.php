@@ -155,10 +155,12 @@ class ArticlesController extends Controller
      */
     public function updateArticle(Request $request)
     {
+        //TODO: description max length 550 CHARACTERS
         $rules = [
             'title'             => 'required|string|max:75|min:5',
             'article_category'  => 'required|integer|exists:article_categories,id',
             'content'           => 'required|min:10',
+            'description'       => 'nullable',
             'est_time'          => 'required|integer',
             'slug'              => 'required|string|min:18',
             'status'            => ['required', new ArticleStatus],
@@ -301,6 +303,7 @@ class ArticlesController extends Controller
             'title'             => 'required|string|max:75|min:5',
             'article_category'  => 'required|integer|exists:article_categories,id',
             'content'           => 'required|min:10',
+            'description'       => 'nullable',
             'est_time'          => 'required|integer',
             'slug'              => 'required|string|min:18',
             'main_image'        => 'nullable|mimes:jpeg,png',

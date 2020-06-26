@@ -68,6 +68,15 @@
                 </div>
             </div>
             <div class="form-row">
+                <div class="form-group col-12">
+                    <label for="content">Descriere</label>
+                    <textarea class="form-control mt-3" v-bind:class="{ 'is-invalid': errors.description }" :disabled="disableForm === true" minlength="10" name="description" id="description" rows="5" v-model="article.description" placeholder="Descrierea articolului..."></textarea>
+                    <div class="invalid-feedback">
+                        <p>{{ errors.description }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
                 <div class="form-group col-2">
                     <label for="est_time">Timp</label>
                     <input class="form-control" v-bind:class="{ 'is-invalid': errors.est_time }" :disabled="disableForm === true" type="number" id="est_time" name="est_time" placeholder="Timp estimativ" v-model="article.est_time" required="required">
@@ -185,6 +194,7 @@
                     category: "1",
                     est_time: 1,
                     content: "",
+                    description: "",
                     main_image: "",
                     images: [],
                     status: "0",
@@ -196,6 +206,7 @@
                     category: "",
                     est_time: "",
                     content: "",
+                    description: "",
                     slug: "",
                     status: "",
                 },
@@ -239,6 +250,7 @@
                             this.article.category = article.article_category;
                             this.article.est_time = article.est_time;
                             this.article.content = article.content;
+                            this.article.description = article.description;
                             this.article.main_image = article.main_image;
                             this.article.savedMainImage = article.main_image || null;
                             this.article.displayMainImage = article.main_image || "Alege imagine";
@@ -278,6 +290,7 @@
                 formData.append('title', this.article.title.trim());
                 formData.append('article_category', this.article.category);
                 formData.append('content', this.article.content.trim());
+                formData.append('description', this.article.description.trim());
                 formData.append('est_time', this.article.est_time);
                 formData.append('main_image', this.article.main_image);
                 formData.append('slug', this.slug);
@@ -300,7 +313,7 @@
                         }
                     }.bind(this)).catch(function (error) {
                         this.toast('b-toaster-bottom-right', "danger", error);
-                    }.bind(this)).finally(function () {
+                    }.bind(this)).then(function () {
                         this.loading = false;
                     }.bind(this));
             },

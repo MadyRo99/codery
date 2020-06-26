@@ -50,6 +50,15 @@
                 </div>
             </div>
             <div class="form-row">
+                <div class="form-group col-12">
+                    <label for="content">Descriere</label>
+                    <textarea class="form-control mt-3" :disabled="disableForm === true" v-bind:class="{ 'is-invalid': errors.description }" minlength="10" name="description" id="description" rows="5" v-model="article.description" placeholder="Descrierea articolului..."></textarea>
+                    <div class="invalid-feedback">
+                        <p>{{ errors.description }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
                 <div class="form-group col-2">
                     <label for="est_time">Timp</label>
                     <input class="form-control" v-bind:class="{ 'is-invalid': errors.est_time }" :disabled="disableForm === true" type="number" id="est_time" name="est_time" placeholder="Timp estimativ" v-model="article.est_time" required="required">
@@ -133,6 +142,7 @@
                     category: "1",
                     est_time: 1,
                     content: "",
+                    description: "",
                     main_image: "",
                     slug: "",
                 },
@@ -141,6 +151,7 @@
                     category: "",
                     est_time: "",
                     content: "",
+                    description: "",
                     slug: "",
                 },
                 loading: false,
@@ -211,6 +222,7 @@
                 formData.append('title', this.article.title.trim());
                 formData.append('article_category', this.article.category.trim());
                 formData.append('content', this.article.content.trim());
+                formData.append('description', this.article.description.trim());
                 formData.append('est_time', this.article.est_time);
                 formData.append('main_image', this.article.main_image);
                 formData.append('slug', this.slug);
@@ -327,6 +339,7 @@
              * Process the uploaded file.
              */
             processFile: function (event) {
+                //TODO: Imagine 1.65 : 1 FORMAT
                 let file = event.target.files[0];
 
                 if (this.isFileImage(file)) {

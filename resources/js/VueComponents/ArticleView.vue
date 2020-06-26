@@ -7,18 +7,18 @@
                 </div>
             </div>
             <div class="row article-header-details">
-                <div class="col-8">
+                <div class="col-7">
                     <div class="d-flex justify-content-start">
-                        <div class="author-image pr-1">
+                        <div class="author-image">
                             <a :href="article.author.href"><img :src="article.author.avatar" alt="author_avatar.png" class="rounded-circle"></a>
                         </div>
                         <div class="author-details pl-2 mb-4 align-self-center">
                             <a :href="article.author.href"><p class="author-name mb-1">@{{ article.author.name }}</p></a>
-                            <p class="article-info text-secondary" style="position: absolute;">{{ article.created_at }} | {{ article.est_time }} min</p>
+                            <p class="article-info text-secondary" style="position: absolute; width: 175px;">&#9672; {{ article.created_at }} | {{ article.est_time }} min</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-4">
+                <div class="col-5">
                     <div class="d-flex flex-column align-items-end">
                         <span class="category-link pt-2"><i class="fas fa-tags fa-md"></i> <a :href="article.category.href">{{ article.category.name }}</a></span>
                         <div class="article-social-share pl-2">

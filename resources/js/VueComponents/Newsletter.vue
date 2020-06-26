@@ -7,12 +7,12 @@
                         Fii la curent cu lumea IT!
                     </h1>
                     <p>
-                        Primește o dată pe saptămână cele mai bun articole și stai la curent cu lumea tehnologiei.
+                        Primește o dată pe saptămână cele mai bune articole și stai la curent cu lumea tehnologiei.
                     </p>
                     <form>
                         <div class="row">
                             <input type="email" name="newsletter-email" placeholder="Adresa de email" class="col-7">
-                            <input type="submit" name="newsletter-submit" class="col-5" value="Aboneaza-te">
+                            <input type="submit" name="newsletter-submit" class="col-5" value="Abonează-te">
                         </div>
                     </form>
                     <p class="info d-none">Mulțumim! Un email pentru verificare a fost trimis la adresa specificată.</p>

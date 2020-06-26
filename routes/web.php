@@ -11,11 +11,27 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/', [
+    'as'            =>  'acasa',
+    'uses'          =>  'PagesController@getHomePage',
+]);
+
+Route::get('/about', [
+    'as'            =>  'about',
+    'uses'          =>  'PagesController@getAboutPage',
+]);
+
+Route::post('/getArticles', [
+    'as'            =>  'getArticles',
+    'uses'          =>  'PagesController@getArticles',
+]);
+
+Route::get('/getCategories', [
+    'as'            =>  'getCategories',
+    'uses'          =>  'PagesController@getCategories',
+]);
 
 // Authentication Routes
 require ('auth.php');
