@@ -27,7 +27,7 @@
 }
 
 .navbar .nav-link {
-  color: #993FFF;
+  color: #993FFF !important;
   font-size: 17px;
   font-weight: bold;
   font-family: "Lato", sans-serif;
@@ -79,6 +79,23 @@
   padding: 25px;
 }
 
+.home .searchPlaceholder {
+  border-top-right-radius: 0;
+  -webkit-border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  -webkit-border-bottom-right-radius: 0;
+}
+
+.home .searchButton {
+  border-top-left-radius: 0;
+  -webkit-border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  -webkit-border-bottom-left-radius: 0;
+  border-left: 0;
+  background-color: #993FFF;
+  color: #FFFFFF;
+}
+
 @media (max-width: 767.98px) {
   .home {
     max-width: 800px;
@@ -90,7 +107,7 @@
   padding-right: 35px;
 }
 
-@media (max-width: 767.98px) {
+@media (max-width: 992px) {
   .home .article-list {
     padding-right: 15px;
   }
@@ -101,8 +118,14 @@
 }
 
 .home .article-list .article .article-section {
-  height: 250px;
+  height: 275px;
   padding: 20px;
+}
+
+@media (max-width: 767.98px) {
+  .home .article-list .article .article-section {
+    height: auto;
+  }
 }
 
 .home .article-list .article .article-section h1 {
@@ -119,6 +142,13 @@
   font-size: 17px;
 }
 
+@media (min-width: 767.98px) {
+  .home .article-list .article .article-section h2 {
+    position: absolute;
+    bottom: 10px;
+  }
+}
+
 .home .article-list .article .article-section h2 a {
   color: #993FFF;
 }
@@ -133,7 +163,7 @@
   margin-right: -1em;
   padding-right: 1em;
   margin-top: 5px;
-  margin-bottom: 10px;
+  margin-bottom: 7.5px;
 }
 
 .home .article-list .article .article-section .article-info {
@@ -146,7 +176,7 @@
 }
 
 .home .article-list .article .article-image {
-  height: 250px;
+  height: 275px;
   background: no-repeat center;
   background-size: cover;
   position: relative;
@@ -179,8 +209,17 @@
   margin-top: 10px;
 }
 
+.home .filters-list .selectedCategory {
+  color: #993FFF;
+  font-weight: bold;
+}
+
 .home .filters-list .categories {
   border-radius: 5px;
+}
+
+.home .filters-list .categories div {
+  cursor: pointer;
 }
 
 .home .filters-list .categories h1 {
@@ -195,9 +234,8 @@
 }
 
 .home .filters-list .categories hr {
-  height: 1px;
-  background-color: #16E8CA;
   border: none;
+  border-top: thin solid #16E8CA;
 }
 
 .home .filters-list .tags {
@@ -212,9 +250,8 @@
 }
 
 .home .filters-list .tags hr {
-  height: 1px;
-  background-color: #16E8CA;
   border: none;
+  border-top: thin solid #16E8CA;
 }
 
 /* END SECTION */
@@ -553,6 +590,12 @@
   margin-top: 10px;
   padding: 10px 20px 0px 20px;
   background-color: #333333;
+}
+
+@media (max-width: 767.98px) {
+  .article-footer p {
+    width: 100%;
+  }
 }
 
 .article-footer .row {

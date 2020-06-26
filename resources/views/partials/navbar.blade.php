@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg shadow sticky-top pt-3 pb-3" style="background-color: #FFFFFF;">
+<nav class="navbar navbar-expand-lg navbar-light shadow sticky-top pt-3 pb-3" style="background-color: #FFFFFF;">
     <div class="container">
         <div class="navbar-brand img-container mb-2">
             <a href="/"><img src="{{asset('images/logo.svg')}}" alt="logo.png"></a>
@@ -19,10 +19,12 @@
                     <a class="nav-link" href="#">Donează</a>
                 </li>
             </ul>
-            {{--<form class="form-inline my-2 my-lg-0">--}}
-                {{--<input class="form-control searchPlaceholder mr-sm-2" type="search" placeholder="Caută articol...">--}}
-                {{--<button class="btn searchButton my-2 my-sm-0" type="submit">Caută</button>--}}
-            {{--</form>--}}
+            @if (!isset($homePage))
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control searchPlaceholder mr-sm-2" type="search" placeholder="Caută articol...">
+                    <button class="btn searchButton my-2 my-sm-0" type="submit">Caută</button>
+                </form>
+            @endif
         </div>
     </div>
 </nav>

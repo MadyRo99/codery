@@ -7,17 +7,17 @@
         <div class="row">
             <div class="col-12" style="padding: 0;">
                 <div class="form-row">
-                    <div class="form-group col-9 col-lg-10">
+                    <div class="form-group col-9 col-lg-10" style="padding-right: 0;">
                         <input type="text" class="form-control searchPlaceholder" placeholder="Caută articol...">
                     </div>
-                    <div class="form-group col-3 col-lg-2">
+                    <div class="form-group col-3 col-lg-2" style="padding-left: 0;">
                         <input type="submit" class="form-control searchButton" value="Caută">
                     </div>
                 </div>
             </div>
         </div>
         <div class="row justify-content-between">
-            <div class="col-12 col-md-9 col-lg-10 article-list">
+            <div class="col-12 col-lg-10 article-list">
                 <div class="row article" v-for="article in articles.data">
                     <div class="col-12">
                         <div class="row shadow article-border">
@@ -36,47 +36,33 @@
                                 <div class="row article-info">
                                     <div class="col-12">
                                         <div class="float-left">
-                                            <i class="far fa-calendar-alt"></i> <span> Mart 22, 2020</span>
+                                            <i class="far fa-calendar-alt"></i> <span class="pl-1">{{ dateAbbreviation(article.created_at) }}</span>
                                         </div>
                                         <div class="float-right">
-                                            <i class="fas fa-tags fa-md" style="padding-top: 5px;"></i> <span> JavaScript</span>
+                                            <i class="fas fa-tags fa-md" style="padding-top: 5px; padding-left: 5px;"></i> <span> {{ article.name }}</span>
                                         </div>
                                     </div>
-                                    <!--<div class="col-6">-->
-                                        <!--<i class="far fa-calendar-alt"></i> <span> Mart 22, 2020</span>-->
-                                    <!--</div>-->
-                                    <!--<div class="col-6">-->
-                                        <!--<div class="row justify-content-end">-->
-                                            <!--<i class="fas fa-tags fa-md" style="padding-top: 5px;"></i> <span> JavaScript</span>-->
-                                        <!--</div>-->
-                                    <!--</div>-->
                                 </div>
                                 <!--TODO: data/categorie/tags/minute-->
-                                <p>{{ article.content }}</p>
+                                <p>{{ article.description || article.content }}</p>
                                 <h2><a :href='/article/ + article.slug'>Citește mai mult</a></h2>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="d-none filters-list d-md-block col-md-3 col-lg-2">
+            <div class="d-none filters-list d-lg-block col-lg-2">
                 <div class="row">
                     <div class="col-12 shadow categories">
                         <h1>Categorii</h1>
-                        <hr>
-                        <p>JavaScript</p>
-                        <hr>
-                        <p>PHP</p>
-                        <hr>
-                        <p>HTML</p>
-                        <hr>
-                        <p>CSS</p>
-                        <hr>
-                        <p>Git</p>
-                        <hr>
-                        <p>Laravel</p>
-                        <hr>
-                        <p>VueJs</p>
+                        <div @click="updateArticlesPagination(0)">
+                            <hr style="">
+                            <p :class="{ selectedCategory: setCategory === 0 }">Toate</p>
+                        </div>
+                        <div v-for="category in categories" @click="updateArticlesPagination(category.id)">
+                            <hr>
+                            <p :class="{ selectedCategory: setCategory === category.id }">{{ category.name }}</p>
+                        </div>
                     </div>
                 </div>
                 <div class="row">
@@ -105,11 +91,13 @@
             return {
                 articles: {
                     total: 0,
-                    per_page: 5,
+                    per_page: 2,
                     from: 1,
                     to: 0,
                     current_page: 1
                 },
+                categories: {},
+                setCategory: 0,
                 loading: false,
                 loader: {
                     color: "#16E8CA",
@@ -119,14 +107,37 @@
             };
         },
         mounted: function () {
+            this.fetchCategories();
             this.fetchArticles();
         },
         methods: {
+            /**
+             * Fetch the categories available to be displayed on the first page.
+             */
+            fetchCategories: function() {
+                this.loading = true;
+                let getCategoriesUrl = "/getCategories";
+
+                axios.get(getCategoriesUrl)
+                    .then((response) => {
+                        this.categories = response.data.response;
+                    }).catch((error) => {
+                    console.log(error);
+                }).then(() => {
+                    this.loading = false;
+                });
+            },
+            /**
+             * Fetch the Articles to be displayed on the first page.
+             */
             fetchArticles: function() {
                 this.loading = true;
                 let getArticlesUrl = "/getArticles?page=" + this.articles.current_page;
+                let params = {
+                    categoryId: this.setCategory
+                };
 
-                axios.get(getArticlesUrl)
+                axios.post(getArticlesUrl, params)
                     .then((response) => {
                         this.articles = response.data;
                     }).catch((error) => {
@@ -135,6 +146,65 @@
                         this.loading = false;
                     });
             },
+            /**
+             * Update the Articles Pagination when changing the category of the articles.
+             */
+            updateArticlesPagination: function(categoryId) {
+                this.setCategory = categoryId;
+                this.articles.current_page = 1;
+                this.fetchArticles();
+            },
+            /**
+             * Format the date of the article.
+             */
+            dateAbbreviation: function(date) {
+                let dateTimestamp = new Date(date);
+
+                let day   = dateTimestamp.getDate();
+                let month = dateTimestamp.getMonth();
+                let year  = dateTimestamp.getFullYear();
+
+                switch (month) {
+                    case 0:
+                        month = 'Ian';
+                        break;
+                    case 1:
+                        month = 'Feb';
+                        break;
+                    case 2:
+                        month = 'Mart';
+                        break;
+                    case 3:
+                        month = 'Apr';
+                        break;
+                    case 4:
+                        month = 'Mai';
+                        break;
+                    case 5:
+                        month = 'Iun';
+                        break;
+                    case 6:
+                        month = 'Iul';
+                        break;
+                    case 7:
+                        month = 'Aug';
+                        break;
+                    case 8:
+                        month = 'Sept';
+                        break;
+                    case 9:
+                        month = 'Oct';
+                        break;
+                    case 10:
+                        month = 'Nov';
+                        break;
+                    case 11:
+                        month = 'Dec';
+                        break;
+                }
+
+                return month + ' ' + day + ', ' + year;
+            }
         }
     };
 </script>

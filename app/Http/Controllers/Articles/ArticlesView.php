@@ -93,11 +93,12 @@ class ArticlesView
     {
         $slug = $request->input('slug');
         $article = new Article();
-        
+
         $article->title = $request->input('title');
         $article->author_id = Auth::user()->id;
         $article->article_category = $request->input('article_category');
         $article->content = $request->input('content');
+        $article->description = $request->input('description');
         $article->est_time = $request->input('est_time');
         $article->slug = $slug;
 
@@ -143,6 +144,7 @@ class ArticlesView
         $article->title = $request->input('title');
         $article->article_category = $request->input('article_category');
         $article->content = $request->input('content');
+        $article->description = $request->input('description');
         $article->est_time = $request->input('est_time');
         $article->status = $request->input('status');
 

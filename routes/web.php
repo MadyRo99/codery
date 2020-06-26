@@ -18,9 +18,19 @@ Route::get('/', [
     'uses'          =>  'PagesController@getHomePage',
 ]);
 
-Route::get('/getArticles', [
+Route::get('/about', [
+    'as'            =>  'about',
+    'uses'          =>  'PagesController@getAboutPage',
+]);
+
+Route::post('/getArticles', [
     'as'            =>  'getArticles',
     'uses'          =>  'PagesController@getArticles',
+]);
+
+Route::get('/getCategories', [
+    'as'            =>  'getCategories',
+    'uses'          =>  'PagesController@getCategories',
 ]);
 
 // Authentication Routes

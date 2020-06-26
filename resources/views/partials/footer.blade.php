@@ -8,8 +8,14 @@
         </div>
     </div>
     <div class="legal-info text-center">
-        <p><a href="#">Termeni și condiții de utilizare</a> | <a href="#">Politică de confidențialitate</a> | <a href="#">Politică privind cookie-urile</a></p>
+        <div class="row justify-content-center">
+            <p class="float-left"><a href="#">Termeni și condiții de utilizare</a></p>
+            <p class="separator px-2 d-none d-md-block">|</p>
+            <p class="float-left"><a href="#">Politică de confidențialitate</a></p>
+            <p class="separator px-2 d-none d-md-block">|</p>
+            <p class="float-left"><a href="#">Politică privind cookie-urile</a></p>
+        </div>
         <p>Contact: <a href="#">contact@codery.ro</a></p>
-        <p class="copyright">© 2020 <a href="#">Codery.Ro</a></p>
+        <p class="copyright mb-0">© 2020 <a href="#">Codery.Ro</a></p>
     </div>
 </footer>

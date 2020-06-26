@@ -9026,6 +9026,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -9043,6 +9052,7 @@ __webpack_require__.r(__webpack_exports__);
         category: "1",
         est_time: 1,
         content: "",
+        description: "",
         main_image: "",
         slug: ""
       },
@@ -9051,6 +9061,7 @@ __webpack_require__.r(__webpack_exports__);
         category: "",
         est_time: "",
         content: "",
+        description: "",
         slug: ""
       },
       loading: false,
@@ -9121,6 +9132,7 @@ __webpack_require__.r(__webpack_exports__);
       formData.append('title', this.article.title.trim());
       formData.append('article_category', this.article.category.trim());
       formData.append('content', this.article.content.trim());
+      formData.append('description', this.article.description.trim());
       formData.append('est_time', this.article.est_time);
       formData.append('main_image', this.article.main_image);
       formData.append('slug', this.slug);
@@ -9514,6 +9526,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -9536,6 +9557,7 @@ __webpack_require__.r(__webpack_exports__);
         category: "1",
         est_time: 1,
         content: "",
+        description: "",
         main_image: "",
         images: [],
         status: "0",
@@ -9547,6 +9569,7 @@ __webpack_require__.r(__webpack_exports__);
         category: "",
         est_time: "",
         content: "",
+        description: "",
         slug: "",
         status: ""
       },
@@ -9589,6 +9612,7 @@ __webpack_require__.r(__webpack_exports__);
           _this.article.category = article.article_category;
           _this.article.est_time = article.est_time;
           _this.article.content = article.content;
+          _this.article.description = article.description;
           _this.article.main_image = article.main_image;
           _this.article.savedMainImage = article.main_image || null;
           _this.article.displayMainImage = article.main_image || "Alege imagine";
@@ -9628,6 +9652,7 @@ __webpack_require__.r(__webpack_exports__);
       formData.append('title', this.article.title.trim());
       formData.append('article_category', this.article.category);
       formData.append('content', this.article.content.trim());
+      formData.append('description', this.article.description.trim());
       formData.append('est_time', this.article.est_time);
       formData.append('main_image', this.article.main_image);
       formData.append('slug', this.slug);
@@ -9650,7 +9675,7 @@ __webpack_require__.r(__webpack_exports__);
         }
       }.bind(this))["catch"](function (error) {
         this.toast('b-toaster-bottom-right', "danger", error);
-      }.bind(this))["finally"](function () {
+      }.bind(this)).then(function () {
         this.loading = false;
       }.bind(this));
     },
@@ -9977,20 +10002,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -10003,11 +10014,13 @@ __webpack_require__.r(__webpack_exports__);
     return {
       articles: {
         total: 0,
-        per_page: 5,
+        per_page: 2,
         from: 1,
         to: 0,
         current_page: 1
       },
+      categories: {},
+      setCategory: 0,
       loading: false,
       loader: {
         color: "#16E8CA",
@@ -10017,21 +10030,116 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mounted: function mounted() {
+    this.fetchCategories();
     this.fetchArticles();
   },
   methods: {
-    fetchArticles: function fetchArticles() {
+    /**
+     * Fetch the categories available to be displayed on the first page.
+     */
+    fetchCategories: function fetchCategories() {
       var _this = this;
 
       this.loading = true;
-      var getArticlesUrl = "/getArticles?page=" + this.articles.current_page;
-      axios.get(getArticlesUrl).then(function (response) {
-        _this.articles = response.data;
+      var getCategoriesUrl = "/getCategories";
+      axios.get(getCategoriesUrl).then(function (response) {
+        _this.categories = response.data.response;
       })["catch"](function (error) {
         console.log(error);
       }).then(function () {
         _this.loading = false;
       });
+    },
+
+    /**
+     * Fetch the Articles to be displayed on the first page.
+     */
+    fetchArticles: function fetchArticles() {
+      var _this2 = this;
+
+      this.loading = true;
+      var getArticlesUrl = "/getArticles?page=" + this.articles.current_page;
+      var params = {
+        categoryId: this.setCategory
+      };
+      axios.post(getArticlesUrl, params).then(function (response) {
+        _this2.articles = response.data;
+      })["catch"](function (error) {
+        console.log(error);
+      }).then(function () {
+        _this2.loading = false;
+      });
+    },
+
+    /**
+     * Update the Articles Pagination when changing the category of the articles.
+     */
+    updateArticlesPagination: function updateArticlesPagination(categoryId) {
+      this.setCategory = categoryId;
+      this.articles.current_page = 1;
+      this.fetchArticles();
+    },
+
+    /**
+     * Format the date of the article.
+     */
+    dateAbbreviation: function dateAbbreviation(date) {
+      var dateTimestamp = new Date(date);
+      var day = dateTimestamp.getDate();
+      var month = dateTimestamp.getMonth();
+      var year = dateTimestamp.getFullYear();
+
+      switch (month) {
+        case 0:
+          month = 'Ian';
+          break;
+
+        case 1:
+          month = 'Feb';
+          break;
+
+        case 2:
+          month = 'Mart';
+          break;
+
+        case 3:
+          month = 'Apr';
+          break;
+
+        case 4:
+          month = 'Mai';
+          break;
+
+        case 5:
+          month = 'Iun';
+          break;
+
+        case 6:
+          month = 'Iul';
+          break;
+
+        case 7:
+          month = 'Aug';
+          break;
+
+        case 8:
+          month = 'Sept';
+          break;
+
+        case 9:
+          month = 'Oct';
+          break;
+
+        case 10:
+          month = 'Nov';
+          break;
+
+        case 11:
+          month = 'Dec';
+          break;
+      }
+
+      return month + ' ' + day + ', ' + year;
     }
   }
 });
@@ -47190,7 +47298,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.card {\r\n    height: 25rem;\n}\n.card-title {\r\n    font-size: 18px;\n}\n.card-body a {\r\n    position: absolute;\r\n    bottom: 1rem;\n}\n.card-img-top {\r\n    max-height: 17rem;\n}\r\n\r\n", ""]);
+exports.push([module.i, "\n.card {\n    height: 25rem;\n}\n.card-title {\n    font-size: 18px;\n}\n.card-body a {\n    position: absolute;\n    bottom: 1rem;\n}\n.card-img-top {\n    max-height: 17rem;\n}\n\n", ""]);
 
 // exports
 
@@ -71359,6 +71467,46 @@ var render = function() {
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "form-row" }, [
+          _c("div", { staticClass: "form-group col-12" }, [
+            _c("label", { attrs: { for: "content" } }, [_vm._v("Descriere")]),
+            _vm._v(" "),
+            _c("textarea", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.article.description,
+                  expression: "article.description"
+                }
+              ],
+              staticClass: "form-control mt-3",
+              class: { "is-invalid": _vm.errors.description },
+              attrs: {
+                disabled: _vm.disableForm === true,
+                minlength: "10",
+                name: "description",
+                id: "description",
+                rows: "5",
+                placeholder: "Descrierea articolului..."
+              },
+              domProps: { value: _vm.article.description },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.article, "description", $event.target.value)
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c("div", { staticClass: "invalid-feedback" }, [
+              _c("p", [_vm._v(_vm._s(_vm.errors.description))])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-row" }, [
           _c("div", { staticClass: "form-group col-2" }, [
             _c("label", { attrs: { for: "est_time" } }, [_vm._v("Timp")]),
             _vm._v(" "),
@@ -71965,6 +72113,46 @@ var render = function() {
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "form-row" }, [
+          _c("div", { staticClass: "form-group col-12" }, [
+            _c("label", { attrs: { for: "content" } }, [_vm._v("Descriere")]),
+            _vm._v(" "),
+            _c("textarea", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.article.description,
+                  expression: "article.description"
+                }
+              ],
+              staticClass: "form-control mt-3",
+              class: { "is-invalid": _vm.errors.description },
+              attrs: {
+                disabled: _vm.disableForm === true,
+                minlength: "10",
+                name: "description",
+                id: "description",
+                rows: "5",
+                placeholder: "Descrierea articolului..."
+              },
+              domProps: { value: _vm.article.description },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.article, "description", $event.target.value)
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c("div", { staticClass: "invalid-feedback" }, [
+              _c("p", [_vm._v(_vm._s(_vm.errors.description))])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-row" }, [
           _c("div", { staticClass: "form-group col-2" }, [
             _c("label", { attrs: { for: "est_time" } }, [_vm._v("Timp")]),
             _vm._v(" "),
@@ -72289,7 +72477,7 @@ var render = function() {
       _c("div", { staticClass: "row justify-content-between" }, [
         _c(
           "div",
-          { staticClass: "col-12 col-md-9 col-lg-10 article-list" },
+          { staticClass: "col-12 col-lg-10 article-list" },
           _vm._l(_vm.articles.data, function(article) {
             return _c("div", { staticClass: "row article" }, [
               _c("div", { staticClass: "col-12" }, [
@@ -72340,9 +72528,35 @@ var render = function() {
                         _vm._m(1, true)
                       ]),
                       _vm._v(" "),
-                      _vm._m(2, true),
+                      _c("div", { staticClass: "row article-info" }, [
+                        _c("div", { staticClass: "col-12" }, [
+                          _c("div", { staticClass: "float-left" }, [
+                            _c("i", { staticClass: "far fa-calendar-alt" }),
+                            _vm._v(" "),
+                            _c("span", { staticClass: "pl-1" }, [
+                              _vm._v(
+                                _vm._s(_vm.dateAbbreviation(article.created_at))
+                              )
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "float-right" }, [
+                            _c("i", {
+                              staticClass: "fas fa-tags fa-md",
+                              staticStyle: {
+                                "padding-top": "5px",
+                                "padding-left": "5px"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("span", [_vm._v(" " + _vm._s(article.name))])
+                          ])
+                        ])
+                      ]),
                       _vm._v(" "),
-                      _c("p", [_vm._v(_vm._s(article.content))]),
+                      _c("p", [
+                        _vm._v(_vm._s(article.description || article.content))
+                      ]),
                       _vm._v(" "),
                       _c("h2", [
                         _c("a", { attrs: { href: /article/ + article.slug } }, [
@@ -72358,7 +72572,66 @@ var render = function() {
           0
         ),
         _vm._v(" "),
-        _vm._m(3)
+        _c("div", { staticClass: "d-none filters-list d-lg-block col-lg-2" }, [
+          _c("div", { staticClass: "row" }, [
+            _c(
+              "div",
+              { staticClass: "col-12 shadow categories" },
+              [
+                _c("h1", [_vm._v("Categorii")]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    on: {
+                      click: function($event) {
+                        return _vm.updateArticlesPagination(0)
+                      }
+                    }
+                  },
+                  [
+                    _c("hr", {}),
+                    _vm._v(" "),
+                    _c(
+                      "p",
+                      { class: { selectedCategory: _vm.setCategory === 0 } },
+                      [_vm._v("Toate")]
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _vm._l(_vm.categories, function(category) {
+                  return _c(
+                    "div",
+                    {
+                      on: {
+                        click: function($event) {
+                          return _vm.updateArticlesPagination(category.id)
+                        }
+                      }
+                    },
+                    [
+                      _c("hr"),
+                      _vm._v(" "),
+                      _c(
+                        "p",
+                        {
+                          class: {
+                            selectedCategory: _vm.setCategory === category.id
+                          }
+                        },
+                        [_vm._v(_vm._s(category.name))]
+                      )
+                    ]
+                  )
+                })
+              ],
+              2
+            )
+          ]),
+          _vm._v(" "),
+          _vm._m(2)
+        ])
       ]),
       _vm._v(" "),
       _c("pagination", {
@@ -72381,19 +72654,33 @@ var staticRenderFns = [
     return _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-12", staticStyle: { padding: "0" } }, [
         _c("div", { staticClass: "form-row" }, [
-          _c("div", { staticClass: "form-group col-9 col-lg-10" }, [
-            _c("input", {
-              staticClass: "form-control searchPlaceholder",
-              attrs: { type: "text", placeholder: "Caută articol..." }
-            })
-          ]),
+          _c(
+            "div",
+            {
+              staticClass: "form-group col-9 col-lg-10",
+              staticStyle: { "padding-right": "0" }
+            },
+            [
+              _c("input", {
+                staticClass: "form-control searchPlaceholder",
+                attrs: { type: "text", placeholder: "Caută articol..." }
+              })
+            ]
+          ),
           _vm._v(" "),
-          _c("div", { staticClass: "form-group col-3 col-lg-2" }, [
-            _c("input", {
-              staticClass: "form-control searchButton",
-              attrs: { type: "submit", value: "Caută" }
-            })
-          ])
+          _c(
+            "div",
+            {
+              staticClass: "form-group col-3 col-lg-2",
+              staticStyle: { "padding-left": "0" }
+            },
+            [
+              _c("input", {
+                staticClass: "form-control searchButton",
+                attrs: { type: "submit", value: "Caută" }
+              })
+            ]
+          )
         ])
       ])
     ])
@@ -72412,76 +72699,13 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row article-info" }, [
-      _c("div", { staticClass: "col-12" }, [
-        _c("div", { staticClass: "float-left" }, [
-          _c("i", { staticClass: "far fa-calendar-alt" }),
-          _vm._v(" "),
-          _c("span", [_vm._v(" Mart 22, 2020")])
-        ]),
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-12 shadow tags" }, [
+        _c("h1", [_vm._v("Tag-uri")]),
         _vm._v(" "),
-        _c("div", { staticClass: "float-right" }, [
-          _c("i", {
-            staticClass: "fas fa-tags fa-md",
-            staticStyle: { "padding-top": "5px" }
-          }),
-          _vm._v(" "),
-          _c("span", [_vm._v(" JavaScript")])
-        ])
+        _c("hr")
       ])
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "d-none filters-list d-md-block col-md-3 col-lg-2" },
-      [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-12 shadow categories" }, [
-            _c("h1", [_vm._v("Categorii")]),
-            _vm._v(" "),
-            _c("hr"),
-            _vm._v(" "),
-            _c("p", [_vm._v("JavaScript")]),
-            _vm._v(" "),
-            _c("hr"),
-            _vm._v(" "),
-            _c("p", [_vm._v("PHP")]),
-            _vm._v(" "),
-            _c("hr"),
-            _vm._v(" "),
-            _c("p", [_vm._v("HTML")]),
-            _vm._v(" "),
-            _c("hr"),
-            _vm._v(" "),
-            _c("p", [_vm._v("CSS")]),
-            _vm._v(" "),
-            _c("hr"),
-            _vm._v(" "),
-            _c("p", [_vm._v("Git")]),
-            _vm._v(" "),
-            _c("hr"),
-            _vm._v(" "),
-            _c("p", [_vm._v("Laravel")]),
-            _vm._v(" "),
-            _c("hr"),
-            _vm._v(" "),
-            _c("p", [_vm._v("VueJs")])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-12 shadow tags" }, [
-            _c("h1", [_vm._v("Tag-uri")]),
-            _vm._v(" "),
-            _c("hr")
-          ])
-        ])
-      ]
-    )
   }
 ]
 render._withStripped = true
@@ -85668,8 +85892,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\codery\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\codery\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\XAMPP\htdocs\codery\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\XAMPP\htdocs\codery\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
