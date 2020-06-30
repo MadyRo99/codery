@@ -13,7 +13,7 @@
                     <a class="nav-link" href="/">Articole <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Despre</a>
+                    <a class="nav-link" href="/about">Despre</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Donează</a>

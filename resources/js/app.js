@@ -6,6 +6,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css';
 Vue.use(BootstrapVue);
 
 import Home from './VueComponents/Home';
+import About from './VueComponents/About';
 import ArticleView from './VueComponents/ArticleView';
 import CreateArticle from './VueComponents/CreateArticle';
 import EditArticle from './VueComponents/EditArticle';
@@ -19,6 +20,7 @@ const vue = new Vue({
     el: '#app',
     components: {
         'home'                   : Home,
+        'about'                  : About,
         'article-view'           : ArticleView,
         'create-article'         : CreateArticle,
         'edit-article'           : EditArticle,
