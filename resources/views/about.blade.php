@@ -5,6 +5,7 @@
 @section('content')
 
     <div>
+        <about></about>
     </div>
 
 @endsection

@@ -314,6 +314,69 @@
 
 /* END SECTION */
 
+/* ABOUT PAGE SECTION */
+
+.about .hero-section {
+  padding-top: 25px;
+  padding-bottom: 50px;
+  font-family: Lato;
+}
+
+.about .hero-section .header {
+  padding: 25px 0px;
+}
+
+.about .hero-section h1 {
+  text-align: center;
+  font-size: 34px;
+  font-weight: bold;
+}
+
+.about .hero-section p {
+  text-align: center;
+  font-size: 16px;
+  margin: 0;
+}
+
+.about .hero-section hr {
+  width: 200px;
+  text-align: center;
+}
+
+.about .main-section {
+  background: #4cc7ff;
+  background: linear-gradient(180deg, #4cc7ff 0%, #006b9c 100%);
+  color: #FFFFFF;
+  padding: 50px 0px;
+}
+
+.about .main-section h2 {
+  font-size: 24px;
+  text-decoration: underline;
+}
+
+.about .main-section p {
+  font-size: 16px;
+}
+
+.about .main-section .info-content {
+  padding-top: 15px;
+}
+
+.about .main-section .img-container {
+  position: relative;
+  width: 150px;
+  height: 150px;
+}
+
+.about .main-section .img-container img {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+}
+
+/* END SECTION */
+
 /* ARTICLES SECTION */
 
 .article-view {
@@ -587,7 +650,6 @@
 }
 
 .article-footer {
-  margin-top: 10px;
   padding: 10px 20px 0px 20px;
   background-color: #333333;
 }
