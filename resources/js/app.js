@@ -27,6 +27,6 @@ const vue = new Vue({
         'bounce-loader'          : BounceLoader,
         'pagination'             : Pagination,
         'multiple-file-uploader' : MultipleFileUploader,
-        'newsletter'             : Newsletter,
+        'newsletter'             : Newsletter
     },
 });

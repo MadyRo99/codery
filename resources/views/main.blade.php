@@ -8,9 +8,11 @@
 
 <div id="app">
 
-    @include('partials.navbar')
+    <div class="app-content">
+        @include('partials.navbar')
 
-    @yield('content')
+        @yield('content')
+    </div>
 
     @include('partials.scripts')
 

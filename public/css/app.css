@@ -4,11 +4,33 @@
 
 /* Fonts */
 
-/* NAVBAR SECTION */
-
 .clearfix {
   clear: both;
 }
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+#app {
+  min-height: 100%;
+  position: relative;
+}
+
+.app-content {
+  padding-bottom: 185px;
+}
+
+@media (max-width: 767.98px) {
+  .app-content {
+    padding-bottom: 255px;
+  }
+}
+
+/* NAVBAR SECTION */
 
 .navbar .img-container {
   width: 160px;
@@ -377,6 +399,36 @@
 
 /* END SECTION */
 
+/* 404 PAGE */
+
+.not-found .img-container {
+  width: 625px;
+  height: 550px;
+  position: relative;
+  padding-top: 75px;
+}
+
+.not-found .img-container img {
+  width: 625px;
+  height: 381px;
+  position: absolute;
+}
+
+@media (max-width: 767.98px) {
+  .not-found .img-container {
+    padding-top: 25px;
+    width: 300px;
+    height: 330px;
+  }
+
+  .not-found .img-container img {
+    width: 300px;
+    height: 240px;
+  }
+}
+
+/* END SECTION */
+
 /* ARTICLES SECTION */
 
 .article-view {
@@ -652,6 +704,16 @@
 .article-footer {
   padding: 10px 20px 0px 20px;
   background-color: #333333;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 185px;
+}
+
+@media (max-width: 767.98px) {
+  .article-footer {
+    height: 255px;
+  }
 }
 
 @media (max-width: 767.98px) {
