@@ -5,7 +5,7 @@
 @section('content')
 
     <div>
-        <home></home>
+        <home search="{{ $search }}"></home>
     </div>
 
 @endsection

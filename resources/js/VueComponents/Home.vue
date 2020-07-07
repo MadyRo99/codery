@@ -8,10 +8,10 @@
             <div class="col-12" style="padding: 0;">
                 <div class="form-row">
                     <div class="form-group col-9 col-lg-10" style="padding-right: 0;">
-                        <input type="text" class="form-control searchPlaceholder" placeholder="Caută articol...">
+                        <input type="search" class="form-control searchPlaceholder" v-model="searchInput" @keyup.enter="updateArticlesFiltered(null, true)" placeholder="Caută articol...">
                     </div>
                     <div class="form-group col-3 col-lg-2" style="padding-left: 0;">
-                        <input type="submit" class="form-control searchButton" value="Caută">
+                        <input type="submit" class="form-control searchButton" value="Caută" @click="updateArticlesFiltered(null, true)">
                     </div>
                 </div>
             </div>
@@ -54,11 +54,11 @@
                 <div class="row">
                     <div class="col-12 shadow categories">
                         <h1>Categorii</h1>
-                        <div @click="updateArticlesPagination(0)">
+                        <div @click="updateArticlesFiltered(0)">
                             <hr style="">
                             <p :class="{ selectedCategory: setCategory === 0 }">Toate</p>
                         </div>
-                        <div v-for="category in categories" @click="updateArticlesPagination(category.id)">
+                        <div v-for="category in categories" @click="updateArticlesFiltered(category.id)">
                             <hr>
                             <p :class="{ selectedCategory: setCategory === category.id }">{{ category.name }}</p>
                         </div>
@@ -80,8 +80,16 @@
     export default {
         name: 'home',
         components: { BounceLoader, Pagination },
+        props: {
+            search: {
+                type: String,
+                required: true,
+            },
+        },
         data() {
             return {
+                searchArticle: this.search,
+                searchInput: this.search,
                 articles: {
                     total: 0,
                     per_page: 2,
@@ -115,10 +123,10 @@
                     .then((response) => {
                         this.categories = response.data.response;
                     }).catch((error) => {
-                    console.log(error);
-                }).then(() => {
-                    this.loading = false;
-                });
+                        console.log(error);
+                    }).then(() => {
+                        this.loading = false;
+                    });
             },
             /**
              * Fetch the Articles to be displayed on the first page.
@@ -127,7 +135,8 @@
                 this.loading = true;
                 let getArticlesUrl = "/getArticles?page=" + this.articles.current_page;
                 let params = {
-                    categoryId: this.setCategory
+                    categoryId: this.setCategory,
+                    search: this.searchArticle
                 };
 
                 axios.post(getArticlesUrl, params)
@@ -140,10 +149,16 @@
                     });
             },
             /**
-             * Update the Articles Pagination when changing the category of the articles.
+             * Update the Articles Displayed and the Pagination for them accroding to the filtering.
              */
-            updateArticlesPagination: function(categoryId) {
-                this.setCategory = categoryId;
+            updateArticlesFiltered: function(categoryId, changedSearch = null) {
+                if (categoryId !== null) {
+                    this.setCategory = categoryId;
+                }
+                if (changedSearch) {
+                    this.searchArticle = this.searchInput;
+                }
+
                 this.articles.current_page = 1;
                 this.fetchArticles();
             },

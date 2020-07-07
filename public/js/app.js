@@ -8941,7 +8941,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 
@@ -10238,8 +10237,16 @@ __webpack_require__.r(__webpack_exports__);
     BounceLoader: _saeris_vue_spinners__WEBPACK_IMPORTED_MODULE_0__["BounceLoader"],
     Pagination: _Pagination__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
+  props: {
+    search: {
+      type: String,
+      required: true
+    }
+  },
   data: function data() {
     return {
+      searchArticle: this.search,
+      searchInput: this.search,
       articles: {
         total: 0,
         per_page: 2,
@@ -10288,7 +10295,8 @@ __webpack_require__.r(__webpack_exports__);
       this.loading = true;
       var getArticlesUrl = "/getArticles?page=" + this.articles.current_page;
       var params = {
-        categoryId: this.setCategory
+        categoryId: this.setCategory,
+        search: this.searchArticle
       };
       axios.post(getArticlesUrl, params).then(function (response) {
         _this2.articles = response.data;
@@ -10300,10 +10308,19 @@ __webpack_require__.r(__webpack_exports__);
     },
 
     /**
-     * Update the Articles Pagination when changing the category of the articles.
+     * Update the Articles Displayed and the Pagination for them accroding to the filtering.
      */
-    updateArticlesPagination: function updateArticlesPagination(categoryId) {
-      this.setCategory = categoryId;
+    updateArticlesFiltered: function updateArticlesFiltered(categoryId) {
+      var changedSearch = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+
+      if (categoryId !== null) {
+        this.setCategory = categoryId;
+      }
+
+      if (changedSearch) {
+        this.searchArticle = this.searchInput;
+      }
+
       this.articles.current_page = 1;
       this.fetchArticles();
     },
@@ -73092,7 +73109,70 @@ var render = function() {
       _vm._v(" "),
       _c("br"),
       _vm._v(" "),
-      _vm._m(0),
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-12", staticStyle: { padding: "0" } }, [
+          _c("div", { staticClass: "form-row" }, [
+            _c(
+              "div",
+              {
+                staticClass: "form-group col-9 col-lg-10",
+                staticStyle: { "padding-right": "0" }
+              },
+              [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.searchInput,
+                      expression: "searchInput"
+                    }
+                  ],
+                  staticClass: "form-control searchPlaceholder",
+                  attrs: { type: "search", placeholder: "Caută articol..." },
+                  domProps: { value: _vm.searchInput },
+                  on: {
+                    keyup: function($event) {
+                      if (
+                        !$event.type.indexOf("key") &&
+                        _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+                      ) {
+                        return null
+                      }
+                      return _vm.updateArticlesFiltered(null, true)
+                    },
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.searchInput = $event.target.value
+                    }
+                  }
+                })
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "form-group col-3 col-lg-2",
+                staticStyle: { "padding-left": "0" }
+              },
+              [
+                _c("input", {
+                  staticClass: "form-control searchButton",
+                  attrs: { type: "submit", value: "Caută" },
+                  on: {
+                    click: function($event) {
+                      return _vm.updateArticlesFiltered(null, true)
+                    }
+                  }
+                })
+              ]
+            )
+          ])
+        ])
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "row justify-content-between" }, [
         _c(
@@ -73145,7 +73225,7 @@ var render = function() {
                           ])
                         ]),
                         _vm._v(" "),
-                        _vm._m(1, true)
+                        _vm._m(0, true)
                       ]),
                       _vm._v(" "),
                       _c("div", { staticClass: "row article-info" }, [
@@ -73205,7 +73285,7 @@ var render = function() {
                   {
                     on: {
                       click: function($event) {
-                        return _vm.updateArticlesPagination(0)
+                        return _vm.updateArticlesFiltered(0)
                       }
                     }
                   },
@@ -73226,7 +73306,7 @@ var render = function() {
                     {
                       on: {
                         click: function($event) {
-                          return _vm.updateArticlesPagination(category.id)
+                          return _vm.updateArticlesFiltered(category.id)
                         }
                       }
                     },
@@ -73265,44 +73345,6 @@ var render = function() {
   )
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-12", staticStyle: { padding: "0" } }, [
-        _c("div", { staticClass: "form-row" }, [
-          _c(
-            "div",
-            {
-              staticClass: "form-group col-9 col-lg-10",
-              staticStyle: { "padding-right": "0" }
-            },
-            [
-              _c("input", {
-                staticClass: "form-control searchPlaceholder",
-                attrs: { type: "text", placeholder: "Caută articol..." }
-              })
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass: "form-group col-3 col-lg-2",
-              staticStyle: { "padding-left": "0" }
-            },
-            [
-              _c("input", {
-                staticClass: "form-control searchButton",
-                attrs: { type: "submit", value: "Caută" }
-              })
-            ]
-          )
-        ])
-      ])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

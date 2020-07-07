@@ -118,20 +118,14 @@ class ArticlesController extends Controller
         $articles = Article::select(['title', 'slug', 'main_image'])
                     ->where('articles.status', '=', 1)
                     ->where('title', 'NOT LIKE', $title)
-                    ->where(function($q) use ($category, $tags, $titleExploded) {
+                    ->where(function($q) use ($category, $tags) {
                         $q->where('article_category', '=', $category)
-                          ->orWhere('tags', 'LIKE',  '%' . $tags[0] . '%');
+                          ->orWhere('tags', 'LIKE', '%' . $tags[0] . '%');
 
                         array_shift($tags);
 
                         foreach ($tags as $tag) {
-                            $q->orWhere('tags', 'LIKE',  '%' . $tag . '%');
-                        }
-
-                        foreach ($titleExploded as $word) {
-                            if (ctype_alnum($word)) {
-                                $q->orWhere('title', 'LIKE',  '%' . $word . '%');
-                            }
+                            $q->orWhere('tags', 'LIKE', '%' . $tag . '%');
                         }
                     });
 

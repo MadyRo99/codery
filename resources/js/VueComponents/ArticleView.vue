@@ -45,7 +45,7 @@
             <div class="article-tags">
                 <h1>Tag-uri:</h1>
                 <div class="float-left" v-for="tag in article.tags">
-                    <kbd><a href="#">{{ tag }}</a></kbd>
+                    <kbd><a href='#'>{{ tag }}</a></kbd>
                 </div>
                 <div class="clearfix"></div>
             </div>

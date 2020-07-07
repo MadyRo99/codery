@@ -41,10 +41,10 @@ Route::namespace('Articles')->group(function () {
         'uses'          =>  'ArticlesController@saveArticleImages',
         'middleware'    =>  'auth-author',
     ]);
-    Route::post('/article/search', [
-        'as'    =>  'articles.search',
-        'uses'  =>  'ArticlesController@searchArticle',
-    ]);
+//    Route::post('/article/search', [
+//        'as'    =>  'articles.search',
+//        'uses'  =>  'ArticlesController@searchArticle',
+//    ]);
     Route::post('/article/fetchArticleData', [
         'as'    =>  'articles.fetchArticleData',
         'uses'  =>  'ArticlesController@fetchArticleData',

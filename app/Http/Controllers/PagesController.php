@@ -31,13 +31,16 @@ class PagesController extends Controller
     /**
      * Get the Home Page of the Blog.
      *
+     * @param Request $request
      * @return Factory|View
      */
-    public function getHomePage()
+    public function getHomePage(Request $request)
     {
+        $search = $request->input('search');
+
         return view(
             'acasa'
-        )->withHomePage(true);
+        )->withHomePage(true)->withSearch($search);
     }
 
     public function getAboutPage()
@@ -71,9 +74,12 @@ class PagesController extends Controller
     public function getArticles(Request $request)
     {
         $categoryId = $request->input('categoryId');
+        $search = $request->input('search');
+        $searchExploaded = explode(" ", $search);
 
         $validator = Validator::make($request->all(), [
             'categoryId' => 'nullable|integer',
+            'search' => 'nullable|string',
         ]);
 
         if ($validator->fails()) {
@@ -87,7 +93,20 @@ class PagesController extends Controller
         if ($categoryId) {
             $articles = $articles->where('articles.article_category', '=', $request->input('categoryId'));
         }
+        if ($search) {
+            $articles = $articles->where(function($q) use ($search, $searchExploaded) {
+                $q->where('title', 'LIKE', '%' . $search . '%')
+                  ->orWhere('tags', 'LIKE', '%' . $searchExploaded[0] . '%');
 
-        return response()->json($articles->paginate(2));
+                array_shift($searchExploaded);
+                foreach ($searchExploaded as $word) {
+                    $q->orWhere('tags', 'LIKE', '%' . $word . '%');
+                }
+            });
+        }
+
+        $articles = $articles->orderBy('created_at', 'desc');
+
+        return response()->json($articles->paginate(4));
     }
 }
