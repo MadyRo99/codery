@@ -102,6 +102,13 @@ class ArticlesView
         $article->est_time = $request->input('est_time');
         $article->slug = $slug;
 
+        $tags = explode(",", $request->input('tags'));
+        $tags = array_map(function ($tag) {
+            return trim($tag);
+        }, $tags);
+
+        $article->tags = strtolower(json_encode($tags));
+
         $image = $request->file('main_image');
 
         if ($image) {
@@ -147,6 +154,13 @@ class ArticlesView
         $article->description = $request->input('description');
         $article->est_time = $request->input('est_time');
         $article->status = $request->input('status');
+
+        $tags = explode(",", $request->input('tags'));
+        $tags = array_map(function ($tag) {
+            return trim($tag);
+        }, $tags);
+
+        $article->tags = strtolower(json_encode($tags));
 
         $image = $request->file('main_image');
 

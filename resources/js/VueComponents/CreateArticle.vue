@@ -25,6 +25,15 @@
             </div>
             <div class="form-row">
                 <div class="form-group col-12">
+                    <label for="tags">Tag-uri</label>
+                    <input class="form-control" v-bind:class="{ 'is-invalid': errors.tags }" v-model="article.tags" type="text" id="tags" name="tags" placeholder="Tag-uri" required="required">
+                    <div class="invalid-feedback">
+                        <p>{{ errors.tags }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-12">
                     <label for="slug">Slug</label>
                     <input class="form-control" v-bind:class="{ 'is-invalid': errors.slug }" v-model="this.slug" type="text" id="slug" name="slug" placeholder="Slug" disabled="disabled" required="required">
                     <div class="invalid-feedback">
@@ -144,6 +153,7 @@
                     content: "",
                     description: "",
                     main_image: "",
+                    tags: "",
                     slug: "",
                 },
                 errors: {
@@ -152,6 +162,7 @@
                     est_time: "",
                     content: "",
                     description: "",
+                    tags: "",
                     slug: "",
                 },
                 loading: false,
@@ -225,6 +236,7 @@
                 formData.append('description', this.article.description.trim());
                 formData.append('est_time', this.article.est_time);
                 formData.append('main_image', this.article.main_image);
+                formData.append('tags', this.article.tags);
                 formData.append('slug', this.slug);
 
                 axios.post('/article/create/saveArticle', formData, config)
@@ -413,6 +425,13 @@
                     return false;
                 }
                 this.errors.slug = "";
+
+                let tagsArray = parameters.tags.split(",");
+                if (parameters.tags.trim() === "" || tagsArray.length === 0) {
+                    this.errors.tags = "Tag-urile sunt goale. Completeaza cateva tag-uri pentru articol.";
+                    return false;
+                }
+                this.errors.tags = "";
 
                 return true;
             }

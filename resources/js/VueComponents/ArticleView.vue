@@ -40,6 +40,32 @@
                 <div v-html="article.content"></div>
             </section>
         </div>
+        <hr>
+        <div class="article-bottom">
+            <div class="article-tags">
+                <h1>Tag-uri:</h1>
+                <div class="float-left" v-for="tag in article.tags">
+                    <kbd><a href="#">{{ tag }}</a></kbd>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="article-suggestions" v-show="recommendedArticles.length">
+                <hr>
+                <h1>Articole care ar putea să te intereseze:</h1>
+                <div class="row">
+                    <div class="col-md-4" v-for="article in recommendedArticles">
+                        <div class="card">
+                            <a :href='/article/ + article.slug'>
+                                <div class="article-image" :style="{ backgroundImage: 'url(/storage/articles/' + article.slug + '/' + article.main_image + ')' }"></div>
+                            </a>
+                            <div class="card-body">
+                                <a :href='/article/ + article.slug'><h2 class="card-text">{{ article.title }}</h2></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <newsletter v-show="!loading"></newsletter>
     </div>
 </template>
@@ -71,7 +97,9 @@
                         avatar: "../storage/avatars/user.png"
                     },
                     category: {},
+                    tags: [],
                 },
+                recommendedArticles: {},
                 loading: false,
                 loader: {
                     color: "#16E8CA",
@@ -84,21 +112,6 @@
             this.fetchArticle();
         },
         methods: {
-            /**
-             * Insert the Gists after the Article Data is fetched.
-             */
-            insertGists: function () {
-                window.addEventListener("load", () => {
-                    let $gists = $("div[id^=gist]");
-
-                    _.forEach($gists, function(gist) {
-                        let id = $(gist).attr('id');
-                        let src = $(gist).attr('data-src');
-
-                        postscribe('#' + id, `<script src="` + src + `"><\/script>`);
-                    });
-                });
-            },
             /**
              * Fetch the Article Data.
              */
@@ -117,6 +130,7 @@
                             this.article.est_time = article.est_time;
                             this.article.created_at = article.created_at;
                             this.article.content = article.content;
+                            this.article.tags = JSON.parse(article.tags);
 
                             if (article.main_image) {
                                 this.article.main_image = "../storage/articles/" + this.slug + "/" + article.main_image;
@@ -130,11 +144,13 @@
                                 avatar: "../storage/avatars/" + article.author_avatar,
                             };
                             this.article.category = {
+                                id:   article.category_id,
                                 href: "categories/" + article.category_id,
                                 name: article.category_name,
                             };
 
                             this.insertGists();
+                            this.insertRelatedArticles();
                             this.loading = false;
                         } else {
                             this.toast('b-toaster-bottom-right', "danger", "Oops!", "Se pare ca a aparut o problema la incarcarea paginii. Te rog incearca din nou mai tarziu.");
@@ -142,6 +158,41 @@
                     })
                     .catch(function () {
                         this.toast('b-toaster-bottom-right', "danger", "Oops!", "Se pare ca a aparut o problema la incarcarea paginii. Te rog incearca din nou mai tarziu.");
+                    }.bind(this));
+            },
+            /**
+             * Insert the Gists after the Article Data is fetched.
+             */
+            insertGists: function () {
+                window.addEventListener("load", () => {
+                    let $gists = $("div[id^=gist]");
+
+                    _.forEach($gists, function(gist) {
+                        let id = $(gist).attr('id');
+                        let src = $(gist).attr('data-src');
+
+                        postscribe('#' + id, `<script src="` + src + `"><\/script>`);
+                    });
+                });
+            },
+            /**
+             * Insert Related Articles from DB.
+             */
+            insertRelatedArticles: function () {
+                let parameters = {
+                    title:  this.article.title,
+                    tags:   this.article.tags,
+                    article_category: this.article.category.id
+                };
+
+                axios.post('/article/fetchRelatedArticles', parameters)
+                    .then((response) => {
+                        if (response.data.success) {
+                            this.recommendedArticles = response.data.response;
+                        }
+                    })
+                    .catch(function () {
+                        this.toast('b-toaster-bottom-right', "danger", "Oops!", "Se pare ca a aparut o problema la incarcarea articolelor recomandate. Te rog incearca din nou mai tarziu.");
                     }.bind(this));
             },
             /**

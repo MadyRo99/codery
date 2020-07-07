@@ -20,8 +20,10 @@
                 </li>
             </ul>
             @if (!isset($homePage))
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control searchPlaceholder mr-sm-2" type="search" placeholder="Caută articol...">
+                <form class="form-inline my-2 my-lg-0" method="POST" action="{{ route('articles.search') }}">
+                    @csrf
+                    @method('POST')
+                    <input class="form-control searchPlaceholder mr-sm-2" type="search" name="search" placeholder="Caută articol...">
                     <button class="btn searchButton my-2 my-sm-0" type="submit">Caută</button>
                 </form>
             @endif

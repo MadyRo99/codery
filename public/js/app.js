@@ -8915,6 +8915,33 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -8942,8 +8969,10 @@ __webpack_require__.r(__webpack_exports__);
         author: {
           avatar: "../storage/avatars/user.png"
         },
-        category: {}
+        category: {},
+        tags: []
       },
+      recommendedArticles: {},
       loading: false,
       loader: {
         color: "#16E8CA",
@@ -8956,21 +8985,6 @@ __webpack_require__.r(__webpack_exports__);
     this.fetchArticle();
   },
   methods: {
-    /**
-     * Insert the Gists after the Article Data is fetched.
-     */
-    insertGists: function insertGists() {
-      window.addEventListener("load", function () {
-        var $gists = $("div[id^=gist]");
-
-        _.forEach($gists, function (gist) {
-          var id = $(gist).attr('id');
-          var src = $(gist).attr('data-src');
-          postscribe__WEBPACK_IMPORTED_MODULE_1___default()('#' + id, "<script src=\"" + src + "\"></script>");
-        });
-      });
-    },
-
     /**
      * Fetch the Article Data.
      */
@@ -8988,6 +9002,7 @@ __webpack_require__.r(__webpack_exports__);
           _this.article.est_time = article.est_time;
           _this.article.created_at = article.created_at;
           _this.article.content = article.content;
+          _this.article.tags = JSON.parse(article.tags);
 
           if (article.main_image) {
             _this.article.main_image = "../storage/articles/" + _this.slug + "/" + article.main_image;
@@ -9001,11 +9016,14 @@ __webpack_require__.r(__webpack_exports__);
             avatar: "../storage/avatars/" + article.author_avatar
           };
           _this.article.category = {
+            id: article.category_id,
             href: "categories/" + article.category_id,
             name: article.category_name
           };
 
           _this.insertGists();
+
+          _this.insertRelatedArticles();
 
           _this.loading = false;
         } else {
@@ -9013,6 +9031,41 @@ __webpack_require__.r(__webpack_exports__);
         }
       })["catch"](function () {
         this.toast('b-toaster-bottom-right', "danger", "Oops!", "Se pare ca a aparut o problema la incarcarea paginii. Te rog incearca din nou mai tarziu.");
+      }.bind(this));
+    },
+
+    /**
+     * Insert the Gists after the Article Data is fetched.
+     */
+    insertGists: function insertGists() {
+      window.addEventListener("load", function () {
+        var $gists = $("div[id^=gist]");
+
+        _.forEach($gists, function (gist) {
+          var id = $(gist).attr('id');
+          var src = $(gist).attr('data-src');
+          postscribe__WEBPACK_IMPORTED_MODULE_1___default()('#' + id, "<script src=\"" + src + "\"></script>");
+        });
+      });
+    },
+
+    /**
+     * Insert Related Articles from DB.
+     */
+    insertRelatedArticles: function insertRelatedArticles() {
+      var _this2 = this;
+
+      var parameters = {
+        title: this.article.title,
+        tags: this.article.tags,
+        article_category: this.article.category.id
+      };
+      axios.post('/article/fetchRelatedArticles', parameters).then(function (response) {
+        if (response.data.success) {
+          _this2.recommendedArticles = response.data.response;
+        }
+      })["catch"](function () {
+        this.toast('b-toaster-bottom-right', "danger", "Oops!", "Se pare ca a aparut o problema la incarcarea articolelor recomandate. Te rog incearca din nou mai tarziu.");
       }.bind(this));
     },
 
@@ -9175,6 +9228,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -9194,6 +9256,7 @@ __webpack_require__.r(__webpack_exports__);
         content: "",
         description: "",
         main_image: "",
+        tags: "",
         slug: ""
       },
       errors: {
@@ -9202,6 +9265,7 @@ __webpack_require__.r(__webpack_exports__);
         est_time: "",
         content: "",
         description: "",
+        tags: "",
         slug: ""
       },
       loading: false,
@@ -9275,6 +9339,7 @@ __webpack_require__.r(__webpack_exports__);
       formData.append('description', this.article.description.trim());
       formData.append('est_time', this.article.est_time);
       formData.append('main_image', this.article.main_image);
+      formData.append('tags', this.article.tags);
       formData.append('slug', this.slug);
       axios.post('/article/create/saveArticle', formData, config).then(function (response) {
         var _this = this;
@@ -9481,6 +9546,14 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       this.errors.slug = "";
+      var tagsArray = parameters.tags.split(",");
+
+      if (parameters.tags.trim() === "" || tagsArray.length === 0) {
+        this.errors.tags = "Tag-urile sunt goale. Completeaza cateva tag-uri pentru articol.";
+        return false;
+      }
+
+      this.errors.tags = "";
       return true;
     }
   }
@@ -9500,6 +9573,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _saeris_vue_spinners__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @saeris/vue-spinners */ "./node_modules/@saeris/vue-spinners/lib/@saeris/vue-spinners.common.js");
 /* harmony import */ var _saeris_vue_spinners__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_saeris_vue_spinners__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _MultipleFileUploader__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MultipleFileUploader */ "./resources/js/VueComponents/MultipleFileUploader.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -9701,6 +9783,7 @@ __webpack_require__.r(__webpack_exports__);
         main_image: "",
         images: [],
         status: "0",
+        tags: "",
         savedMainImage: null,
         displayMainImage: "Alege imagine"
       },
@@ -9710,6 +9793,7 @@ __webpack_require__.r(__webpack_exports__);
         est_time: "",
         content: "",
         description: "",
+        tags: "",
         slug: "",
         status: ""
       },
@@ -9748,6 +9832,7 @@ __webpack_require__.r(__webpack_exports__);
       axios.post('/article/fetchUpdateArticleData', parameters).then(function (response) {
         if (response.data.success) {
           var article = response.data.response.article;
+          console.log(JSON.parse(article.tags).join(", "));
           _this.article.title = article.title;
           _this.article.category = article.article_category;
           _this.article.est_time = article.est_time;
@@ -9757,6 +9842,7 @@ __webpack_require__.r(__webpack_exports__);
           _this.article.savedMainImage = article.main_image || null;
           _this.article.displayMainImage = article.main_image || "Alege imagine";
           _this.article.images = article.images;
+          _this.article.tags = JSON.parse(article.tags).join(", ");
           _this.article.status = article.status;
 
           if (response.data.response.categories) {
@@ -9795,6 +9881,7 @@ __webpack_require__.r(__webpack_exports__);
       formData.append('description', this.article.description.trim());
       formData.append('est_time', this.article.est_time);
       formData.append('main_image', this.article.main_image);
+      formData.append('tags', this.article.tags);
       formData.append('slug', this.slug);
       formData.append('status', this.article.status);
       axios.post('/article/edit/' + this.slug + '/updateArticle', formData, config).then(function (response) {
@@ -10041,6 +10128,14 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       this.errors.est_time = "";
+      var tagsArray = parameters.tags.split(",");
+
+      if (parameters.tags.trim() === "" || tagsArray.length === 0) {
+        this.errors.tags = "Tag-urile sunt goale. Completeaza cateva tag-uri pentru articol.";
+        return false;
+      }
+
+      this.errors.tags = "";
       return true;
     }
   }
@@ -10060,13 +10155,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _saeris_vue_spinners__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @saeris/vue-spinners */ "./node_modules/@saeris/vue-spinners/lib/@saeris/vue-spinners.common.js");
 /* harmony import */ var _saeris_vue_spinners__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_saeris_vue_spinners__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Pagination__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Pagination */ "./resources/js/VueComponents/Pagination.vue");
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -47438,7 +47526,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.card {\r\n    height: 25rem;\n}\n.card-title {\r\n    font-size: 18px;\n}\n.card-body a {\r\n    position: absolute;\r\n    bottom: 1rem;\n}\n.card-img-top {\r\n    max-height: 17rem;\n}\r\n\r\n", ""]);
+exports.push([module.i, "\n.card {\n    height: 25rem;\n}\n.card-title {\n    font-size: 18px;\n}\n.card-body a {\n    position: absolute;\n    bottom: 1rem;\n}\n.card-img-top {\n    max-height: 17rem;\n}\n\n", ""]);
 
 // exports
 
@@ -71494,6 +71582,82 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
+      _c("hr"),
+      _vm._v(" "),
+      _c("div", { staticClass: "article-bottom" }, [
+        _c(
+          "div",
+          { staticClass: "article-tags" },
+          [
+            _c("h1", [_vm._v("Tag-uri:")]),
+            _vm._v(" "),
+            _vm._l(_vm.article.tags, function(tag) {
+              return _c("div", { staticClass: "float-left" }, [
+                _c("kbd", [
+                  _c("a", { attrs: { href: "#" } }, [_vm._v(_vm._s(tag))])
+                ])
+              ])
+            }),
+            _vm._v(" "),
+            _c("div", { staticClass: "clearfix" })
+          ],
+          2
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.recommendedArticles.length,
+                expression: "recommendedArticles.length"
+              }
+            ],
+            staticClass: "article-suggestions"
+          },
+          [
+            _c("hr"),
+            _vm._v(" "),
+            _c("h1", [_vm._v("Articole care ar putea să te intereseze:")]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "row" },
+              _vm._l(_vm.recommendedArticles, function(article) {
+                return _c("div", { staticClass: "col-md-4" }, [
+                  _c("div", { staticClass: "card" }, [
+                    _c("a", { attrs: { href: /article/ + article.slug } }, [
+                      _c("div", {
+                        staticClass: "article-image",
+                        style: {
+                          backgroundImage:
+                            "url(/storage/articles/" +
+                            article.slug +
+                            "/" +
+                            article.main_image +
+                            ")"
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "card-body" }, [
+                      _c("a", { attrs: { href: /article/ + article.slug } }, [
+                        _c("h2", { staticClass: "card-text" }, [
+                          _vm._v(_vm._s(article.title))
+                        ])
+                      ])
+                    ])
+                  ])
+                ])
+              }),
+              0
+            )
+          ]
+        )
+      ]),
+      _vm._v(" "),
       _c("newsletter", {
         directives: [
           {
@@ -71672,6 +71836,45 @@ var render = function() {
             _vm._v(" "),
             _c("div", { staticClass: "invalid-feedback" }, [
               _c("p", [_vm._v(_vm._s(_vm.errors.category))])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-row" }, [
+          _c("div", { staticClass: "form-group col-12" }, [
+            _c("label", { attrs: { for: "tags" } }, [_vm._v("Tag-uri")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.article.tags,
+                  expression: "article.tags"
+                }
+              ],
+              staticClass: "form-control",
+              class: { "is-invalid": _vm.errors.tags },
+              attrs: {
+                type: "text",
+                id: "tags",
+                name: "tags",
+                placeholder: "Tag-uri",
+                required: "required"
+              },
+              domProps: { value: _vm.article.tags },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.article, "tags", $event.target.value)
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c("div", { staticClass: "invalid-feedback" }, [
+              _c("p", [_vm._v(_vm._s(_vm.errors.tags))])
             ])
           ])
         ]),
@@ -72247,6 +72450,46 @@ var render = function() {
             _vm._v(" "),
             _c("div", { staticClass: "invalid-feedback" }, [
               _c("p", [_vm._v(_vm._s(_vm.errors.category))])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-row" }, [
+          _c("div", { staticClass: "form-group col-12" }, [
+            _c("label", { attrs: { for: "tags" } }, [_vm._v("Tag-uri")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.article.tags,
+                  expression: "article.tags"
+                }
+              ],
+              staticClass: "form-control",
+              class: { "is-invalid": _vm.errors.tags },
+              attrs: {
+                disabled: _vm.disableForm === true,
+                type: "text",
+                id: "tags",
+                name: "tags",
+                placeholder: "Tags",
+                required: "required"
+              },
+              domProps: { value: _vm.article.tags },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.article, "tags", $event.target.value)
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c("div", { staticClass: "invalid-feedback" }, [
+              _c("p", [_vm._v(_vm._s(_vm.errors.tags))])
             ])
           ])
         ]),
@@ -73005,9 +73248,7 @@ var render = function() {
               ],
               2
             )
-          ]),
-          _vm._v(" "),
-          _vm._m(2)
+          ])
         ])
       ]),
       _vm._v(" "),
@@ -73069,18 +73310,6 @@ var staticRenderFns = [
     return _c("div", { staticClass: "col-2" }, [
       _c("div", { staticClass: "row justify-content-end" }, [
         _c("i", { staticClass: "far fa-bookmark bookmark" })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-12 shadow tags" }, [
-        _c("h1", [_vm._v("Tag-uri")]),
-        _vm._v(" "),
-        _c("hr")
       ])
     ])
   }

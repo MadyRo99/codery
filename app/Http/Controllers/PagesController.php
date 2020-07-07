@@ -83,7 +83,7 @@ class PagesController extends Controller
             ], 200);
         }
 
-        $articles = $this->article;
+        $articles = $this->article->where('articles.status', '=', 1);
         if ($categoryId) {
             $articles = $articles->where('articles.article_category', '=', $request->input('categoryId'));
         }

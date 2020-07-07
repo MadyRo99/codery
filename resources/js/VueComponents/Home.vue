@@ -43,7 +43,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!--TODO: data/categorie/tags/minute-->
                                 <p>{{ article.description || article.content }}</p>
                                 <h2><a :href='/article/ + article.slug'>Citește mai mult</a></h2>
                             </div>
@@ -63,12 +62,6 @@
                             <hr>
                             <p :class="{ selectedCategory: setCategory === category.id }">{{ category.name }}</p>
                         </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12 shadow tags">
-                        <h1>Tag-uri</h1>
-                        <hr>
                     </div>
                 </div>
             </div>

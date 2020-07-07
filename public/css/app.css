@@ -260,22 +260,6 @@ html {
   border-top: thin solid #16E8CA;
 }
 
-.home .filters-list .tags {
-  border-radius: 5px;
-  margin-top: 25px;
-}
-
-.home .filters-list .tags h1 {
-  font-size: 20px;
-  padding-top: 15px;
-  padding-left: 10px;
-}
-
-.home .filters-list .tags hr {
-  border: none;
-  border-top: thin solid #16E8CA;
-}
-
 /* END SECTION */
 
 /* AUTH SECTION */
@@ -437,6 +421,7 @@ html {
   /* ARTICLES HEADER SECTION */
   /* END SECTION */
   /* ARTICLE BODY SECTION */
+  /* ARTICLE BOTTOM */
   /* END SECTION */
 }
 
@@ -586,9 +571,66 @@ html {
   content: " \2014";
 }
 
+.article-view .article-bottom h1 {
+  font-size: 24px;
+  padding-top: 5px;
+  padding-bottom: 10px;
+}
+
+.article-view .article-bottom .article-tags {
+  padding-bottom: 10px;
+}
+
+.article-view .article-bottom .article-tags a {
+  text-decoration: none;
+  color: #FFFFFF;
+}
+
+.article-view .article-bottom .article-tags kbd {
+  margin-right: 10px;
+}
+
+.article-view .article-bottom .article-suggestions h2 {
+  font-size: 20px;
+  text-align: center;
+}
+
+.article-view .article-bottom .article-suggestions a {
+  bottom: auto;
+  position: relative;
+}
+
+.article-view .article-bottom .article-suggestions .card {
+  height: auto;
+  margin-bottom: 25px;
+}
+
+.article-view .article-bottom .article-suggestions .card-body {
+  height: 150px;
+}
+
+@media (max-width: 767.98px) {
+  .article-view .article-bottom .article-suggestions .card-body {
+    height: 110px;
+  }
+}
+
+.article-view .article-bottom .article-suggestions .article-image {
+  height: 150px;
+  background: no-repeat center;
+  background-size: cover;
+  position: relative;
+}
+
+@media (max-width: 767.98px) {
+  .article-view .article-bottom .article-suggestions .article-image {
+    height: 250px;
+  }
+}
+
 .article-view .article-newsletter {
   height: 250px;
-  margin: 0px 15px;
+  margin: 10px 15px 0px;
 }
 
 .article-view .article-newsletter .article-newsletter-left-side {
