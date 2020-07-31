@@ -3,6 +3,7 @@
         <div class="navbar-brand img-container mb-2">
             <a href="/"><img src="{{asset('images/logo.svg')}}" alt="logo.png"></a>
         </div>
+
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>

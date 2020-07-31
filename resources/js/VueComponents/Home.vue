@@ -16,6 +16,24 @@
                 </div>
             </div>
         </div>
+        <div class="row filters-mobile">
+            <div class="col-12" style="padding: 0;">
+                <button class="form-control searchButton" style="border-radius: .25rem;" @click="mobileFiltersActive = !mobileFiltersActive" :class="{ buttonNoRadius: mobileFiltersActive }">Categorii</button>
+                <slide-up-down class="filters-mobile-content" :active="mobileFiltersActive" :duration="500">
+                    <div class="row">
+                        <div class="col-12">
+                            <div @click="updateArticlesFiltered(0)">
+                                <p :class="{ selectedCategory: setCategory === 0 }" style="padding-top: 15px;">Toate</p>
+                            </div>
+                            <div v-for="category in categories" @click="updateArticlesFiltered(category.id)">
+                                <hr>
+                                <p :class="{ selectedCategory: setCategory === category.id }">{{ category.name }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </slide-up-down>
+            </div>
+        </div>
         <div class="row justify-content-between">
             <div class="col-12 col-lg-10 article-list">
                 <div class="row article" v-for="article in articles.data">
@@ -24,14 +42,14 @@
                             <a :href='/article/ + article.slug' class="col-12 col-md-6 col-lg-5 article-section" style="padding: 0;" v-if="article.main_image"><div class="article-image" :style="{ backgroundImage: 'url(/storage/articles/' + article.slug + '/' + article.main_image + ')' }"></div></a>
                             <div class="article-section" :class="{ 'col-12 col-md-6 col-lg-7' : article.main_image }">
                                 <div class="row">
-                                    <div class="col-10">
+                                    <div class="col-12">
                                         <h1><a :href='/article/ + article.slug'>{{ article.title }}</a></h1>
                                     </div>
-                                    <div class="col-2">
-                                        <div class="row justify-content-end">
-                                            <i class="far fa-bookmark bookmark"></i>
-                                        </div>
-                                    </div>
+<!--                                    <div class="col-2">-->
+<!--                                        <div class="row justify-content-end">-->
+<!--                                            <i class="far fa-bookmark bookmark"></i>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
                                 </div>
                                 <div class="row article-info">
                                     <div class="col-12">
@@ -75,11 +93,12 @@
 
 <script>
     import { BounceLoader } from '@saeris/vue-spinners';
+    import SlideUpDown from 'vue-slide-up-down';
     import Pagination from './Pagination';
 
     export default {
         name: 'home',
-        components: { BounceLoader, Pagination },
+        components: { BounceLoader, SlideUpDown, Pagination },
         props: {
             search: {
                 type: String,
@@ -105,6 +124,7 @@
                     size: 200,
                     margin: 0,
                 },
+                mobileFiltersActive: false,
             };
         },
         mounted: function () {

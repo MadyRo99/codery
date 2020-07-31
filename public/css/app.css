@@ -44,6 +44,16 @@ html {
   height: 40px;
 }
 
+@media (max-width: 992px) {
+  .navbar .form-control {
+    width: 100%;
+  }
+
+  .navbar button {
+    margin-top: 0.5rem !important;
+  }
+}
+
 .navbar .nav-item {
   margin: 0 15px;
 }
@@ -101,6 +111,11 @@ html {
   padding: 25px;
 }
 
+.home .selectedCategory {
+  color: #993FFF;
+  font-weight: bold;
+}
+
 .home .searchPlaceholder {
   border-top-right-radius: 0;
   -webkit-border-top-right-radius: 0;
@@ -118,6 +133,53 @@ html {
   color: #FFFFFF;
 }
 
+.home .filters-mobile {
+  display: none;
+}
+
+.home .filters-mobile .filters-mobile-content {
+  border: 1px solid #993FFF;
+  border-top-left-radius: 0px;
+  -webkit-border-top-left-radius: 0px;
+  border-bottom-left-radius: 5px;
+  -webkit-border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  -webkit-border-bottom-right-radius: 5px;
+}
+
+.home .filters-mobile .buttonNoRadius {
+  border-bottom-left-radius: 0px !important;
+  -webkit-border-bottom-left-radius: 0px !important;
+  border-bottom-right-radius: 0px !important;
+  -webkit-border-bottom-right-radius: 0px !important;
+}
+
+.home .filters-mobile div {
+  cursor: pointer;
+}
+
+.home .filters-mobile h1 {
+  font-size: 20px;
+  padding-top: 15px;
+  padding-left: 10px;
+}
+
+.home .filters-mobile p {
+  font-size: 16px;
+  text-align: center;
+}
+
+.home .filters-mobile hr {
+  border: none;
+  border-top: thin solid #16E8CA;
+}
+
+@media (max-width: 991.98px) {
+  .home .filters-mobile {
+    display: block;
+  }
+}
+
 @media (max-width: 767.98px) {
   .home {
     max-width: 800px;
@@ -125,7 +187,7 @@ html {
 }
 
 .home .article-list {
-  margin-top: 10px;
+  margin-top: 16px;
   padding-right: 35px;
 }
 
@@ -228,12 +290,7 @@ html {
 }
 
 .home .filters-list {
-  margin-top: 10px;
-}
-
-.home .filters-list .selectedCategory {
-  color: #993FFF;
-  font-weight: bold;
+  margin-top: 16px;
 }
 
 .home .filters-list .categories {
@@ -453,6 +510,10 @@ html {
 }
 
 .article-view .article-header .article-header-details .author-details a {
+  color: #993FFF;
+}
+
+.article-view .article-header .article-header-details .author-details .author-name {
   color: #993FFF;
 }
 

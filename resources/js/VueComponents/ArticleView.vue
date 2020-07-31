@@ -10,10 +10,10 @@
                 <div class="col-7">
                     <div class="d-flex justify-content-start">
                         <div class="author-image">
-                            <a :href="article.author.href"><img :src="article.author.avatar" alt="author_avatar.png" class="rounded-circle"></a>
+                            <img :src="article.author.avatar" alt="author_avatar.png" class="rounded-circle">
                         </div>
                         <div class="author-details pl-2 mb-4 align-self-center">
-                            <a :href="article.author.href"><p class="author-name mb-1">@{{ article.author.name }}</p></a>
+                            <p class="author-name mb-1">@{{ article.author.name }}</p>
                             <p class="article-info text-secondary" style="position: absolute; width: 175px;">&#9672; {{ article.created_at }} | {{ article.est_time }} min</p>
                         </div>
                     </div>
