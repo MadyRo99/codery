@@ -20,7 +20,7 @@
                 </div>
                 <div class="col-5">
                     <div class="d-flex flex-column align-items-end">
-                        <span class="category-link pt-2"><i class="fas fa-tags fa-md"></i> <a :href="article.category.href">{{ article.category.name }}</a></span>
+                        <span class="category-link pt-2"><i class="fas fa-tags fa-md"></i> <a :href='"/?search=" + article.category.name'>{{ article.category.name }}</a></span>
                         <div class="article-social-share pl-2">
                             <div>
                                 <a href="https://www.facebook.com/"><i class="fab fa-facebook-square fa-lg pr-1"></i></a>
@@ -45,7 +45,7 @@
             <div class="article-tags">
                 <h1>Tag-uri:</h1>
                 <div class="float-left" v-for="tag in article.tags">
-                    <kbd><a href='#'>{{ tag }}</a></kbd>
+                    <kbd><a :href='"/?search=" + tag'>{{ tag }}</a></kbd>
                 </div>
                 <div class="clearfix"></div>
             </div>

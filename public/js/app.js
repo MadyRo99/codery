@@ -71575,9 +71575,11 @@ var render = function() {
               _c("span", { staticClass: "category-link pt-2" }, [
                 _c("i", { staticClass: "fas fa-tags fa-md" }),
                 _vm._v(" "),
-                _c("a", { attrs: { href: _vm.article.category.href } }, [
-                  _vm._v(_vm._s(_vm.article.category.name))
-                ])
+                _c(
+                  "a",
+                  { attrs: { href: "/?search=" + _vm.article.category.name } },
+                  [_vm._v(_vm._s(_vm.article.category.name))]
+                )
               ]),
               _vm._v(" "),
               _vm._m(0)
@@ -71629,7 +71631,9 @@ var render = function() {
             _vm._l(_vm.article.tags, function(tag) {
               return _c("div", { staticClass: "float-left" }, [
                 _c("kbd", [
-                  _c("a", { attrs: { href: "#" } }, [_vm._v(_vm._s(tag))])
+                  _c("a", { attrs: { href: "/?search=" + tag } }, [
+                    _vm._v(_vm._s(tag))
+                  ])
                 ])
               ])
             }),

@@ -43,6 +43,11 @@ class PagesController extends Controller
         )->withHomePage(true)->withSearch($search);
     }
 
+    /**
+     * Get the About Page of the Blog.
+     *
+     * @return mixed
+     */
     public function getAboutPage()
     {
         return view(
