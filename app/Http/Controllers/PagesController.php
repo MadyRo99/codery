@@ -79,7 +79,7 @@ class PagesController extends Controller
     public function getArticles(Request $request)
     {
         $categoryId = $request->input('categoryId');
-        $search = $request->input('search');
+        $search = strtolower($request->input('search'));
         $searchExploaded = explode(" ", $search);
 
         $validator = Validator::make($request->all(), [
