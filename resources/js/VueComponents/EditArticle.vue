@@ -156,27 +156,27 @@
         <div>
             <b-modal
                      id="deleteModal"
-                     title="Stergere Articolul"
-                     ok-title="Stergere"
+                     title="Ștergere Articolul"
+                     ok-title="Ștergere"
                      ok-variant="danger"
-                     cancel-title="Anuleaza"
+                     cancel-title="Anulează"
                      @hide="disableForm = false"
                      @cancel="disableForm = false"
                      @ok="deleteArticle">
-                <p class="my-4">Esti sigur ca vrei sa stergi acest articol?</p>
-                <p class="my-4">Odata sters, acesta nu va mai putea fi recuperat.</p>
+                <p class="my-4">Ești sigur că vrei să ștergi acest articol?</p>
+                <p class="my-4">Odata șters, acesta nu va mai putea fi recuperat.</p>
             </b-modal>
         </div>
         <div>
             <b-modal
                     id="leaveModal"
-                    title="Paraseste Articolul"
+                    title="Părăsește Articolul"
                     ok-title="Da"
                     ok-variant="warning"
-                    cancel-title="Anuleaza"
+                    cancel-title="Anulează"
                     @ok="leaveArticle">
-                <p class="my-4">Esti sigur ca vrei sa parasesti pagina?</p>
-                <p class="my-4">Toate modificare nesalvate nu vor fi pastrate.</p>
+                <p class="my-4">Ești sigur că vrei să părăsești pagina?</p>
+                <p class="my-4">Toate modificările nesalvate nu vor fi păstrate.</p>
             </b-modal>
         </div>
     </div>

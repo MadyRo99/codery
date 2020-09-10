@@ -114,4 +114,11 @@ class PagesController extends Controller
 
         return response()->json($articles->paginate(4));
     }
+
+    public function getAdminPanel()
+    {
+        return view(
+            'auth.admin.adminPanel'
+        )->withTitle("Panou Administrare");
+    }
 }
