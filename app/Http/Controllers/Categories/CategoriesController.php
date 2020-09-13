@@ -20,7 +20,12 @@ class CategoriesController extends Controller
      */
     public function getCategories()
     {
-        $categories = Category::all();
+        $categories = DB::select("
+            SELECT article_categories.id AS id, article_categories.name AS name, COUNT(articles.id) AS posts
+            FROM article_categories
+            LEFT JOIN articles ON article_categories.id = articles.article_category
+            GROUP BY article_categories.id, article_categories.name
+        ");
 
         return response()->json([
             'response' => $categories,

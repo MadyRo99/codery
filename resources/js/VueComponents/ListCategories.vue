@@ -25,13 +25,15 @@
                     <tr>
                         <th scope="col">ID</th>
                         <th scope="col">Nume</th>
+                        <th scope="col">Articole</th>
                         <th></th><th></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr v-for="category in categories">
-                        <th scope="row">{{ category.id }}</th>
+                        <td>{{ category.id }}</td>
                         <td>{{ category.name }}</td>
+                        <td style="text-align: center;">{{ category.posts }}</td>
                         <td><a><button type="button" class="btn btn-warning btn-sm" style="color: #FFFFFF;">Editează</button></a></td>
                         <td><button type="button" class="btn btn-danger btn-sm" v-b-modal.deleteModal @click="setCategoryIdDelete(category.id)">Șterge</button></td>
                     </tr>

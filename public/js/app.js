@@ -10506,6 +10506,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -73836,18 +73838,20 @@ var render = function() {
           1
         ),
         _vm._v(" "),
-        _c("table", { staticClass: "table " }, [
+        _c("table", { staticClass: "table" }, [
           _vm._m(0),
           _vm._v(" "),
           _c(
             "tbody",
             _vm._l(_vm.categories, function(category) {
               return _c("tr", [
-                _c("th", { attrs: { scope: "row" } }, [
-                  _vm._v(_vm._s(category.id))
-                ]),
+                _c("td", [_vm._v(_vm._s(category.id))]),
                 _vm._v(" "),
                 _c("td", [_vm._v(_vm._s(category.name))]),
+                _vm._v(" "),
+                _c("td", { staticStyle: { "text-align": "center" } }, [
+                  _vm._v(_vm._s(category.posts))
+                ]),
                 _vm._v(" "),
                 _vm._m(1, true),
                 _vm._v(" "),
@@ -73932,6 +73936,8 @@ var staticRenderFns = [
         _c("th", { attrs: { scope: "col" } }, [_vm._v("ID")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Nume")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Articole")]),
         _vm._v(" "),
         _c("th"),
         _c("th")
