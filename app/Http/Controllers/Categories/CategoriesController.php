@@ -45,6 +45,12 @@ class CategoriesController extends Controller
         )->withTitle("Categorii");
     }
 
+    /**
+     * Create a new category.
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
     public function createCategory(Request $request)
     {
         $rules = [
@@ -76,6 +82,12 @@ class CategoriesController extends Controller
         ], 200);
     }
 
+    /**
+     * Delete a category by the given ID.
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
     public function deleteCategory(Request $request)
     {
         $rules = [
@@ -95,9 +107,9 @@ class CategoriesController extends Controller
 
         if ($category) {
             $categoriesView = new CategoriesView();
-            $deleteCategory = $categoriesView->deleteCategory($category->id);
+            $countArticles = $categoriesView->countArticles($category->id);
 
-            if ($deleteCategory["success"]) {
+            if ($countArticles["success"]) {
                 if ($category->delete()) {
                     return response()->json([
                         'response' => true,
@@ -118,7 +130,57 @@ class CategoriesController extends Controller
         }
 
         return response()->json([
-            'response' => ["slug" => "Categoria nu a putut fi găsită. Te rog încearcă din nou mai târziu."],
+            'response' => ["id" => "Categoria nu a putut fi găsită. Te rog încearcă din nou mai târziu."],
+            'success'  => false,
+        ], 200);
+    }
+
+    /**
+     * Edit a category by the given ID and new Name.
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function editCategory(Request $request)
+    {
+        $rules = [
+            'id'   => 'required|integer|exists:article_categories,id',
+            'name' => 'required|string|max:15|min:2',
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'response' => $validator->getMessageBag()->toArray(),
+                'success'  => false,
+            ], 200);
+        }
+
+        $id   = $request->input('id');
+        $name = $request->input('name');
+
+        $category = Category::where('id', '=', $id)->first();
+
+        if ($category) {
+            $categoriesView = new CategoriesView();
+            $editCategory = $categoriesView->editCategory($id, $name);
+
+            if ($editCategory["success"]) {
+                return response()->json([
+                    'response' => "Categoria a fost editată cu succes.",
+                    'success'  => true,
+                ], 200);
+            } else {
+                return response()->json([
+                    'response' => "Categoria nu a putut fi editată. Te rog încearcă din nou mai târziu.",
+                    'success'  => false,
+                ], 200);
+            }
+        }
+
+        return response()->json([
+            'response' => ["id" => "Categoria nu a putut fi găsită. Te rog încearcă din nou mai târziu."],
             'success'  => false,
         ], 200);
     }

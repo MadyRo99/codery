@@ -3,13 +3,19 @@
 namespace App\Http\Controllers\Categories;
 
 use App\Category;
-use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Contracts\View\Factory;
 
 class CategoriesView
 {
+    /**
+     * Create a new category.
+     *
+     * @param $request
+     * @return array
+     */
     public function saveCategory($request)
     {
         $category = new Category();
@@ -29,7 +35,14 @@ class CategoriesView
         ];
     }
 
-    public function deleteCategory($id)
+    /**
+     * Count the articles that are associated with the given category.
+     * Returns "true" if there are no articles associated with the category and "false" otherwise.
+     *
+     * @param $id
+     * @return array
+     */
+    public function countArticles($id)
     {
         $countArticles = DB::table('articles')->where('article_category', '=', $id)->count();
         if ($countArticles) {
@@ -41,6 +54,18 @@ class CategoriesView
 
         return [
             "result"  => "Categoria poate fi ștearsă cu succes.",
+            "success" => true,
+        ];
+    }
+
+    public function editCategory($id, $name)
+    {
+        $category = Category::find($id);
+        $category->name = $name;
+        $category->save();
+
+        return [
+            "result"  => "Categoria a fost editată cu succes.",
             "success" => true,
         ];
     }

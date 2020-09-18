@@ -17,4 +17,8 @@ Route::namespace('Categories')->group(function () {
         'as'            =>  'categories.delete',
         'uses'          =>  'CategoriesController@deleteCategory',
     ]);
+    Route::post('/categories/edit/{id}', [
+        'as'            =>  'categories.edit',
+        'uses'          =>  'CategoriesController@editCategory',
+    ]);
 });

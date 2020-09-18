@@ -25,7 +25,7 @@
                     <tr>
                         <th scope="col">ID</th>
                         <th scope="col">Nume</th>
-                        <th scope="col">Articole</th>
+                        <th scope="col" style="text-align: center;">Articole</th>
                         <th></th><th></th>
                     </tr>
                 </thead>
@@ -34,7 +34,7 @@
                         <td>{{ category.id }}</td>
                         <td>{{ category.name }}</td>
                         <td style="text-align: center;">{{ category.posts }}</td>
-                        <td><a><button type="button" class="btn btn-warning btn-sm" style="color: #FFFFFF;">Editează</button></a></td>
+                        <td><a><button type="button" class="btn btn-warning btn-sm" v-b-modal.editModal @click="setCategoryInfoEdit(category.id, category.name)" style="color: #FFFFFF;">Editează</button></a></td>
                         <td><button type="button" class="btn btn-danger btn-sm" v-b-modal.deleteModal @click="setCategoryIdDelete(category.id)">Șterge</button></td>
                     </tr>
                 </tbody>
@@ -51,6 +51,27 @@
                     @ok="deleteCategory">
                     <p class="my-4">Ești sigur că vrei să ștergi această categorie?</p>
                     <p class="my-4">Odată ștearsă, aceasta nu va mai putea fi recuperată.</p>
+                </b-modal>
+            </div>
+            <div>
+                <b-modal
+                    id="editModal"
+                    title="Editează Categoria"
+                    @ok="editCategory"
+                >
+                    <form ref="form" @submit.stop.prevent="editCategory">
+                        <b-form-group
+                            label="Nume"
+                            label-for="Nume"
+                            invalid-feedback="Te rog completează numele categoriei."
+                        >
+                            <b-form-input
+                                id="Nume"
+                                v-model="editCategoryInput"
+                                required
+                            ></b-form-input>
+                        </b-form-group>
+                    </form>
                 </b-modal>
             </div>
         </div>
@@ -74,6 +95,9 @@
                 loading: false,
                 disableForm: true,
                 addCategoryFieldActive: false,
+                idDelete: "",
+                idEdit: "",
+                editCategoryInput: "",
                 loader: {
                     color: "#16E8CA",
                     size: 200,
@@ -98,6 +122,9 @@
                     this.loading = false;
                 });
             },
+            /**
+             * Add a new category.
+             */
             addCategory: function () {
                 if (this.addInput.length) {
                     this.loading = true;
@@ -123,9 +150,22 @@
                     this.toast('b-toaster-bottom-right', "danger", "Oops!", "Te rog completează numele categoriei.");
                 }
             },
+            /**
+             * Set the category ID to delete.
+             */
             setCategoryIdDelete: function (id) {
                 this.idDelete = id;
             },
+            /**
+             * Set the category details to edit.
+             */
+            setCategoryInfoEdit: function (id, name) {
+                this.editCategoryInput = name;
+                this.idEdit = id;
+            },
+            /**
+             * Delete a category by ID.
+             */
             deleteCategory: function () {
                 this.loading = true;
                 let parameters = {
@@ -145,6 +185,33 @@
                         }
                     }.bind(this)).catch(function (error) {
                         this.toast('b-toaster-bottom-right', "danger", "Oops!", "A apărut o eroare la ștergerea categoriei. Te rog încearcă din nou mai târziu.");
+                }.bind(this)).finally(function () {
+                    this.loading = false;
+                }.bind(this));
+            },
+            /**
+             * Update the name of the category.
+             */
+            editCategory: function () {
+                this.loading = true;
+                let parameters = {
+                    id   : this.idEdit,
+                    name : this.editCategoryInput
+                };
+
+                let url = '/categories/edit/' + this.idEdit;
+                axios.post(url, parameters)
+                    .then(function (response) {
+                        if (response.data.success) {
+                            this.fetchCategories();
+                            this.toast('b-toaster-bottom-right', "success", "Succes!", "Categoria a fost editată cu succes.");
+                        } else {
+                            _.forEach(response.data.response, function(error) {
+                                this.toast('b-toaster-bottom-right', "danger", "Oops!", error);
+                            }.bind(this));
+                        }
+                    }.bind(this)).catch(function (error) {
+                    this.toast('b-toaster-bottom-right', "danger", "Oops!", "A apărut o eroare la editarea categoriei. Te rog încearcă din nou mai târziu.");
                 }.bind(this)).finally(function () {
                     this.loading = false;
                 }.bind(this));

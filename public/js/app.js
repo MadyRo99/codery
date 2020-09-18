@@ -10508,6 +10508,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -10526,6 +10547,9 @@ __webpack_require__.r(__webpack_exports__);
       loading: false,
       disableForm: true,
       addCategoryFieldActive: false,
+      idDelete: "",
+      idEdit: "",
+      editCategoryInput: "",
       loader: {
         color: "#16E8CA",
         size: 200,
@@ -10550,6 +10574,10 @@ __webpack_require__.r(__webpack_exports__);
         _this.loading = false;
       });
     },
+
+    /**
+     * Add a new category.
+     */
     addCategory: function addCategory() {
       if (this.addInput.length) {
         this.loading = true;
@@ -10573,9 +10601,25 @@ __webpack_require__.r(__webpack_exports__);
         this.toast('b-toaster-bottom-right', "danger", "Oops!", "Te rog completează numele categoriei.");
       }
     },
+
+    /**
+     * Set the category ID to delete.
+     */
     setCategoryIdDelete: function setCategoryIdDelete(id) {
       this.idDelete = id;
     },
+
+    /**
+     * Set the category details to edit.
+     */
+    setCategoryInfoEdit: function setCategoryInfoEdit(id, name) {
+      this.editCategoryInput = name;
+      this.idEdit = id;
+    },
+
+    /**
+     * Delete a category by ID.
+     */
     deleteCategory: function deleteCategory() {
       this.loading = true;
       var parameters = {
@@ -10593,6 +10637,32 @@ __webpack_require__.r(__webpack_exports__);
         }
       }.bind(this))["catch"](function (error) {
         this.toast('b-toaster-bottom-right', "danger", "Oops!", "A apărut o eroare la ștergerea categoriei. Te rog încearcă din nou mai târziu.");
+      }.bind(this))["finally"](function () {
+        this.loading = false;
+      }.bind(this));
+    },
+
+    /**
+     * Update the name of the category.
+     */
+    editCategory: function editCategory() {
+      this.loading = true;
+      var parameters = {
+        id: this.idEdit,
+        name: this.editCategoryInput
+      };
+      var url = '/categories/edit/' + this.idEdit;
+      axios.post(url, parameters).then(function (response) {
+        if (response.data.success) {
+          this.fetchCategories();
+          this.toast('b-toaster-bottom-right', "success", "Succes!", "Categoria a fost editată cu succes.");
+        } else {
+          _.forEach(response.data.response, function (error) {
+            this.toast('b-toaster-bottom-right', "danger", "Oops!", error);
+          }.bind(this));
+        }
+      }.bind(this))["catch"](function (error) {
+        this.toast('b-toaster-bottom-right', "danger", "Oops!", "A apărut o eroare la editarea categoriei. Te rog încearcă din nou mai târziu.");
       }.bind(this))["finally"](function () {
         this.loading = false;
       }.bind(this));
@@ -73853,7 +73923,34 @@ var render = function() {
                   _vm._v(_vm._s(category.posts))
                 ]),
                 _vm._v(" "),
-                _vm._m(1, true),
+                _c("td", [
+                  _c("a", [
+                    _c(
+                      "button",
+                      {
+                        directives: [
+                          {
+                            name: "b-modal",
+                            rawName: "v-b-modal.editModal",
+                            modifiers: { editModal: true }
+                          }
+                        ],
+                        staticClass: "btn btn-warning btn-sm",
+                        staticStyle: { color: "#FFFFFF" },
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            return _vm.setCategoryInfoEdit(
+                              category.id,
+                              category.name
+                            )
+                          }
+                        }
+                      },
+                      [_vm._v("Editează")]
+                    )
+                  ])
+                ]),
                 _vm._v(" "),
                 _c("td", [
                   _c(
@@ -73920,6 +74017,62 @@ var render = function() {
             )
           ],
           1
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          [
+            _c(
+              "b-modal",
+              {
+                attrs: { id: "editModal", title: "Editează Categoria" },
+                on: { ok: _vm.editCategory }
+              },
+              [
+                _c(
+                  "form",
+                  {
+                    ref: "form",
+                    on: {
+                      submit: function($event) {
+                        $event.stopPropagation()
+                        $event.preventDefault()
+                        return _vm.editCategory($event)
+                      }
+                    }
+                  },
+                  [
+                    _c(
+                      "b-form-group",
+                      {
+                        attrs: {
+                          label: "Nume",
+                          "label-for": "Nume",
+                          "invalid-feedback":
+                            "Te rog completează numele categoriei."
+                        }
+                      },
+                      [
+                        _c("b-form-input", {
+                          attrs: { id: "Nume", required: "" },
+                          model: {
+                            value: _vm.editCategoryInput,
+                            callback: function($$v) {
+                              _vm.editCategoryInput = $$v
+                            },
+                            expression: "editCategoryInput"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                )
+              ]
+            )
+          ],
+          1
         )
       ],
       1
@@ -73937,28 +74090,14 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Nume")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Articole")]),
+        _c(
+          "th",
+          { staticStyle: { "text-align": "center" }, attrs: { scope: "col" } },
+          [_vm._v("Articole")]
+        ),
         _vm._v(" "),
         _c("th"),
         _c("th")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("a", [
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-warning btn-sm",
-            staticStyle: { color: "#FFFFFF" },
-            attrs: { type: "button" }
-          },
-          [_vm._v("Editează")]
-        )
       ])
     ])
   }
