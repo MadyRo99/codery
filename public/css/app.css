@@ -789,6 +789,76 @@ html {
 
 /* END SECTION */
 
+/* ADMIN PANEL SECTION */
+
+.admin-panel {
+  margin: 40px 0px;
+}
+
+.admin-panel button {
+  border-color: #993FFF;
+  color: #993FFF;
+  margin-right: 10px;
+}
+
+/* END SECTION */
+
+/* CATEGORIES SECTION */
+
+.list-categories {
+  margin: 40px 0px;
+}
+
+.list-categories h2 {
+  margin-bottom: 10px;
+}
+
+.list-categories #addCategory {
+  border-color: #993FFF;
+  color: #993FFF;
+  margin-right: 10px;
+}
+
+.list-categories .addPlaceholder {
+  margin-top: 10px;
+  border-color: #993FFF;
+  border-top-right-radius: 0;
+  -webkit-border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  -webkit-border-bottom-right-radius: 0;
+}
+
+.list-categories .addButton {
+  margin-top: 10px;
+  border-top-left-radius: 0;
+  -webkit-border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  -webkit-border-bottom-left-radius: 0;
+  border-left: 0;
+  background-color: #993FFF;
+  color: #FFFFFF;
+}
+
+.list-categories table {
+  margin-top: 40px;
+}
+
+.list-categories table thead {
+  background-color: #993FFF;
+  border-color: #993FFF;
+  color: #FFFFFF;
+}
+
+.list-categories table thead th {
+  font-weight: bold;
+}
+
+.list-categories table button {
+  width: 75px;
+}
+
+/* END SECTION */
+
 .loader {
   position: absolute;
   top: 0;

@@ -779,6 +779,76 @@ body, html {
 
 /* END SECTION */
 
+/* ADMIN PANEL SECTION */
+
+.admin-panel {
+    margin: 40px 0px;
+
+    button {
+        border-color: $purple;
+        color: $purple;
+        margin-right: 10px;
+    }
+}
+
+/* END SECTION */
+
+/* CATEGORIES SECTION */
+
+.list-categories {
+    margin: 40px 0px;
+
+    h2 {
+        margin-bottom: 10px;
+    }
+
+    #addCategory {
+        border-color: $purple;
+        color: $purple;
+        margin-right: 10px;
+    }
+
+    .addPlaceholder {
+        margin-top: 10px;
+        border-color: $purple;
+        border-top-right-radius: 0;
+        -webkit-border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        -webkit-border-bottom-right-radius: 0;
+    }
+
+    .addButton {
+        margin-top: 10px;
+        border-top-left-radius: 0;
+        -webkit-border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        -webkit-border-bottom-left-radius: 0;
+        border-left: 0;
+        background-color: $purple;
+        color: #FFFFFF;
+    }
+
+    table {
+        margin-top: 40px;
+
+        thead {
+            background-color: $purple;
+            border-color: $purple;
+            color: #FFFFFF;
+
+            th {
+                font-weight: bold;
+            }
+        }
+
+        button {
+            width: 75px;
+        }
+    }
+}
+
+/* END SECTION */
+
 .loader {
   position:absolute;
   top: 0;

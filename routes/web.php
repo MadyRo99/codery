@@ -28,9 +28,9 @@ Route::post('/getArticles', [
     'uses'          =>  'PagesController@getArticles',
 ]);
 
-Route::get('/getCategories', [
-    'as'            =>  'getCategories',
-    'uses'          =>  'PagesController@getCategories',
+Route::get('/getAdminPanel', [
+    'as'            =>  'getAdminPanel',
+    'uses'          =>  'PagesController@getAdminPanel',
 ]);
 
 // Authentication Routes
@@ -38,3 +38,5 @@ require ('auth.php');
 
 // Authentication Routes
 require ('articles.php');
+
+require ('categories.php');

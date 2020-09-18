@@ -95,9 +95,11 @@ class PagesController extends Controller
         }
 
         $articles = $this->article->where('articles.status', '=', 1);
+
         if ($categoryId) {
             $articles = $articles->where('articles.article_category', '=', $request->input('categoryId'));
         }
+
         if ($search) {
             $articles = $articles->where(function($q) use ($search, $searchExploaded) {
                 $q->where('title', 'LIKE', '%' . $search . '%')
@@ -113,5 +115,12 @@ class PagesController extends Controller
         $articles = $articles->orderBy('created_at', 'desc');
 
         return response()->json($articles->paginate(4));
+    }
+
+    public function getAdminPanel()
+    {
+        return view(
+            'auth.admin.adminPanel'
+        )->withTitle("Panou Administrare");
     }
 }
