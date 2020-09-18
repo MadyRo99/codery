@@ -31,15 +31,23 @@ class PagesController extends Controller
     /**
      * Get the Home Page of the Blog.
      *
+     * @param Request $request
      * @return Factory|View
      */
-    public function getHomePage()
+    public function getHomePage(Request $request)
     {
+        $search = $request->input('search');
+
         return view(
             'acasa'
-        )->withHomePage(true);
+        )->withHomePage(true)->withSearch($search);
     }
 
+    /**
+     * Get the About Page of the Blog.
+     *
+     * @return mixed
+     */
     public function getAboutPage()
     {
         return view(
@@ -71,9 +79,12 @@ class PagesController extends Controller
     public function getArticles(Request $request)
     {
         $categoryId = $request->input('categoryId');
+        $search = strtolower($request->input('search'));
+        $searchExploaded = explode(" ", $search);
 
         $validator = Validator::make($request->all(), [
             'categoryId' => 'nullable|integer',
+            'search' => 'nullable|string',
         ]);
 
         if ($validator->fails()) {
@@ -83,11 +94,33 @@ class PagesController extends Controller
             ], 200);
         }
 
-        $articles = $this->article;
+        $articles = $this->article->where('articles.status', '=', 1);
+
         if ($categoryId) {
             $articles = $articles->where('articles.article_category', '=', $request->input('categoryId'));
         }
 
-        return response()->json($articles->paginate(2));
+        if ($search) {
+            $articles = $articles->where(function($q) use ($search, $searchExploaded) {
+                $q->where('title', 'LIKE', '%' . $search . '%')
+                  ->orWhere('tags', 'LIKE', '%' . $searchExploaded[0] . '%');
+
+                array_shift($searchExploaded);
+                foreach ($searchExploaded as $word) {
+                    $q->orWhere('tags', 'LIKE', '%' . $word . '%');
+                }
+            });
+        }
+
+        $articles = $articles->orderBy('created_at', 'desc');
+
+        return response()->json($articles->paginate(4));
+    }
+
+    public function getAdminPanel()
+    {
+        return view(
+            'auth.admin.adminPanel'
+        )->withTitle("Panou Administrare");
     }
 }

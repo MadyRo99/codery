@@ -5,7 +5,7 @@
 @section('content')
 
     <div>
-        <admin-panel></admin-panel>
+        <list-categories></list-categories>
     </div>
 
 @endsection

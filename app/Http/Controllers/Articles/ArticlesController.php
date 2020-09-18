@@ -52,7 +52,7 @@ class ArticlesController extends Controller
 
         $articleData = DB::table('articles')
             ->select([
-                'articles.title', 'articles.content', 'articles.est_time', 'articles.created_at', 'articles.main_image',
+                'articles.title', 'articles.content', 'articles.est_time', 'articles.created_at', 'articles.main_image', 'articles.tags',
                 'article_categories.id AS category_id', 'article_categories.name AS category_name',
                 'users.id AS author_id', 'users.username AS author_username', 'users.avatar AS author_avatar',
             ])
@@ -74,6 +74,73 @@ class ArticlesController extends Controller
             'response' => $articleData,
             'success'  => true,
         ], 200);
+    }
+
+    public function searchArticle(Request $request)
+    {
+//        $search = $request->input('search');
+//        $searchExploded = explode(" ", $search);
+//
+//        $articles = Article::select(['title', 'slug', 'main_image'])
+//            ->where('articles.status', '=', 1)
+//            ->where('title', 'NOT LIKE', $title)
+//            ->where(function($q) use ($category, $tags, $titleExploded) {
+//                $q->where('article_category', '=', $category)
+//                    ->orWhere('tags', 'LIKE',  '%' . $tags[0] . '%');
+//
+//                array_shift($tags);
+//
+//                foreach ($tags as $tag) {
+//                    $q->orWhere('tags', 'LIKE',  '%' . $tag . '%');
+//                }
+//
+//                foreach ($titleExploded as $word) {
+//                    if (ctype_alnum($word)) {
+//                        $q->orWhere('title', 'LIKE',  '%' . $word . '%');
+//                    }
+//                }
+//            });
+    }
+
+    /**
+     * Fetch the Articles related to the current article.
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function fetchRelatedArticles(Request $request)
+    {
+        $title    = $request->input('title');
+        $tags     = $request->input('tags');
+        $category = $request->input('article_category');
+
+        $titleExploded = explode(" ", $title);
+        $articles = Article::select(['title', 'slug', 'main_image'])
+                    ->where('articles.status', '=', 1)
+                    ->where('title', 'NOT LIKE', $title)
+                    ->where(function($q) use ($category, $tags) {
+                        $q->where('article_category', '=', $category)
+                          ->orWhere('tags', 'LIKE', '%' . $tags[0] . '%');
+
+                        array_shift($tags);
+
+                        foreach ($tags as $tag) {
+                            $q->orWhere('tags', 'LIKE', '%' . $tag . '%');
+                        }
+                    });
+
+        $articlesData = $articles->inRandomOrder()->limit(3)->get();
+        if (!$articlesData) {
+            return response()->json([
+                'response' => $articlesData,
+                'success'  => false,
+            ], 200);
+        } else {
+            return response()->json([
+                'response' => $articlesData,
+                'success'  => true,
+            ], 200);
+        }
     }
 
     /**
@@ -155,13 +222,13 @@ class ArticlesController extends Controller
      */
     public function updateArticle(Request $request)
     {
-        //TODO: description max length 550 CHARACTERS
         $rules = [
             'title'             => 'required|string|max:75|min:5',
             'article_category'  => 'required|integer|exists:article_categories,id',
             'content'           => 'required|min:10',
-            'description'       => 'nullable',
+            'description'       => 'nullable|max:550',
             'est_time'          => 'required|integer',
+            'tags'              => 'required',
             'slug'              => 'required|string|min:18',
             'status'            => ['required', new ArticleStatus],
         ];
@@ -303,8 +370,9 @@ class ArticlesController extends Controller
             'title'             => 'required|string|max:75|min:5',
             'article_category'  => 'required|integer|exists:article_categories,id',
             'content'           => 'required|min:10',
-            'description'       => 'nullable',
+            'description'       => 'nullable|max:550',
             'est_time'          => 'required|integer',
+            'tags'              => 'required',
             'slug'              => 'required|string|min:18',
             'main_image'        => 'nullable|mimes:jpeg,png',
         ];

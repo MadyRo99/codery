@@ -3,6 +3,7 @@
         <div class="navbar-brand img-container mb-2">
             <a href="/"><img src="{{asset('images/logo.svg')}}" alt="logo.png"></a>
         </div>
+
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -13,15 +14,17 @@
                     <a class="nav-link" href="/">Articole <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Despre</a>
+                    <a class="nav-link" href="/about">Despre</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Donează</a>
                 </li>
             </ul>
             @if (!isset($homePage))
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control searchPlaceholder mr-sm-2" type="search" placeholder="Caută articol...">
+                <form class="form-inline my-2 my-lg-0" method="GET" action="{{ route('acasa') }}">
+                    @csrf
+                    @method('GET')
+                    <input class="form-control searchPlaceholder mr-sm-2" type="search" name="search" placeholder="Caută articol...">
                     <button class="btn searchButton my-2 my-sm-0" type="submit">Caută</button>
                 </form>
             @endif

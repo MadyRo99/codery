@@ -24,6 +24,15 @@
                 </div>
             </div>
             <div class="form-row">
+                <div class="form-group col-12">
+                    <label for="tags">Tag-uri</label>
+                    <input class="form-control" v-bind:class="{ 'is-invalid': errors.tags }" :disabled="disableForm === true" v-model="article.tags" type="text" id="tags" name="tags" placeholder="Tags" required="required">
+                    <div class="invalid-feedback">
+                        <p>{{ errors.tags }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
                 <div class="form-group col-6">
                     <label for="slug">Slug</label>
                     <input class="form-control" v-bind:class="{ 'is-invalid': errors.slug }" :disabled="disableForm === true" v-model="this.slug" type="text" id="slug" name="slug" placeholder="Slug" disabled="disabled" required="required">
@@ -147,27 +156,27 @@
         <div>
             <b-modal
                      id="deleteModal"
-                     title="Stergere Articolul"
-                     ok-title="Stergere"
+                     title="Ștergere Articolul"
+                     ok-title="Ștergere"
                      ok-variant="danger"
-                     cancel-title="Anuleaza"
+                     cancel-title="Anulează"
                      @hide="disableForm = false"
                      @cancel="disableForm = false"
                      @ok="deleteArticle">
-                <p class="my-4">Esti sigur ca vrei sa stergi acest articol?</p>
-                <p class="my-4">Odata sters, acesta nu va mai putea fi recuperat.</p>
+                <p class="my-4">Ești sigur că vrei să ștergi acest articol?</p>
+                <p class="my-4">Odata șters, acesta nu va mai putea fi recuperat.</p>
             </b-modal>
         </div>
         <div>
             <b-modal
                     id="leaveModal"
-                    title="Paraseste Articolul"
+                    title="Părăsește Articolul"
                     ok-title="Da"
                     ok-variant="warning"
-                    cancel-title="Anuleaza"
+                    cancel-title="Anulează"
                     @ok="leaveArticle">
-                <p class="my-4">Esti sigur ca vrei sa parasesti pagina?</p>
-                <p class="my-4">Toate modificare nesalvate nu vor fi pastrate.</p>
+                <p class="my-4">Ești sigur că vrei să părăsești pagina?</p>
+                <p class="my-4">Toate modificările nesalvate nu vor fi păstrate.</p>
             </b-modal>
         </div>
     </div>
@@ -198,6 +207,7 @@
                     main_image: "",
                     images: [],
                     status: "0",
+                    tags: "",
                     savedMainImage: null,
                     displayMainImage: "Alege imagine",
                 },
@@ -207,6 +217,7 @@
                     est_time: "",
                     content: "",
                     description: "",
+                    tags: "",
                     slug: "",
                     status: "",
                 },
@@ -246,6 +257,8 @@
                         if (response.data.success) {
                             let article = response.data.response.article;
 
+                            console.log(JSON.parse(article.tags).join(", "));
+
                             this.article.title = article.title;
                             this.article.category = article.article_category;
                             this.article.est_time = article.est_time;
@@ -255,6 +268,7 @@
                             this.article.savedMainImage = article.main_image || null;
                             this.article.displayMainImage = article.main_image || "Alege imagine";
                             this.article.images = article.images;
+                            this.article.tags = JSON.parse(article.tags).join(", ");
                             this.article.status = article.status;
 
                             if (response.data.response.categories) {
@@ -293,6 +307,7 @@
                 formData.append('description', this.article.description.trim());
                 formData.append('est_time', this.article.est_time);
                 formData.append('main_image', this.article.main_image);
+                formData.append('tags', this.article.tags);
                 formData.append('slug', this.slug);
                 formData.append('status', this.article.status);
 
@@ -521,6 +536,13 @@
                     return false;
                 }
                 this.errors.est_time = "";
+
+                let tagsArray = parameters.tags.split(",");
+                if (parameters.tags.trim() === "" || tagsArray.length === 0) {
+                    this.errors.tags = "Tag-urile sunt goale. Completeaza cateva tag-uri pentru articol.";
+                    return false;
+                }
+                this.errors.tags = "";
 
                 return true;
             }

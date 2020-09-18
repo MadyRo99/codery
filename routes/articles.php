@@ -41,9 +41,17 @@ Route::namespace('Articles')->group(function () {
         'uses'          =>  'ArticlesController@saveArticleImages',
         'middleware'    =>  'auth-author',
     ]);
+//    Route::post('/article/search', [
+//        'as'    =>  'articles.search',
+//        'uses'  =>  'ArticlesController@searchArticle',
+//    ]);
     Route::post('/article/fetchArticleData', [
         'as'    =>  'articles.fetchArticleData',
         'uses'  =>  'ArticlesController@fetchArticleData',
+    ]);
+    Route::post('/article/fetchRelatedArticles', [
+        'as'    =>  'articles.fetchRelatedArticles',
+        'uses'  =>  'ArticlesController@fetchRelatedArticles',
     ]);
     Route::post('/article/fetchUpdateArticleData', [
         'as'    =>  'articles.fetchUpdateArticleData',
