@@ -795,10 +795,121 @@ html {
   margin: 40px 0px;
 }
 
-.admin-panel button {
+.admin-panel .admin-actions {
+  margin-bottom: 50px;
+}
+
+.admin-panel .admin-actions button {
   border-color: #993FFF;
   color: #993FFF;
-  margin-right: 10px;
+}
+
+.admin-panel .article-list {
+  margin-top: 16px;
+}
+
+@media (max-width: 992px) {
+  .admin-panel .article-list {
+    padding-right: 15px;
+  }
+}
+
+.admin-panel .article-list .article {
+  margin-bottom: 30px;
+}
+
+.admin-panel .article-list .article .article-section {
+  height: 275px;
+  padding: 20px;
+}
+
+@media (max-width: 767.98px) {
+  .admin-panel .article-list .article .article-section {
+    height: auto;
+  }
+}
+
+.admin-panel .article-list .article .article-section h1 {
+  font-size: 18px;
+  font-family: "Raleway", sans-serif;
+  font-weight: bold;
+}
+
+.admin-panel .article-list .article .article-section h1 a {
+  color: #44ADDC;
+}
+
+.admin-panel .article-list .article .article-section h2 {
+  font-size: 17px;
+}
+
+@media (min-width: 767.98px) {
+  .admin-panel .article-list .article .article-section h2 {
+    position: absolute;
+    bottom: 10px;
+  }
+}
+
+.admin-panel .article-list .article .article-section h2 a {
+  color: #993FFF;
+}
+
+.admin-panel .article-list .article .article-section p {
+  font-size: 15px;
+  font-family: "Lato", sans-serif;
+  overflow: hidden;
+  position: relative;
+  line-height: 1.7em;
+  max-height: 6.8em;
+  margin-right: -1em;
+  padding-right: 1em;
+  margin-top: 5px;
+  margin-bottom: 7.5px;
+}
+
+.admin-panel .article-list .article .article-section .article-info {
+  color: #16E8CA;
+  padding-bottom: 7.5px;
+}
+
+.admin-panel .article-list .article .article-section .article-info span {
+  color: #000000;
+}
+
+.admin-panel .article-list .article .article-image {
+  height: 275px;
+  background: no-repeat center;
+  background-size: cover;
+  position: relative;
+  border-top-left-radius: 5px;
+  -webkit-border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  -webkit-border-bottom-left-radius: 5px;
+}
+
+@media (max-width: 767.98px) {
+  .admin-panel .article-list .article .article-image {
+    border-bottom-left-radius: 0px;
+    -webkit-border-bottom-left-radius: 0px;
+    border-top-right-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+  }
+}
+
+.admin-panel .article-list .article .bookmark {
+  font-size: 20px;
+  margin-right: 20px;
+  color: #993FFF;
+}
+
+.admin-panel .article-list .article .article-border {
+  border-radius: 5px;
+}
+
+@media (min-width: 991.98px) {
+  .admin-panel .article-list .article:nth-child(even) {
+    padding-right: 40px;
+  }
 }
 
 /* END SECTION */

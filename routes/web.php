@@ -23,6 +23,11 @@ Route::get('/about', [
     'uses'          =>  'PagesController@getAboutPage',
 ]);
 
+Route::post('/getAllArticles', [
+    'as'            =>  'getAllArticles',
+    'uses'          =>  'PagesController@getAllArticles',
+]);
+
 Route::post('/getArticles', [
     'as'            =>  'getArticles',
     'uses'          =>  'PagesController@getArticles',
