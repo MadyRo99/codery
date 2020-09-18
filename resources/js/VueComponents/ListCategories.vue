@@ -2,6 +2,9 @@
     <div class="list-categories">
         <div class="container">
             <h2>Categorii</h2>
+            <div class="alert alert-info" role="alert">
+                Adaugă sau modifică categoriile disponibile pentru articole.
+            </div>
             <button type="button" id="addCategory" class="btn btn-outline-primary" @click="addCategoryFieldActive = !addCategoryFieldActive">Adaugă Categorie</button>
             <slide-up-down :active="addCategoryFieldActive" :duration="500">
                 <div class="row">

@@ -3,10 +3,7 @@
 namespace App\Http\Controllers\Categories;
 
 use App\Category;
-use Illuminate\View\View;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Contracts\View\Factory;
 
 class CategoriesView
 {
@@ -58,6 +55,13 @@ class CategoriesView
         ];
     }
 
+    /**
+     * Update a category by the given ID and new Name.
+     *
+     * @param $id
+     * @param $name
+     * @return array
+     */
     public function editCategory($id, $name)
     {
         $category = Category::find($id);

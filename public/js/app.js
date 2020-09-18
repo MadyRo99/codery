@@ -8873,6 +8873,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'admin-panel'
 });
@@ -10449,6 +10450,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _saeris_vue_spinners__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @saeris/vue-spinners */ "./node_modules/@saeris/vue-spinners/lib/@saeris/vue-spinners.common.js");
 /* harmony import */ var _saeris_vue_spinners__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_saeris_vue_spinners__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vue_slide_up_down__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-slide-up-down */ "./node_modules/vue-slide-up-down/dist/vue-slide-up-down.m.js");
+//
+//
+//
 //
 //
 //
@@ -71796,6 +71800,8 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "admin-panel" }, [
       _c("div", { staticClass: "container" }, [
+        _c("h2", [_vm._v("Panou Administrare")]),
+        _vm._v(" "),
         _c("a", { attrs: { href: "/categories" } }, [
           _c(
             "button",
@@ -73811,6 +73817,16 @@ var render = function() {
       { staticClass: "container" },
       [
         _c("h2", [_vm._v("Categorii")]),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "alert alert-info", attrs: { role: "alert" } },
+          [
+            _vm._v(
+              "\n            Adaugă sau modifică categoriile disponibile pentru articole.\n        "
+            )
+          ]
+        ),
         _vm._v(" "),
         _c(
           "button",
