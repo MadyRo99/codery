@@ -30,7 +30,7 @@
                             <div class="row article-info">
                                 <div class="col-12">
                                     <div class="float-left">
-                                        <i class="far fa-calendar-alt"></i> <span class="pl-1">{{ article.created_at.substring(0,10) }}</span>
+                                        <i class="far fa-calendar-alt"></i> <span class="pl-1">{{ dateAbbreviation(article.created_at) }}</span>
                                     </div>
                                     <div class="float-right">
                                         <i class="fas fa-tags fa-md" style="padding-top: 5px; padding-left: 5px;"></i> <span> {{ article.name }}</span>
@@ -44,7 +44,7 @@
                                         <i class="fas fa-eye" style="padding-top: 5px; color: #16E8CA;"></i> <span>Articol Public</span>
                                     </div>
                                     <div v-if="!article.status">
-                                        <i class="fa fa-eye-slash" aria-hidden="true" style="padding-top: 5px;"></i> <span>Articol Privat</span>
+                                        <i class="fa fa-eye-slash" aria-hidden="true" style="padding-top: 5px; color: #993FFF;"></i> <span>Articol Privat</span>
                                     </div>
                                 </div>
                             </div>
@@ -87,6 +87,9 @@
             this.fetchArticles();
         },
         methods: {
+            /**
+             * Fetch the Articles to be displayed on the Admin Panel.
+             */
             fetchArticles: function() {
                 this.loading = true;
                 let getArticlesUrl = "/getAllArticles";

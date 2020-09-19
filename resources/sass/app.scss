@@ -195,7 +195,7 @@ body, html {
     }
 
     .article {
-      margin-bottom: 30px;
+      margin-bottom: 20px;
 
       .article-section {
         height: 275px;
@@ -323,6 +323,7 @@ body, html {
 
   h1 {
     padding: 25px 0px;
+    font-size: 36px;
   }
 
   .login-form {
@@ -334,14 +335,18 @@ body, html {
     -webkit-box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
     -moz-box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
 
+    input:focus {
+      outline-offset: 0;
+    }
+
     .login-input {
       border: 2px solid $purple;
-      font-size: 16px !important;
+      font-size: 14px !important;
       height: 40px;
     }
 
     input:last-Child {
-      font-size: 17px;
+      font-size: 14px;
     }
 
     p {
@@ -368,6 +373,7 @@ body, html {
 
     a {
       color: $purple;
+        font-size: 17px;
     }
   }
 }
@@ -803,6 +809,10 @@ body, html {
         .article {
             margin-bottom: 25px;
 
+            @media (min-width: 991.98px) {
+                padding: 0 27.5px;
+            }
+
             .article-section {
                 height: 280px;
                 padding: 20px;
@@ -885,12 +895,6 @@ body, html {
                 -webkit-border-radius: 5px;
                 -moz-border-radius: 5px;
                 border-radius: 5px;
-            }
-        }
-
-        .article:nth-child(even) {
-            @media (min-width: 991.98px) {
-                padding-right: 40px;
             }
         }
     }
@@ -1030,4 +1034,23 @@ body, html {
       color: #FFFFFF;
     }
   }
+}
+
+.bd-callout {
+    padding: 1.25rem;
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
+    border: 1px solid #eee;
+    border-left-width: .25rem;
+    border-radius: .25rem;
+    border-left-color: $purple;
+
+    h5 {
+        font-size: 22px;
+        color: $purple;
+    }
+
+    p {
+        margin-bottom: 0;
+    }
 }

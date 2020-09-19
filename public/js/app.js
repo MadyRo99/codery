@@ -8955,6 +8955,9 @@ __webpack_require__.r(__webpack_exports__);
     this.fetchArticles();
   },
   methods: {
+    /**
+     * Fetch the Articles to be displayed on the Admin Panel.
+     */
     fetchArticles: function fetchArticles() {
       var _this = this;
 
@@ -9063,6 +9066,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -9087,6 +9095,7 @@ __webpack_require__.r(__webpack_exports__);
         est_time: 1,
         created_at: "",
         main_image: "",
+        status: 1,
         author: {
           avatar: "../storage/avatars/user.png"
         },
@@ -9124,6 +9133,7 @@ __webpack_require__.r(__webpack_exports__);
           _this.article.created_at = article.created_at;
           _this.article.content = article.content;
           _this.article.tags = JSON.parse(article.tags);
+          _this.article.status = article.status;
 
           if (article.main_image) {
             _this.article.main_image = "../storage/articles/" + _this.slug + "/" + article.main_image;
@@ -10467,68 +10477,6 @@ __webpack_require__.r(__webpack_exports__);
 
       this.articles.current_page = 1;
       this.fetchArticles();
-    },
-
-    /**
-     * Format the date of the article.
-     */
-    dateAbbreviation: function dateAbbreviation(date) {
-      var dateTimestamp = new Date(date);
-      var day = dateTimestamp.getDate();
-      var month = dateTimestamp.getMonth();
-      var year = dateTimestamp.getFullYear();
-
-      switch (month) {
-        case 0:
-          month = 'Ian';
-          break;
-
-        case 1:
-          month = 'Feb';
-          break;
-
-        case 2:
-          month = 'Mart';
-          break;
-
-        case 3:
-          month = 'Apr';
-          break;
-
-        case 4:
-          month = 'Mai';
-          break;
-
-        case 5:
-          month = 'Iun';
-          break;
-
-        case 6:
-          month = 'Iul';
-          break;
-
-        case 7:
-          month = 'Aug';
-          break;
-
-        case 8:
-          month = 'Sept';
-          break;
-
-        case 9:
-          month = 'Oct';
-          break;
-
-        case 10:
-          month = 'Nov';
-          break;
-
-        case 11:
-          month = 'Dec';
-          break;
-      }
-
-      return month + ' ' + day + ', ' + year;
     }
   }
 });
@@ -72010,7 +71958,7 @@ var render = function() {
                             _vm._v(" "),
                             _c("span", { staticClass: "pl-1" }, [
                               _vm._v(
-                                _vm._s(article.created_at.substring(0, 10))
+                                _vm._s(_vm.dateAbbreviation(article.created_at))
                               )
                             ])
                           ]),
@@ -72057,7 +72005,10 @@ var render = function() {
                               ? _c("div", [
                                   _c("i", {
                                     staticClass: "fa fa-eye-slash",
-                                    staticStyle: { "padding-top": "5px" },
+                                    staticStyle: {
+                                      "padding-top": "5px",
+                                      color: "#993FFF"
+                                    },
                                     attrs: { "aria-hidden": "true" }
                                   }),
                                   _vm._v(" "),
@@ -72166,6 +72117,28 @@ var render = function() {
     "div",
     { staticClass: "container article-view" },
     [
+      !_vm.article.status
+        ? _c("div", { staticClass: "bd-callout" }, [
+            _c("h5", [
+              _vm._v("Acest articol se află în modul de previzualizare.")
+            ]),
+            _vm._v(" "),
+            _c("p", [
+              _vm._v(
+                "Articolul poate fi accesat în acest moment doar de către autor sau de moderator."
+              )
+            ]),
+            _vm._v(" "),
+            _c("p", [
+              _vm._v("Pentru a schimba vizibilitatea acestui articol, apasă "),
+              _c("a", { attrs: { href: "/article/edit/" + _vm.slug } }, [
+                _c("b", { staticStyle: { color: "#993FFF" } }, [_vm._v("aici")])
+              ]),
+              _vm._v(" pentru editare.")
+            ])
+          ])
+        : _vm._e(),
+      _vm._v(" "),
       _c("header", { staticClass: "article-header" }, [
         _c("div", { staticClass: "row article-title" }, [
           _c("div", { staticClass: "col-12" }, [
@@ -87801,6 +87774,89 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/VueMixins.js":
+/*!***********************************!*\
+  !*** ./resources/js/VueMixins.js ***!
+  \***********************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
+/**
+ * Vue Mixins
+ */
+
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.mixin({
+  methods: {
+    /**
+     * Format the date of the article.
+     */
+    dateAbbreviation: function dateAbbreviation(date) {
+      var dateTimestamp = new Date(date);
+      var day = dateTimestamp.getDate();
+      var month = dateTimestamp.getMonth();
+      var year = dateTimestamp.getFullYear();
+
+      switch (month) {
+        case 0:
+          month = 'Ian';
+          break;
+
+        case 1:
+          month = 'Feb';
+          break;
+
+        case 2:
+          month = 'Mart';
+          break;
+
+        case 3:
+          month = 'Apr';
+          break;
+
+        case 4:
+          month = 'Mai';
+          break;
+
+        case 5:
+          month = 'Iun';
+          break;
+
+        case 6:
+          month = 'Iul';
+          break;
+
+        case 7:
+          month = 'Aug';
+          break;
+
+        case 8:
+          month = 'Sept';
+          break;
+
+        case 9:
+          month = 'Oct';
+          break;
+
+        case 10:
+          month = 'Nov';
+          break;
+
+        case 11:
+          month = 'Dec';
+          break;
+      }
+
+      return month + ' ' + day + ', ' + year;
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
@@ -87829,6 +87885,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _VueComponents_MultipleFileUploader__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./VueComponents/MultipleFileUploader */ "./resources/js/VueComponents/MultipleFileUploader.vue");
 /* harmony import */ var _VueComponents_Newsletter__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./VueComponents/Newsletter */ "./resources/js/VueComponents/Newsletter.vue");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+
+__webpack_require__(/*! ./VueMixins */ "./resources/js/VueMixins.js");
 
 
 

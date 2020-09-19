@@ -32,10 +32,12 @@ class ArticlesController extends Controller
     {
         $article = Article::where('slug', '=', $slug)->first();
 
-        if ($article && $article->status) {
-            return view(
-                'articles.index'
-            )->withSlug($slug)->withTitle($article->title);
+        if ($article) {
+            if ($article->status || (isset(Auth::user()->id) && (Auth::user()->role == 1 || Auth::user()->role == 2))) {
+                return view(
+                    'articles.index'
+                )->withSlug($slug)->withTitle($article->title);
+            }
         }
 
         abort(404);
@@ -53,7 +55,7 @@ class ArticlesController extends Controller
         $articleData = DB::table('articles')
             ->select([
                 'articles.title', 'articles.content', 'articles.est_time', 'articles.created_at', 'articles.main_image', 'articles.tags',
-                'article_categories.id AS category_id', 'article_categories.name AS category_name',
+                'article_categories.id AS category_id', 'article_categories.name AS category_name', 'articles.status AS status',
                 'users.id AS author_id', 'users.username AS author_username', 'users.avatar AS author_avatar',
             ])
             ->join('article_categories', 'articles.article_category', 'article_categories.id')

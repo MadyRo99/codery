@@ -198,7 +198,7 @@ html {
 }
 
 .home .article-list .article {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 .home .article-list .article .article-section {
@@ -327,6 +327,7 @@ html {
 
 .login-cont h1 {
   padding: 25px 0px;
+  font-size: 36px;
 }
 
 .login-cont .login-form {
@@ -339,14 +340,18 @@ html {
   -moz-box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
 }
 
+.login-cont .login-form input:focus {
+  outline-offset: 0;
+}
+
 .login-cont .login-form .login-input {
   border: 2px solid #993FFF;
-  font-size: 16px !important;
+  font-size: 14px !important;
   height: 40px;
 }
 
 .login-cont .login-form input:last-Child {
-  font-size: 17px;
+  font-size: 14px;
 }
 
 .login-cont .login-form p {
@@ -373,6 +378,7 @@ html {
 
 .login-cont .login-links a {
   color: #993FFF;
+  font-size: 17px;
 }
 
 /* END SECTION */
@@ -818,6 +824,12 @@ html {
   margin-bottom: 25px;
 }
 
+@media (min-width: 991.98px) {
+  .admin-panel .article-list .article {
+    padding: 0 27.5px;
+  }
+}
+
 .admin-panel .article-list .article .article-section {
   height: 280px;
   padding: 20px;
@@ -904,12 +916,6 @@ html {
 
 .admin-panel .article-list .article .article-border {
   border-radius: 5px;
-}
-
-@media (min-width: 991.98px) {
-  .admin-panel .article-list .article:nth-child(even) {
-    padding-right: 40px;
-  }
 }
 
 /* END SECTION */
@@ -1048,5 +1054,24 @@ html {
 
 .article-footer .legal-info a {
   color: #FFFFFF;
+}
+
+.bd-callout {
+  padding: 1.25rem;
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+  border: 1px solid #eee;
+  border-left-width: 0.25rem;
+  border-radius: 0.25rem;
+  border-left-color: #993FFF;
+}
+
+.bd-callout h5 {
+  font-size: 22px;
+  color: #993FFF;
+}
+
+.bd-callout p {
+  margin-bottom: 0;
 }
 
