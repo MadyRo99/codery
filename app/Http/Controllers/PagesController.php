@@ -83,7 +83,7 @@ class PagesController extends Controller
     public function getAllArticles(Request $request)
     {
         $articles = DB::table('articles')->select([
-            "articles.article_category", "articles.created_at", "articles.description",
+            "articles.article_category", "articles.status", "articles.created_at", "articles.description",
             "articles.main_image", "article_categories.name", "articles.slug", "articles.title"
         ])->join('article_categories', 'articles.article_category', '=', 'article_categories.id')
             ->orderBy('created_at', 'desc')->get();

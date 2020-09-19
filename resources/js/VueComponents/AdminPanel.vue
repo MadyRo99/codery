@@ -8,6 +8,10 @@
             <div class="admin-actions">
                 <a href="/categories"><button type="button" class="btn btn-outline-link">Categorii</button></a>
                 <a href="/article/create"><button type="button" class="btn btn-outline-link">Adaugă Articol</button></a>
+                <form class="float-md-right" action="/logout" method="POST">
+                    <input type="hidden" name="_token" :value="csrf">
+                    <button type="submit" class="btn btn-danger">Logout</button>
+                </form>
             </div>
 
             <div class="col-12 article-list" style="padding: 0;">
@@ -31,6 +35,17 @@
                                     <div class="float-right">
                                         <i class="fas fa-tags fa-md" style="padding-top: 5px; padding-left: 5px;"></i> <span> {{ article.name }}</span>
                                     </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                            <div class="row" style="padding-bottom: 7.5px;">
+                                <div class="col-12">
+                                    <div v-if="article.status">
+                                        <i class="fas fa-eye" style="padding-top: 5px; color: #16E8CA;"></i> <span>Articol Public</span>
+                                    </div>
+                                    <div v-if="!article.status">
+                                        <i class="fa fa-eye-slash" aria-hidden="true" style="padding-top: 5px;"></i> <span>Articol Privat</span>
+                                    </div>
                                 </div>
                             </div>
                             <a href="#" class="float-left"><button type="button" class="btn btn-info">Statistici</button></a>
@@ -45,7 +60,7 @@
         </div>
     </div>
 </template>
-jh
+
 <script>
     import { BounceLoader } from '@saeris/vue-spinners';
 
@@ -54,19 +69,18 @@ jh
         components: { BounceLoader },
         data() {
             return {
-                articles: {
-                    total: 0,
-                    per_page: 2,
-                    from: 1,
-                    to: 0,
-                    current_page: 1
-                },
+                articles: {},
                 loading: false,
                 loader: {
                     color: "#16E8CA",
                     size: 200,
                     margin: 0,
                 },
+            }
+        },
+        computed: {
+            csrf() {
+                return document.querySelector('meta[name="csrf-token"]').getAttribute('content');
             }
         },
         mounted: function () {

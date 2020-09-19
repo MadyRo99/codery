@@ -5,7 +5,7 @@
 @section('content')
 
     <div>
-        <admin-panel></admin-panel>
+        <about></about>
     </div>
 
 @endsection

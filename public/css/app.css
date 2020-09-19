@@ -799,7 +799,7 @@ html {
   margin-bottom: 50px;
 }
 
-.admin-panel .admin-actions button {
+.admin-panel .admin-actions a button {
   border-color: #993FFF;
   color: #993FFF;
 }
@@ -815,11 +815,11 @@ html {
 }
 
 .admin-panel .article-list .article {
-  margin-bottom: 30px;
+  margin-bottom: 25px;
 }
 
 .admin-panel .article-list .article .article-section {
-  height: 275px;
+  height: 280px;
   padding: 20px;
 }
 
@@ -869,7 +869,7 @@ html {
 
 .admin-panel .article-list .article .article-section .article-info {
   color: #16E8CA;
-  padding-bottom: 7.5px;
+  padding-bottom: 2.5px;
 }
 
 .admin-panel .article-list .article .article-section .article-info span {
@@ -877,7 +877,7 @@ html {
 }
 
 .admin-panel .article-list .article .article-image {
-  height: 275px;
+  height: 280px;
   background: no-repeat center;
   background-size: cover;
   position: relative;

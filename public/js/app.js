@@ -8914,6 +8914,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'admin-panel',
@@ -8922,13 +8937,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      articles: {
-        total: 0,
-        per_page: 2,
-        from: 1,
-        to: 0,
-        current_page: 1
-      },
+      articles: {},
       loading: false,
       loader: {
         color: "#16E8CA",
@@ -8936,6 +8945,11 @@ __webpack_require__.r(__webpack_exports__);
         margin: 0
       }
     };
+  },
+  computed: {
+    csrf: function csrf() {
+      return document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+    }
   },
   mounted: function mounted() {
     this.fetchArticles();
@@ -71888,7 +71902,31 @@ var render = function() {
         )
       ]),
       _vm._v(" "),
-      _vm._m(0),
+      _c("div", { staticClass: "admin-actions" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _vm._m(1),
+        _vm._v(" "),
+        _c(
+          "form",
+          {
+            staticClass: "float-md-right",
+            attrs: { action: "/logout", method: "POST" }
+          },
+          [
+            _c("input", {
+              attrs: { type: "hidden", name: "_token" },
+              domProps: { value: _vm.csrf }
+            }),
+            _vm._v(" "),
+            _c(
+              "button",
+              { staticClass: "btn btn-danger", attrs: { type: "submit" } },
+              [_vm._v("Logout")]
+            )
+          ]
+        )
+      ]),
       _vm._v(" "),
       _c(
         "div",
@@ -71987,11 +72025,50 @@ var render = function() {
                             }),
                             _vm._v(" "),
                             _c("span", [_vm._v(" " + _vm._s(article.name))])
-                          ])
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "clearfix" })
                         ])
                       ]),
                       _vm._v(" "),
-                      _vm._m(1, true),
+                      _c(
+                        "div",
+                        {
+                          staticClass: "row",
+                          staticStyle: { "padding-bottom": "7.5px" }
+                        },
+                        [
+                          _c("div", { staticClass: "col-12" }, [
+                            article.status
+                              ? _c("div", [
+                                  _c("i", {
+                                    staticClass: "fas fa-eye",
+                                    staticStyle: {
+                                      "padding-top": "5px",
+                                      color: "#16E8CA"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("span", [_vm._v("Articol Public")])
+                                ])
+                              : _vm._e(),
+                            _vm._v(" "),
+                            !article.status
+                              ? _c("div", [
+                                  _c("i", {
+                                    staticClass: "fa fa-eye-slash",
+                                    staticStyle: { "padding-top": "5px" },
+                                    attrs: { "aria-hidden": "true" }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("span", [_vm._v("Articol Privat")])
+                                ])
+                              : _vm._e()
+                          ])
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _vm._m(2, true),
                       _vm._v(" "),
                       _c(
                         "a",
@@ -72033,22 +72110,24 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "admin-actions" }, [
-      _c("a", { attrs: { href: "/categories" } }, [
-        _c(
-          "button",
-          { staticClass: "btn btn-outline-link", attrs: { type: "button" } },
-          [_vm._v("Categorii")]
-        )
-      ]),
-      _vm._v(" "),
-      _c("a", { attrs: { href: "/article/create" } }, [
-        _c(
-          "button",
-          { staticClass: "btn btn-outline-link", attrs: { type: "button" } },
-          [_vm._v("Adaugă Articol")]
-        )
-      ])
+    return _c("a", { attrs: { href: "/categories" } }, [
+      _c(
+        "button",
+        { staticClass: "btn btn-outline-link", attrs: { type: "button" } },
+        [_vm._v("Categorii")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "/article/create" } }, [
+      _c(
+        "button",
+        { staticClass: "btn btn-outline-link", attrs: { type: "button" } },
+        [_vm._v("Adaugă Articol")]
+      )
     ])
   },
   function() {

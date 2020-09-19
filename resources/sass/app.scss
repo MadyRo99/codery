@@ -787,7 +787,7 @@ body, html {
     .admin-actions {
         margin-bottom: 50px;
 
-        button {
+        a button {
             border-color: $purple;
             color: $purple;
         }
@@ -801,10 +801,10 @@ body, html {
         }
 
         .article {
-            margin-bottom: 30px;
+            margin-bottom: 25px;
 
             .article-section {
-                height: 275px;
+                height: 280px;
                 padding: 20px;
 
                 @media (max-width: 767.98px) {
@@ -849,7 +849,7 @@ body, html {
 
                 .article-info {
                     color: $green;
-                    padding-bottom: 7.5px;
+                    padding-bottom: 2.5px;
 
                     span {
                         color: #000000;
@@ -858,7 +858,7 @@ body, html {
             }
 
             .article-image {
-                height: 275px;
+                height: 280px;
                 background: no-repeat center;
                 background-size: cover;
                 position: relative;
