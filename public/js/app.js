@@ -10477,68 +10477,6 @@ __webpack_require__.r(__webpack_exports__);
 
       this.articles.current_page = 1;
       this.fetchArticles();
-    },
-
-    /**
-     * Format the date of the article.
-     */
-    dateAbbreviation: function dateAbbreviation(date) {
-      var dateTimestamp = new Date(date);
-      var day = dateTimestamp.getDate();
-      var month = dateTimestamp.getMonth();
-      var year = dateTimestamp.getFullYear();
-
-      switch (month) {
-        case 0:
-          month = 'Ian';
-          break;
-
-        case 1:
-          month = 'Feb';
-          break;
-
-        case 2:
-          month = 'Mart';
-          break;
-
-        case 3:
-          month = 'Apr';
-          break;
-
-        case 4:
-          month = 'Mai';
-          break;
-
-        case 5:
-          month = 'Iun';
-          break;
-
-        case 6:
-          month = 'Iul';
-          break;
-
-        case 7:
-          month = 'Aug';
-          break;
-
-        case 8:
-          month = 'Sept';
-          break;
-
-        case 9:
-          month = 'Oct';
-          break;
-
-        case 10:
-          month = 'Nov';
-          break;
-
-        case 11:
-          month = 'Dec';
-          break;
-      }
-
-      return month + ' ' + day + ', ' + year;
     }
   }
 });
@@ -72020,7 +71958,7 @@ var render = function() {
                             _vm._v(" "),
                             _c("span", { staticClass: "pl-1" }, [
                               _vm._v(
-                                _vm._s(article.created_at.substring(0, 10))
+                                _vm._s(_vm.dateAbbreviation(article.created_at))
                               )
                             ])
                           ]),
@@ -87836,6 +87774,89 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/VueMixins.js":
+/*!***********************************!*\
+  !*** ./resources/js/VueMixins.js ***!
+  \***********************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
+/**
+ * Vue Mixins
+ */
+
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.mixin({
+  methods: {
+    /**
+     * Format the date of the article.
+     */
+    dateAbbreviation: function dateAbbreviation(date) {
+      var dateTimestamp = new Date(date);
+      var day = dateTimestamp.getDate();
+      var month = dateTimestamp.getMonth();
+      var year = dateTimestamp.getFullYear();
+
+      switch (month) {
+        case 0:
+          month = 'Ian';
+          break;
+
+        case 1:
+          month = 'Feb';
+          break;
+
+        case 2:
+          month = 'Mart';
+          break;
+
+        case 3:
+          month = 'Apr';
+          break;
+
+        case 4:
+          month = 'Mai';
+          break;
+
+        case 5:
+          month = 'Iun';
+          break;
+
+        case 6:
+          month = 'Iul';
+          break;
+
+        case 7:
+          month = 'Aug';
+          break;
+
+        case 8:
+          month = 'Sept';
+          break;
+
+        case 9:
+          month = 'Oct';
+          break;
+
+        case 10:
+          month = 'Nov';
+          break;
+
+        case 11:
+          month = 'Dec';
+          break;
+      }
+
+      return month + ' ' + day + ', ' + year;
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
@@ -87864,6 +87885,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _VueComponents_MultipleFileUploader__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./VueComponents/MultipleFileUploader */ "./resources/js/VueComponents/MultipleFileUploader.vue");
 /* harmony import */ var _VueComponents_Newsletter__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./VueComponents/Newsletter */ "./resources/js/VueComponents/Newsletter.vue");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+
+__webpack_require__(/*! ./VueMixins */ "./resources/js/VueMixins.js");
 
 
 

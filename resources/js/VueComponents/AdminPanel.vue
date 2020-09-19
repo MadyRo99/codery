@@ -30,7 +30,7 @@
                             <div class="row article-info">
                                 <div class="col-12">
                                     <div class="float-left">
-                                        <i class="far fa-calendar-alt"></i> <span class="pl-1">{{ article.created_at.substring(0,10) }}</span>
+                                        <i class="far fa-calendar-alt"></i> <span class="pl-1">{{ dateAbbreviation(article.created_at) }}</span>
                                     </div>
                                     <div class="float-right">
                                         <i class="fas fa-tags fa-md" style="padding-top: 5px; padding-left: 5px;"></i> <span> {{ article.name }}</span>
