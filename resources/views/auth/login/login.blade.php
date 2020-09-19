@@ -45,10 +45,10 @@
             <div class="mx-auto login-links">
                 <div class="row">
                     <div class="col-sm-6 float-left text-center">
-                        <p><a href="{{ route('register') }}">Crează cont</a></p>
+                        <p><a href="#">Crează cont</a></p>
                     </div>
                     <div class="col-sm-6 float-right text-center">
-                        <p><a href="{{ route('password.reset') }}">Ai uitat parola?</a></p>
+                        <p><a href="#">Ai uitat parola?</a></p>
                     </div>
                 </div>
             </div>

@@ -784,10 +784,115 @@ body, html {
 .admin-panel {
     margin: 40px 0px;
 
-    button {
-        border-color: $purple;
-        color: $purple;
-        margin-right: 10px;
+    .admin-actions {
+        margin-bottom: 50px;
+
+        a button {
+            border-color: $purple;
+            color: $purple;
+        }
+    }
+
+    .article-list {
+        margin-top: 16px;
+
+        @media (max-width: 992px) {
+            padding-right: 15px;
+        }
+
+        .article {
+            margin-bottom: 25px;
+
+            .article-section {
+                height: 280px;
+                padding: 20px;
+
+                @media (max-width: 767.98px) {
+                    height: auto;
+                }
+
+                h1 {
+                    font-size: 18px;
+                    font-family: 'Raleway', sans-serif;
+                    font-weight: bold;
+
+                    a {
+                        color: $blue;
+                    }
+                }
+
+                h2 {
+                    font-size: 17px;
+
+                    @media (min-width: 767.98px) {
+                        position: absolute;
+                        bottom: 10px;
+                    }
+
+                    a {
+                        color: $purple;
+                    }
+                }
+
+                p {
+                    font-size: 15px;
+                    font-family: 'Lato', sans-serif;
+                    overflow: hidden;
+                    position: relative;
+                    line-height: 1.7em;
+                    max-height: 6.8em;
+                    margin-right: -1em;
+                    padding-right: 1em;
+                    margin-top: 5px;
+                    margin-bottom: 7.5px;
+                }
+
+                .article-info {
+                    color: $green;
+                    padding-bottom: 2.5px;
+
+                    span {
+                        color: #000000;
+                    }
+                }
+            }
+
+            .article-image {
+                height: 280px;
+                background: no-repeat center;
+                background-size: cover;
+                position: relative;
+                border-top-left-radius: 5px;
+                -webkit-border-top-left-radius: 5px;
+                border-bottom-left-radius: 5px;
+                -webkit-border-bottom-left-radius: 5px;
+
+                @media (max-width: 767.98px) {
+                    border-bottom-left-radius: 0px;
+                    -webkit-border-bottom-left-radius: 0px;
+                    border-top-right-radius: 5px;
+                    -webkit-border-top-right-radius: 5px;
+                }
+            }
+
+            .bookmark {
+                font-size: 20px;
+                margin-right: 20px;
+                color: $purple;
+            }
+
+            .article-border {
+                -webkit-border-radius: 5px;
+                -moz-border-radius: 5px;
+                border-radius: 5px;
+            }
+        }
+
+        .article:nth-child(even) {
+            @media (min-width: 991.98px) {
+                padding-right: 40px;
+            }
+        }
     }
 }
 

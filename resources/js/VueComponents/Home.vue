@@ -61,7 +61,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <p>{{ article.description || article.content }}</p>
+                                <p>{{ article.description }}</p>
                                 <h2><a :href='/article/ + article.slug'>Citește mai mult</a></h2>
                             </div>
                         </div>

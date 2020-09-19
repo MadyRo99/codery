@@ -10,6 +10,10 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Support\Facades\Validator;
 
+/**
+ * Class PagesController
+ * @package App\Http\Controllers
+ */
 class PagesController extends Controller
 {
     /**
@@ -71,6 +75,23 @@ class PagesController extends Controller
     }
 
     /**
+     * Get all the articles unfiltered for the Admin Panel Page.
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function getAllArticles(Request $request)
+    {
+        $articles = DB::table('articles')->select([
+            "articles.article_category", "articles.status", "articles.created_at", "articles.description",
+            "articles.main_image", "article_categories.name", "articles.slug", "articles.title"
+        ])->join('article_categories', 'articles.article_category', '=', 'article_categories.id')
+            ->orderBy('created_at', 'desc')->get();
+
+        return response()->json($articles);
+    }
+
+    /**
      * Get the articles for the required page and paginate them.
      *
      * @param Request $request
@@ -94,7 +115,10 @@ class PagesController extends Controller
             ], 200);
         }
 
-        $articles = $this->article->where('articles.status', '=', 1);
+        $articles = $this->article->select([
+            "articles.article_category", "articles.created_at", "articles.description",
+            "articles.main_image", "article_categories.name", "articles.slug", "articles.title"
+        ])->where('articles.status', '=', 1);
 
         if ($categoryId) {
             $articles = $articles->where('articles.article_category', '=', $request->input('categoryId'));

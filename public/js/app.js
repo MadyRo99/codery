@@ -8864,6 +8864,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _saeris_vue_spinners__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @saeris/vue-spinners */ "./node_modules/@saeris/vue-spinners/lib/@saeris/vue-spinners.common.js");
+/* harmony import */ var _saeris_vue_spinners__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_saeris_vue_spinners__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -8874,8 +8876,103 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'admin-panel'
+  name: 'admin-panel',
+  components: {
+    BounceLoader: _saeris_vue_spinners__WEBPACK_IMPORTED_MODULE_0__["BounceLoader"]
+  },
+  data: function data() {
+    return {
+      articles: {},
+      loading: false,
+      loader: {
+        color: "#16E8CA",
+        size: 200,
+        margin: 0
+      }
+    };
+  },
+  computed: {
+    csrf: function csrf() {
+      return document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+    }
+  },
+  mounted: function mounted() {
+    this.fetchArticles();
+  },
+  methods: {
+    fetchArticles: function fetchArticles() {
+      var _this = this;
+
+      this.loading = true;
+      var getArticlesUrl = "/getAllArticles";
+      var params = {
+        categoryId: this.setCategory,
+        search: this.searchArticle
+      };
+      axios.post(getArticlesUrl, params).then(function (response) {
+        _this.articles = response.data;
+      })["catch"](function (error) {
+        console.log(error);
+      }).then(function () {
+        _this.loading = false;
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -10450,6 +10547,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _saeris_vue_spinners__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @saeris/vue-spinners */ "./node_modules/@saeris/vue-spinners/lib/@saeris/vue-spinners.common.js");
 /* harmony import */ var _saeris_vue_spinners__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_saeris_vue_spinners__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vue_slide_up_down__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-slide-up-down */ "./node_modules/vue-slide-up-down/dist/vue-slide-up-down.m.js");
+//
+//
+//
+//
 //
 //
 //
@@ -47841,7 +47942,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.card {\n    height: 25rem;\n}\n.card-title {\n    font-size: 18px;\n}\n.card-body a {\n    position: absolute;\n    bottom: 1rem;\n}\n.card-img-top {\n    max-height: 17rem;\n}\n\n", ""]);
+exports.push([module.i, "\n.card {\r\n    height: 25rem;\n}\n.card-title {\r\n    font-size: 18px;\n}\n.card-body a {\r\n    position: absolute;\r\n    bottom: 1rem;\n}\n.card-img-top {\r\n    max-height: 17rem;\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -71791,38 +71892,251 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "admin-panel" }, [
+    _c("div", { staticClass: "container" }, [
+      _c("h2", [_vm._v("Panou Administrare")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "alert alert-info", attrs: { role: "alert" } }, [
+        _vm._v(
+          "\n            Administrează și analizează articolele sau categoriile disponibile.\n        "
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "admin-actions" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _vm._m(1),
+        _vm._v(" "),
+        _c(
+          "form",
+          {
+            staticClass: "float-md-right",
+            attrs: { action: "/logout", method: "POST" }
+          },
+          [
+            _c("input", {
+              attrs: { type: "hidden", name: "_token" },
+              domProps: { value: _vm.csrf }
+            }),
+            _vm._v(" "),
+            _c(
+              "button",
+              { staticClass: "btn btn-danger", attrs: { type: "submit" } },
+              [_vm._v("Logout")]
+            )
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "col-12 article-list", staticStyle: { padding: "0" } },
+        [
+          _c(
+            "div",
+            { staticClass: "loader" },
+            [
+              _c("bounce-loader", {
+                staticClass: "custom-class",
+                class: { highIndex: _vm.loading },
+                attrs: {
+                  loading: _vm.loading,
+                  color: _vm.loader.color,
+                  size: _vm.loader.size,
+                  margin: _vm.loader.margin
+                }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _vm._l(_vm.articles, function(article) {
+            return _c(
+              "div",
+              { staticClass: "col-12 col-lg-6 article float-left" },
+              [
+                _c("div", { staticClass: "row shadow article-border" }, [
+                  article.main_image
+                    ? _c(
+                        "a",
+                        {
+                          staticClass:
+                            "col-12 col-md-6 col-lg-5 article-section",
+                          staticStyle: { padding: "0" },
+                          attrs: { href: /article/ + article.slug }
+                        },
+                        [
+                          _c("div", {
+                            staticClass: "article-image",
+                            style: {
+                              backgroundImage:
+                                "url(/storage/articles/" +
+                                article.slug +
+                                "/" +
+                                article.main_image +
+                                ")"
+                            }
+                          })
+                        ]
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "article-section",
+                      class: {
+                        "col-12 col-md-6 col-lg-7": article.main_image,
+                        "col-12": !article.main_image
+                      }
+                    },
+                    [
+                      _c("div", { staticClass: "row" }, [
+                        _c("div", { staticClass: "col-12" }, [
+                          _c("h1", [
+                            _c(
+                              "a",
+                              { attrs: { href: /article/ + article.slug } },
+                              [_vm._v(_vm._s(article.title))]
+                            )
+                          ])
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "row article-info" }, [
+                        _c("div", { staticClass: "col-12" }, [
+                          _c("div", { staticClass: "float-left" }, [
+                            _c("i", { staticClass: "far fa-calendar-alt" }),
+                            _vm._v(" "),
+                            _c("span", { staticClass: "pl-1" }, [
+                              _vm._v(
+                                _vm._s(article.created_at.substring(0, 10))
+                              )
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "float-right" }, [
+                            _c("i", {
+                              staticClass: "fas fa-tags fa-md",
+                              staticStyle: {
+                                "padding-top": "5px",
+                                "padding-left": "5px"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("span", [_vm._v(" " + _vm._s(article.name))])
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "clearfix" })
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass: "row",
+                          staticStyle: { "padding-bottom": "7.5px" }
+                        },
+                        [
+                          _c("div", { staticClass: "col-12" }, [
+                            article.status
+                              ? _c("div", [
+                                  _c("i", {
+                                    staticClass: "fas fa-eye",
+                                    staticStyle: {
+                                      "padding-top": "5px",
+                                      color: "#16E8CA"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("span", [_vm._v("Articol Public")])
+                                ])
+                              : _vm._e(),
+                            _vm._v(" "),
+                            !article.status
+                              ? _c("div", [
+                                  _c("i", {
+                                    staticClass: "fa fa-eye-slash",
+                                    staticStyle: { "padding-top": "5px" },
+                                    attrs: { "aria-hidden": "true" }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("span", [_vm._v("Articol Privat")])
+                                ])
+                              : _vm._e()
+                          ])
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _vm._m(2, true),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        {
+                          staticClass: "float-right",
+                          attrs: { href: "/article/edit/" + article.slug }
+                        },
+                        [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-primary",
+                              attrs: { type: "button" }
+                            },
+                            [_vm._v("Editează")]
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "clearfix" }),
+                      _vm._v(" "),
+                      _c("p", [_vm._v(_vm._s(article.description))])
+                    ]
+                  )
+                ])
+              ]
+            )
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "clearfix" })
+        ],
+        2
+      )
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "admin-panel" }, [
-      _c("div", { staticClass: "container" }, [
-        _c("h2", [_vm._v("Panou Administrare")]),
-        _vm._v(" "),
-        _c("a", { attrs: { href: "/categories" } }, [
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-outline-primary",
-              attrs: { type: "button" }
-            },
-            [_vm._v("Categorii")]
-          )
-        ]),
-        _vm._v(" "),
-        _c("a", { attrs: { href: "/article/create" } }, [
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-outline-primary",
-              attrs: { type: "button" }
-            },
-            [_vm._v("Adaugă Articol")]
-          )
-        ])
+    return _c("a", { attrs: { href: "/categories" } }, [
+      _c(
+        "button",
+        { staticClass: "btn btn-outline-link", attrs: { type: "button" } },
+        [_vm._v("Categorii")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "/article/create" } }, [
+      _c(
+        "button",
+        { staticClass: "btn btn-outline-link", attrs: { type: "button" } },
+        [_vm._v("Adaugă Articol")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { staticClass: "float-left", attrs: { href: "#" } }, [
+      _c("button", { staticClass: "btn btn-info", attrs: { type: "button" } }, [
+        _vm._v("Statistici")
       ])
     ])
   }
@@ -73699,9 +74013,7 @@ var render = function() {
                         ])
                       ]),
                       _vm._v(" "),
-                      _c("p", [
-                        _vm._v(_vm._s(article.description || article.content))
-                      ]),
+                      _c("p", [_vm._v(_vm._s(article.description))]),
                       _vm._v(" "),
                       _c("h2", [
                         _c("a", { attrs: { href: /article/ + article.slug } }, [
@@ -73831,7 +74143,7 @@ var render = function() {
         _c(
           "button",
           {
-            staticClass: "btn btn-outline-primary",
+            staticClass: "btn btn-outline-link",
             attrs: { type: "button", id: "addCategory" },
             on: {
               click: function($event) {
@@ -73908,7 +74220,7 @@ var render = function() {
         _vm._v(" "),
         _c(
           "div",
-          { staticClass: "loader" },
+          { staticClass: "loader", staticStyle: { "z-index": "-10" } },
           [
             _c("bounce-loader", {
               staticClass: "custom-class",
@@ -73924,76 +74236,78 @@ var render = function() {
           1
         ),
         _vm._v(" "),
-        _c("table", { staticClass: "table" }, [
-          _vm._m(0),
-          _vm._v(" "),
-          _c(
-            "tbody",
-            _vm._l(_vm.categories, function(category) {
-              return _c("tr", [
-                _c("td", [_vm._v(_vm._s(category.id))]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(category.name))]),
-                _vm._v(" "),
-                _c("td", { staticStyle: { "text-align": "center" } }, [
-                  _vm._v(_vm._s(category.posts))
-                ]),
-                _vm._v(" "),
-                _c("td", [
-                  _c("a", [
-                    _c(
-                      "button",
-                      {
-                        directives: [
-                          {
-                            name: "b-modal",
-                            rawName: "v-b-modal.editModal",
-                            modifiers: { editModal: true }
-                          }
-                        ],
-                        staticClass: "btn btn-warning btn-sm",
-                        staticStyle: { color: "#FFFFFF" },
-                        attrs: { type: "button" },
-                        on: {
-                          click: function($event) {
-                            return _vm.setCategoryInfoEdit(
-                              category.id,
-                              category.name
-                            )
-                          }
-                        }
-                      },
-                      [_vm._v("Editează")]
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("td", [
-                  _c(
-                    "button",
-                    {
-                      directives: [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-12" }, [
+            _c("table", { staticClass: "table" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.categories, function(category) {
+                  return _c("tr", [
+                    _c("td", [_vm._v(_vm._s(category.id))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(category.name))]),
+                    _vm._v(" "),
+                    _c("td", { staticStyle: { "text-align": "center" } }, [
+                      _vm._v(_vm._s(category.posts))
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "button",
                         {
-                          name: "b-modal",
-                          rawName: "v-b-modal.deleteModal",
-                          modifiers: { deleteModal: true }
-                        }
-                      ],
-                      staticClass: "btn btn-danger btn-sm",
-                      attrs: { type: "button" },
-                      on: {
-                        click: function($event) {
-                          return _vm.setCategoryIdDelete(category.id)
-                        }
-                      }
-                    },
-                    [_vm._v("Șterge")]
-                  )
-                ])
-              ])
-            }),
-            0
-          )
+                          directives: [
+                            {
+                              name: "b-modal",
+                              rawName: "v-b-modal.editModal",
+                              modifiers: { editModal: true }
+                            }
+                          ],
+                          staticClass: "btn btn-warning btn-sm",
+                          staticStyle: { color: "#FFFFFF" },
+                          attrs: { type: "button" },
+                          on: {
+                            click: function($event) {
+                              return _vm.setCategoryInfoEdit(
+                                category.id,
+                                category.name
+                              )
+                            }
+                          }
+                        },
+                        [_vm._v("Editează")]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "button",
+                        {
+                          directives: [
+                            {
+                              name: "b-modal",
+                              rawName: "v-b-modal.deleteModal",
+                              modifiers: { deleteModal: true }
+                            }
+                          ],
+                          staticClass: "btn btn-danger btn-sm",
+                          attrs: { type: "button" },
+                          on: {
+                            click: function($event) {
+                              return _vm.setCategoryIdDelete(category.id)
+                            }
+                          }
+                        },
+                        [_vm._v("Șterge")]
+                      )
+                    ])
+                  ])
+                }),
+                0
+              )
+            ])
+          ])
         ]),
         _vm._v(" "),
         _c(
