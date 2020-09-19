@@ -11,8 +11,10 @@
 |
 */
 
+// Basic Routes
+
 Route::get('/', [
-    'as'            =>  'acasa',
+    'as'            =>  'home',
     'uses'          =>  'PagesController@getHomePage',
 ]);
 

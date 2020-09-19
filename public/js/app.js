@@ -8955,6 +8955,9 @@ __webpack_require__.r(__webpack_exports__);
     this.fetchArticles();
   },
   methods: {
+    /**
+     * Fetch the Articles to be displayed on the Admin Panel.
+     */
     fetchArticles: function fetchArticles() {
       var _this = this;
 
@@ -9063,6 +9066,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -9087,6 +9095,7 @@ __webpack_require__.r(__webpack_exports__);
         est_time: 1,
         created_at: "",
         main_image: "",
+        status: 1,
         author: {
           avatar: "../storage/avatars/user.png"
         },
@@ -9124,6 +9133,7 @@ __webpack_require__.r(__webpack_exports__);
           _this.article.created_at = article.created_at;
           _this.article.content = article.content;
           _this.article.tags = JSON.parse(article.tags);
+          _this.article.status = article.status;
 
           if (article.main_image) {
             _this.article.main_image = "../storage/articles/" + _this.slug + "/" + article.main_image;
@@ -72057,7 +72067,10 @@ var render = function() {
                               ? _c("div", [
                                   _c("i", {
                                     staticClass: "fa fa-eye-slash",
-                                    staticStyle: { "padding-top": "5px" },
+                                    staticStyle: {
+                                      "padding-top": "5px",
+                                      color: "#993FFF"
+                                    },
                                     attrs: { "aria-hidden": "true" }
                                   }),
                                   _vm._v(" "),
@@ -72166,6 +72179,28 @@ var render = function() {
     "div",
     { staticClass: "container article-view" },
     [
+      !_vm.article.status
+        ? _c("div", { staticClass: "bd-callout" }, [
+            _c("h5", [
+              _vm._v("Acest articol se află în modul de previzualizare.")
+            ]),
+            _vm._v(" "),
+            _c("p", [
+              _vm._v(
+                "Articolul poate fi accesat în acest moment doar de către autor sau de moderator."
+              )
+            ]),
+            _vm._v(" "),
+            _c("p", [
+              _vm._v("Pentru a schimba vizibilitatea acestui articol, apasă "),
+              _c("a", { attrs: { href: "/article/edit/" + _vm.slug } }, [
+                _c("b", { staticStyle: { color: "#993FFF" } }, [_vm._v("aici")])
+              ]),
+              _vm._v(" pentru editare.")
+            ])
+          ])
+        : _vm._e(),
+      _vm._v(" "),
       _c("header", { staticClass: "article-header" }, [
         _c("div", { staticClass: "row article-title" }, [
           _c("div", { staticClass: "col-12" }, [

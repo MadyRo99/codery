@@ -43,7 +43,7 @@ class PagesController extends Controller
         $search = $request->input('search');
 
         return view(
-            'acasa'
+            'home'
         )->withHomePage(true)->withSearch($search);
     }
 

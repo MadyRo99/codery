@@ -19,9 +19,19 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Donează</a>
                 </li>
+                @if (Auth::user())
+                <li class="nav-item">
+                    @if (Auth::user()->role === 0 || Auth::user()->role === 1)
+                        <a class="nav-link" href="#">{{ Auth::user()->username }}</a>
+                    @endif
+                    @if (Auth::user()->role === 2)
+                        <a class="nav-link" href="{{ route('getAdminPanel') }}">Administrare</a>
+                    @endif
+                </li>
+                @endif
             </ul>
             @if (!isset($homePage))
-                <form class="form-inline my-2 my-lg-0" method="GET" action="{{ route('acasa') }}">
+                <form class="form-inline my-2 my-lg-0" method="GET" action="{{ route('home') }}">
                     @csrf
                     @method('GET')
                     <input class="form-control searchPlaceholder mr-sm-2" type="search" name="search" placeholder="Caută articol...">

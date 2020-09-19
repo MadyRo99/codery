@@ -1,5 +1,10 @@
 <template>
     <div class="container article-view">
+        <div class="bd-callout" v-if="!article.status">
+            <h5>Acest articol se află în modul de previzualizare.</h5>
+            <p>Articolul poate fi accesat în acest moment doar de către autor sau de moderator.</p>
+            <p>Pentru a schimba vizibilitatea acestui articol, apasă <a :href="'/article/edit/' + slug"><b style="color: #993FFF;">aici</b></a> pentru editare.</p>
+        </div>
         <header class="article-header">
             <div class="row article-title">
                 <div class="col-12">
@@ -93,6 +98,7 @@
                     est_time: 1,
                     created_at: "",
                     main_image: "",
+                    status: 1,
                     author: {
                         avatar: "../storage/avatars/user.png"
                     },
@@ -131,6 +137,7 @@
                             this.article.created_at = article.created_at;
                             this.article.content = article.content;
                             this.article.tags = JSON.parse(article.tags);
+                            this.article.status = article.status;
 
                             if (article.main_image) {
                                 this.article.main_image = "../storage/articles/" + this.slug + "/" + article.main_image;

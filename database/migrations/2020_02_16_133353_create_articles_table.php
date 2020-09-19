@@ -25,7 +25,7 @@ class CreateArticlesTable extends Migration
             $table->string('main_image')->nullable();
             $table->json('tags');
             $table->boolean('status')->default(false);
-            $table->foreign('author_id')->references('id')->on('users');
+            $table->foreign('author_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('article_category')->references('id')->on('article_categories');
             $table->timestamps();
         });

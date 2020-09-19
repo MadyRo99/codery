@@ -44,7 +44,7 @@
                                         <i class="fas fa-eye" style="padding-top: 5px; color: #16E8CA;"></i> <span>Articol Public</span>
                                     </div>
                                     <div v-if="!article.status">
-                                        <i class="fa fa-eye-slash" aria-hidden="true" style="padding-top: 5px;"></i> <span>Articol Privat</span>
+                                        <i class="fa fa-eye-slash" aria-hidden="true" style="padding-top: 5px; color: #993FFF;"></i> <span>Articol Privat</span>
                                     </div>
                                 </div>
                             </div>
@@ -87,6 +87,9 @@
             this.fetchArticles();
         },
         methods: {
+            /**
+             * Fetch the Articles to be displayed on the Admin Panel.
+             */
             fetchArticles: function() {
                 this.loading = true;
                 let getArticlesUrl = "/getAllArticles";
