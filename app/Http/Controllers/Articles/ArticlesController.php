@@ -3,8 +3,6 @@
 namespace App\Http\Controllers\Articles;
 
 use App\Article;
-use App\Helpers;
-use Carbon\Carbon;
 use Illuminate\View\View;
 use App\Rules\ArticleStatus;
 use Illuminate\Http\Request;
@@ -65,12 +63,9 @@ class ArticlesController extends Controller
         if (!$articleData) {
             return response()->json([
                 'response' => $articleData,
-                'success'  => false,
+                'success' => false,
             ], 200);
         }
-
-        $createdAt = Carbon::create($articleData->created_at);
-        $articleData->created_at = Helpers\monthAbbreviation($createdAt) . " " . $createdAt->format('d') . ", " . $createdAt->format('Y');
 
         return response()->json([
             'response' => $articleData,

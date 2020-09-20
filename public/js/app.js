@@ -72178,7 +72178,7 @@ var render = function() {
                     [
                       _vm._v(
                         "◈ " +
-                          _vm._s(_vm.article.created_at) +
+                          _vm._s(_vm.dateAbbreviation(_vm.article.created_at)) +
                           " | " +
                           _vm._s(_vm.article.est_time) +
                           " min"

@@ -19,7 +19,7 @@
                         </div>
                         <div class="author-details pl-2 mb-4 align-self-center">
                             <p class="author-name mb-1">@{{ article.author.name }}</p>
-                            <p class="article-info text-secondary" style="position: absolute; width: 175px;">&#9672; {{ article.created_at }} | {{ article.est_time }} min</p>
+                            <p class="article-info text-secondary" style="position: absolute; width: 175px;">&#9672; {{ dateAbbreviation(article.created_at) }} | {{ article.est_time }} min</p>
                         </div>
                     </div>
                 </div>
