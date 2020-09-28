@@ -23,6 +23,21 @@ Route::get('/about', [
     'uses'          =>  'PagesController@getAboutPage',
 ]);
 
+Route::get('/terms', [
+    'as'            =>  'terms',
+    'uses'          =>  'PagesController@getTermsPage',
+]);
+
+Route::get('/privacy', [
+    'as'            =>  'privacy',
+    'uses'          =>  'PagesController@getPrivacyPage',
+]);
+
+Route::get('/cookies', [
+    'as'            =>  'cookies',
+    'uses'          =>  'PagesController@getCookiesPage',
+]);
+
 Route::post('/getArticles', [
     'as'            =>  'getArticles',
     'uses'          =>  'PagesController@getArticles',

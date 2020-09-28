@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Article;
+use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
@@ -146,5 +147,41 @@ class PagesController extends Controller
         return view(
             'auth.admin.adminPanel'
         )->withTitle("Panou Administrare");
+    }
+
+    /**
+     * Get the Terms Page.
+     *
+     * @return Application|Factory|\Illuminate\View\View
+     */
+    public function getTermsPage()
+    {
+        return view(
+            'terms.terms'
+        );
+    }
+
+    /**
+     * Get the Privacy Page.
+     *
+     * @return Application|Factory|\Illuminate\View\View
+     */
+    public function getPrivacyPage()
+    {
+        return view(
+            'terms.privacy'
+        );
+    }
+
+    /**
+     * Get the Cookies Page.
+     *
+     * @return Application|Factory|\Illuminate\View\View
+     */
+    public function getCookiesPage()
+    {
+        return view(
+            'terms.cookies'
+        );
     }
 }

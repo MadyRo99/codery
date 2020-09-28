@@ -974,6 +974,37 @@ html {
 
 /* END SECTION */
 
+/* LEGAL TERMS SECTION */
+
+.legal-terms-section {
+  padding: 50px 10px;
+}
+
+.legal-terms-section h1 {
+  font-size: 32px;
+  font-weight: bold;
+  padding-bottom: 20px;
+}
+
+.legal-terms-section h2 {
+  padding-top: 15px;
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.legal-terms-section p {
+  font-size: 16px;
+  padding: 5px 0px;
+}
+
+.legal-terms-section ul {
+  padding-top: 10px;
+  padding-left: 40px;
+  list-style: disc;
+}
+
+/* END SECTION */
+
 .loader {
   position: absolute;
   top: 0;
