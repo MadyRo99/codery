@@ -10380,6 +10380,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -73727,354 +73735,417 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "container home" },
-    [
-      _c(
-        "div",
-        { staticClass: "loader" },
-        [
-          _c("bounce-loader", {
-            staticClass: "custom-class",
-            class: { highIndex: _vm.loading },
-            attrs: {
-              loading: _vm.loading,
-              color: _vm.loader.color,
-              size: _vm.loader.size,
-              margin: _vm.loader.margin
-            }
-          })
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c("br"),
-      _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-12", staticStyle: { padding: "0" } }, [
-          _c("div", { staticClass: "form-row" }, [
-            _c(
-              "div",
-              {
-                staticClass: "form-group col-9 col-lg-10",
-                staticStyle: { "padding-right": "0" }
-              },
-              [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.searchInput,
-                      expression: "searchInput"
-                    }
-                  ],
-                  staticClass: "form-control searchPlaceholder",
-                  attrs: { type: "search", placeholder: "Caută articol..." },
-                  domProps: { value: _vm.searchInput },
-                  on: {
-                    keyup: function($event) {
-                      if (
-                        !$event.type.indexOf("key") &&
-                        _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
-                      ) {
-                        return null
-                      }
-                      return _vm.updateArticlesFiltered(null, true)
-                    },
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.searchInput = $event.target.value
-                    }
-                  }
-                })
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "form-group col-3 col-lg-2",
-                staticStyle: { "padding-left": "0" }
-              },
-              [
-                _c("input", {
-                  staticClass: "form-control searchButton",
-                  attrs: { type: "submit", value: "Caută" },
-                  on: {
-                    click: function($event) {
-                      return _vm.updateArticlesFiltered(null, true)
-                    }
-                  }
-                })
-              ]
-            )
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row filters-mobile" }, [
+  return _c("div", { staticClass: "home" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c(
+      "section",
+      {
+        staticClass: "container articles_section",
+        attrs: { id: "articles_section" }
+      },
+      [
+        _c("h4", { staticClass: "text-center py-4" }, [
+          _vm._v(
+            "Caută printre articolele disponibile și află lucruri practice."
+          )
+        ]),
+        _vm._v(" "),
         _c(
           "div",
-          { staticClass: "col-12", staticStyle: { padding: "0" } },
+          { staticClass: "loader" },
           [
-            _c(
-              "button",
-              {
-                staticClass: "form-control searchButton",
-                class: { buttonNoRadius: _vm.mobileFiltersActive },
-                staticStyle: { "border-radius": ".25rem" },
-                on: {
-                  click: function($event) {
-                    _vm.mobileFiltersActive = !_vm.mobileFiltersActive
-                  }
-                }
-              },
-              [_vm._v("Categorii")]
-            ),
-            _vm._v(" "),
-            _c(
-              "slide-up-down",
-              {
-                staticClass: "filters-mobile-content",
-                attrs: { active: _vm.mobileFiltersActive, duration: 500 }
-              },
-              [
-                _c("div", { staticClass: "row" }, [
-                  _c(
-                    "div",
-                    { staticClass: "col-12" },
-                    [
-                      _c(
-                        "div",
-                        {
-                          on: {
-                            click: function($event) {
-                              return _vm.updateArticlesFiltered(0)
-                            }
-                          }
-                        },
-                        [
-                          _c(
-                            "p",
-                            {
-                              class: {
-                                selectedCategory: _vm.setCategory === 0
-                              },
-                              staticStyle: { "padding-top": "15px" }
-                            },
-                            [_vm._v("Toate")]
+            _c("bounce-loader", {
+              staticClass: "custom-class",
+              class: { highIndex: _vm.loading },
+              attrs: {
+                loading: _vm.loading,
+                color: _vm.loader.color,
+                size: _vm.loader.size,
+                margin: _vm.loader.margin
+              }
+            })
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c("br"),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-12", staticStyle: { padding: "0" } }, [
+            _c("div", { staticClass: "form-row" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "form-group col-9 col-lg-10",
+                  staticStyle: { "padding-right": "0" }
+                },
+                [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.searchInput,
+                        expression: "searchInput"
+                      }
+                    ],
+                    staticClass: "form-control searchPlaceholder",
+                    attrs: { type: "search", placeholder: "Caută articol..." },
+                    domProps: { value: _vm.searchInput },
+                    on: {
+                      keyup: function($event) {
+                        if (
+                          !$event.type.indexOf("key") &&
+                          _vm._k(
+                            $event.keyCode,
+                            "enter",
+                            13,
+                            $event.key,
+                            "Enter"
                           )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _vm._l(_vm.categories, function(category) {
-                        return _c(
+                        ) {
+                          return null
+                        }
+                        return _vm.updateArticlesFiltered(null, true)
+                      },
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.searchInput = $event.target.value
+                      }
+                    }
+                  })
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "form-group col-3 col-lg-2",
+                  staticStyle: { "padding-left": "0" }
+                },
+                [
+                  _c("input", {
+                    staticClass: "form-control searchButton",
+                    attrs: { type: "submit", value: "Caută" },
+                    on: {
+                      click: function($event) {
+                        return _vm.updateArticlesFiltered(null, true)
+                      }
+                    }
+                  })
+                ]
+              )
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "row filters-mobile" }, [
+          _c(
+            "div",
+            { staticClass: "col-12", staticStyle: { padding: "0" } },
+            [
+              _c(
+                "button",
+                {
+                  staticClass: "form-control searchButton",
+                  class: { buttonNoRadius: _vm.mobileFiltersActive },
+                  staticStyle: { "border-radius": ".25rem" },
+                  on: {
+                    click: function($event) {
+                      _vm.mobileFiltersActive = !_vm.mobileFiltersActive
+                    }
+                  }
+                },
+                [_vm._v("Categorii")]
+              ),
+              _vm._v(" "),
+              _c(
+                "slide-up-down",
+                {
+                  staticClass: "filters-mobile-content",
+                  attrs: { active: _vm.mobileFiltersActive, duration: 500 }
+                },
+                [
+                  _c("div", { staticClass: "row" }, [
+                    _c(
+                      "div",
+                      { staticClass: "col-12" },
+                      [
+                        _c(
                           "div",
                           {
                             on: {
                               click: function($event) {
-                                return _vm.updateArticlesFiltered(category.id)
+                                return _vm.updateArticlesFiltered(0)
                               }
                             }
                           },
                           [
-                            _c("hr"),
-                            _vm._v(" "),
                             _c(
                               "p",
                               {
                                 class: {
-                                  selectedCategory:
-                                    _vm.setCategory === category.id
-                                }
+                                  selectedCategory: _vm.setCategory === 0
+                                },
+                                staticStyle: { "padding-top": "15px" }
                               },
-                              [_vm._v(_vm._s(category.name))]
+                              [_vm._v("Toate")]
                             )
                           ]
-                        )
-                      })
-                    ],
-                    2
-                  )
-                ])
-              ]
-            )
-          ],
-          1
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row justify-content-between" }, [
-        _c(
-          "div",
-          { staticClass: "col-12 col-lg-10 article-list" },
-          _vm._l(_vm.articles.data, function(article) {
-            return _c("div", { staticClass: "row article" }, [
-              _c("div", { staticClass: "col-12" }, [
-                _c("div", { staticClass: "row shadow article-border" }, [
-                  article.main_image
-                    ? _c(
-                        "a",
-                        {
-                          staticClass:
-                            "col-12 col-md-6 col-lg-5 article-section",
-                          staticStyle: { padding: "0" },
-                          attrs: { href: /article/ + article.slug }
-                        },
-                        [
-                          _c("div", {
-                            staticClass: "article-image",
-                            style: {
-                              backgroundImage:
-                                "url(/storage/articles/" +
-                                article.slug +
-                                "/" +
-                                article.main_image +
-                                ")"
-                            }
-                          })
-                        ]
-                      )
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass: "article-section",
-                      class: { "col-12 col-md-6 col-lg-7": article.main_image }
-                    },
-                    [
-                      _c("div", { staticClass: "row" }, [
-                        _c("div", { staticClass: "col-12" }, [
-                          _c("h1", [
-                            _c(
-                              "a",
-                              { attrs: { href: /article/ + article.slug } },
-                              [_vm._v(_vm._s(article.title))]
-                            )
-                          ])
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "row article-info" }, [
-                        _c("div", { staticClass: "col-12" }, [
-                          _c("div", { staticClass: "float-left" }, [
-                            _c("i", { staticClass: "far fa-calendar-alt" }),
-                            _vm._v(" "),
-                            _c("span", { staticClass: "pl-1" }, [
-                              _vm._v(
-                                _vm._s(_vm.dateAbbreviation(article.created_at))
-                              )
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "float-right" }, [
-                            _c("i", {
-                              staticClass: "fas fa-tags fa-md",
-                              staticStyle: {
-                                "padding-top": "5px",
-                                "padding-left": "5px"
+                        ),
+                        _vm._v(" "),
+                        _vm._l(_vm.categories, function(category) {
+                          return _c(
+                            "div",
+                            {
+                              on: {
+                                click: function($event) {
+                                  return _vm.updateArticlesFiltered(category.id)
+                                }
                               }
-                            }),
-                            _vm._v(" "),
-                            _c("span", [_vm._v(" " + _vm._s(article.name))])
-                          ])
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("p", [_vm._v(_vm._s(article.description))]),
-                      _vm._v(" "),
-                      _c("h2", [
-                        _c("a", { attrs: { href: /article/ + article.slug } }, [
-                          _vm._v("Citește mai mult")
-                        ])
-                      ])
-                    ]
-                  )
-                ])
-              ])
-            ])
-          }),
-          0
-        ),
+                            },
+                            [
+                              _c("hr"),
+                              _vm._v(" "),
+                              _c(
+                                "p",
+                                {
+                                  class: {
+                                    selectedCategory:
+                                      _vm.setCategory === category.id
+                                  }
+                                },
+                                [_vm._v(_vm._s(category.name))]
+                              )
+                            ]
+                          )
+                        })
+                      ],
+                      2
+                    )
+                  ])
+                ]
+              )
+            ],
+            1
+          )
+        ]),
         _vm._v(" "),
-        _c("div", { staticClass: "d-none filters-list d-lg-block col-lg-2" }, [
-          _c("div", { staticClass: "row" }, [
-            _c(
-              "div",
-              { staticClass: "col-12 shadow categories" },
-              [
-                _c("h1", [_vm._v("Categorii")]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    on: {
-                      click: function($event) {
-                        return _vm.updateArticlesFiltered(0)
-                      }
-                    }
-                  },
-                  [
-                    _c("hr", {}),
+        _c("div", { staticClass: "row justify-content-between" }, [
+          _c(
+            "div",
+            { staticClass: "col-12 col-lg-10 article-list" },
+            _vm._l(_vm.articles.data, function(article) {
+              return _c("div", { staticClass: "row article" }, [
+                _c("div", { staticClass: "col-12" }, [
+                  _c("div", { staticClass: "row shadow article-border" }, [
+                    article.main_image
+                      ? _c(
+                          "a",
+                          {
+                            staticClass:
+                              "col-12 col-md-6 col-lg-5 article-section",
+                            staticStyle: { padding: "0" },
+                            attrs: { href: /article/ + article.slug }
+                          },
+                          [
+                            _c("div", {
+                              staticClass: "article-image",
+                              style: {
+                                backgroundImage:
+                                  "url(/storage/articles/" +
+                                  article.slug +
+                                  "/" +
+                                  article.main_image +
+                                  ")"
+                              }
+                            })
+                          ]
+                        )
+                      : _vm._e(),
                     _vm._v(" "),
                     _c(
-                      "p",
-                      { class: { selectedCategory: _vm.setCategory === 0 } },
-                      [_vm._v("Toate")]
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _vm._l(_vm.categories, function(category) {
-                  return _c(
-                    "div",
-                    {
-                      on: {
-                        click: function($event) {
-                          return _vm.updateArticlesFiltered(category.id)
+                      "div",
+                      {
+                        staticClass: "article-section",
+                        class: {
+                          "col-12 col-md-6 col-lg-7": article.main_image
                         }
-                      }
-                    },
-                    [
-                      _c("hr"),
-                      _vm._v(" "),
-                      _c(
-                        "p",
+                      },
+                      [
+                        _c("div", { staticClass: "row" }, [
+                          _c("div", { staticClass: "col-12" }, [
+                            _c("h1", [
+                              _c(
+                                "a",
+                                { attrs: { href: /article/ + article.slug } },
+                                [_vm._v(_vm._s(article.title))]
+                              )
+                            ])
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "row article-info" }, [
+                          _c("div", { staticClass: "col-12" }, [
+                            _c("div", { staticClass: "float-left" }, [
+                              _c("i", { staticClass: "far fa-calendar-alt" }),
+                              _vm._v(" "),
+                              _c("span", { staticClass: "pl-1" }, [
+                                _vm._v(
+                                  _vm._s(
+                                    _vm.dateAbbreviation(article.created_at)
+                                  )
+                                )
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "float-right" }, [
+                              _c("i", {
+                                staticClass: "fas fa-tags fa-md",
+                                staticStyle: {
+                                  "padding-top": "5px",
+                                  "padding-left": "5px"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("span", [_vm._v(" " + _vm._s(article.name))])
+                            ])
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("p", [_vm._v(_vm._s(article.description))]),
+                        _vm._v(" "),
+                        _c("h2", [
+                          _c(
+                            "a",
+                            { attrs: { href: /article/ + article.slug } },
+                            [_vm._v("Citește mai mult")]
+                          )
+                        ])
+                      ]
+                    )
+                  ])
+                ])
+              ])
+            }),
+            0
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "d-none filters-list d-lg-block col-lg-2" },
+            [
+              _c("div", { staticClass: "row" }, [
+                _c(
+                  "div",
+                  { staticClass: "col-12 shadow categories" },
+                  [
+                    _c("h1", [_vm._v("Categorii")]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        on: {
+                          click: function($event) {
+                            return _vm.updateArticlesFiltered(0)
+                          }
+                        }
+                      },
+                      [
+                        _c("hr", {}),
+                        _vm._v(" "),
+                        _c(
+                          "p",
+                          {
+                            class: { selectedCategory: _vm.setCategory === 0 }
+                          },
+                          [_vm._v("Toate")]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _vm._l(_vm.categories, function(category) {
+                      return _c(
+                        "div",
                         {
-                          class: {
-                            selectedCategory: _vm.setCategory === category.id
+                          on: {
+                            click: function($event) {
+                              return _vm.updateArticlesFiltered(category.id)
+                            }
                           }
                         },
-                        [_vm._v(_vm._s(category.name))]
+                        [
+                          _c("hr"),
+                          _vm._v(" "),
+                          _c(
+                            "p",
+                            {
+                              class: {
+                                selectedCategory:
+                                  _vm.setCategory === category.id
+                              }
+                            },
+                            [_vm._v(_vm._s(category.name))]
+                          )
+                        ]
                       )
-                    ]
-                  )
-                })
-              ],
-              2
-            )
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("pagination", {
-        attrs: { pagination: _vm.articles, offset: "4" },
-        on: {
-          paginate: function($event) {
-            return _vm.fetchArticles()
+                    })
+                  ],
+                  2
+                )
+              ])
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("pagination", {
+          attrs: { pagination: _vm.articles, offset: "4" },
+          on: {
+            paginate: function($event) {
+              return _vm.fetchArticles()
+            }
           }
+        })
+      ],
+      1
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("header", [
+      _c("img", {
+        staticClass: "d-none d-lg-block",
+        attrs: {
+          src: __webpack_require__(/*! ../../../public/images/background_desktop.svg */ "./public/images/background_desktop.svg"),
+          alt: "background_desktop.svg"
+        }
+      }),
+      _vm._v(" "),
+      _c("img", {
+        staticClass: "d-none d-md-block d-lg-none",
+        attrs: {
+          src: __webpack_require__(/*! ../../../public/images/background_tablet.svg */ "./public/images/background_tablet.svg"),
+          alt: "background_tablet.svg"
+        }
+      }),
+      _vm._v(" "),
+      _c("img", {
+        staticClass: "d-md-none d-lg-none",
+        attrs: {
+          src: __webpack_require__(/*! ../../../public/images/background_mobile.svg */ "./public/images/background_mobile.svg"),
+          alt: "background_mobile.svg"
         }
       })
-    ],
-    1
-  )
-}
-var staticRenderFns = []
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -87034,6 +87105,39 @@ module.exports = "/images/mobile.svg?01fb87ede63f88430d10a62435110e30";
 /***/ (function(module, exports) {
 
 module.exports = "/images/news.svg?cf6567d34e91c516818455862748c38c";
+
+/***/ }),
+
+/***/ "./public/images/background_desktop.svg":
+/*!**********************************************!*\
+  !*** ./public/images/background_desktop.svg ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/background_desktop.svg?551d624dd3d92d93e6947afd7846e3d5";
+
+/***/ }),
+
+/***/ "./public/images/background_mobile.svg":
+/*!*********************************************!*\
+  !*** ./public/images/background_mobile.svg ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/background_mobile.svg?595e503a0758487a239815e32a6dcdd2";
+
+/***/ }),
+
+/***/ "./public/images/background_tablet.svg":
+/*!*********************************************!*\
+  !*** ./public/images/background_tablet.svg ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/background_tablet.svg?2eaf8691a4ed667cedf7706f6ab8969a";
 
 /***/ }),
 
