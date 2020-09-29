@@ -732,7 +732,7 @@ body, html {
           padding: 0px 5px;
         }
 
-        form {
+        .newsletter-container {
           padding: 0px 15px;
 
           input {
@@ -742,7 +742,7 @@ body, html {
               font-size: 14px;
             }
           }
-          input[type="submit"] {
+          button {
             background-color: $blue;
             border: 0px;
             color: #FFFFFF;

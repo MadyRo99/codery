@@ -222,19 +222,7 @@
                 }.bind(this)).finally(function () {
                     this.loading = false;
                 }.bind(this));
-            },
-            /**
-             * Create display message using "toast" bootstrap-vue component.
-             */
-            toast: function (toaster, variant, title, message) {
-                this.$bvToast.toast(message, {
-                    title: title,
-                    variant: variant,
-                    toaster: toaster,
-                    solid: true,
-                    appendToast: true,
-                })
-            },
+            }
         },
     }
 </script>

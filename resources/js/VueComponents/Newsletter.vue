@@ -7,14 +7,12 @@
                         Fii la curent cu lumea IT!
                     </h1>
                     <p>
-                        Primește o dată pe saptămână cele mai bune articole și stai la curent cu lumea tehnologiei.
+                        Primește o dată pe lună cele mai bune articole și stai la curent cu lumea tehnologiei.
                     </p>
-                    <form>
-                        <div class="row">
-                            <input type="email" name="newsletter-email" placeholder="Adresa de email" class="col-7">
-                            <input type="submit" name="newsletter-submit" class="col-5" value="Abonează-te">
-                        </div>
-                    </form>
+                    <div class="row newsletter-container">
+                        <input type="email" name="email" placeholder="Adresă de email" class="col-7" v-model="email">
+                        <button class="col-5" @click="sendJoinNewsletterMail()">Abonează-te</button>
+                    </div>
                     <p class="info d-none">Mulțumim! Un email pentru verificare a fost trimis la adresa specificată.</p>
                 </div>
             </div>
@@ -28,6 +26,28 @@
 <script>
     export default {
         name: 'newsletter',
+        data() {
+            return {
+                email: "",
+            }
+        },
+        methods: {
+            sendJoinNewsletterMail: function () {
+                let joinNewsletterUrl = "/joinNewsletter";
+                let params = {
+                    email: this.email
+                };
+
+                axios.post(joinNewsletterUrl, params)
+                    .then(function (response) {
+                        if (response.data.success) {
+                            this.toast('b-toaster-bottom-right', "success", "Succes!", "Un email pentru confirmarea abonării a fost trimis la adresa specificată.");
+                        }
+                    }.bind(this)).catch((error) => {
+                        console.log(error);
+                    });
+            }
+        }
     }
 </script>
 

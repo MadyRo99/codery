@@ -401,18 +401,6 @@
                 window.location = "../" + this.slug;
             },
             /**
-             * Create display message using "toast" bootstrap-vue component.
-             */
-            toast: function (toaster, variant, title, message) {
-                this.$bvToast.toast(message, {
-                    title: title,
-                    variant: variant,
-                    toaster: toaster,
-                    solid: true,
-                    appendToast: true,
-                })
-            },
-            /**
              * Display info message after the images are uploaded.
              */
             successHandler: function (response) {

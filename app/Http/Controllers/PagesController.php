@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Article;
-use Illuminate\Contracts\Foundation\Application;
+use App\Mail\JoinNewsletter;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Contracts\Foundation\Application;
 
 /**
  * Class PagesController
@@ -183,5 +185,32 @@ class PagesController extends Controller
         return view(
             'terms.cookies'
         );
+    }
+
+    /**
+     * Join Newsletter.
+     *
+     * @param Request $request
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function joinNewsletter(Request $request)
+    {
+        $this->validate($request, [
+            'email' => 'bail|required|email',
+        ]);
+
+        $beautymail = app()->make(\Snowfire\Beautymail\Beautymail::class);
+        $beautymail->send('mails.joinNewsletter', [], function($message)
+        {
+            $message->from('coderyromania@gmail.com')
+                    ->to("madalindanescu99@gmail.com", 'Salutare!')
+                    ->subject('Salutare! Confirmă solicitarea ta de înscriere la Newsletter');
+        });
+
+        return response()->json([
+            'response' => 'Un email pentru confirmarea abonării a fost trimis la adresa specificată.',
+            'success'  => true,
+        ], 200);
     }
 }

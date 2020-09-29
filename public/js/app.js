@@ -9198,19 +9198,6 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function () {
         this.toast('b-toaster-bottom-right', "danger", "Oops!", "Se pare ca a aparut o problema la incarcarea articolelor recomandate. Te rog incearca din nou mai tarziu.");
       }.bind(this));
-    },
-
-    /**
-     * Create display message using "toast" bootstrap-vue component.
-     */
-    toast: function toast(toaster, variant, title, message) {
-      this.$bvToast.toast(message, {
-        title: title,
-        variant: variant,
-        toaster: toaster,
-        solid: true,
-        appendToast: true
-      });
     }
   }
 });
@@ -9503,19 +9490,6 @@ __webpack_require__.r(__webpack_exports__);
         this.disableForm = false;
         this.loading = false;
       }.bind(this));
-    },
-
-    /**
-     * Create display message using "toast" bootstrap-vue component.
-     */
-    toast: function toast(toaster, variant, title, message) {
-      this.$bvToast.toast(message, {
-        title: title,
-        variant: variant,
-        toaster: toaster,
-        solid: true,
-        appendToast: true
-      });
     },
 
     /**
@@ -10103,19 +10077,6 @@ __webpack_require__.r(__webpack_exports__);
      */
     leaveArticle: function leaveArticle() {
       window.location = "../" + this.slug;
-    },
-
-    /**
-     * Create display message using "toast" bootstrap-vue component.
-     */
-    toast: function toast(toaster, variant, title, message) {
-      this.$bvToast.toast(message, {
-        title: title,
-        variant: variant,
-        toaster: toaster,
-        solid: true,
-        appendToast: true
-      });
     },
 
     /**
@@ -10727,19 +10688,6 @@ __webpack_require__.r(__webpack_exports__);
       }.bind(this))["finally"](function () {
         this.loading = false;
       }.bind(this));
-    },
-
-    /**
-     * Create display message using "toast" bootstrap-vue component.
-     */
-    toast: function toast(toaster, variant, title, message) {
-      this.$bvToast.toast(message, {
-        title: title,
-        variant: variant,
-        toaster: toaster,
-        solid: true,
-        appendToast: true
-      });
     }
   }
 });
@@ -11036,10 +10984,28 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'newsletter'
+  name: 'newsletter',
+  data: function data() {
+    return {
+      email: ""
+    };
+  },
+  methods: {
+    sendJoinNewsletterMail: function sendJoinNewsletterMail() {
+      var joinNewsletterUrl = "/joinNewsletter";
+      var params = {
+        email: this.email
+      };
+      axios.post(joinNewsletterUrl, params).then(function (response) {
+        if (response.data.success) {
+          this.toast('b-toaster-bottom-right', "success", "Succes!", "Un email pentru confirmarea abonării a fost trimis la adresa specificată.");
+        }
+      }.bind(this))["catch"](function (error) {
+        console.log(error);
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -47898,7 +47864,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.card {\r\n    height: 25rem;\n}\n.card-title {\r\n    font-size: 18px;\n}\n.card-body a {\r\n    position: absolute;\r\n    bottom: 1rem;\n}\n.card-img-top {\r\n    max-height: 17rem;\n}\r\n\r\n", ""]);
+exports.push([module.i, "\n.card {\n    height: 25rem;\n}\n.card-title {\n    font-size: 18px;\n}\n.card-body a {\n    position: absolute;\n    bottom: 1rem;\n}\n.card-img-top {\n    max-height: 17rem;\n}\n\n", ""]);
 
 // exports
 
@@ -74692,83 +74658,101 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "article-newsletter" }, [
+    _c("div", { staticClass: "row justify-content-center" }, [
+      _c(
+        "div",
+        {
+          staticClass:
+            "article-newsletter-left-side col-12 col-md-8 d-flex align-items-center"
+        },
+        [
+          _c("div", { staticClass: "newsletter-content" }, [
+            _c("h1", [
+              _vm._v(
+                "\n                    Fii la curent cu lumea IT!\n                "
+              )
+            ]),
+            _vm._v(" "),
+            _c("p", [
+              _vm._v(
+                "\n                    Primește o dată pe lună cele mai bune articole și stai la curent cu lumea tehnologiei.\n                "
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "row newsletter-container" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.email,
+                    expression: "email"
+                  }
+                ],
+                staticClass: "col-7",
+                attrs: {
+                  type: "email",
+                  name: "email",
+                  placeholder: "Adresă de email"
+                },
+                domProps: { value: _vm.email },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.email = $event.target.value
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "col-5",
+                  on: {
+                    click: function($event) {
+                      return _vm.sendJoinNewsletterMail()
+                    }
+                  }
+                },
+                [_vm._v("Abonează-te")]
+              )
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "info d-none" }, [
+              _vm._v(
+                "Mulțumim! Un email pentru verificare a fost trimis la adresa specificată."
+              )
+            ])
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _vm._m(0)
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "article-newsletter" }, [
-      _c("div", { staticClass: "row justify-content-center" }, [
-        _c(
-          "div",
-          {
-            staticClass:
-              "article-newsletter-left-side col-12 col-md-8 d-flex align-items-center"
-          },
-          [
-            _c("div", { staticClass: "newsletter-content" }, [
-              _c("h1", [
-                _vm._v(
-                  "\n                    Fii la curent cu lumea IT!\n                "
-                )
-              ]),
-              _vm._v(" "),
-              _c("p", [
-                _vm._v(
-                  "\n                    Primește o dată pe saptămână cele mai bune articole și stai la curent cu lumea tehnologiei.\n                "
-                )
-              ]),
-              _vm._v(" "),
-              _c("form", [
-                _c("div", { staticClass: "row" }, [
-                  _c("input", {
-                    staticClass: "col-7",
-                    attrs: {
-                      type: "email",
-                      name: "newsletter-email",
-                      placeholder: "Adresa de email"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "col-5",
-                    attrs: {
-                      type: "submit",
-                      name: "newsletter-submit",
-                      value: "Abonează-te"
-                    }
-                  })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("p", { staticClass: "info d-none" }, [
-                _vm._v(
-                  "Mulțumim! Un email pentru verificare a fost trimis la adresa specificată."
-                )
-              ])
-            ])
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass:
-              "article-newsletter-right-side col-4 d-none d-md-block p-0"
-          },
-          [
-            _c("img", {
-              attrs: {
-                src: __webpack_require__(/*! ../../../public/images/newsletter_icon.png */ "./public/images/newsletter_icon.png"),
-                alt: "newsletter_icon.png"
-              }
-            })
-          ]
-        )
-      ])
-    ])
+    return _c(
+      "div",
+      {
+        staticClass: "article-newsletter-right-side col-4 d-none d-md-block p-0"
+      },
+      [
+        _c("img", {
+          attrs: {
+            src: __webpack_require__(/*! ../../../public/images/newsletter_icon.png */ "./public/images/newsletter_icon.png"),
+            alt: "newsletter_icon.png"
+          }
+        })
+      ]
+    )
   }
 ]
 render._withStripped = true
@@ -87895,6 +87879,19 @@ __webpack_require__.r(__webpack_exports__);
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.mixin({
   methods: {
+    /**
+     * Create display message using "toast" bootstrap-vue component.
+     */
+    toast: function toast(toaster, variant, title, message) {
+      this.$bvToast.toast(message, {
+        title: title,
+        variant: variant,
+        toaster: toaster,
+        solid: true,
+        appendToast: true
+      });
+    },
+
     /**
      * Format the date of the article.
      */
