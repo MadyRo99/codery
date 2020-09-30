@@ -38,11 +38,6 @@ Route::get('/cookies', [
     'uses'          =>  'PagesController@getCookiesPage',
 ]);
 
-Route::post('/joinNewsletter', [
-    'as'            =>  'joinNewsletter',
-    'uses'          =>  'PagesController@joinNewsletter',
-]);
-
 Route::post('/getArticles', [
     'as'            =>  'getArticles',
     'uses'          =>  'PagesController@getArticles',
@@ -68,3 +63,6 @@ require ('articles.php');
 
 // Categories Routes
 require ('categories.php');
+
+// Newsletters Routes
+require ('newsletters.php');

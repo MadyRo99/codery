@@ -9428,10 +9428,10 @@ __webpack_require__.r(__webpack_exports__);
           this.disableForm = false;
           this.loading = false;
         } else {
-          this.toast('b-toaster-bottom-right', "danger", "Oops!", "Se pare ca a aparut o problema la incarcarea paginii. Te rog incearca din nou mai tarziu.");
+          this.toast('b-toaster-bottom-right', "danger", "Oops!", "Se pare că a apărut o problemă la încărcarea paginii. Te rog încearcă din nou mai târziu.");
         }
       }.bind(this))["catch"](function (error) {
-        this.toast('b-toaster-bottom-right', "danger", "Oops!", "Se pare ca a aparut o problema la incarcarea paginii. Te rog incearca din nou mai tarziu.");
+        this.toast('b-toaster-bottom-right', "danger", "Oops!", "Se pare că a apărut o problemă la încărcarea paginii. Te rog încearcă din nou mai târziu.");
       }.bind(this));
     },
 
@@ -9475,7 +9475,7 @@ __webpack_require__.r(__webpack_exports__);
             window.setTimeout(function () {
               window.location = _this.slug;
             }, 4500);
-            this.toast('b-toaster-bottom-right', "success", "Succes!", "Vei fi redirectionat catre articol in cateva secunde.");
+            this.toast('b-toaster-bottom-right', "success", "Succes!", "Vei fi redirecționat către articol în câteva secunde.");
           }
         } else {
           _.forEach(response.data.response, function (error) {
@@ -9486,7 +9486,7 @@ __webpack_require__.r(__webpack_exports__);
           this.loading = false;
         }
       }.bind(this))["catch"](function (error) {
-        this.toast('b-toaster-bottom-right', "danger", "Oops!", "Se pare ca a aparut o problema la salvarea articolului. Te rog incearca din nou mai tarziu.");
+        this.toast('b-toaster-bottom-right', "danger", "Oops!", "Se pare că a apărut o problemă la salvarea articolului. Te rog încearcă din nou mai târziu.");
         this.disableForm = false;
         this.loading = false;
       }.bind(this));
@@ -9500,7 +9500,7 @@ __webpack_require__.r(__webpack_exports__);
 
       this.hideImagesForm = true;
       this.toast('b-toaster-bottom-right', "success", "Succes!", response.info);
-      this.toast('b-toaster-bottom-right', "success", "Succes!", "Vei fi redirectionat catre articol in cateva secunde.");
+      this.toast('b-toaster-bottom-right', "success", "Succes!", "Vei fi redirecționat către articol în câteva secunde.");
       window.setTimeout(function () {
         window.location = _this2.slug;
       }, 4500);
@@ -9574,7 +9574,7 @@ __webpack_require__.r(__webpack_exports__);
       if (this.isFileImage(file)) {
         this.article.main_image = file;
       } else {
-        this.toast('b-toaster-bottom-right', "danger", "Oops!", "Imaginea principala trebuia sa aiba una dintre extensiile: 'png', 'jpg', 'jpeg', 'svg'.");
+        this.toast('b-toaster-bottom-right', "danger", "Oops!", "Imaginea principală trebuie să aibă una dintre extensiile: 'png', 'jpg', 'jpeg', 'svg'.");
       }
     },
 
@@ -9604,21 +9604,21 @@ __webpack_require__.r(__webpack_exports__);
       var insertContent = ["{TEXT}", "{IMAGE_NAME}", "{NUMBER}", "{GIST_ID}", "{GIST_FILE}", "{QUOTE}", "{AUTHOR}"];
 
       if (parameters.title.trim().length < 5 || parameters.title.trim().length > 75 || parameters.title.trim() === "") {
-        this.errors.title = "Titlul trebuie sa contina intre 5 si 75 de caractere.";
+        this.errors.title = "Titlul trebuie să conțină între 5 și 75 de caractere.";
         return false;
       }
 
       this.errors.title = "";
 
       if (!parameters.category.trim().length) {
-        this.errors.category = "Selecteaza o categorie din lista.";
+        this.errors.category = "Selectează o categorie din listă.";
         return false;
       }
 
       this.errors.category = "";
 
       if (parameters.content.trim().length <= 10 || parameters.content.trim() === "") {
-        this.errors.content = "Continutul trebuie sa contina cel putin 10 caractere.";
+        this.errors.content = "Conținutul trebuie să conțină cel puțin 10 caractere.";
         return false;
       }
 
@@ -9627,7 +9627,7 @@ __webpack_require__.r(__webpack_exports__);
 
       _.forEach(insertContent, function (value) {
         if (this.article.content.indexOf(value) !== -1) {
-          this.errors.content = "Completeaza atributele elementelor din continut.";
+          this.errors.content = "Completează atributele elementelor din conținut.";
           fail = true;
         }
       }.bind(this));
@@ -9654,7 +9654,7 @@ __webpack_require__.r(__webpack_exports__);
       var tagsArray = parameters.tags.split(",");
 
       if (parameters.tags.trim() === "" || tagsArray.length === 0) {
-        this.errors.tags = "Tag-urile sunt goale. Completeaza cateva tag-uri pentru articol.";
+        this.errors.tags = "Tag-urile sunt goale. Completează câteva tag-uri pentru articol.";
         return false;
       }
 
@@ -10992,14 +10992,22 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    /**
+     * Send the Join NewsLetter Confirmation Mail.
+     */
     sendJoinNewsletterMail: function sendJoinNewsletterMail() {
+      this.toast('b-toaster-bottom-right', "warning", "Te rog așteaptă...", "Se trimite email pentru confirmarea abonării la adresa specificată.");
       var joinNewsletterUrl = "/joinNewsletter";
       var params = {
         email: this.email
       };
       axios.post(joinNewsletterUrl, params).then(function (response) {
         if (response.data.success) {
-          this.toast('b-toaster-bottom-right', "success", "Succes!", "Un email pentru confirmarea abonării a fost trimis la adresa specificată.");
+          this.toast('b-toaster-bottom-right', "success", "Succes!", "Un email pentru confirmarea abonării a fost trimis. Nu uita să verifici și secțiunea de spam.");
+        } else {
+          _.forEach(response.data.response, function (error) {
+            this.toast('b-toaster-bottom-right', "danger", "Oops!", error);
+          }.bind(this));
         }
       }.bind(this))["catch"](function (error) {
         console.log(error);

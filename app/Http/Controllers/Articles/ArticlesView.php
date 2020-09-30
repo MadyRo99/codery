@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Support\Facades\Storage;
 
+/**
+ * Class ArticlesView
+ * @package App\Http\Controllers\Articles
+ */
 class ArticlesView
 {
     /**

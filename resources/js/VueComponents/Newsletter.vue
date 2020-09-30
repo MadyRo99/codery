@@ -32,7 +32,12 @@
             }
         },
         methods: {
+            /**
+             * Send the Join NewsLetter Confirmation Mail.
+             */
             sendJoinNewsletterMail: function () {
+                this.toast('b-toaster-bottom-right', "warning", "Te rog așteaptă...", "Se trimite email pentru confirmarea abonării la adresa specificată.");
+
                 let joinNewsletterUrl = "/joinNewsletter";
                 let params = {
                     email: this.email
@@ -41,7 +46,11 @@
                 axios.post(joinNewsletterUrl, params)
                     .then(function (response) {
                         if (response.data.success) {
-                            this.toast('b-toaster-bottom-right', "success", "Succes!", "Un email pentru confirmarea abonării a fost trimis la adresa specificată.");
+                            this.toast('b-toaster-bottom-right', "success", "Succes!", "Un email pentru confirmarea abonării a fost trimis. Nu uita să verifici și secțiunea de spam.");
+                        } else {
+                            _.forEach(response.data.response, function(error) {
+                                this.toast('b-toaster-bottom-right', "danger", "Oops!", error);
+                            }.bind(this));
                         }
                     }.bind(this)).catch((error) => {
                         console.log(error);

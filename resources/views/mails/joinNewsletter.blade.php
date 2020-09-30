@@ -41,8 +41,16 @@
             <td width="100%" height="25"></td>
         </tr>
         <tr>
+            <td class="paragraph">
+                <p>Dacă vei dori pe parcurs să te dezabonezi, o vei putea face fără probleme.</p>
+            </td>
+        </tr>
+        <tr>
+            <td width="100%" height="25"></td>
+        </tr>
+        <tr>
             <td class="confirm-button">
-                @include('beautymail::templates.minty.button', ['text' => 'Confirmă', 'link' => '#'])
+                @include('beautymail::templates.minty.button', ['text' => 'Confirmă', 'link' => $confirmNewsletter])
             </td>
         </tr>
         <tr>
