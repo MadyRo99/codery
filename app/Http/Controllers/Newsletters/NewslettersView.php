@@ -49,6 +49,7 @@ class NewslettersView
                 return [
                     "result"     => "Felicitari! Abonamentul la Newsletter este de acum activ.",
                     "subscribed" => false,
+                    "email"      => $newsletter->email,
                     "success"    => true,
                 ];
             }

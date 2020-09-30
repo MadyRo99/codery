@@ -142,6 +142,11 @@ class PagesController extends Controller
         return response()->json($articles->paginate(4));
     }
 
+    /**
+     * Get the Admin Panel Page.
+     *
+     * @return mixed
+     */
     public function getAdminPanel()
     {
         return view(

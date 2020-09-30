@@ -9070,7 +9070,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 
@@ -72095,135 +72094,135 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "container article-view" },
-    [
-      !_vm.article.status
-        ? _c("div", { staticClass: "bd-callout" }, [
-            _c("h5", [
-              _vm._v("Acest articol se află în modul de previzualizare.")
+  return _c("div", { staticClass: "container article-view" }, [
+    !_vm.article.status
+      ? _c("div", { staticClass: "bd-callout" }, [
+          _c("h5", [
+            _vm._v("Acest articol se află în modul de previzualizare.")
+          ]),
+          _vm._v(" "),
+          _c("p", [
+            _vm._v(
+              "Articolul poate fi accesat în acest moment doar de către autor sau de moderator."
+            )
+          ]),
+          _vm._v(" "),
+          _c("p", [
+            _vm._v("Pentru a schimba vizibilitatea acestui articol, apasă "),
+            _c("a", { attrs: { href: "/article/edit/" + _vm.slug } }, [
+              _c("b", { staticStyle: { color: "#993FFF" } }, [_vm._v("aici")])
             ]),
-            _vm._v(" "),
-            _c("p", [
-              _vm._v(
-                "Articolul poate fi accesat în acest moment doar de către autor sau de moderator."
-              )
-            ]),
-            _vm._v(" "),
-            _c("p", [
-              _vm._v("Pentru a schimba vizibilitatea acestui articol, apasă "),
-              _c("a", { attrs: { href: "/article/edit/" + _vm.slug } }, [
-                _c("b", { staticStyle: { color: "#993FFF" } }, [_vm._v("aici")])
-              ]),
-              _vm._v(" pentru editare.")
-            ])
+            _vm._v(" pentru editare.")
           ])
-        : _vm._e(),
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _c("header", { staticClass: "article-header" }, [
+      _c("div", { staticClass: "row article-title" }, [
+        _c("div", { staticClass: "col-12" }, [
+          _c("h1", { staticClass: "text-center" }, [
+            _vm._v(_vm._s(_vm.article.title))
+          ])
+        ])
+      ]),
       _vm._v(" "),
-      _c("header", { staticClass: "article-header" }, [
-        _c("div", { staticClass: "row article-title" }, [
-          _c("div", { staticClass: "col-12" }, [
-            _c("h1", { staticClass: "text-center" }, [
-              _vm._v(_vm._s(_vm.article.title))
-            ])
+      _c("div", { staticClass: "row article-header-details" }, [
+        _c("div", { staticClass: "col-7" }, [
+          _c("div", { staticClass: "d-flex justify-content-start" }, [
+            _c("div", { staticClass: "author-image" }, [
+              _c("img", {
+                staticClass: "rounded-circle",
+                attrs: {
+                  src: _vm.article.author.avatar,
+                  alt: "author_avatar.png"
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "author-details pl-2 mb-4 align-self-center" },
+              [
+                _c("p", { staticClass: "author-name mb-1" }, [
+                  _vm._v("@" + _vm._s(_vm.article.author.name))
+                ]),
+                _vm._v(" "),
+                _c(
+                  "p",
+                  {
+                    staticClass: "article-info text-secondary",
+                    staticStyle: { position: "absolute", width: "175px" }
+                  },
+                  [
+                    _vm._v(
+                      "◈ " +
+                        _vm._s(_vm.dateAbbreviation(_vm.article.created_at)) +
+                        " | " +
+                        _vm._s(_vm.article.est_time) +
+                        " min"
+                    )
+                  ]
+                )
+              ]
+            )
           ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "row article-header-details" }, [
-          _c("div", { staticClass: "col-7" }, [
-            _c("div", { staticClass: "d-flex justify-content-start" }, [
-              _c("div", { staticClass: "author-image" }, [
-                _c("img", {
-                  staticClass: "rounded-circle",
-                  attrs: {
-                    src: _vm.article.author.avatar,
-                    alt: "author_avatar.png"
-                  }
-                })
-              ]),
+        _c("div", { staticClass: "col-5" }, [
+          _c("div", { staticClass: "d-flex flex-column align-items-end" }, [
+            _c("span", { staticClass: "category-link pt-2" }, [
+              _c("i", { staticClass: "fas fa-tags fa-md" }),
               _vm._v(" "),
               _c(
-                "div",
-                { staticClass: "author-details pl-2 mb-4 align-self-center" },
-                [
-                  _c("p", { staticClass: "author-name mb-1" }, [
-                    _vm._v("@" + _vm._s(_vm.article.author.name))
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "p",
-                    {
-                      staticClass: "article-info text-secondary",
-                      staticStyle: { position: "absolute", width: "175px" }
-                    },
-                    [
-                      _vm._v(
-                        "◈ " +
-                          _vm._s(_vm.dateAbbreviation(_vm.article.created_at)) +
-                          " | " +
-                          _vm._s(_vm.article.est_time) +
-                          " min"
-                      )
-                    ]
-                  )
-                ]
+                "a",
+                { attrs: { href: "/?search=" + _vm.article.category.name } },
+                [_vm._v(_vm._s(_vm.article.category.name))]
               )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-5" }, [
-            _c("div", { staticClass: "d-flex flex-column align-items-end" }, [
-              _c("span", { staticClass: "category-link pt-2" }, [
-                _c("i", { staticClass: "fas fa-tags fa-md" }),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  { attrs: { href: "/?search=" + _vm.article.category.name } },
-                  [_vm._v(_vm._s(_vm.article.category.name))]
-                )
-              ]),
-              _vm._v(" "),
-              _vm._m(0)
-            ])
+            ]),
+            _vm._v(" "),
+            _vm._m(0)
           ])
         ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "article-body" }, [
-        _c("section", [
-          _c(
-            "div",
-            { staticClass: "loader" },
-            [
-              _c("bounce-loader", {
-                staticClass: "custom-class",
-                class: { highIndex: _vm.loading },
-                attrs: {
-                  loading: _vm.loading,
-                  color: _vm.loader.color,
-                  size: _vm.loader.size,
-                  margin: _vm.loader.margin
-                }
-              })
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _vm.article.main_image
-            ? _c("img", {
-                staticClass: "article-main-image img-fluid mx-auto d-block",
-                attrs: { src: _vm.article.main_image, alt: "main_image.jpg" }
-              })
-            : _vm._e(),
-          _vm._v(" "),
-          _c("div", { domProps: { innerHTML: _vm._s(_vm.article.content) } })
-        ])
-      ]),
-      _vm._v(" "),
-      _c("hr"),
-      _vm._v(" "),
-      _c("div", { staticClass: "article-bottom" }, [
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "article-body" }, [
+      _c("section", [
+        _c(
+          "div",
+          { staticClass: "loader" },
+          [
+            _c("bounce-loader", {
+              staticClass: "custom-class",
+              class: { highIndex: _vm.loading },
+              attrs: {
+                loading: _vm.loading,
+                color: _vm.loader.color,
+                size: _vm.loader.size,
+                margin: _vm.loader.margin
+              }
+            })
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _vm.article.main_image
+          ? _c("img", {
+              staticClass: "article-main-image img-fluid mx-auto d-block",
+              attrs: { src: _vm.article.main_image, alt: "main_image.jpg" }
+            })
+          : _vm._e(),
+        _vm._v(" "),
+        _c("div", { domProps: { innerHTML: _vm._s(_vm.article.content) } })
+      ])
+    ]),
+    _vm._v(" "),
+    _c("hr"),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "article-bottom" },
+      [
         _c(
           "div",
           { staticClass: "article-tags" },
@@ -72245,6 +72244,17 @@ var render = function() {
           2
         ),
         _vm._v(" "),
+        _c("newsletter", {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: !_vm.loading,
+              expression: "!loading"
+            }
+          ]
+        }),
+        _vm._v(" "),
         _c(
           "div",
           {
@@ -72259,8 +72269,6 @@ var render = function() {
             staticClass: "article-suggestions"
           },
           [
-            _c("hr"),
-            _vm._v(" "),
             _c("h1", [_vm._v("Articole care ar putea să te intereseze:")]),
             _vm._v(" "),
             _c(
@@ -72297,21 +72305,10 @@ var render = function() {
             )
           ]
         )
-      ]),
-      _vm._v(" "),
-      _c("newsletter", {
-        directives: [
-          {
-            name: "show",
-            rawName: "v-show",
-            value: !_vm.loading,
-            expression: "!loading"
-          }
-        ]
-      })
-    ],
-    1
-  )
+      ],
+      1
+    )
+  ])
 }
 var staticRenderFns = [
   function() {

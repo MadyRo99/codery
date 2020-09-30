@@ -12,6 +12,7 @@ return [
         '.bottom-notice p { color: #EEEEEE; font-size: 12px; }',
         'hr { padding: 0; margin: 0; }',
         '.devicewidthinner { margin: 0 auto; width: 100%; }',
+        '.unsubscribe { color: #EEEEEE; }'
     ],
 
     'colors' => [

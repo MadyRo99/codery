@@ -4,7 +4,7 @@
 
     @include('beautymail::templates.minty.contentStart')
 
-    <tr class="content-text">
+    <div class="content-text">
         <tr>
             <td width="100%" height="20"></td>
         </tr>
@@ -34,7 +34,7 @@
         </tr>
         <tr>
             <td class="paragraph">
-                <p>Nu îți face griji... Nu facem spam și vei primi doar cele mai bune articole &#128522;</p>
+                <p>Nu îți face griji... Nu facem spam și vei primi doar cele mai bune articole. &#128522;</p>
             </td>
         </tr>
         <tr>
@@ -53,9 +53,10 @@
                 @include('beautymail::templates.minty.button', ['text' => 'Confirmă', 'link' => $confirmNewsletter])
             </td>
         </tr>
-        <tr>
-            <td width="100%" height="25"></td>
-        </tr>
+    </div>
+
+    <tr>
+        <td width="100%" height="25"></td>
     </tr>
 
     <tr>

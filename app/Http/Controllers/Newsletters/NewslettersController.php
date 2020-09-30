@@ -79,6 +79,16 @@ class NewslettersController extends Controller
         $confirmNewsletter = $newsletterView->confirmNewsletter($token);
 
         if ($confirmNewsletter['success']) {
+            if (!$confirmNewsletter["subscribed"]) {
+                $beautymail = app()->make(\Snowfire\Beautymail\Beautymail::class);
+                $beautymail->send('mails.confirmedNewsletter', ['unsubscribe' => 'http://localhost:8000/deleteNewsletter/' . $token], function($message) use ($confirmNewsletter)
+                {
+                    $message->from('coderyromania@gmail.com')
+                        ->to($confirmNewsletter["email"])
+                        ->subject('Bine ai venit! Ai confirmat cu succes abonarea ta la Newsletter');
+                });
+            }
+
             return view(
                 'newsletters.infoNewsletter'
             )->withTitle("Confirmare Newsletter")->withInfo($confirmNewsletter["result"])->withToken($token)->withSubscribed($confirmNewsletter["subscribed"]);
