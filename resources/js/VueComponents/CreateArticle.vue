@@ -1,5 +1,9 @@
 <template>
     <div class="container create-article">
+        <h2>Crează Articol</h2>
+        <div class="alert alert-info" role="alert">
+            Crează un nou articol și atribuie tag-urile aferente.
+        </div>
         <br>
         <form @submit.prevent="saveArticle" method="POST" enctype="multipart/form-data">
             <div class="loader">
@@ -366,7 +370,7 @@
                 this.quoteShortcut = '\n<div class="blockquote">\n<p><q>\n{QUOTE}\n</q></p>\n<footer>{AUTHOR}</footer>\n</div>';
             },
             /**
-             * Validate the parameters before submiting the form.
+             * Validate the parameters before submitting the form.
              */
             validateParameters: function (parameters) {
                 parameters.est_time = parseInt(parameters.est_time);

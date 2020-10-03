@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Newsletters;
 
+use App\Article;
 use App\Newsletter;
 
 /**

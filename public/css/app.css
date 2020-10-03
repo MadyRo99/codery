@@ -797,6 +797,22 @@ html {
 
 /* END SECTION */
 
+/* CREATE ARTICLE SECTION */
+
+.create-article {
+  margin: 40px auto;
+}
+
+/* END SECTION */
+
+/* EDIT ARTICLE SECTION */
+
+.edit-article {
+  margin: 40px auto;
+}
+
+/* END SECTION */
+
 /* ADMIN PANEL SECTION */
 
 .admin-panel {
@@ -914,6 +930,14 @@ html {
 
 .admin-panel .article-list .article .article-border {
   border-radius: 5px;
+}
+
+/* END SECTION */
+
+/* ARTICLES NEWSLETTERS SECTION */
+
+.articles-newsletters {
+  margin: 40px 0px;
 }
 
 /* END SECTION */

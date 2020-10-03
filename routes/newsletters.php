@@ -13,4 +13,16 @@ Route::namespace('Newsletters')->group(function () {
         'as'            =>  'deleteNewsletter',
         'uses'          =>  'NewslettersController@deleteNewsletter',
     ]);
+    Route::get('/articlesNewsletter/create', [
+        'as'            =>  'articlesNewsletter.create',
+        'uses'          =>  'NewslettersController@getArticlesNewsletter',
+    ]);
+    Route::get('/getArticlesBasicInfo', [
+        'as'            =>  'getArticlesBasicInfo',
+        'uses'          =>  'NewslettersController@getArticlesBasicInfo',
+    ]);
+    Route::post('/sendNewsletter', [
+        'as'            =>  'sendNewsletter',
+        'uses'          =>  'NewslettersController@sendNewsletter',
+    ]);
 });

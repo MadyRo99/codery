@@ -1,5 +1,9 @@
 <template>
     <div class="container edit-article">
+        <h2>Editează Articol</h2>
+        <div class="alert alert-info" role="alert">
+            Editează articolul respectiv sau schimbă vizibilitatea acestuia.
+        </div>
         <br>
         <form @submit.prevent="saveArticle" method="POST" enctype="multipart/form-data">
             <div class="loader">
@@ -470,7 +474,7 @@
                 this.quoteShortcut = '\n<div class="blockquote">\n<p><q>\n{QUOTE}\n</q></p>\n<footer>{AUTHOR}</footer>\n</div>';
             },
             /**
-             * Validate the parameters before submiting the form.
+             * Validate the parameters before submitting the form.
              */
             validateParameters: function (parameters) {
                 parameters.est_time = parseInt(parameters.est_time);

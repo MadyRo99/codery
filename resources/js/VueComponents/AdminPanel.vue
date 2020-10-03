@@ -8,6 +8,7 @@
             <div class="admin-actions">
                 <a href="/categories"><button type="button" class="btn btn-outline-link">Categorii</button></a>
                 <a href="/article/create"><button type="button" class="btn btn-outline-link">Adaugă Articol</button></a>
+                <a href="/articlesNewsletter/create"><button type="button" class="btn btn-outline-link">Newsletter</button></a>
                 <form class="float-md-right" action="/logout" method="POST">
                     <input type="hidden" name="_token" :value="csrf">
                     <button type="submit" class="btn btn-danger">Logout</button>
