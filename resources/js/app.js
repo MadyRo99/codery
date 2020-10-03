@@ -13,6 +13,7 @@ import AdminPanel from './VueComponents/AdminPanel';
 import ListCategories from './VueComponents/ListCategories';
 import CreateArticle from './VueComponents/CreateArticle';
 import EditArticle from './VueComponents/EditArticle';
+import ArticlesNewsletter from './VueComponents/ArticlesNewsletter';
 
 import { BounceLoader } from '@saeris/vue-spinners';
 import SlideUpDown from 'vue-slide-up-down';
@@ -28,6 +29,7 @@ const vue = new Vue({
         'article-view'           : ArticleView,
         'admin-panel'            : AdminPanel,
         'list-categories'        : ListCategories,
+        'articles-newsletter'    : ArticlesNewsletter,
         'create-article'         : CreateArticle,
         'edit-article'           : EditArticle,
         'bounce-loader'          : BounceLoader,

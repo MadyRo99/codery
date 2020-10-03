@@ -63,3 +63,6 @@ require ('articles.php');
 
 // Categories Routes
 require ('categories.php');
+
+// Newsletters Routes
+require ('newsletters.php');

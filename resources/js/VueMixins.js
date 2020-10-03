@@ -7,6 +7,18 @@ import Vue from "vue";
 Vue.mixin({
     methods: {
         /**
+         * Create display message using "toast" bootstrap-vue component.
+         */
+        toast: function (toaster, variant, title, message) {
+            this.$bvToast.toast(message, {
+                title: title,
+                variant: variant,
+                toaster: toaster,
+                solid: true,
+                appendToast: true,
+            })
+        },
+        /**
          * Format the date of the article.
          */
         dateAbbreviation: function (date) {

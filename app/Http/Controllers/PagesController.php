@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Article;
-use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Contracts\View\View;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Contracts\Foundation\Application;
 
 /**
  * Class PagesController
@@ -142,6 +142,11 @@ class PagesController extends Controller
         return response()->json($articles->paginate(4));
     }
 
+    /**
+     * Get the Admin Panel Page.
+     *
+     * @return mixed
+     */
     public function getAdminPanel()
     {
         return view(

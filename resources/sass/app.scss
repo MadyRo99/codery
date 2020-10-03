@@ -706,7 +706,7 @@ body, html {
 
   .article-newsletter {
     height: 250px;
-      margin: 10px 15px 0px;
+      margin: 10px 15px 20px;
 
       .article-newsletter-left-side {
       height: 250px;
@@ -732,7 +732,7 @@ body, html {
           padding: 0px 5px;
         }
 
-        form {
+        .newsletter-container {
           padding: 0px 15px;
 
           input {
@@ -742,7 +742,7 @@ body, html {
               font-size: 14px;
             }
           }
-          input[type="submit"] {
+          button {
             background-color: $blue;
             border: 0px;
             color: #FFFFFF;
@@ -785,6 +785,22 @@ body, html {
       }
     }
   }
+}
+
+/* END SECTION */
+
+/* CREATE ARTICLE SECTION */
+
+.create-article {
+    margin: 40px auto;
+}
+
+/* END SECTION */
+
+/* EDIT ARTICLE SECTION */
+
+.edit-article {
+    margin: 40px auto;
 }
 
 /* END SECTION */
@@ -898,6 +914,14 @@ body, html {
             }
         }
     }
+}
+
+/* END SECTION */
+
+/* ARTICLES NEWSLETTERS SECTION */
+
+.articles-newsletters {
+    margin: 40px 0px;
 }
 
 /* END SECTION */

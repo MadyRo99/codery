@@ -54,8 +54,8 @@
                 </div>
                 <div class="clearfix"></div>
             </div>
+            <newsletter v-show="!loading"></newsletter>
             <div class="article-suggestions" v-show="recommendedArticles.length">
-                <hr>
                 <h1>Articole care ar putea să te intereseze:</h1>
                 <div class="row">
                     <div class="col-md-4" v-for="article in recommendedArticles">
@@ -71,7 +71,6 @@
                 </div>
             </div>
         </div>
-        <newsletter v-show="!loading"></newsletter>
     </div>
 </template>
 
@@ -201,19 +200,7 @@
                     .catch(function () {
                         this.toast('b-toaster-bottom-right', "danger", "Oops!", "Se pare ca a aparut o problema la incarcarea articolelor recomandate. Te rog incearca din nou mai tarziu.");
                     }.bind(this));
-            },
-            /**
-             * Create display message using "toast" bootstrap-vue component.
-             */
-            toast: function (toaster, variant, title, message) {
-                this.$bvToast.toast(message, {
-                    title: title,
-                    variant: variant,
-                    toaster: toaster,
-                    solid: true,
-                    appendToast: true,
-                })
-            },
+            }
         }
     }
 </script>
