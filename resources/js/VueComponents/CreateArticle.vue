@@ -1,5 +1,9 @@
 <template>
     <div class="container create-article">
+        <h2>Crează Articol</h2>
+        <div class="alert alert-info" role="alert">
+            Crează un nou articol și atribuie tag-urile aferente.
+        </div>
         <br>
         <form @submit.prevent="saveArticle" method="POST" enctype="multipart/form-data">
             <div class="loader">
@@ -207,11 +211,11 @@
                             this.disableForm = false;
                             this.loading = false;
                         } else {
-                            this.toast('b-toaster-bottom-right', "danger", "Oops!", "Se pare ca a aparut o problema la incarcarea paginii. Te rog incearca din nou mai tarziu.");
+                            this.toast('b-toaster-bottom-right', "danger", "Oops!", "Se pare că a apărut o problemă la încărcarea paginii. Te rog încearcă din nou mai târziu.");
                         }
                     }.bind(this))
                     .catch(function (error) {
-                        this.toast('b-toaster-bottom-right', "danger", "Oops!", "Se pare ca a aparut o problema la incarcarea paginii. Te rog incearca din nou mai tarziu.");
+                        this.toast('b-toaster-bottom-right', "danger", "Oops!", "Se pare că a apărut o problemă la încărcarea paginii. Te rog încearcă din nou mai târziu.");
                     }.bind(this));
             },
             /**
@@ -255,7 +259,7 @@
                                 window.setTimeout(() => {
                                     window.location = this.slug
                                 }, 4500);
-                                this.toast('b-toaster-bottom-right', "success", "Succes!", "Vei fi redirectionat catre articol in cateva secunde.");
+                                this.toast('b-toaster-bottom-right', "success", "Succes!", "Vei fi redirecționat către articol în câteva secunde.");
                             }
                         } else {
                             _.forEach(response.data.response, function(error) {
@@ -266,23 +270,11 @@
                             this.loading = false;
                         }
                     }.bind(this)).catch(function (error) {
-                        this.toast('b-toaster-bottom-right', "danger", "Oops!", "Se pare ca a aparut o problema la salvarea articolului. Te rog incearca din nou mai tarziu.");
+                        this.toast('b-toaster-bottom-right', "danger", "Oops!", "Se pare că a apărut o problemă la salvarea articolului. Te rog încearcă din nou mai târziu.");
 
                         this.disableForm = false;
                         this.loading = false;
                     }.bind(this));
-            },
-            /**
-             * Create display message using "toast" bootstrap-vue component.
-             */
-            toast: function (toaster, variant, title, message) {
-                this.$bvToast.toast(message, {
-                    title: title,
-                    variant: variant,
-                    toaster: toaster,
-                    solid: true,
-                    appendToast: true,
-                })
             },
             /**
              * Display info message after the images are uploaded.
@@ -291,7 +283,7 @@
                 this.hideImagesForm = true;
 
                 this.toast('b-toaster-bottom-right', "success", "Succes!", response.info);
-                this.toast('b-toaster-bottom-right', "success", "Succes!", "Vei fi redirectionat catre articol in cateva secunde.");
+                this.toast('b-toaster-bottom-right', "success", "Succes!", "Vei fi redirecționat către articol în câteva secunde.");
 
                 window.setTimeout(() => {
                     window.location = this.slug;
@@ -357,7 +349,7 @@
                 if (this.isFileImage(file)) {
                     this.article.main_image = file;
                 } else {
-                    this.toast('b-toaster-bottom-right', "danger", "Oops!", "Imaginea principala trebuia sa aiba una dintre extensiile: 'png', 'jpg', 'jpeg', 'svg'.");
+                    this.toast('b-toaster-bottom-right', "danger", "Oops!", "Imaginea principală trebuie să aibă una dintre extensiile: 'png', 'jpg', 'jpeg', 'svg'.");
                 }
             },
             /**
@@ -378,26 +370,26 @@
                 this.quoteShortcut = '\n<div class="blockquote">\n<p><q>\n{QUOTE}\n</q></p>\n<footer>{AUTHOR}</footer>\n</div>';
             },
             /**
-             * Validate the parameters before submiting the form.
+             * Validate the parameters before submitting the form.
              */
             validateParameters: function (parameters) {
                 parameters.est_time = parseInt(parameters.est_time);
                 let insertContent = ["{TEXT}", "{IMAGE_NAME}", "{NUMBER}", "{GIST_ID}", "{GIST_FILE}", "{QUOTE}", "{AUTHOR}"];
 
                 if (parameters.title.trim().length < 5 || parameters.title.trim().length > 75 || parameters.title.trim() === "") {
-                    this.errors.title = "Titlul trebuie sa contina intre 5 si 75 de caractere.";
+                    this.errors.title = "Titlul trebuie să conțină între 5 și 75 de caractere.";
                     return false;
                 }
                 this.errors.title = "";
 
                 if (!parameters.category.trim().length) {
-                    this.errors.category = "Selecteaza o categorie din lista.";
+                    this.errors.category = "Selectează o categorie din listă.";
                     return false;
                 }
                 this.errors.category = "";
 
                 if (parameters.content.trim().length <= 10 || parameters.content.trim() === "") {
-                    this.errors.content = "Continutul trebuie sa contina cel putin 10 caractere.";
+                    this.errors.content = "Conținutul trebuie să conțină cel puțin 10 caractere.";
                     return false;
                 }
                 this.errors.content = "";
@@ -405,7 +397,7 @@
                 let fail = false;
                 _.forEach(insertContent, function(value) {
                     if (this.article.content.indexOf(value) !== -1) {
-                        this.errors.content = "Completeaza atributele elementelor din continut.";
+                        this.errors.content = "Completează atributele elementelor din conținut.";
                         fail = true;
                     }
                 }.bind(this));
@@ -428,7 +420,7 @@
 
                 let tagsArray = parameters.tags.split(",");
                 if (parameters.tags.trim() === "" || tagsArray.length === 0) {
-                    this.errors.tags = "Tag-urile sunt goale. Completeaza cateva tag-uri pentru articol.";
+                    this.errors.tags = "Tag-urile sunt goale. Completează câteva tag-uri pentru articol.";
                     return false;
                 }
                 this.errors.tags = "";

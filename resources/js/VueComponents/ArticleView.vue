@@ -1,5 +1,10 @@
 <template>
     <div class="container article-view">
+        <div class="bd-callout" v-if="!article.status">
+            <h5>Acest articol se află în modul de previzualizare.</h5>
+            <p>Articolul poate fi accesat în acest moment doar de către autor sau de moderator.</p>
+            <p>Pentru a schimba vizibilitatea acestui articol, apasă <a :href="'/article/edit/' + slug"><b style="color: #993FFF;">aici</b></a> pentru editare.</p>
+        </div>
         <header class="article-header">
             <div class="row article-title">
                 <div class="col-12">
@@ -14,7 +19,7 @@
                         </div>
                         <div class="author-details pl-2 mb-4 align-self-center">
                             <p class="author-name mb-1">@{{ article.author.name }}</p>
-                            <p class="article-info text-secondary" style="position: absolute; width: 175px;">&#9672; {{ article.created_at }} | {{ article.est_time }} min</p>
+                            <p class="article-info text-secondary" style="position: absolute; width: 175px;">&#9672; {{ dateAbbreviation(article.created_at) }} | {{ article.est_time }} min</p>
                         </div>
                     </div>
                 </div>
@@ -49,8 +54,8 @@
                 </div>
                 <div class="clearfix"></div>
             </div>
+            <newsletter v-show="!loading"></newsletter>
             <div class="article-suggestions" v-show="recommendedArticles.length">
-                <hr>
                 <h1>Articole care ar putea să te intereseze:</h1>
                 <div class="row">
                     <div class="col-md-4" v-for="article in recommendedArticles">
@@ -66,7 +71,6 @@
                 </div>
             </div>
         </div>
-        <newsletter v-show="!loading"></newsletter>
     </div>
 </template>
 
@@ -93,6 +97,7 @@
                     est_time: 1,
                     created_at: "",
                     main_image: "",
+                    status: 1,
                     author: {
                         avatar: "../storage/avatars/user.png"
                     },
@@ -131,6 +136,7 @@
                             this.article.created_at = article.created_at;
                             this.article.content = article.content;
                             this.article.tags = JSON.parse(article.tags);
+                            this.article.status = article.status;
 
                             if (article.main_image) {
                                 this.article.main_image = "../storage/articles/" + this.slug + "/" + article.main_image;
@@ -194,19 +200,7 @@
                     .catch(function () {
                         this.toast('b-toaster-bottom-right', "danger", "Oops!", "Se pare ca a aparut o problema la incarcarea articolelor recomandate. Te rog incearca din nou mai tarziu.");
                     }.bind(this));
-            },
-            /**
-             * Create display message using "toast" bootstrap-vue component.
-             */
-            toast: function (toaster, variant, title, message) {
-                this.$bvToast.toast(message, {
-                    title: title,
-                    variant: variant,
-                    toaster: toaster,
-                    solid: true,
-                    appendToast: true,
-                })
-            },
+            }
         }
     }
 </script>

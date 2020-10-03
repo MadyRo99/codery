@@ -5,6 +5,10 @@ namespace App\Http\Controllers\Categories;
 use App\Category;
 use Illuminate\Support\Facades\DB;
 
+/**
+ * Class CategoriesView
+ * @package App\Http\Controllers\Categories
+ */
 class CategoriesView
 {
     /**

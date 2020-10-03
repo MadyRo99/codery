@@ -11,10 +11,10 @@
 |
 */
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Basic Routes
 
 Route::get('/', [
-    'as'            =>  'acasa',
+    'as'            =>  'home',
     'uses'          =>  'PagesController@getHomePage',
 ]);
 
@@ -23,20 +23,46 @@ Route::get('/about', [
     'uses'          =>  'PagesController@getAboutPage',
 ]);
 
+Route::get('/terms', [
+    'as'            =>  'terms',
+    'uses'          =>  'PagesController@getTermsPage',
+]);
+
+Route::get('/privacy', [
+    'as'            =>  'privacy',
+    'uses'          =>  'PagesController@getPrivacyPage',
+]);
+
+Route::get('/cookies', [
+    'as'            =>  'cookies',
+    'uses'          =>  'PagesController@getCookiesPage',
+]);
+
 Route::post('/getArticles', [
     'as'            =>  'getArticles',
     'uses'          =>  'PagesController@getArticles',
 ]);
 
+Route::post('/getAllArticles', [
+    'as'            =>  'getAllArticles',
+    'uses'          =>  'PagesController@getAllArticles',
+    'middleware'    =>  'auth-admin'
+]);
+
 Route::get('/getAdminPanel', [
     'as'            =>  'getAdminPanel',
     'uses'          =>  'PagesController@getAdminPanel',
+    'middleware'    =>  'auth-admin'
 ]);
 
 // Authentication Routes
 require ('auth.php');
 
-// Authentication Routes
+// Articles Routes
 require ('articles.php');
 
+// Categories Routes
 require ('categories.php');
+
+// Newsletters Routes
+require ('newsletters.php');

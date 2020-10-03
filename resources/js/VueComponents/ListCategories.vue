@@ -5,7 +5,7 @@
             <div class="alert alert-info" role="alert">
                 Adaugă sau modifică categoriile disponibile pentru articole.
             </div>
-            <button type="button" id="addCategory" class="btn btn-outline-primary" @click="addCategoryFieldActive = !addCategoryFieldActive">Adaugă Categorie</button>
+            <button type="button" id="addCategory" class="btn btn-outline-link" @click="addCategoryFieldActive = !addCategoryFieldActive">Adaugă Categorie</button>
             <slide-up-down :active="addCategoryFieldActive" :duration="500">
                 <div class="row">
                     <div class="col-12">
@@ -20,28 +20,32 @@
                     </div>
                 </div>
             </slide-up-down>
-            <div class="loader">
+            <div class="loader" style="z-index: -10;">
                 <bounce-loader class="custom-class" :class="{ highIndex: loading }" :loading="loading" :color="loader.color" :size="loader.size" :margin="loader.margin"></bounce-loader>
             </div>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Nume</th>
-                        <th scope="col" style="text-align: center;">Articole</th>
-                        <th></th><th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="category in categories">
-                        <td>{{ category.id }}</td>
-                        <td>{{ category.name }}</td>
-                        <td style="text-align: center;">{{ category.posts }}</td>
-                        <td><a><button type="button" class="btn btn-warning btn-sm" v-b-modal.editModal @click="setCategoryInfoEdit(category.id, category.name)" style="color: #FFFFFF;">Editează</button></a></td>
-                        <td><button type="button" class="btn btn-danger btn-sm" v-b-modal.deleteModal @click="setCategoryIdDelete(category.id)">Șterge</button></td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="row">
+                <div class="col-12">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Nume</th>
+                            <th scope="col" style="text-align: center;">Articole</th>
+                            <th></th><th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr v-for="category in categories">
+                            <td>{{ category.id }}</td>
+                            <td>{{ category.name }}</td>
+                            <td style="text-align: center;">{{ category.posts }}</td>
+                            <td><button type="button" class="btn btn-warning btn-sm" v-b-modal.editModal @click="setCategoryInfoEdit(category.id, category.name)" style="color: #FFFFFF;">Editează</button></td>
+                            <td><button type="button" class="btn btn-danger btn-sm" v-b-modal.deleteModal @click="setCategoryIdDelete(category.id)">Șterge</button></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
             <div>
                 <b-modal
                     id="deleteModal"
@@ -218,19 +222,7 @@
                 }.bind(this)).finally(function () {
                     this.loading = false;
                 }.bind(this));
-            },
-            /**
-             * Create display message using "toast" bootstrap-vue component.
-             */
-            toast: function (toaster, variant, title, message) {
-                this.$bvToast.toast(message, {
-                    title: title,
-                    variant: variant,
-                    toaster: toaster,
-                    solid: true,
-                    appendToast: true,
-                })
-            },
+            }
         },
     }
 </script>

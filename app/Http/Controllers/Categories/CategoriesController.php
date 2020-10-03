@@ -11,6 +11,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Support\Facades\Validator;
 
+/**
+ * Class CategoriesController
+ * @package App\Http\Controllers\Categories
+ */
 class CategoriesController extends Controller
 {
     /**

@@ -9,7 +9,12 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Contracts\View\View;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Contracts\Foundation\Application;
 
+/**
+ * Class PagesController
+ * @package App\Http\Controllers
+ */
 class PagesController extends Controller
 {
     /**
@@ -39,7 +44,7 @@ class PagesController extends Controller
         $search = $request->input('search');
 
         return view(
-            'acasa'
+            'home'
         )->withHomePage(true)->withSearch($search);
     }
 
@@ -71,6 +76,23 @@ class PagesController extends Controller
     }
 
     /**
+     * Get all the articles unfiltered for the Admin Panel Page.
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function getAllArticles(Request $request)
+    {
+        $articles = DB::table('articles')->select([
+            "articles.article_category", "articles.status", "articles.created_at", "articles.description",
+            "articles.main_image", "article_categories.name", "articles.slug", "articles.title"
+        ])->join('article_categories', 'articles.article_category', '=', 'article_categories.id')
+            ->orderBy('created_at', 'desc')->get();
+
+        return response()->json($articles);
+    }
+
+    /**
      * Get the articles for the required page and paginate them.
      *
      * @param Request $request
@@ -94,7 +116,10 @@ class PagesController extends Controller
             ], 200);
         }
 
-        $articles = $this->article->where('articles.status', '=', 1);
+        $articles = $this->article->select([
+            "articles.article_category", "articles.created_at", "articles.description",
+            "articles.main_image", "article_categories.name", "articles.slug", "articles.title"
+        ])->where('articles.status', '=', 1);
 
         if ($categoryId) {
             $articles = $articles->where('articles.article_category', '=', $request->input('categoryId'));
@@ -117,10 +142,51 @@ class PagesController extends Controller
         return response()->json($articles->paginate(4));
     }
 
+    /**
+     * Get the Admin Panel Page.
+     *
+     * @return mixed
+     */
     public function getAdminPanel()
     {
         return view(
             'auth.admin.adminPanel'
         )->withTitle("Panou Administrare");
+    }
+
+    /**
+     * Get the Terms Page.
+     *
+     * @return Application|Factory|\Illuminate\View\View
+     */
+    public function getTermsPage()
+    {
+        return view(
+            'terms.terms'
+        );
+    }
+
+    /**
+     * Get the Privacy Page.
+     *
+     * @return Application|Factory|\Illuminate\View\View
+     */
+    public function getPrivacyPage()
+    {
+        return view(
+            'terms.privacy'
+        );
+    }
+
+    /**
+     * Get the Cookies Page.
+     *
+     * @return Application|Factory|\Illuminate\View\View
+     */
+    public function getCookiesPage()
+    {
+        return view(
+            'terms.cookies'
+        );
     }
 }

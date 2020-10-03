@@ -3,8 +3,6 @@
 namespace App\Http\Controllers\Articles;
 
 use App\Article;
-use App\Helpers;
-use Carbon\Carbon;
 use Illuminate\View\View;
 use App\Rules\ArticleStatus;
 use Illuminate\Http\Request;
@@ -32,10 +30,12 @@ class ArticlesController extends Controller
     {
         $article = Article::where('slug', '=', $slug)->first();
 
-        if ($article && $article->status) {
-            return view(
-                'articles.index'
-            )->withSlug($slug)->withTitle($article->title);
+        if ($article) {
+            if ($article->status || (isset(Auth::user()->id) && (Auth::user()->role == 1 || Auth::user()->role == 2))) {
+                return view(
+                    'articles.index'
+                )->withSlug($slug)->withTitle($article->title);
+            }
         }
 
         abort(404);
@@ -53,7 +53,7 @@ class ArticlesController extends Controller
         $articleData = DB::table('articles')
             ->select([
                 'articles.title', 'articles.content', 'articles.est_time', 'articles.created_at', 'articles.main_image', 'articles.tags',
-                'article_categories.id AS category_id', 'article_categories.name AS category_name',
+                'article_categories.id AS category_id', 'article_categories.name AS category_name', 'articles.status AS status',
                 'users.id AS author_id', 'users.username AS author_username', 'users.avatar AS author_avatar',
             ])
             ->join('article_categories', 'articles.article_category', 'article_categories.id')
@@ -63,12 +63,9 @@ class ArticlesController extends Controller
         if (!$articleData) {
             return response()->json([
                 'response' => $articleData,
-                'success'  => false,
+                'success' => false,
             ], 200);
         }
-
-        $createdAt = Carbon::create($articleData->created_at);
-        $articleData->created_at = Helpers\monthAbbreviation($createdAt) . " " . $createdAt->format('d') . ", " . $createdAt->format('Y');
 
         return response()->json([
             'response' => $articleData,
