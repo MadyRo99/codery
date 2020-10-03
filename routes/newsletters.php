@@ -16,13 +16,16 @@ Route::namespace('Newsletters')->group(function () {
     Route::get('/articlesNewsletter/create', [
         'as'            =>  'articlesNewsletter.create',
         'uses'          =>  'NewslettersController@getArticlesNewsletter',
+        'middleware'    =>  'auth-admin'
     ]);
     Route::get('/getArticlesBasicInfo', [
         'as'            =>  'getArticlesBasicInfo',
         'uses'          =>  'NewslettersController@getArticlesBasicInfo',
+        'middleware'    =>  'auth-admin'
     ]);
     Route::post('/sendNewsletter', [
         'as'            =>  'sendNewsletter',
         'uses'          =>  'NewslettersController@sendNewsletter',
+        'middleware'    =>  'auth-admin'
     ]);
 });
