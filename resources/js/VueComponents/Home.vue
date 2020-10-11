@@ -27,7 +27,7 @@
                 <div class="col-12" style="padding: 0;">
                     <button class="form-control searchButton" style="border-radius: .25rem;" @click="mobileFiltersActive = !mobileFiltersActive" :class="{ buttonNoRadius: mobileFiltersActive }">Categorii</button>
                     <slide-up-down class="filters-mobile-content" :active="mobileFiltersActive" :duration="500">
-                        <div class="row">
+                        <div class="row" style="margin: 0 !important;">
                             <div class="col-12">
                                 <div @click="updateArticlesFiltered(0)">
                                     <p :class="{ selectedCategory: setCategory === 0 }" style="padding-top: 15px;">Toate</p>
@@ -43,6 +43,7 @@
             </div>
             <div class="row justify-content-between">
                 <div class="col-12 col-lg-10 article-list">
+                    <h4 class="text-center py-3" v-show="!articles.data.length">Nu există articole pentru filtrele aplicate.</h4>
                     <div class="row article" v-for="article in articles.data">
                         <div class="col-12">
                             <div class="row shadow article-border">

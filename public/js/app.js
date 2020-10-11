@@ -10516,6 +10516,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -74270,64 +74271,73 @@ var render = function() {
                   attrs: { active: _vm.mobileFiltersActive, duration: 500 }
                 },
                 [
-                  _c("div", { staticClass: "row" }, [
-                    _c(
-                      "div",
-                      { staticClass: "col-12" },
-                      [
-                        _c(
-                          "div",
-                          {
-                            on: {
-                              click: function($event) {
-                                return _vm.updateArticlesFiltered(0)
-                              }
-                            }
-                          },
-                          [
-                            _c(
-                              "p",
-                              {
-                                class: {
-                                  selectedCategory: _vm.setCategory === 0
-                                },
-                                staticStyle: { "padding-top": "15px" }
-                              },
-                              [_vm._v("Toate")]
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _vm._l(_vm.categories, function(category) {
-                          return _c(
+                  _c(
+                    "div",
+                    {
+                      staticClass: "row",
+                      staticStyle: { margin: "0 !important" }
+                    },
+                    [
+                      _c(
+                        "div",
+                        { staticClass: "col-12" },
+                        [
+                          _c(
                             "div",
                             {
                               on: {
                                 click: function($event) {
-                                  return _vm.updateArticlesFiltered(category.id)
+                                  return _vm.updateArticlesFiltered(0)
                                 }
                               }
                             },
                             [
-                              _c("hr"),
-                              _vm._v(" "),
                               _c(
                                 "p",
                                 {
                                   class: {
-                                    selectedCategory:
-                                      _vm.setCategory === category.id
-                                  }
+                                    selectedCategory: _vm.setCategory === 0
+                                  },
+                                  staticStyle: { "padding-top": "15px" }
                                 },
-                                [_vm._v(_vm._s(category.name))]
+                                [_vm._v("Toate")]
                               )
                             ]
-                          )
-                        })
-                      ],
-                      2
-                    )
-                  ])
+                          ),
+                          _vm._v(" "),
+                          _vm._l(_vm.categories, function(category) {
+                            return _c(
+                              "div",
+                              {
+                                on: {
+                                  click: function($event) {
+                                    return _vm.updateArticlesFiltered(
+                                      category.id
+                                    )
+                                  }
+                                }
+                              },
+                              [
+                                _c("hr"),
+                                _vm._v(" "),
+                                _c(
+                                  "p",
+                                  {
+                                    class: {
+                                      selectedCategory:
+                                        _vm.setCategory === category.id
+                                    }
+                                  },
+                                  [_vm._v(_vm._s(category.name))]
+                                )
+                              ]
+                            )
+                          })
+                        ],
+                        2
+                      )
+                    ]
+                  )
                 ]
               )
             ],
@@ -74339,100 +74349,118 @@ var render = function() {
           _c(
             "div",
             { staticClass: "col-12 col-lg-10 article-list" },
-            _vm._l(_vm.articles.data, function(article) {
-              return _c("div", { staticClass: "row article" }, [
-                _c("div", { staticClass: "col-12" }, [
-                  _c("div", { staticClass: "row shadow article-border" }, [
-                    article.main_image
-                      ? _c(
-                          "a",
-                          {
-                            staticClass:
-                              "col-12 col-md-6 col-lg-5 article-section",
-                            staticStyle: { padding: "0" },
-                            attrs: { href: /article/ + article.slug }
-                          },
-                          [
-                            _c("div", {
-                              staticClass: "article-image",
-                              style: {
-                                backgroundImage:
-                                  "url(/storage/articles/" +
-                                  article.slug +
-                                  "/" +
-                                  article.main_image +
-                                  ")"
-                              }
-                            })
-                          ]
-                        )
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "article-section",
-                        class: {
-                          "col-12 col-md-6 col-lg-7": article.main_image
-                        }
-                      },
-                      [
-                        _c("div", { staticClass: "row" }, [
-                          _c("div", { staticClass: "col-12" }, [
-                            _c("h1", [
-                              _c(
-                                "a",
-                                { attrs: { href: /article/ + article.slug } },
-                                [_vm._v(_vm._s(article.title))]
-                              )
-                            ])
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "row article-info" }, [
-                          _c("div", { staticClass: "col-12" }, [
-                            _c("div", { staticClass: "float-left" }, [
-                              _c("i", { staticClass: "far fa-calendar-alt" }),
-                              _vm._v(" "),
-                              _c("span", { staticClass: "pl-1" }, [
-                                _vm._v(
-                                  _vm._s(
-                                    _vm.dateAbbreviation(article.created_at)
-                                  )
+            [
+              _c(
+                "h4",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: !_vm.articles.data.length,
+                      expression: "!articles.data.length"
+                    }
+                  ],
+                  staticClass: "text-center py-3"
+                },
+                [_vm._v("Nu există articole pentru filtrele aplicate.")]
+              ),
+              _vm._v(" "),
+              _vm._l(_vm.articles.data, function(article) {
+                return _c("div", { staticClass: "row article" }, [
+                  _c("div", { staticClass: "col-12" }, [
+                    _c("div", { staticClass: "row shadow article-border" }, [
+                      article.main_image
+                        ? _c(
+                            "a",
+                            {
+                              staticClass:
+                                "col-12 col-md-6 col-lg-5 article-section",
+                              staticStyle: { padding: "0" },
+                              attrs: { href: /article/ + article.slug }
+                            },
+                            [
+                              _c("div", {
+                                staticClass: "article-image",
+                                style: {
+                                  backgroundImage:
+                                    "url(/storage/articles/" +
+                                    article.slug +
+                                    "/" +
+                                    article.main_image +
+                                    ")"
+                                }
+                              })
+                            ]
+                          )
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass: "article-section",
+                          class: {
+                            "col-12 col-md-6 col-lg-7": article.main_image
+                          }
+                        },
+                        [
+                          _c("div", { staticClass: "row" }, [
+                            _c("div", { staticClass: "col-12" }, [
+                              _c("h1", [
+                                _c(
+                                  "a",
+                                  { attrs: { href: /article/ + article.slug } },
+                                  [_vm._v(_vm._s(article.title))]
                                 )
                               ])
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "float-right" }, [
-                              _c("i", {
-                                staticClass: "fas fa-tags fa-md",
-                                staticStyle: {
-                                  "padding-top": "5px",
-                                  "padding-left": "5px"
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("span", [_vm._v(" " + _vm._s(article.name))])
                             ])
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "row article-info" }, [
+                            _c("div", { staticClass: "col-12" }, [
+                              _c("div", { staticClass: "float-left" }, [
+                                _c("i", { staticClass: "far fa-calendar-alt" }),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "pl-1" }, [
+                                  _vm._v(
+                                    _vm._s(
+                                      _vm.dateAbbreviation(article.created_at)
+                                    )
+                                  )
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "float-right" }, [
+                                _c("i", {
+                                  staticClass: "fas fa-tags fa-md",
+                                  staticStyle: {
+                                    "padding-top": "5px",
+                                    "padding-left": "5px"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("span", [_vm._v(" " + _vm._s(article.name))])
+                              ])
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("p", [_vm._v(_vm._s(article.description))]),
+                          _vm._v(" "),
+                          _c("h2", [
+                            _c(
+                              "a",
+                              { attrs: { href: /article/ + article.slug } },
+                              [_vm._v("Citește mai mult")]
+                            )
                           ])
-                        ]),
-                        _vm._v(" "),
-                        _c("p", [_vm._v(_vm._s(article.description))]),
-                        _vm._v(" "),
-                        _c("h2", [
-                          _c(
-                            "a",
-                            { attrs: { href: /article/ + article.slug } },
-                            [_vm._v("Citește mai mult")]
-                          )
-                        ])
-                      ]
-                    )
+                        ]
+                      )
+                    ])
                   ])
                 ])
-              ])
-            }),
-            0
+              })
+            ],
+            2
           ),
           _vm._v(" "),
           _c(
