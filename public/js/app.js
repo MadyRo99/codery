@@ -9070,7 +9070,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 
@@ -48040,7 +48039,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.card {\n    height: 25rem;\n}\n.card-title {\n    font-size: 18px;\n}\n.card-body a {\n    position: absolute;\n    bottom: 1rem;\n}\n.card-img-top {\n    max-height: 17rem;\n}\n\n", ""]);
+exports.push([module.i, "\n.card {\r\n    height: 25rem;\n}\n.card-title {\r\n    font-size: 18px;\n}\n.card-body a {\r\n    position: absolute;\r\n    bottom: 1rem;\n}\n.card-img-top {\r\n    max-height: 17rem;\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -72363,7 +72362,26 @@ var render = function() {
               )
             ]),
             _vm._v(" "),
-            _vm._m(0)
+            _c("div", { staticClass: "article-social-share pl-2" }, [
+              _c("div", [
+                _c(
+                  "a",
+                  {
+                    attrs: {
+                      href:
+                        "https://www.facebook.com/sharer/sharer.php?u=https://codery.ro/article/" +
+                        _vm.slug,
+                      target: "_blank"
+                    }
+                  },
+                  [
+                    _c("i", {
+                      staticClass: "fab fa-facebook-square fa-lg pr-1"
+                    })
+                  ]
+                )
+              ])
+            ])
           ])
         ])
       ])
@@ -72493,24 +72511,7 @@ var render = function() {
     )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "article-social-share pl-2" }, [
-      _c("div", [
-        _c("a", { attrs: { href: "https://www.facebook.com/" } }, [
-          _c("i", { staticClass: "fab fa-facebook-square fa-lg pr-1" })
-        ]),
-        _vm._v(" "),
-        _c("a", { attrs: { href: "https://www.facebook.com/" } }, [
-          _c("i", { staticClass: "fab fa-twitter-square fa-lg" })
-        ])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

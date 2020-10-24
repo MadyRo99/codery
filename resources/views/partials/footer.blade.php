@@ -1,10 +1,10 @@
 <footer class="article-footer">
     <div class="row social-icons justify-content-center">
         <div class="social-icon img-container">
-            <a href="#"><img src="{{asset('images/facebook_logo.png')}}" alt="facebook.png"></a>
+            <a href="https://www.facebook.com/CoderyRomania"><img src="{{asset('images/facebook_logo.png')}}" alt="facebook.png"></a>
         </div>
         <div class="social-icon img-container">
-            <a href="#"><img src="{{asset('images/instagram_logo.png')}}" alt="instagram.png"></a>
+            <a href="https://www.instagram.com/coderyromania/?hl=ro"><img src="{{asset('images/instagram_logo.png')}}" alt="instagram.png"></a>
         </div>
     </div>
     <div class="legal-info text-center">

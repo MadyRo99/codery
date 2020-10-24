@@ -54,7 +54,7 @@ return [
             'height' => '65',
         ],
         'twitter'  => null,
-        'facebook' => null,
+        'facebook' => "https://www.facebook.com/CoderyRomania",
         'flickr'   => null,
     ],
 
