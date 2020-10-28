@@ -28,8 +28,7 @@
                         <span class="category-link pt-2"><i class="fas fa-tags fa-md"></i> <a :href='"/?search=" + article.category.name'>{{ article.category.name }}</a></span>
                         <div class="article-social-share pl-2">
                             <div>
-                                <a href="https://www.facebook.com/"><i class="fab fa-facebook-square fa-lg pr-1"></i></a>
-                                <a href="https://www.facebook.com/"><i class="fab fa-twitter-square fa-lg"></i></a>
+                                <a :href="'https://www.facebook.com/sharer/sharer.php?u=https://codery.ro/article/' + slug" target="_blank"><i class="fab fa-facebook-square fa-lg pr-1"></i></a>
                             </div>
                         </div>
                     </div>

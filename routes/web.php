@@ -23,6 +23,11 @@ Route::get('/about', [
     'uses'          =>  'PagesController@getAboutPage',
 ]);
 
+Route::get('/donate', [
+    'as'            =>  'donate',
+    'uses'          =>  'PagesController@getDonatePage',
+]);
+
 Route::get('/terms', [
     'as'            =>  'terms',
     'uses'          =>  'PagesController@getTermsPage',

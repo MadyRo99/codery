@@ -448,6 +448,141 @@ html {
 
 /* END SECTION */
 
+/* DONATE SECTION */
+
+.donate .container {
+  padding: 50px 0;
+}
+
+.donate h1 {
+  font-size: 32px;
+  padding-bottom: 0px;
+  font-family: "Lato", sans-serif;
+  font-weight: bold;
+}
+
+@media (max-width: 767.98px) {
+  .donate h1 {
+    text-align: center;
+  }
+}
+
+.donate .typewriter h1 {
+  border-right: solid 3px #993fff;
+  white-space: nowrap;
+  overflow: hidden;
+  -webkit-animation: animated-text 1.5s steps(18, end) 1s 1 normal both, animated-cursor 1.2s steps(30, end) infinite;
+          animation: animated-text 1.5s steps(18, end) 1s 1 normal both, animated-cursor 1.2s steps(30, end) infinite;
+}
+
+@media (max-width: 767.98px) {
+  .donate .typewriter h1 {
+    margin: 0 auto;
+    font-size: 28px;
+  }
+}
+
+@-webkit-keyframes animated-text {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 300px;
+  }
+}
+
+@keyframes animated-text {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 300px;
+  }
+}
+
+@media (max-width: 767.98px) {
+@-webkit-keyframes animated-text {
+    from {
+      width: 0;
+    }
+
+    to {
+      width: 270px;
+    }
+}
+@keyframes animated-text {
+    from {
+      width: 0;
+    }
+
+    to {
+      width: 270px;
+    }
+}
+}
+
+@-webkit-keyframes animated-cursor {
+  from {
+    border-right-color: #993fff;
+  }
+
+  to {
+    border-right-color: transparent;
+  }
+}
+
+@keyframes animated-cursor {
+  from {
+    border-right-color: #993fff;
+  }
+
+  to {
+    border-right-color: transparent;
+  }
+}
+
+.donate .content {
+  padding-top: 30px;
+}
+
+.donate .content p {
+  width: 50%;
+  padding-bottom: 10px;
+  font-size: 16px;
+  font-family: "Lato", sans-serif;
+}
+
+@media (max-width: 767.98px) {
+  .donate .content p {
+    width: 100%;
+    margin: 0 auto;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+.donate .content .img-container {
+  width: 225px;
+  height: 50px;
+  position: relative;
+}
+
+@media (max-width: 767.98px) {
+  .donate .content .img-container {
+    margin: 25px auto 0;
+  }
+}
+
+.donate .content .img-container img {
+  width: 225px;
+  height: 50px;
+  position: absolute;
+}
+
+/* END SECTION */
+
 /* 404 PAGE */
 
 .not-found .img-container {
