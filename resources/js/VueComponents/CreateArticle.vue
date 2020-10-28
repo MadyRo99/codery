@@ -343,7 +343,6 @@
              * Process the uploaded file.
              */
             processFile: function (event) {
-                //TODO: Imagine 1.65 : 1 FORMAT
                 let file = event.target.files[0];
 
                 if (this.isFileImage(file)) {

@@ -9730,7 +9730,6 @@ __webpack_require__.r(__webpack_exports__);
      * Process the uploaded file.
      */
     processFile: function processFile(event) {
-      //TODO: Imagine 1.65 : 1 FORMAT
       var file = event.target.files[0];
 
       if (this.isFileImage(file)) {
@@ -71817,14 +71816,14 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("p", [
           _vm._v(
-            "\n            Codery este un blog destinat celor care profeseaza sau sunt pasionati de domeniul IT ce isi propune prin postarea unor articole concise ce contin informatii corecte si bine verificate,\n            sa ajute la dezvoltarea unei comunitatii bine informate in acest domeniu ce poate oricand sa se educe, gratis, prin continutul oferit.\n        "
+            "\n            Codery este un blog destinat celor care profesează sau sunt pasionați de domeniul IT, ce își propune prin postarea unor articole concise, ce conțin informații corecte și bine verificate,\n            să ajute la dezvoltarea unei comunității bine informate în acest domeniu ce poate oricând să se educe, gratis, prin conținutul oferit.\n        "
           )
         ]),
         _vm._v(" "),
         _c("p", [
-          _vm._v(
-            "\n            Fii parte din comunitatea Codery daca si tu esti de parere ca IT-ul din Romania merita un loc al lui pentru pasionatii de tehnologie.\n        "
-          )
+          _vm._v("\n            Fii și tu parte din comunitatea "),
+          _c("u", [_vm._v("Codery")]),
+          _vm._v("!\n        ")
         ])
       ]),
       _vm._v(" "),
@@ -71844,7 +71843,7 @@ var staticRenderFns = [
                       _c("img", {
                         staticStyle: { width: "170px", height: "170px" },
                         attrs: {
-                          src: __webpack_require__(/*! ../../../public/images/AboutPage/bune/front_end.svg */ "./public/images/AboutPage/bune/front_end.svg"),
+                          src: __webpack_require__(/*! ../../../public/images/AboutPage/front_end.svg */ "./public/images/AboutPage/front_end.svg"),
                           alt: "front_end.svg"
                         }
                       })
@@ -71859,7 +71858,7 @@ var staticRenderFns = [
                   _vm._v(" "),
                   _c("p", { staticClass: "text-center" }, [
                     _vm._v(
-                      "\n                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vestibulum viverra ligula, consequat porttitor tellus ultricies in.\n                            "
+                      "\n                                Aici poți să-ți dezvolți stack-ul de tehnologii pe partea de Front-End folosind HTML, CSS sau JavaScript.\n                            "
                     )
                   ])
                 ])
@@ -71874,7 +71873,7 @@ var staticRenderFns = [
                   _c("div", { staticClass: "img-container mx-auto" }, [
                     _c("img", {
                       attrs: {
-                        src: __webpack_require__(/*! ../../../public/images/AboutPage/bune/back_end.svg */ "./public/images/AboutPage/bune/back_end.svg"),
+                        src: __webpack_require__(/*! ../../../public/images/AboutPage/back_end.svg */ "./public/images/AboutPage/back_end.svg"),
                         alt: "front_end.svg"
                       }
                     })
@@ -71888,7 +71887,7 @@ var staticRenderFns = [
                   _vm._v(" "),
                   _c("p", { staticClass: "text-center" }, [
                     _vm._v(
-                      "\n                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vestibulum viverra ligula, consequat porttitor tellus ultricies in.\n                            "
+                      "\n                                Descoperă modul de funcționare din spatele aplicațiilor Web și află diferite practici ale Framework-urilor de Back-End.\n                            "
                     )
                   ])
                 ])
@@ -71903,7 +71902,7 @@ var staticRenderFns = [
                   _c("div", { staticClass: "img-container mx-auto" }, [
                     _c("img", {
                       attrs: {
-                        src: __webpack_require__(/*! ../../../public/images/AboutPage/bune/mobile.svg */ "./public/images/AboutPage/bune/mobile.svg"),
+                        src: __webpack_require__(/*! ../../../public/images/AboutPage/mobile.svg */ "./public/images/AboutPage/mobile.svg"),
                         alt: "front_end.svg"
                       }
                     })
@@ -71915,7 +71914,7 @@ var staticRenderFns = [
                   _vm._v(" "),
                   _c("p", { staticClass: "text-center" }, [
                     _vm._v(
-                      "\n                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vestibulum viverra ligula, consequat porttitor tellus ultricies in.\n                            "
+                      "\n                                Fie că vorbim despre dezvoltare Android sau iOS, Codery este locul perfect pentru a te pune la curent cu tehnologiile mobile relevante.\n                            "
                     )
                   ])
                 ])
@@ -71930,7 +71929,7 @@ var staticRenderFns = [
                   _c("div", { staticClass: "img-container mx-auto" }, [
                     _c("img", {
                       attrs: {
-                        src: __webpack_require__(/*! ../../../public/images/AboutPage/bune/ai.svg */ "./public/images/AboutPage/bune/ai.svg"),
+                        src: __webpack_require__(/*! ../../../public/images/AboutPage/ai.svg */ "./public/images/AboutPage/ai.svg"),
                         alt: "front_end.svg"
                       }
                     })
@@ -71939,12 +71938,12 @@ var staticRenderFns = [
                 _vm._v(" "),
                 _c("div", { staticClass: "col-12 col-lg-8 info-content" }, [
                   _c("h2", { staticClass: "text-center" }, [
-                    _vm._v("Inteligenta Artificiala")
+                    _vm._v("Inteligență Artificială")
                   ]),
                   _vm._v(" "),
                   _c("p", { staticClass: "text-center" }, [
                     _vm._v(
-                      "\n                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vestibulum viverra ligula, consequat porttitor tellus ultricies in.\n                            "
+                      "\n                                Fii la zi cu ultimele noutăți din domeniu și cum poți face primii pași în această ramură aflată într-o continuă dezvoltare.\n                            "
                     )
                   ])
                 ])
@@ -71959,7 +71958,7 @@ var staticRenderFns = [
                   _c("div", { staticClass: "img-container mx-auto" }, [
                     _c("img", {
                       attrs: {
-                        src: __webpack_require__(/*! ../../../public/images/AboutPage/bune/iot.png */ "./public/images/AboutPage/bune/iot.png"),
+                        src: __webpack_require__(/*! ../../../public/images/AboutPage/iot.png */ "./public/images/AboutPage/iot.png"),
                         alt: "front_end.svg"
                       }
                     })
@@ -71973,7 +71972,7 @@ var staticRenderFns = [
                   _vm._v(" "),
                   _c("p", { staticClass: "text-center" }, [
                     _vm._v(
-                      "\n                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vestibulum viverra ligula, consequat porttitor tellus ultricies in.\n                            "
+                      "\n                                Află cum miliardele de device-uri din întreaga lume colectează și schimbă date între ele.\n                            "
                     )
                   ])
                 ])
@@ -71988,7 +71987,7 @@ var staticRenderFns = [
                   _c("div", { staticClass: "img-container mx-auto" }, [
                     _c("img", {
                       attrs: {
-                        src: __webpack_require__(/*! ../../../public/images/AboutPage/bune/news.svg */ "./public/images/AboutPage/bune/news.svg"),
+                        src: __webpack_require__(/*! ../../../public/images/AboutPage/news.svg */ "./public/images/AboutPage/news.svg"),
                         alt: "front_end.svg"
                       }
                     })
@@ -71997,12 +71996,12 @@ var staticRenderFns = [
                 _vm._v(" "),
                 _c("div", { staticClass: "col-12 col-lg-8 info-content" }, [
                   _c("h2", { staticClass: "text-center" }, [
-                    _vm._v("Noutati IT")
+                    _vm._v("Noutăți IT")
                   ]),
                   _vm._v(" "),
                   _c("p", { staticClass: "text-center" }, [
                     _vm._v(
-                      "\n                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vestibulum viverra ligula, consequat porttitor tellus ultricies in.\n                            "
+                      "\n                                Te punem la curent cu trendurile din zona IT și ne asigurăm că stai departe de fake-news.\n                            "
                     )
                   ])
                 ])
@@ -87608,10 +87607,10 @@ module.exports = function(module) {
 
 /***/ }),
 
-/***/ "./public/images/AboutPage/bune/ai.svg":
-/*!*********************************************!*\
-  !*** ./public/images/AboutPage/bune/ai.svg ***!
-  \*********************************************/
+/***/ "./public/images/AboutPage/ai.svg":
+/*!****************************************!*\
+  !*** ./public/images/AboutPage/ai.svg ***!
+  \****************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -87619,10 +87618,10 @@ module.exports = "/images/ai.svg?b3985ee76b157cf44a161095e2f23d8b";
 
 /***/ }),
 
-/***/ "./public/images/AboutPage/bune/back_end.svg":
-/*!***************************************************!*\
-  !*** ./public/images/AboutPage/bune/back_end.svg ***!
-  \***************************************************/
+/***/ "./public/images/AboutPage/back_end.svg":
+/*!**********************************************!*\
+  !*** ./public/images/AboutPage/back_end.svg ***!
+  \**********************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -87630,10 +87629,10 @@ module.exports = "/images/back_end.svg?607db3549bc78bb3dfcb43f1d88fcb98";
 
 /***/ }),
 
-/***/ "./public/images/AboutPage/bune/front_end.svg":
-/*!****************************************************!*\
-  !*** ./public/images/AboutPage/bune/front_end.svg ***!
-  \****************************************************/
+/***/ "./public/images/AboutPage/front_end.svg":
+/*!***********************************************!*\
+  !*** ./public/images/AboutPage/front_end.svg ***!
+  \***********************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -87641,10 +87640,10 @@ module.exports = "/images/front_end.svg?8c2280ac5fbefd2399bb0b45f16892f0";
 
 /***/ }),
 
-/***/ "./public/images/AboutPage/bune/iot.png":
-/*!**********************************************!*\
-  !*** ./public/images/AboutPage/bune/iot.png ***!
-  \**********************************************/
+/***/ "./public/images/AboutPage/iot.png":
+/*!*****************************************!*\
+  !*** ./public/images/AboutPage/iot.png ***!
+  \*****************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -87652,10 +87651,10 @@ module.exports = "/images/iot.png?5e4c6fbf0bc8e6ab218f0642b0455983";
 
 /***/ }),
 
-/***/ "./public/images/AboutPage/bune/mobile.svg":
-/*!*************************************************!*\
-  !*** ./public/images/AboutPage/bune/mobile.svg ***!
-  \*************************************************/
+/***/ "./public/images/AboutPage/mobile.svg":
+/*!********************************************!*\
+  !*** ./public/images/AboutPage/mobile.svg ***!
+  \********************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -87663,10 +87662,10 @@ module.exports = "/images/mobile.svg?01fb87ede63f88430d10a62435110e30";
 
 /***/ }),
 
-/***/ "./public/images/AboutPage/bune/news.svg":
-/*!***********************************************!*\
-  !*** ./public/images/AboutPage/bune/news.svg ***!
-  \***********************************************/
+/***/ "./public/images/AboutPage/news.svg":
+/*!******************************************!*\
+  !*** ./public/images/AboutPage/news.svg ***!
+  \******************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 

@@ -17,7 +17,7 @@ class UsersTableSeeder extends Seeder
             'email'    => 'madalin@gmail.com',
             'username' => 'MadalinRo',
             'password' => Hash::make('password'),
-            'avatar'   => "madalin.png",
+            'avatar'   => "blogger.png",
             'role'     => 2,
         ]);
     }
