@@ -8,6 +8,7 @@ Vue.use(BootstrapVue);
 
 import Home from './VueComponents/Home';
 import About from './VueComponents/About';
+import Donate from './VueComponents/Donate';
 import ArticleView from './VueComponents/ArticleView';
 import AdminPanel from './VueComponents/AdminPanel';
 import ListCategories from './VueComponents/ListCategories';
@@ -26,6 +27,7 @@ const vue = new Vue({
     components: {
         'home'                   : Home,
         'about'                  : About,
+        'donate'                 : Donate,
         'article-view'           : ArticleView,
         'admin-panel'            : AdminPanel,
         'list-categories'        : ListCategories,

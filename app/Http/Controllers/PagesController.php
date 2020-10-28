@@ -61,6 +61,18 @@ class PagesController extends Controller
     }
 
     /**
+     * Get the Donate Page of the Blog.
+     *
+     * @return mixed
+     */
+    public function getDonatePage()
+    {
+        return view(
+            'donate'
+        )->withTitle("Donează");
+    }
+
+    /**
      * Get the Categories available for the articles.
      *
      * @return JsonResponse
