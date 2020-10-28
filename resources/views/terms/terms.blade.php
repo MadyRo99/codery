@@ -62,7 +62,7 @@
         </p>
 
         <p>
-            <strong>2.2.</strong> În cazul informațiilor și conținutului postat de utilizatori (ne)înregistrați sau terțe părti ori parteneri pe <a href="https://codery.ro/">www.codery.ro</a>, drepturile de autor și responsabilitatea asupra acestora aparțin in totalitate celor care au publicat acea informație.
+            <strong>2.2.</strong> În cazul informațiilor și conținutului postat de utilizatori (ne)înregistrați sau terțe părți ori parteneri pe <a href="https://codery.ro/">www.codery.ro</a>, drepturile de autor și responsabilitatea asupra acestora aparțin în totalitate celor care au publicat acea informație.
         </p>
 
         <p>
@@ -90,7 +90,7 @@
         </p>
 
         <p>
-            <strong>2.5.</strong> În condițiile în care considerați că un anumit conținut aflat pe blog-ul <a href="https://codery.ro/">www.codery.ro</a> încalcă drepturile dvs. de proprietate intelectuală, dreptul la viața privată, la publicitate sau alte drepturi personale,
+            <strong>2.5.</strong> În condițiile în care considerați că un anumit conținut aflat pe blog-ul <a href="https://codery.ro/">www.codery.ro</a> încalcă drepturile dvs. de proprietate intelectuală, dreptul la viață privată, la publicitate sau alte drepturi personale,
             sunteți rugat(ă) să trimiteți un email la <a href="mailto:coderyromania@gmail.com">coderyromania@gmail.com</a> cu informații privind drepturile încălcate, pentru a permite administratorului <a href="https://codery.ro/">www.codery.ro</a> să acționeze în conformitate cu dispozițiile legale.
         </p>
 
@@ -114,16 +114,15 @@
 
         <p>
             <strong>5.1.</strong> Înregistrarea pe blog pentru primirea automată de email-uri, newslettere, feed-uri sau altele asemenea se face pe propria responsabilitate a persoanei care se înregistrează.
-            Blogger-ul recomandă tuturor celor care se înregistrează pe blog să nu dezvăluie nimănui numele de utilizator și parola pe care le-ar putea utiliza la un moment dat. Blogger-ul nu va cere niciodată parola conturilor utilizatorilor în mesaje prin postă electronică sau telefon.
+            Blogger-ul recomandă tuturor celor care se înregistrează pe blog să nu dezvăluie nimănui numele de utilizator și parola pe care le-ar putea utiliza la un moment dat. Blogger-ul nu va cere niciodată parola conturilor utilizatorilor în mesaje prin poștă electronică sau telefon.
         </p>
 
         <p>
-            <strong>5.2.</strong> Persoanele care se înregistrează pe blog pentru primirea automată de email-uri, newslettere, feed-uri sau altele asemenea au responsabilitatea în ceea ce privește utilizarea numelui de utilizator și parolei proprii de către alte persoane, care află de acestea în orice mod.
-            Utilizatorii sunt responsabili de folosirea de către alte persoane a numelui de utilizator ți parolei proprii în scopuri care contravin termenilor și condițiilor de utilizare a <a href="https://codery.ro/">www.codery.ro</a>.
+            <strong>5.2.</strong> Utilizatorii sunt responsabili de folosirea de către alte persoane a numelui de utilizator și a parolei proprii în scopuri care contravin termenilor și condițiilor de utilizare a <a href="https://codery.ro/">www.codery.ro</a>.
         </p>
 
         <p>
-            <strong>5.3.</strong> Blogger-ul nu poate asigura sau garanta securitatea informațiilor transmise de dvs. către blog, către și de la serviciile noastre online. Vă avertizăm, așadar, că orice informație trimisp catre blog se va face pe propriul dvs. risc.
+            <strong>5.3.</strong> Blogger-ul nu poate asigura sau garanta securitatea informațiilor transmise de dvs. către blog, către și de la serviciile noastre online. Vă avertizăm, așadar, că orice informație trimisă către blog se va face pe propriul dvs. risc.
         </p>
 
         <p><strong>6. Datele cu caracter personal</strong></p>
@@ -133,12 +132,12 @@
         </p>
 
         <p>
-            <strong>6.2.</strong> Conform Legii nr. 677/2001, cu modificările și completările ulterioare, beneficiați de dreptul de acces, de intervenție asupra datelor, dreptul de a nu fi supus unei decizii individuale și dreptul de a va adresa justiției.
+            <strong>6.2.</strong> Conform Legii nr. 677/2001, cu modificările și completările ulterioare, beneficiați de dreptul de acces, de intervenție asupra datelor, dreptul de a nu fi supus unei decizii individuale și dreptul de a vă adresa justiției.
             Totodată, aveți dreptul să vă opuneți prelucrării datelor personale care vă privesc și să solicitați ștergerea datelor. Pentru exercitarea acestor drepturi, vă puteți adresa cu o cerere scrisă, transmisă la adresa <a href="mailto:coderyromania@gmail.com">coderyromania@gmail.com</a>.
         </p>
 
         <p>
-            <strong>6.3.</strong> Blogger-ul nu va dezvălui niciun fel de informație identificabilă personal despre utilizatorii săi către terțe părti fără a primi mai întâi consimțământul expres al utilizatorilor în această privință.
+            <strong>6.3.</strong> Blogger-ul nu va dezvălui niciun fel de informație identificabilă personal despre utilizatorii săi către terțe părți fără a primi mai întâi consimțământul expres al utilizatorilor în această privință.
         </p>
 
         <p>
@@ -160,7 +159,7 @@
         </p>
 
         <p>
-            <strong>8.2.</strong> În cazul în care nu sunt de acord cu termenii și conditiile impuse, ori sunt de acord doar parțial, cu limitări sau cu rezerve, utilizatorii sunt rugați să nu acceseze sau să nu utilizeze blog-ul.
+            <strong>8.2.</strong> În cazul în care nu sunt de acord cu termenii și condițiile impuse, ori sunt de acord doar parțial, cu limitări sau cu rezerve, utilizatorii sunt rugați să nu acceseze sau să nu utilizeze blog-ul.
         </p>
 
         <p>
@@ -177,13 +176,13 @@
         </p>
 
         <p>
-            <strong>8.6.</strong> Utilizatorii blog-ului declară ca acceptă și vor respecta urmatoarele:
+            <strong>8.6.</strong> Utilizatorii blog-ului declară că acceptă și vor respecta următoarele:
         </p>
 
         <ul>
             <li>
                 <p>
-                    Nu vor încerca, posta sau transmite pe acest blog sau prin intermediul sau informații ce contravin legilor, ce au un conținut discriminatoriu, rasist, amenințător, obscen, pervers, jignitor ori calomnios;
+                    Nu vor încerca, posta sau transmite pe acest blog sau prin intermediul său informații ce contravin legilor, ce au un conținut discriminatoriu, rasist, amenințător, obscen, pervers, jignitor ori calomnios;
                 </p>
             </li>
             <li>
@@ -203,7 +202,7 @@
             </li>
             <li>
                 <p>
-                    Nu vor oferi informații false despre ei, nu se vor da drept alte persoane și nu vor încerca să inșele asupra identității lor sau asupra originii conținutului oferit, a mesajelor sau a altor informații;
+                    Nu vor oferi informații false despre ei, nu se vor da drept alte persoane și nu vor încerca să înșele asupra identității lor sau asupra originii conținutului oferit, a mesajelor sau a altor informații;
                 </p>
             </li>
             <li>

@@ -15,7 +15,7 @@
 
         <p>
             Este o practică comună pentru toate website-urile profesionale să folosească cookie-uri, iar acesta este și cazul pentru Codery.
-            Cookie-urile sunt fișiere text de mici dimensiuni, ce sunt descărcate în dispozitivul dvs. (<i style="font-style: italic">de exemplu</i>, computer, laptop, tabletă sau smartphone), pentru a vă îmbunătății experiența.
+            Cookie-urile sunt fișiere text de mici dimensiuni, ce sunt descărcate în dispozitivul dvs. (<i style="font-style: italic">de exemplu</i>, computer, laptop, tabletă sau smartphone), pentru a vă îmbunătăți experiența.
             Acestă pagină descrie ce fel de informații culeg aceste cookie-uri și cum le folosim. Vom prezenta de asemenea și cum puteți preveni aceste cookie-uri din a fi salvate pe dispozitivul dvs. deși acest lucru poate să "strice" anumite elemente sau funcționalități ale website-ului.
         </p>
 
@@ -27,14 +27,14 @@
 
         <p>
             Un cookie conține informații care fac legătura între un web-browser (utilizatorul) și un web-server anume (website-ul).
-            Dacă un browser accesează acel web-server din nou, acesta poate citi informația deja stocată și reacționa în consecință. Astfel, un cookie poate asigura o experiența de navigara facilă și confortabilă.
+            Dacă un browser accesează acel web-server din nou, acesta poate citi informația deja stocată și reacționa în consecință. Astfel, un cookie poate asigura o experiența de navigare facilă și confortabilă.
         </p>
 
         <p><strong>Care este durata de viață a unui cookie?</strong></p>
 
         <p>
             Cookie-urile sunt administrate de web-servere. Durata de viață a unui cookie poate varia semnificativ, depinzând de scopul pentru care este plasat.
-            Unele cookie-uri sunt folosite exclusive pentru o singură sesiune și nu mai sunt reținute odată de utilizatorul a parasit website-ul în timp ce alte cookie-uri sunt reținute și refolosite de fiecare dată când utilizatorul revine pe acel website.
+            Unele cookie-uri sunt folosite exclusive pentru o singură sesiune și nu mai sunt reținute odată de utilizatorul a părăsit website-ul în timp ce alte cookie-uri sunt reținute și refolosite de fiecare dată când utilizatorul revine pe acel website.
             Cu toate acestea, cookie-urile pot fi șterse de un utilizator în orice moment prin intermediul setărilor browserului.
         </p>
 
@@ -76,7 +76,7 @@
 
         <p><strong>Cookie-uri plasate de terți</strong></p>
 
-        <p>În anumite cazuri speciale folosim de asemenea și cookie-uri provenite de la terți de încredere. Urmatoarea secțiune detaliază asupra cookie-urilor folosite de terți cu care puteți intra în contact pe parcursul utilizării acestui website.</p>
+        <p>În anumite cazuri speciale folosim de asemenea și cookie-uri provenite de la terți de încredere. Următoarea secțiune detaliază despre cookie-urilor folosite de terți cu care puteți intra în contact pe parcursul utilizării acestui website.</p>
 
         <ul>
             <li>

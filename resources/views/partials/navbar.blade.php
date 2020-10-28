@@ -14,10 +14,10 @@
                     <a class="nav-link" href="/#articles_section">Articole <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/about">Despre</a>
+                    <a class="nav-link" href="{{ route('about') }}">Despre</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Donează</a>
+                    <a class="nav-link" href="{{ route('donate') }}">Donează</a>
                 </li>
                 @if (Auth::user())
                 <li class="nav-item">
