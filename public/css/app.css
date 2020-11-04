@@ -457,7 +457,7 @@ html {
 .donate h1 {
   font-size: 32px;
   padding-bottom: 0px;
-  font-family: "Lato", sans-serif;
+  font-family: "Raleway", sans-serif;
   font-weight: bold;
 }
 
@@ -488,7 +488,7 @@ html {
   }
 
   to {
-    width: 300px;
+    width: 312px;
   }
 }
 
@@ -498,7 +498,7 @@ html {
   }
 
   to {
-    width: 300px;
+    width: 312px;
   }
 }
 
@@ -509,7 +509,7 @@ html {
     }
 
     to {
-      width: 270px;
+      width: 282px;
     }
 }
 @keyframes animated-text {
@@ -518,7 +518,7 @@ html {
     }
 
     to {
-      width: 270px;
+      width: 282px;
     }
 }
 }
@@ -551,7 +551,7 @@ html {
   width: 50%;
   padding-bottom: 10px;
   font-size: 16px;
-  font-family: "Lato", sans-serif;
+  font-family: "Nunito Sans", sans-serif;
 }
 
 @media (max-width: 767.98px) {

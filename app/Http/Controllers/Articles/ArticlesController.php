@@ -73,32 +73,6 @@ class ArticlesController extends Controller
         ], 200);
     }
 
-    public function searchArticle(Request $request)
-    {
-//        $search = $request->input('search');
-//        $searchExploded = explode(" ", $search);
-//
-//        $articles = Article::select(['title', 'slug', 'main_image'])
-//            ->where('articles.status', '=', 1)
-//            ->where('title', 'NOT LIKE', $title)
-//            ->where(function($q) use ($category, $tags, $titleExploded) {
-//                $q->where('article_category', '=', $category)
-//                    ->orWhere('tags', 'LIKE',  '%' . $tags[0] . '%');
-//
-//                array_shift($tags);
-//
-//                foreach ($tags as $tag) {
-//                    $q->orWhere('tags', 'LIKE',  '%' . $tag . '%');
-//                }
-//
-//                foreach ($titleExploded as $word) {
-//                    if (ctype_alnum($word)) {
-//                        $q->orWhere('title', 'LIKE',  '%' . $word . '%');
-//                    }
-//                }
-//            });
-    }
-
     /**
      * Fetch the Articles related to the current article.
      *

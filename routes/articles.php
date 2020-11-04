@@ -49,11 +49,6 @@ Route::namespace('Articles')->group(function () {
         'middleware'    =>  'auth-author',
     ]);
 
-//    Route::post('/article/search', [
-//        'as'    =>  'articles.search',
-//        'uses'  =>  'ArticlesController@searchArticle',
-//    ]);
-
     Route::post('/article/fetchArticleData', [
         'as'    =>  'articles.fetchArticleData',
         'uses'  =>  'ArticlesController@fetchArticleData',
@@ -65,8 +60,8 @@ Route::namespace('Articles')->group(function () {
     ]);
 
     Route::post('/article/fetchUpdateArticleData', [
-        'as'    =>  'articles.fetchUpdateArticleData',
-        'uses'  =>  'ArticlesController@fetchUpdateArticleData',
+        'as'            =>  'articles.fetchUpdateArticleData',
+        'uses'          =>  'ArticlesController@fetchUpdateArticleData',
         'middleware'    =>  'auth-author',
     ]);
 
