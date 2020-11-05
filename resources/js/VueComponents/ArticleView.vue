@@ -169,7 +169,7 @@
              * Insert the Gists after the Article Data is fetched.
              */
             insertGists: function () {
-                window.addEventListener("load", () => {
+                $(document).ready(function() {
                     let $gists = $("div[id^=gist]");
 
                     _.forEach($gists, function(gist) {
