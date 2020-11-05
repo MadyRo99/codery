@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light shadow sticky-top pt-3 pb-3" style="background-color: #FFFFFF;">
     <div class="container">
         <div class="navbar-brand img-container mb-2">
-            <a href="/"><img src="{{asset('images/logo.svg')}}" alt="logo.png"></a>
+            <a href="/"><img src="{{asset('/images/logo.svg')}}" alt="logo.png"></a>
         </div>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,7 +24,7 @@
                     @if (Auth::user()->role === 0 || Auth::user()->role === 1)
                         <a class="nav-link" href="#">{{ Auth::user()->username }}</a>
                     @endif
-                    @if (Auth::user()->role === 2)
+                    @if (Auth::user()->role == 2)
                         <a class="nav-link" href="{{ route('getAdminPanel') }}">Administrare</a>
                     @endif
                 </li>

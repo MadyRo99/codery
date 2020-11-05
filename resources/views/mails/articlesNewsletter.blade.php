@@ -33,11 +33,11 @@
         @foreach($articles as $article)
             <tr>
                 <td class="paragraph">
-                    <h2><a href="http://localhost:8000/article/{{ $article->slug }}">{{ $article->title }}</a></h2>
+                    <h2><a href="https://codery.ro/article/{{ $article->slug }}">{{ $article->title }}</a></h2>
                     @if($article->main_image)
-                        <a href="http://localhost:8000/article/{{ $article->slug }}">
+                        <a href="https://codery.ro/article/{{ $article->slug }}">
                             <div class="img-container">
-                                <img src="http://localhost:8000/storage/articles/{{ $article->slug }}/{{ $article->main_image }}" alt="article_main_image">
+                                <img src="https://codery.ro/storage/articles/{{ $article->slug }}/{{ $article->main_image }}" alt="article_main_image">
                             </div>
                         </a>
                     @endif
@@ -53,7 +53,7 @@
 
     <tr>
         <td class="paragraph bottom-notice">
-            <p>Apasă <a href="http://localhost:8000/deleteNewsletter/{{ $token }}" class="unsubscribe">aici</a> dacă dorești să te dezabonezi de la Newsletter.</p>
+            <p>Apasă <a href="https://codery.ro/deleteNewsletter/{{ $token }}" class="unsubscribe">aici</a> dacă dorești să te dezabonezi de la Newsletter.</p>
         </td>
     </tr>
     @include('beautymail::templates.minty.contentEnd')

@@ -10148,7 +10148,6 @@ __webpack_require__.r(__webpack_exports__);
       axios.post('/article/fetchUpdateArticleData', parameters).then(function (response) {
         if (response.data.success) {
           var article = response.data.response.article;
-          console.log(JSON.parse(article.tags).join(", "));
           _this.article.title = article.title;
           _this.article.category = article.article_category;
           _this.article.est_time = article.est_time;
@@ -48084,7 +48083,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.card {\r\n    height: 25rem;\n}\n.card-title {\r\n    font-size: 18px;\n}\n.card-body a {\r\n    position: absolute;\r\n    bottom: 1rem;\n}\n.card-img-top {\r\n    max-height: 17rem;\n}\r\n\r\n", ""]);
+exports.push([module.i, "\n.card {\n    height: 25rem;\n}\n.card-title {\n    font-size: 18px;\n}\n.card-body a {\n    position: absolute;\n    bottom: 1rem;\n}\n.card-img-top {\n    max-height: 17rem;\n}\n\n", ""]);
 
 // exports
 

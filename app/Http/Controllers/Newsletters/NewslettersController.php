@@ -51,10 +51,10 @@ class NewslettersController extends Controller
         if ($createNewsletter) {
             $beautymail = app()->make(\Snowfire\Beautymail\Beautymail::class);
             $beautymail->send('mails.joinNewsletter', [
-                'confirmNewsletter' => "http://localhost:8000/confirmNewsletter/" . $token
+                'confirmNewsletter' => "https://codery.ro/confirmNewsletter/" . $token
             ], function($message) use ($email)
             {
-                $message->from('coderyromania@gmail.com')
+                $message->from('contact@codery.ro', 'Codery')
                         ->to($email)
                         ->subject('Salutare! Confirmă solicitarea ta de înscriere la Newsletter');
             });
@@ -90,7 +90,7 @@ class NewslettersController extends Controller
                     'token' => $token
                 ], function($message) use ($confirmNewsletter)
                 {
-                    $message->from('coderyromania@gmail.com')
+                    $message->from('contact@codery.ro', 'Codery')
                         ->to($confirmNewsletter["email"])
                         ->subject('Bine ai venit! Ai confirmat cu succes abonarea ta la Newsletter');
                 });
@@ -200,7 +200,7 @@ class NewslettersController extends Controller
                     'articles'    => $newsletterArticles,
                     'token'       => $subscription->token,
                 ], function($message) use ($subscription, $title) {
-                    $message->from('coderyromania@gmail.com')
+                    $message->from('contact@codery.ro', 'Codery')
                         ->to($subscription->email)
                         ->subject($title);
                 });

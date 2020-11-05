@@ -261,8 +261,6 @@
                         if (response.data.success) {
                             let article = response.data.response.article;
 
-                            console.log(JSON.parse(article.tags).join(", "));
-
                             this.article.title = article.title;
                             this.article.category = article.article_category;
                             this.article.est_time = article.est_time;

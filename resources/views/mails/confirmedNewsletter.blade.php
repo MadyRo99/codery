@@ -37,7 +37,7 @@
 
     <tr>
         <td class="paragraph bottom-notice">
-            <p>Apasă <a href="http://localhost:8000/deleteNewsletter/{{ $token }}" class="unsubscribe">aici</a> dacă dorești să te dezabonezi de la Newsletter.</p>
+            <p>Apasă <a href="https://codery.ro/deleteNewsletter/{{ $token }}" class="unsubscribe">aici</a> dacă dorești să te dezabonezi de la Newsletter.</p>
         </td>
     </tr>
     @include('beautymail::templates.minty.contentEnd')
