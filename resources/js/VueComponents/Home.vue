@@ -41,7 +41,7 @@
                     </slide-up-down>
                 </div>
             </div>
-            <div class="row justify-content-between">
+            <div class="row justify-Fcontent-between">
                 <div class="col-12 col-lg-10 article-list">
                     <h4 class="text-center py-3" v-show="!articles.data.length">Nu există articole pentru filtrele aplicate.</h4>
                     <div class="row article" v-for="article in articles.data">
@@ -119,6 +119,7 @@
                 searchArticle: this.search,
                 searchInput: this.search,
                 articles: {
+                    data: {},
                     total: 0,
                     per_page: 2,
                     from: 1,

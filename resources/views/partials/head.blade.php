@@ -17,7 +17,7 @@
         <meta property="og:image" content="../storage/articles/@yield('slug')/@yield('image')" />
         <meta property="og:url" content="https://codery.ro/article/@yield('slug')" />
     @else
-        <meta property="og:image" content="{{asset('/images/share_logo.png')}}" />
+        <meta property="og:image" content="{{asset('/images/sharing_logo.png')}}" />
     @endif
     <meta name="keywords" content="CODERY, ROMANIA, BLOG, IT, WEB, HTML, CSS, JAVASCRIPT, JAVA, PYTHON, AI, IOT, ANDROID, IOS, MOBILE, PHP, SQL, LARAVEL, BOOTSTRAP, PROGRAMARE">
     <meta name="csrf-token" content="{{ csrf_token() }}">
