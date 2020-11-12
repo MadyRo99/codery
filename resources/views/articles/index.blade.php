@@ -2,6 +2,14 @@
 
 @section('title', 'Codery | ' . $title)
 
+@section('description', $description)
+
+@section('image', $image)
+
+@section('slug', $slug)
+
+@section('type', 'article')
+
 @section('content')
 
     <div>

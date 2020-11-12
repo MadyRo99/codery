@@ -41,10 +41,10 @@
                             </div>
                             <div class="row" style="padding-bottom: 7.5px;">
                                 <div class="col-12">
-                                    <div v-if="article.status">
+                                    <div v-if="article.status != 0">
                                         <i class="fas fa-eye" style="padding-top: 5px; color: #16E8CA;"></i> <span>Articol Public</span>
                                     </div>
-                                    <div v-if="!article.status">
+                                    <div v-if="article.status == 0">
                                         <i class="fa fa-eye-slash" aria-hidden="true" style="padding-top: 5px; color: #993FFF;"></i> <span>Articol Privat</span>
                                     </div>
                                 </div>

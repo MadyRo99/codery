@@ -17,7 +17,7 @@
                 </p>
                 <p>
                     Cu toate că fiecare paragraf este scris din pasiune, efortul depus necesită timp pentru a opține o postare de calitate,
-                    iar astfel, orice donație ne ajută să dedicăm mai mult timp dezvoltării platformei și scrierii de articole.
+                    iar astfel, orice donație ne ajută să dedicăm mai mult timp dezvoltării platformei și publicării de articole.
                 </p>
                 <div class="img-container">
                     <a href="https://www.patreon.com/codery">

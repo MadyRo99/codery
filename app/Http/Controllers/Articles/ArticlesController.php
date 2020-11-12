@@ -34,7 +34,7 @@ class ArticlesController extends Controller
             if ($article->status || (isset(Auth::user()->id) && (Auth::user()->role == 1 || Auth::user()->role == 2))) {
                 return view(
                     'articles.index'
-                )->withSlug($slug)->withTitle($article->title);
+                )->withSlug($slug)->withTitle($article->title)->withDescription($article->description)->withImage($article->main_image);
             }
         }
 

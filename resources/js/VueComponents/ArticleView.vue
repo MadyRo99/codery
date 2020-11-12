@@ -1,6 +1,6 @@
 <template>
     <div class="container article-view">
-        <div class="bd-callout" v-if="!article.status">
+        <div class="bd-callout" v-if="article.status == 0">
             <h5>Acest articol se află în modul de previzualizare.</h5>
             <p>Articolul poate fi accesat în acest moment doar de către autor sau de moderator.</p>
             <p>Pentru a schimba vizibilitatea acestui articol, apasă <a :href="'/article/edit/' + slug"><b style="color: #993FFF;">aici</b></a> pentru editare.</p>
